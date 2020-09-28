@@ -1,0 +1,58 @@
+@import "./size";
+@import "./color";
+
+@function rem($value) {
+	@return #{$value}rem;
+}
+
+@function strip-unit($number) {
+	@if type-of($number) == "number" and not unitless($number) {
+		// In order to have 1 of the unit of $number, we can multiply $number by 0 and then add 1.
+		@return $number / ($number * 0 + 1);
+	}
+
+	@return $number;
+}
+
+@function size($px) {
+	@return rem(#{strip-unit($px) / strip-unit($base-size)});
+}
+
+@function _get-color($palette-map, $name) {
+	@return get-entry($palette-map, _get-color-name($name));
+}
+
+@function _get-color-name($name) {
+	@return if(map-has_key($color-aliases, $name), get-entry($color-aliases, $name), $name);
+}
+
+@function get-entry($map, $key) {
+	$value: map-get($map, $key);
+
+	@if $value == null {
+		@error "The key '#{$key}' was not found in the map '#{$map}'.";
+	}
+
+	@return $value;
+}
+
+@function hsl-fallback($hsl, $name, $alpha: null) {
+	@return construct-hsl($hsl, $alpha);
+}
+
+@function construct-hsl($hsl, $alpha: null) {
+	$h: nth($hsl, 1);
+	$s: nth($hsl, 2);
+	$l: nth($hsl, 3);
+
+	@if ($alpha and $alpha != 100) {
+		@return #{"hsla(#{$h}, #{$s}, #{$l}, #{$alpha / 100})"};
+	} @else {
+		@return #{"hsl(#{$h}, #{$s}, #{$l})"};
+	}
+}
+
+@function color($name, $alpha: null, $color-map: $color-map) {
+	$color: _get-color($color-map, $name);
+	@return hsl-fallback($color, $name, $alpha);
+}

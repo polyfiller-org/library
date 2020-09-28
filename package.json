@@ -1,0 +1,71 @@
+{
+	"version": "0.0.0",
+	"private": true,
+	"description": "A suite of spec-compliant polyfills",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/polyfiller-org/polyfiller.git"
+	},
+	"bugs": {
+		"url": "https://github.com/polyfiller-org/polyfiller/issues"
+	},
+	"scripts": {
+		"scaffold": "pnpm recursive run scaffold && scaffold all --yes",
+		"clean": "pnpm recursive run clean",
+		"lint": "pnpm recursive run clean",
+		"prettier": "prettier --write '{src,test,documentation}/**/*.{js,ts,json,html,xml,css,md}'",
+		"test": "pnpm recursive run test",
+		"prebuild": "pnpm run clean",
+		"build": "pnpm recursive run build",
+		"build:build": "pnpm run build --filter *build",
+		"build:object-fit": "pnpm run build --filter *object-fit",
+		"prewatch": "pnpm run prebuild",
+		"watch": "pnpm recursive run watch",
+		"watch:build": "pnpm run watch --filter *build",
+		"watch:object-fit": "pnpm run watch --filter *object-fit",
+		"release": "pnpm publish -r",
+		"update": "pnpm recursive run update && pnpm update && pnpm install"
+	},
+	"files": [
+		"dist/**/*.*"
+	],
+	"keywords": [
+		"object-fit",
+		"object-position",
+		"polyfill",
+		"css"
+	],
+	"contributors": [
+		{
+			"name": "Frederik Wessberg",
+			"email": "frederikwessberg@hotmail.com",
+			"url": "https://github.com/wessberg",
+			"imageUrl": "https://avatars2.githubusercontent.com/u/20454213?s=460&v=4",
+			"role": "Lead Developer",
+			"twitter": "FredWessberg"
+		}
+	],
+	"license": "MIT",
+	"devDependencies": {
+		"@changesets/cli": "^2.10.3",
+		"@typescript-eslint/eslint-plugin": "^4.3.0",
+		"@typescript-eslint/parser": "^4.3.0",
+		"@wessberg/scaffold": "^1.0.31",
+		"eslint": "^7.10.0",
+		"eslint-config-prettier": "^6.12.0",
+		"eslint-plugin-import": "^2.22.1",
+		"eslint-plugin-jsdoc": "^30.6.1",
+		"husky": "^4.3.0",
+		"pnpm": "^5.8.0",
+		"prettier": "^2.1.2",
+		"pretty-quick": "^3.0.2",
+		"rimraf": "^3.0.2",
+		"tslib": "^2.0.1",
+		"typescript": "^4.0.3"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "pretty-quick --staged"
+		}
+	}
+}

@@ -1,0 +1,33 @@
+$color-map: (
+	black: (
+		0,
+		0%,
+		0%
+	),
+	white: (
+		0,
+		100%,
+		100%
+	),
+	pink: (
+		330,
+		89%,
+		63%
+	),
+	cobalt: (
+		195,
+		46%,
+		70%
+	),
+	gray: (
+		214,
+		10%,
+		70%
+	)
+);
+
+$color-aliases: (
+	primary: cobalt,
+	accent: pink,
+	text: black
+);

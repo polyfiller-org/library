@@ -1,0 +1,78 @@
+{
+	"name": "@polyfiller/object-fit",
+	"version": "0.0.29",
+	"description": "A robust polyfill for the 'object-fit' and 'object-position' CSS-properties",
+	"scripts": {
+		"scaffold": "scaffold all --yes",
+		"clean": "rimraf dist",
+		"lint": "tsc --noEmit && eslint \"src/**/*.ts\" --color",
+		"prebuild": "pnpm run clean",
+		"build": "pnpm run rollup",
+		"prewatch": "pnpm run prebuild",
+		"watch": "pnpm run rollup -- --watch",
+		"rollup": "rollup -c rollup.config.ts",
+		"update": "pnpx npm-check-updates --packageFile package.json -u -x np --dep dev,prod"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/polyfiller-org/polyfiller.git"
+	},
+	"bugs": {
+		"url": "https://github.com/wessberg/polyfiller-org/polyfiller/issues"
+	},
+	"files": [
+		"dist/**/*.*",
+		"polyfill/**/*.*"
+	],
+	"keywords": [
+		"object-fit",
+		"object-position",
+		"polyfill",
+		"css"
+	],
+	"contributors": [
+		{
+			"name": "Frederik Wessberg",
+			"email": "frederikwessberg@hotmail.com",
+			"url": "https://github.com/wessberg",
+			"imageUrl": "https://avatars2.githubusercontent.com/u/20454213?s=460&v=4",
+			"role": "Lead Developer",
+			"twitter": "FredWessberg"
+		}
+	],
+	"license": "MIT",
+	"devDependencies": {
+		"@babel/runtime": "^7.11.2",
+		"@polyfiller/config": "workspace:*",
+		"@polyfiller/build": "workspace:*",
+		"typescript": "^4.0.3",
+		"rollup": "^2.28.2"
+	},
+	"dependencies": {
+		"@wessberg/connection-observer": "^1.0.5",
+		"@wessberg/stringutil": "^1.0.19"
+	},
+	"polyfills": {
+		"css.object-fit": {
+			"input": "./src/polyfill/index.ts",
+			"output": {
+				"bundle": {
+					"standard": "./polyfill/index.js",
+					"minified": "./polyfill/index.min.js"
+				},
+				"esm": {
+					"standard": "./polyfill/esm/index.js",
+					"minified": "./polyfill/esm/index.min.js"
+				}
+			}
+		}
+	},
+	"main": "./dist/cjs/index.js",
+	"module": "./dist/esm/index.js",
+	"types": "./dist/esm/index.d.ts",
+	"typings": "./dist/esm/index.d.ts",
+	"es2015": "./dist/esm/index.js",
+	"publishConfig": {
+		"access": "restricted"
+	}
+}

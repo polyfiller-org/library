@@ -3,7 +3,7 @@
 	"version": "0.0.29",
 	"description": "A robust polyfill for the 'object-fit' and 'object-position' CSS-properties",
 	"scripts": {
-		"scaffold": "scaffold all --yes",
+		"scaffold": "scaffold readme --yes && scaffold license --yes",
 		"clean": "rimraf dist",
 		"lint": "tsc --noEmit && eslint \"src/**/*.ts\" --color",
 		"prebuild": "pnpm run clean",

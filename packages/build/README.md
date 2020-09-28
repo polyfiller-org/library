@@ -48,7 +48,6 @@
   - [Yarn](#yarn)
   - [pnpm](#pnpm)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [Maintainers](#maintainers)
 - [Backers](#backers)
   - [Patreon](#patreon)
@@ -88,10 +87,6 @@ $ pnpm add @polyfiller/build
 <!-- SHADOW_SECTION_USAGE_END -->
 
 <!-- SHADOW_SECTION_CONTRIBUTING_START -->
-
-## Contributing
-
-Do you want to contribute? Awesome! Please follow [these recommendations](./CONTRIBUTING.md).
 
 <!-- SHADOW_SECTION_CONTRIBUTING_END -->
 

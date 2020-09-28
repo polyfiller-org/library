@@ -64,7 +64,6 @@ To see the polyfill in action, A [demo can be found here](TODO: Link).
 - [Applying the polyfill](#applying-the-polyfill)
 - [Usage](#usage)
 - [Dependencies & Browser support](#dependencies--browser-support)
-- [Contributing](#contributing)
 - [Maintainers](#maintainers)
 - [Backers](#backers)
   - [Patreon](#patreon)
@@ -113,7 +112,7 @@ One way to do so is with an async import:
 
 ```typescript
 if (!("objectFit" in document.documentElement.style)) {
-	await import("@polyfiller/object-fit/polyfill");
+  await import("@polyfiller/object-fit/polyfill");
 }
 ```
 
@@ -150,9 +149,9 @@ You can provide `object-fit` and/or `object-position` values in one of more ways
 ```css
 img,
 video {
-	object-fit: cover;
-	object-position: bottom;
-	font-family: "object-fit: cover; object-position: bottom";
+  object-fit: cover;
+  object-position: bottom;
+  font-family: "object-fit: cover; object-position: bottom";
 }
 ```
 
@@ -172,10 +171,6 @@ This polyfill is distributed in ES5-compatible syntax, but is using some additio
 Generally, I would highly recommend using something like [Polyfill.app](https://github.com/wessberg/Polyfiller) which takes care of this stuff automatically.
 
 <!-- SHADOW_SECTION_CONTRIBUTING_START -->
-
-## Contributing
-
-Do you want to contribute? Awesome! Please follow [these recommendations](./CONTRIBUTING.md).
 
 <!-- SHADOW_SECTION_CONTRIBUTING_END -->
 

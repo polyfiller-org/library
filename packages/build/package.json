@@ -3,7 +3,7 @@
 	"version": "0.0.29",
 	"description": "Common build files",
 	"scripts": {
-		"scaffold": "scaffold all --yes",
+		"scaffold": "scaffold readme --yes && scaffold license --yes",
 		"build": "tsc",
 		"watch": "tsc --watch",
 		"update": "pnpx npm-check-updates --packageFile package.json -u -x np --dep dev,prod"

@@ -28,7 +28,7 @@
 
 <!-- SHADOW_SECTION_DESCRIPTION_LONG_END -->
 
-This is a robust, feature complete polyfill for the [`object-fit`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) and [`object-position](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position) CSS properties.
+This is a robust, feature complete polyfill for the [`object-fit`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) and [`object-position`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position) CSS properties.
 It differs from other similar solutions primarily in three areas: feature completeness, modern API support, and the ability to react to changes.
 
 To see the polyfill in action, A [demo can be found here](TODO: Link).

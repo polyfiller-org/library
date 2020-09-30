@@ -4,8 +4,6 @@
 
 <!-- SHADOW_SECTION_LOGO_END -->
 
-<div><img alt="Powered by Polyfiller" src="https://raw.githubusercontent.com/polyfiller-org/polyfiller/master/documentation/asset/logo-color-powered-by.png" height="80"   /></div>
-
 <!-- SHADOW_SECTION_DESCRIPTION_SHORT_START -->
 
 > A robust polyfill for the 'object-fit' and 'object-position' CSS-properties
@@ -23,6 +21,8 @@
 <a href="https://www.patreon.com/bePatron?u=11315442"><img alt="Support on Patreon" src="https://img.shields.io/badge/patreon-donate-green.svg"    /></a>
 
 <!-- SHADOW_SECTION_BADGES_END -->
+
+<div><img alt="Powered by Polyfiller" src="https://raw.githubusercontent.com/polyfiller-org/polyfiller/master/documentation/asset/logo-color-powered-by.png" height="60"   /></div>
 
 <!-- SHADOW_SECTION_DESCRIPTION_LONG_START -->
 

@@ -33,10 +33,10 @@ You can install any of these and use them as you please, or you may use Polyfill
 
 ## Polyfills
 
-|                                                                 |                                                                   |
-| --------------------------------------------------------------- | ------------------------------------------------------------------|
-| [`@polyfiller/object-fit`](./packages/library/css/object-fit)   | polyfills  the 'object-fit' and 'object-position' CSS-properties  |
-|                                                                 |                                                                   |
+|                                                                 |                                                                         |
+| --------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| [`@polyfiller/object-fit`](./packages/library/css/object-fit)   | Adds support for the `object-fit` and `object-position` CSS-properties  |
+|                                                                 |                                                                         |
 
 <!-- SHADOW_SECTION_FEATURE_IMAGE_START -->
 

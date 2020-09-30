@@ -44,7 +44,7 @@ You can install any of these and use them as you please, or you may use Polyfill
 
 ## Presentation at CopenhagenJS 2019
 
-[![Polyfiller presentation at CopenhagenJS in 2019](https://img.youtube.com/vi/3plpHThSyXU/0.jpg)](https://www.youtube.com/watch?v=3plpHThSyXU)
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=3plpHThSyXU" target="_blank"><img src="http://img.youtube.com/vi/3plpHThSyXU/0.jpg" alt="Polyfiller presentation at CopenhagenJS in 2019" width="240" height="180" border="10" /></a>
 
 <!-- SHADOW_SECTION_TOC_START -->
 

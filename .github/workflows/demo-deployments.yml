@@ -30,7 +30,7 @@ jobs:
       - name: Deploy object-fit demo
         uses: netlify/actions/cli@master
         with:
-          args: deploy --dir=packages/library/css/object-fit/demo/public --functions=functions
+          args: deploy --prod --dir=packages/library/css/object-fit/demo/public
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.OBJECT_FIT_SITE_ID }}

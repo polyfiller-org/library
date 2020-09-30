@@ -62,6 +62,11 @@ export function fixImage(target: ExtendedHTMLImageElement): void {
 	}
 
 	const src = pickImageElementSrc(target);
+	console.log({
+		src,
+		targetSrc: target.src,
+		currentSrc: target.currentSrc
+	});
 	const backgroundImage = `url("${src}")`;
 
 	// Fall back to the default object position if it wasn't provided by the user

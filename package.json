@@ -1,7 +1,7 @@
 {
 	"version": "0.0.0",
 	"private": true,
-	"description": "A suite of spec-compliant polyfills",
+	"description": "A library of spec-compliant polyfills",
 	"homepage": "https://github.com/polyfiller-org/library",
 	"repository": {
 		"type": "git",

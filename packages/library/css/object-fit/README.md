@@ -4,6 +4,8 @@
 
 <!-- SHADOW_SECTION_LOGO_END -->
 
+<div><img alt="Powered by Polyfiller" src="https://raw.githubusercontent.com/polyfiller-org/polyfiller/master/documentation/asset/logo-color-powered-by.png" height="80"   /></div>
+
 <!-- SHADOW_SECTION_DESCRIPTION_SHORT_START -->
 
 > A robust polyfill for the 'object-fit' and 'object-position' CSS-properties

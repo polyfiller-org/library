@@ -1,12 +1,12 @@
 <!-- SHADOW_SECTION_LOGO_START -->
 
-<div><img alt="Logo" src="https://raw.githubusercontent.com/wessberg/Polyfiller/master/documentation/asset/logo-color-text.png" height="80"   /></div>
+<div><img alt="Logo" src="https://raw.githubusercontent.com/polyfiller-org/library/master/documentation/asset/logo-color-text.png" height="80"   /></div>
 
 <!-- SHADOW_SECTION_LOGO_END -->
 
 <!-- SHADOW_SECTION_DESCRIPTION_SHORT_START -->
 
-> A suite of spec-compliant polyfills
+> A library of spec-compliant polyfills
 
 <!-- SHADOW_SECTION_DESCRIPTION_SHORT_END -->
 

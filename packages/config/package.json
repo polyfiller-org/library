@@ -36,8 +36,5 @@
 	"dependencies": {
 		"@wessberg/ts-config": "^1.0.19"
 	},
-	"tsconfig": "tsconfig.json",
-	"publishConfig": {
-		"access": "restricted"
-	}
+	"tsconfig": "tsconfig.json"
 }

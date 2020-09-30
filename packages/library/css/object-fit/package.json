@@ -74,8 +74,5 @@
 	"module": "./dist/esm/index.js",
 	"types": "./dist/esm/index.d.ts",
 	"typings": "./dist/esm/index.d.ts",
-	"es2015": "./dist/esm/index.js",
-	"publishConfig": {
-		"access": "restricted"
-	}
+	"es2015": "./dist/esm/index.js"
 }

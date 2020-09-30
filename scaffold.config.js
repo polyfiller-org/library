@@ -5,6 +5,9 @@ module.exports = {
 		height: 80
 	},
 	readme: {
+		badges: {
+			exclude: ["dependencies"]
+		},
 		sections: {
 			exclude: ["usage", "features", "faq"]
 		}

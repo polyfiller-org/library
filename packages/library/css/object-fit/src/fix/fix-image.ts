@@ -25,7 +25,7 @@ function pickImageElementSrc(target: HTMLImageElement): string | undefined {
 		}
 	}
 
-	return target.currentSrc ?? target.src;
+	return target.currentSrc != null && target.currentSrc.length > 0 ? target.currentSrc : target.src;
 }
 
 function hasSrcset(target: HTMLImageElement): boolean {
@@ -62,11 +62,7 @@ export function fixImage(target: ExtendedHTMLImageElement): void {
 	}
 
 	const src = pickImageElementSrc(target);
-	console.log({
-		src,
-		targetSrc: target.src,
-		currentSrc: target.currentSrc
-	});
+
 	const backgroundImage = `url("${src}")`;
 
 	// Fall back to the default object position if it wasn't provided by the user

@@ -12,7 +12,6 @@
 
 <!-- SHADOW_SECTION_BADGES_START -->
 
-<a href="https://david-dm.org/polyfiller-org/library"><img alt="Dependencies" src="https://img.shields.io/david/polyfiller-org%2Flibrary.svg"    /></a>
 <a href="https://github.com/prettier/prettier"><img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg"    /></a>
 <a href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg"    /></a>
 <a href="https://www.patreon.com/bePatron?u=11315442"><img alt="Support on Patreon" src="https://img.shields.io/badge/patreon-donate-green.svg"    /></a>
@@ -33,10 +32,10 @@ You can install any of these and use them as you please, or you may use Polyfill
 
 ## Polyfills
 
-|                                                                 |                                                                         |
-| --------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| [`@polyfiller/object-fit`](./packages/library/css/object-fit)   | Adds support for the `object-fit` and `object-position` CSS-properties  |
-|                                                                 |                                                                         |
+|                                                               |                                                                        |
+| ------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| [`@polyfiller/object-fit`](./packages/library/css/object-fit) | Adds support for the `object-fit` and `object-position` CSS-properties |
+|                                                               |                                                                        |
 
 <!-- SHADOW_SECTION_FEATURE_IMAGE_START -->
 
@@ -75,12 +74,14 @@ Polyfiller is kindly supported by [JetBrains](https://www.jetbrains.com/?from=Po
 ## Table of Contents
 
 - [Description](#description)
-- [Table of Contents](#table-of-contents)
-- [Contributing](#contributing)
-- [Maintainers](#maintainers)
+- [Polyfills](#polyfills)
+- [Presentation at CopenhagenJS 2019](#presentation-at-copenhagenjs-2019)
 - [Supporters](#supporters)
 - [Backers](#backers)
   - [Patreon](#patreon)
+- [Table of Contents](#table-of-contents)
+- [Contributing](#contributing)
+- [Maintainers](#maintainers)
 - [License](#license)
 
 <!-- SHADOW_SECTION_TOC_END -->

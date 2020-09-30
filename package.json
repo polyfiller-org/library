@@ -11,7 +11,7 @@
 		"url": "https://github.com/polyfiller-org/library/issues"
 	},
 	"scripts": {
-		"scaffold": "pnpm recursive run scaffold && scaffold funding --yes && scaffold license --yes && scaffold contributing --yes && scaffold coc --yes",
+		"scaffold": "pnpm recursive run scaffold && scaffold readme --yes scaffold funding --yes && scaffold license --yes && scaffold contributing --yes && scaffold coc --yes",
 		"clean": "pnpm recursive run clean",
 		"lint": "pnpm recursive run clean",
 		"prettier": "prettier --write 'packages/**/*.{js,ts,json,html,xml,css,md}'",

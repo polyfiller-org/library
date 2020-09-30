@@ -1,1 +1,102 @@
-WIP
+<!-- SHADOW_SECTION_LOGO_START -->
+
+<div><img alt="Logo" src="https://raw.githubusercontent.com/wessberg/Polyfiller/master/documentation/asset/logo-color-text.png" height="80"   /></div>
+
+<!-- SHADOW_SECTION_LOGO_END -->
+
+<!-- SHADOW_SECTION_DESCRIPTION_SHORT_START -->
+
+> A suite of spec-compliant polyfills
+
+<!-- SHADOW_SECTION_DESCRIPTION_SHORT_END -->
+
+<!-- SHADOW_SECTION_BADGES_START -->
+
+<a href="https://david-dm.org/polyfiller-org/library"><img alt="Dependencies" src="https://img.shields.io/david/polyfiller-org%2Flibrary.svg"    /></a>
+<a href="https://github.com/prettier/prettier"><img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg"    /></a>
+<a href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg"    /></a>
+<a href="https://www.patreon.com/bePatron?u=11315442"><img alt="Support on Patreon" src="https://img.shields.io/badge/patreon-donate-green.svg"    /></a>
+
+<!-- SHADOW_SECTION_BADGES_END -->
+
+<!-- SHADOW_SECTION_DESCRIPTION_LONG_START -->
+
+## Description
+
+<!-- SHADOW_SECTION_DESCRIPTION_LONG_END -->
+
+<!-- SHADOW_SECTION_FEATURE_IMAGE_START -->
+
+<!-- SHADOW_SECTION_FEATURE_IMAGE_END -->
+
+<!-- SHADOW_SECTION_TOC_START -->
+
+## Table of Contents
+
+- [Description](#description)
+- [Table of Contents](#table-of-contents)
+- [Contributing](#contributing)
+- [Maintainers](#maintainers)
+- [Supporters](#supporters)
+- [Backers](#backers)
+  - [Patreon](#patreon)
+- [FAQ](#faq)
+- [License](#license)
+
+<!-- SHADOW_SECTION_TOC_END -->
+
+<!-- SHADOW_SECTION_CONTRIBUTING_START -->
+
+## Contributing
+
+Do you want to contribute? Awesome! Please follow [these recommendations](./CONTRIBUTING.md).
+
+<!-- SHADOW_SECTION_CONTRIBUTING_END -->
+
+<!-- SHADOW_SECTION_MAINTAINERS_START -->
+
+## Maintainers
+
+| <a href="mailto:frederikwessberg@hotmail.com"><img alt="Frederik Wessberg" src="https://avatars2.githubusercontent.com/u/20454213?s=460&v=4" height="70"   /></a>                                                                |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Frederik Wessberg](mailto:frederikwessberg@hotmail.com)<br><strong>Twitter</strong>: [@FredWessberg](https://twitter.com/FredWessberg)<br><strong>Github</strong>: [@wessberg](https://github.com/wessberg)<br>_Lead Developer_ |
+
+<!-- SHADOW_SECTION_MAINTAINERS_END -->
+
+## Supporters
+
+Polyfiller is kindly supported by and relies heavily on [BrowserStack](https://www.browserstack.com) for cross-browser testing to ensure maximum cross-browser compatibility.
+
+<a href="https://www.browserstack.com"><img alt="BrowserStack" src="https://raw.githubusercontent.com/polyfiller-org/library/master/documentation/asset/browserstack.png" height="60" /></a>
+
+Polyfiller is kindly supported by [JetBrains](https://www.jetbrains.com/?from=Polyfiller) for software development tools:
+
+<a href="https://www.jetbrains.com/?from=Polyfiller"><img alt="Supported by JetBrains" src="https://raw.githubusercontent.com/polyfiller-org/library/master/documentation/asset/jetbrains.png" height="150" /></a>
+
+<!-- SHADOW_SECTION_BACKERS_START -->
+
+## Backers
+
+| <a href="https://usebubbles.com"><img alt="Bubbles" src="https://uploads-ssl.webflow.com/5d682047c28b217055606673/5e5360be16879c1d0dca6514_icon-thin-128x128%402x.png" height="70"   /></a> | <a href="https://github.com/cblanc"><img alt="Christopher Blanchard" src="https://avatars0.githubusercontent.com/u/2160685?s=400&v=4" height="70"   /></a> |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Bubbles](https://usebubbles.com)<br><strong>Twitter</strong>: [@use_bubbles](https://twitter.com/use_bubbles)                                                                              | [Christopher Blanchard](https://github.com/cblanc)                                                                                                         |
+
+### Patreon
+
+<a href="https://www.patreon.com/bePatron?u=11315442"><img alt="Patrons on Patreon" src="https://img.shields.io/endpoint.svg?url=https://shieldsio-patreon.herokuapp.com/wessberg"  width="200"  /></a>
+
+<!-- SHADOW_SECTION_BACKERS_END -->
+
+<!-- SHADOW_SECTION_FAQ_START -->
+
+## FAQ
+
+<!-- SHADOW_SECTION_FAQ_END -->
+
+<!-- SHADOW_SECTION_LICENSE_START -->
+
+## License
+
+MIT © [Frederik Wessberg](mailto:frederikwessberg@hotmail.com) ([@FredWessberg](https://twitter.com/FredWessberg)) ([Website](https://github.com/wessberg))
+
+<!-- SHADOW_SECTION_LICENSE_END -->

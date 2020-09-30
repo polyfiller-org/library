@@ -25,9 +25,26 @@
 
 <!-- SHADOW_SECTION_DESCRIPTION_LONG_END -->
 
+The goal of [Polyfiller](https://github.com/wessberg/Polyfiller) is for you to never worry about polyfills again.
+This is a repository of high quality, spec-compliant, and highly optimized polyfills.
+You'll be able to recognize any of these polyfills in the wild in that they all share the `@polyfiller` scope.
+
+You can install any of these and use them as you please, or you may use Polyfiller which serves these polyfills directly when needed and requested.
+
+## Polyfills
+
+|                                                                 |                                                                   |
+| --------------------------------------------------------------- | ------------------------------------------------------------------|
+| [`@polyfiller/object-fit`](./packages/library/css/object-fit)   | polyfills  the 'object-fit' and 'object-position' CSS-properties  |
+|                                                                 |                                                                   |
+
 <!-- SHADOW_SECTION_FEATURE_IMAGE_START -->
 
 <!-- SHADOW_SECTION_FEATURE_IMAGE_END -->
+
+## Presentation at CopenhagenJS 2019
+
+[![Polyfiller presentation at CopenhagenJS in 2019](https://img.youtube.com/vi/3plpHThSyXU/0.jpg)](https://www.youtube.com/watch?v=3plpHThSyXU)
 
 <!-- SHADOW_SECTION_TOC_START -->
 

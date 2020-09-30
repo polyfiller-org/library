@@ -1,8 +1,10 @@
 name: 'Demo Deployments'
 
 on:
-  - push
-  - release:
+  push:
+    branches:
+      - master
+  release:
     types: ['published']
 
 jobs:

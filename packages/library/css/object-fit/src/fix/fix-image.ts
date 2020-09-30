@@ -1,5 +1,14 @@
 import {findUp, getObjectFit, getObjectPosition, onHasNaturalWidth} from "../util/util";
-import {DEFAULT_OBJECT_POSITION, EMPTY_IMAGE_SRC, SKIP_OBJECT_FIT_POLYFILL_ATTRIBUTE_NAME, SYMBOL_NATURAL_HEIGHT, SYMBOL_NATURAL_WIDTH, SYMBOL_OBJECT_FIT, SYMBOL_OBJECT_POSITION, SYMBOL_SRC} from "../constant/constant";
+import {
+	DEFAULT_OBJECT_POSITION,
+	EMPTY_IMAGE_SRC,
+	SKIP_OBJECT_FIT_POLYFILL_ATTRIBUTE_NAME,
+	SYMBOL_NATURAL_HEIGHT,
+	SYMBOL_NATURAL_WIDTH,
+	SYMBOL_OBJECT_FIT,
+	SYMBOL_OBJECT_POSITION,
+	SYMBOL_SRC
+} from "../constant/constant";
 import {SUPPORTS_OBJECT_FIT_FOR_IMAGES} from "../support/supports-object-fit";
 import {SUPPORTS_OBJECT_POSITION} from "../support/supports-object-position";
 import {ExtendedHTMLImageElement} from "../type/type";
@@ -19,7 +28,7 @@ function pickImageElementSrc(target: HTMLImageElement): string | undefined {
 	return target.currentSrc ?? target.src;
 }
 
-function hasSrcset (target: HTMLImageElement): boolean {
+function hasSrcset(target: HTMLImageElement): boolean {
 	return target.srcset != null && target.srcset !== "";
 }
 

@@ -266,11 +266,12 @@ export function fixElement({target, isLoaded, isSupported, loadEvent, getNatural
 				}
 
 				if (isVertical) {
-					transform = kind === "video"
-						// For HTML5 videos, the original aspect ratio will be retained, so we can ignore this by scaling in the x-axis
-						? `scaleX(${wrapperRatio / targetRatio})`
-						// For images, we don't have to apply any further transformations
-						: "none";
+					transform =
+						kind === "video"
+							? // For HTML5 videos, the original aspect ratio will be retained, so we can ignore this by scaling in the x-axis
+							  `scaleX(${wrapperRatio / targetRatio})`
+							: // For images, we don't have to apply any further transformations
+							  "none";
 					assignFreshInlineStyles(
 						overriddenStyles,
 						target,
@@ -283,13 +284,12 @@ export function fixElement({target, isLoaded, isSupported, loadEvent, getNatural
 						})
 					);
 				} else {
-
-
-					transform = kind === "video"
-						// For HTML5 videos, the original aspect ratio will be retained, so we can ignore this by scaling in the y-axis
-						? `scaleY(${targetRatio / wrapperRatio})`
-						// For images, we don't have to apply any further transformations
-						: "none";
+					transform =
+						kind === "video"
+							? // For HTML5 videos, the original aspect ratio will be retained, so we can ignore this by scaling in the y-axis
+							  `scaleY(${targetRatio / wrapperRatio})`
+							: // For images, we don't have to apply any further transformations
+							  "none";
 					assignFreshInlineStyles(
 						overriddenStyles,
 						target,
@@ -345,15 +345,13 @@ export function fixElement({target, isLoaded, isSupported, loadEvent, getNatural
 			}
 
 			case "contain": {
-
 				if (isVertical) {
 					if (parsedObjectPosition.x.endsWith("%")) {
 						if (kind === "video") {
 							// Subtract 50% for videos since these are rendered equivalent to object-fit: contain by the browser already and
 							// will default to being centered
 							marginLeft = `calc((1 - ${normalizedRatio}) * (${parsedObjectPosition.x} - 50%))`;
-						}
-						else {
+						} else {
 							// Don't subtract 50% for images since these are rendered equivalent to object-fit: fill by the browser already
 							marginLeft = `calc((1 - ${normalizedRatio}) * (${parsedObjectPosition.x}))`;
 						}
@@ -365,8 +363,7 @@ export function fixElement({target, isLoaded, isSupported, loadEvent, getNatural
 							// Multiply by -50% for videos since these are rendered equivalent to object-fit: contain by the browser already and
 							// will default to being centered
 							marginLeft = `calc((1 - ${normalizedRatio}) * -50% + ${parsedObjectPosition.x})`;
-						}
-						else {
+						} else {
 							// Don't multiply by -50% for images since these are rendered equivalent to object-fit: fill by the browser already
 							marginLeft = `calc((1 - ${normalizedRatio}) + ${parsedObjectPosition.x})`;
 						}

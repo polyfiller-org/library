@@ -1,5 +1,13 @@
 import {isInKebabCase, kebabCase} from "@wessberg/stringutil";
-import {DEFAULT_OBJECT_POSITION, OBJECT_FIT_ATTRIBUTE_NAMES, OBJECT_FIT_PROPERTY_NAME, OBJECT_POSITION_ATTRIBUTE_NAMES, OBJECT_POSITION_PROPERTY_NAME, REPURPOSED_CSS_PROPERTY_NAME, WRAPPABLE_STYLE_PROPERTIES} from "../constant/constant";
+import {
+	DEFAULT_OBJECT_POSITION,
+	OBJECT_FIT_ATTRIBUTE_NAMES,
+	OBJECT_FIT_PROPERTY_NAME,
+	OBJECT_POSITION_ATTRIBUTE_NAMES,
+	OBJECT_POSITION_PROPERTY_NAME,
+	REPURPOSED_CSS_PROPERTY_NAME,
+	WRAPPABLE_STYLE_PROPERTIES
+} from "../constant/constant";
 import {CSSStyleDeclarationKey, CSSStyleDeclarationView, ObjectFit, ObjectPosition, PartialStyles, WrappableStyles} from "../type/type";
 import {ObjectPositionParser, TokenKind} from "../lib/object-position-parser";
 
@@ -29,15 +37,14 @@ export function debounce<T extends Function>(callback: T, ms: number = 16, id?: 
 }
 
 export interface GetPropertyValueOptions<T extends CSSStyleDeclarationKey> {
-	target: Element|HTMLElement;
+	target: Element | HTMLElement;
 	propertyName: T;
 	attributeNames?: readonly string[];
 	repurposedCssProperty?: CSSStyleDeclarationKey;
 	computedStyle?: CSSStyleDeclaration;
 }
 
-
-function getPropertyValueFromSemicolonSeparatedKeyValuePairs<T extends CSSStyleDeclarationKey>(input: string, propertyName: T): CSSStyleDeclarationView[T]|undefined {
+function getPropertyValueFromSemicolonSeparatedKeyValuePairs<T extends CSSStyleDeclarationKey>(input: string, propertyName: T): CSSStyleDeclarationView[T] | undefined {
 	const kebabCased = isInKebabCase(propertyName) ? propertyName : kebabCase(propertyName);
 	const propertyValueRegexp = new RegExp(`${kebabCased}:\\s*([^;"'\`]*)`);
 
@@ -54,12 +61,10 @@ function getPropertyValueFromSemicolonSeparatedKeyValuePairs<T extends CSSStyleD
 	return undefined;
 }
 
-export function getPropertyValue<T extends CSSStyleDeclarationKey>(
-	options: GetPropertyValueOptions<T>
-): CSSStyleDeclarationView[T]|undefined {
+export function getPropertyValue<T extends CSSStyleDeclarationKey>(options: GetPropertyValueOptions<T>): CSSStyleDeclarationView[T] | undefined {
 	const {target, attributeNames, propertyName, repurposedCssProperty} = options;
 	let {computedStyle} = options;
-	let value: CSSStyleDeclarationView[T]|undefined;
+	let value: CSSStyleDeclarationView[T] | undefined;
 
 	if (attributeNames != null) {
 		for (const attributeName of attributeNames) {
@@ -82,20 +87,14 @@ export function getPropertyValue<T extends CSSStyleDeclarationKey>(
 
 	if (value == null) {
 		// Otherwise, check if it is set as an inline style
-		value = getPropertyValueFromSemicolonSeparatedKeyValuePairs(
-			target.getAttribute("style") ?? "",
-			propertyName
-		);
+		value = getPropertyValueFromSemicolonSeparatedKeyValuePairs(target.getAttribute("style") ?? "", propertyName);
 	}
 
 	if (value == null && repurposedCssProperty != null) {
 		// Otherwise, check if it is given as part of another, repurposed CSS property
 		const repurposedCssPropertyValue = getPropertyValue({target, propertyName: repurposedCssProperty});
 		if (repurposedCssPropertyValue != null) {
-			value = getPropertyValueFromSemicolonSeparatedKeyValuePairs(
-				repurposedCssPropertyValue,
-				propertyName
-			);
+			value = getPropertyValueFromSemicolonSeparatedKeyValuePairs(repurposedCssPropertyValue, propertyName);
 		}
 	}
 
@@ -151,10 +150,7 @@ export function onHasNaturalWidth(target: HTMLImageElement, callback: () => void
 	}
 }
 
-export function parseObjectPosition(
-	text: string
-): ObjectPosition {
-
+export function parseObjectPosition(text: string): ObjectPosition {
 	const result: Partial<ObjectPosition> = {
 		x: undefined,
 		y: undefined
@@ -180,15 +176,10 @@ export function parseObjectPosition(
 			}
 		}
 
-
 		// If we reached the end, or if there is at least one bad character in the input, break parsing immediately
-		if (
-			token.kind === TokenKind.EndOfFileToken ||
-			token.kind === TokenKind.BadCharacterToken
-		) {
+		if (token.kind === TokenKind.EndOfFileToken || token.kind === TokenKind.BadCharacterToken) {
 			break;
 		} else if (token.kind === TokenKind.PositionLiteralToken) {
-
 			switch (token.value) {
 				case "left":
 				case "top":
@@ -267,16 +258,16 @@ export function assignFreshInlineStyles<T>(obj: T, target: HTMLElement, properti
 	}
 }
 
-export function getObjectFit (target: HTMLElement): ObjectFit|undefined {
+export function getObjectFit(target: HTMLElement): ObjectFit | undefined {
 	return getPropertyValue({
 		target,
 		propertyName: OBJECT_FIT_PROPERTY_NAME,
 		attributeNames: OBJECT_FIT_ATTRIBUTE_NAMES,
 		repurposedCssProperty: REPURPOSED_CSS_PROPERTY_NAME
-	}) as ObjectFit|undefined;
+	}) as ObjectFit | undefined;
 }
 
-export function getObjectPosition (target: HTMLElement): string|undefined {
+export function getObjectPosition(target: HTMLElement): string | undefined {
 	return getPropertyValue({
 		target,
 		propertyName: OBJECT_POSITION_PROPERTY_NAME,
@@ -294,10 +285,10 @@ export const nextMicrotask = (func: () => void): void => {
 	else setTimeout(() => func(), 0);
 };
 
-export function findUp<T extends Node = Node> (from: Node, match: (node: Node) => boolean): T|undefined {
+export function findUp<T extends Node = Node>(from: Node, match: (node: Node) => boolean): T | undefined {
 	let parentNode = from.parentNode;
 	while (parentNode != null) {
-		if (match(parentNode)) return parentNode as unknown as T;
+		if (match(parentNode)) return (parentNode as unknown) as T;
 		parentNode = parentNode.parentNode;
 	}
 	return undefined;

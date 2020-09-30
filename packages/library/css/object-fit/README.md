@@ -112,7 +112,7 @@ One way to do so is with an async import:
 
 ```typescript
 if (!("objectFit" in document.documentElement.style)) {
-  await import("@polyfiller/object-fit/polyfill");
+	await import("@polyfiller/object-fit/polyfill");
 }
 ```
 
@@ -149,9 +149,9 @@ You can provide `object-fit` and/or `object-position` values in one of more ways
 ```css
 img,
 video {
-  object-fit: cover;
-  object-position: bottom;
-  font-family: "object-fit: cover; object-position: bottom";
+	object-fit: cover;
+	object-position: bottom;
+	font-family: "object-fit: cover; object-position: bottom";
 }
 ```
 

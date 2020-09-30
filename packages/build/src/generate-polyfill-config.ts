@@ -22,15 +22,17 @@ export function generatePolyfillConfig(options: {context?: string; pkg: Partial<
 				flatten: true,
 				format: "iife",
 				tsconfig: (tsconfig: CompilerOptions) => ({...tsconfig, target: ScriptTarget.ES5}),
-				...(bestDeclarationFileNameSource == null ? {} : {
-					hook: {
-						outputPath: (path: string, kind: string) => {
-							if (kind !== "declaration") return path;
-							const {dir, name} = parse(bestDeclarationFileNameSource!);
-							return join(dir, `${name}.d.ts`);
-						}
-					}
-				})
+				...(bestDeclarationFileNameSource == null
+					? {}
+					: {
+							hook: {
+								outputPath: (path: string, kind: string) => {
+									if (kind !== "declaration") return path;
+									const {dir, name} = parse(bestDeclarationFileNameSource!);
+									return join(dir, `${name}.d.ts`);
+								}
+							}
+					  })
 			} as const;
 
 			if (output.bundle.standard != null) {

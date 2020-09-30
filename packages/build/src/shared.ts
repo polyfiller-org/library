@@ -35,7 +35,6 @@ export interface PolyfillablePackage extends DependencyPackage {
 	polyfills: PolyfillsField;
 }
 
-
 export interface SimplifiedRollupOptions {
 	flatten: boolean;
 	minify: boolean;

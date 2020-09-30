@@ -1,8 +1,8 @@
 import {CSSStyleDeclarationKey, CSSStyleDeclarationView} from "../../type/type";
 
 export interface ComputedStylePropertyChange<T extends CSSStyleDeclarationKey> {
-	oldValue: CSSStyleDeclarationView[T]|undefined;
-	newValue: CSSStyleDeclarationView[T]|undefined;
+	oldValue: CSSStyleDeclarationView[T] | undefined;
+	newValue: CSSStyleDeclarationView[T] | undefined;
 }
 
 export interface ComputedStyleRecord {

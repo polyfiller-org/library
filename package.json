@@ -13,7 +13,7 @@
 		"scaffold": "pnpm recursive run scaffold && scaffold funding --yes && scaffold license --yes && scaffold contributing --yes && scaffold coc --yes",
 		"clean": "pnpm recursive run clean",
 		"lint": "pnpm recursive run clean",
-		"prettier": "prettier --write '{src,test,documentation}/**/*.{js,ts,json,html,xml,css,md}'",
+		"prettier": "prettier --write 'packages/**/*.{js,ts,json,html,xml,css,md}'",
 		"test": "pnpm recursive run test",
 		"prebuild": "pnpm run clean",
 		"build": "pnpm recursive run build",

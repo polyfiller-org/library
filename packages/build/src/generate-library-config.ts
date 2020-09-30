@@ -1,11 +1,7 @@
 import {RollupOptions} from "rollup";
 import {generateRollupOptions, LibraryPackage, SimplifiedRollupOptions} from "./shared";
 
-export function generateLibraryConfig(options: {
-	context?: string;
-	input: string;
-	pkg: Partial<LibraryPackage>;
-}): RollupOptions[] {
+export function generateLibraryConfig(options: {context?: string; input: string; pkg: Partial<LibraryPackage>}): RollupOptions[] {
 	const {pkg, input, context = "window"} = options;
 
 	const rollupOptions: SimplifiedRollupOptions[] = [];

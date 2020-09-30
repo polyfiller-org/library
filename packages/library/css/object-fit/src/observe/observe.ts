@@ -1,8 +1,11 @@
 import {ConnectionObserver} from "@wessberg/connection-observer";
 import {ExtendedHTMLImageElement, ExtendedHTMLVideoElement} from "../type/type";
 import {
-	OBJECT_FIT_ATTRIBUTE_NAMES, OBJECT_FIT_PROPERTY_NAME,
-	OBJECT_POSITION_ATTRIBUTE_NAMES, OBJECT_POSITION_PROPERTY_NAME, REPURPOSED_CSS_PROPERTY_NAME,
+	OBJECT_FIT_ATTRIBUTE_NAMES,
+	OBJECT_FIT_PROPERTY_NAME,
+	OBJECT_POSITION_ATTRIBUTE_NAMES,
+	OBJECT_POSITION_PROPERTY_NAME,
+	REPURPOSED_CSS_PROPERTY_NAME,
 	SYMBOL_COMPUTED_STYLE_OBSERVER,
 	SYMBOL_MUTATION_OBSERVER,
 	SYMBOL_RESIZE_EVENT_LISTENER
@@ -85,11 +88,7 @@ export function observe(selector: string, fixer: ((target: ExtendedHTMLImageElem
 						debouncedFixer(target);
 					});
 					computedStyleObserver.observe(target, {
-						propertyNames: [
-							OBJECT_FIT_PROPERTY_NAME,
-							OBJECT_POSITION_PROPERTY_NAME,
-							REPURPOSED_CSS_PROPERTY_NAME
-						]
+						propertyNames: [OBJECT_FIT_PROPERTY_NAME, OBJECT_POSITION_PROPERTY_NAME, REPURPOSED_CSS_PROPERTY_NAME]
 					});
 
 					target[SYMBOL_COMPUTED_STYLE_OBSERVER] = computedStyleObserver;

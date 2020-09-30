@@ -1,12 +1,12 @@
 {
-  "extends": "@polyfiller/config",
+	"extends": "@polyfiller/config",
 
-  "include": ["src/**/*"],
-  "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
-  "compilerOptions": {
-    "importsNotUsedAsValues": "error",
-    "isolatedModules": true,
-    "types": ["svelte"],
-    "forceConsistentCasingInFileNames": true
-  }
+	"include": ["src/**/*"],
+	"exclude": ["node_modules/*", "__sapper__/*", "public/*"],
+	"compilerOptions": {
+		"importsNotUsedAsValues": "error",
+		"isolatedModules": true,
+		"types": ["svelte"],
+		"forceConsistentCasingInFileNames": true
+	}
 }

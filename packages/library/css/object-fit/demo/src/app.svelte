@@ -175,7 +175,7 @@
 	<div class="polyfill-name-container">
 		<img alt="Polyfill logo" src="{polyfillIcon}" />
 		<p>
-			This demo is running <a href="{polyfillPkg.homepage" target="_blank">{polyfillPkg.name} v{polyfillPkg.version}</a>
+			This demo is running <a href="{polyfillPkg.homepage}" target="_blank">{polyfillPkg.name} v{polyfillPkg.version}</a>
 		</p>
 	</div>
 </header>

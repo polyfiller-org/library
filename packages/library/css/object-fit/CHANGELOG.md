@@ -1,5 +1,11 @@
 # @polyfiller/object-fit
 
+## 0.0.33
+
+### Patch Changes
+
+- Git tags
+
 ## 0.0.32
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @polyfiller/build
 
+## 0.0.33
+
+### Patch Changes
+
+- Git tags
+- Updated dependencies [undefined]
+  - @polyfiller/config@0.0.33
+
 ## 0.0.32
 
 ### Patch Changes

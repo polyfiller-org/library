@@ -27,8 +27,8 @@
 		"watch:build": "pnpm run watch --filter *build",
 		"watch:object-fit": "pnpm run watch --filter @polyfiller/object-fit",
 		"watch:object-fit-demo": "pnpm run dev --filter @polyfiller/object-fit-demo",
-		"prerelease": "pnpx changeset && pnpx changeset version && git commit -am \"chore(changeset): add changeset\"",
-		"release": "pnpm publish -r --public",
+		"prerelease": "pnpx changeset && pnpx changeset version && git commit -am \"chore(changeset): add changeset\" && git push",
+		"release": "pnpm publish -r",
 		"update": "pnpm recursive run update && pnpm update && pnpm install"
 	},
 	"files": [

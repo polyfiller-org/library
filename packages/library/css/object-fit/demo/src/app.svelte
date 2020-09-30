@@ -3,9 +3,6 @@
 	import polyfillPkg from "../../package.json";
 	import polyfillIcon from "../../documentation/asset/logo.svg";
 
-	const POLYFILL_VERSION = polyfillPkg.version;
-	const POLYFILL_NAME = polyfillPkg.name;
-	const POLYFILL_URL = polyfillPkg.bugs.url.replace("/issues", "");
 	let objectFit = "cover";
 	let objectPosition = "50% 50%";
 	let width = "300px";
@@ -178,7 +175,7 @@
 	<div class="polyfill-name-container">
 		<img alt="Polyfill logo" src="{polyfillIcon}" />
 		<p>
-			This demo is running <a href="{POLYFILL_URL}" target="_blank">{POLYFILL_NAME} v{POLYFILL_VERSION}</a>
+			This demo is running <a href="{polyfillPkg.homepage" target="_blank">{polyfillPkg.name} v{polyfillPkg.version}</a>
 		</p>
 	</div>
 </header>

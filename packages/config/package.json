@@ -6,6 +6,7 @@
 		"scaffold": "scaffold readme --yes && scaffold license --yes",
 		"update": "pnpx npm-check-updates --packageFile package.json -u -x np --dep dev,prod"
 	},
+	"homepage": "https://github.com/polyfiller-org/library",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/polyfiller-org/library.git"

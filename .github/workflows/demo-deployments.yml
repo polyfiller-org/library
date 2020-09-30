@@ -28,9 +28,10 @@ jobs:
         run: pnpm run build:object-fit-demo:with_dependencies
 
       - name: Deploy object-fit demo
-        uses: jsmrcaga/action-netlify-deploy@master
+        uses: netlify/actions/cli@master
         with:
-          build_directory: packages/library/css/object-fit/demo/public
+          args: deploy --dir=packages/library/css/object-fit/demo/public --functions=functions
+        env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.OBJECT_FIT_SITE_ID }}
           NETLIFY_DEPLOY_MESSAGE: "Production deploy v${{ github.ref }}"

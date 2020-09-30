@@ -3,6 +3,7 @@
 	"private": true,
 	"version": "0.0.29",
 	"description": "A demo for the 'object-fit' and 'object-position' polyfill",
+	"homepage": "https://object-fit.netlify.app",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/polyfiller-org/library.git"

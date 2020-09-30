@@ -62,7 +62,6 @@ export function fixImage(target: ExtendedHTMLImageElement): void {
 	}
 
 	const src = pickImageElementSrc(target);
-
 	const backgroundImage = `url("${src}")`;
 
 	// Fall back to the default object position if it wasn't provided by the user
@@ -85,12 +84,6 @@ export function fixImage(target: ExtendedHTMLImageElement): void {
 		// Clear the previously computed natural width/height
 		target[SYMBOL_NATURAL_WIDTH] = undefined;
 		target[SYMBOL_NATURAL_HEIGHT] = undefined;
-
-		// When using 'scale-down', it must be possible to get the naturalWidth and naturalHeight
-		// of the original src later, so wait with updating the 'src'
-		if (objectFit !== "scale-down") {
-			srcSetter();
-		}
 	}
 
 	// Clear the srcset from the target
@@ -103,35 +96,38 @@ export function fixImage(target: ExtendedHTMLImageElement): void {
 	target.style.backgroundRepeat = "no-repeat";
 	target.style.backgroundOrigin = "content-box";
 
+	const naturalWidthCallback = (naturalWidth: number, naturalHeight: number) => {
+
+		if (objectFit === "scale-down") {
+			if (naturalWidth > target.width || naturalHeight > target.height) {
+				target.style.backgroundSize = "contain";
+			} else {
+				target.style.backgroundSize = "auto";
+			}
+		}
+
+		// It is now safe to update the src
+		if (target.src !== EMPTY_IMAGE_SRC) {
+			srcSetter();
+		}
+	};
+
+	const currentNaturalWidth = target[SYMBOL_NATURAL_WIDTH];
+	const currentNaturalHeight = target[SYMBOL_NATURAL_HEIGHT];
+
+	if (currentNaturalWidth != null && currentNaturalHeight != null) {
+		naturalWidthCallback(currentNaturalWidth, currentNaturalHeight);
+	} else {
+		onHasNaturalWidth(target, () => {
+			target[SYMBOL_NATURAL_WIDTH] = target.naturalWidth;
+			target[SYMBOL_NATURAL_HEIGHT] = target.naturalHeight;
+			return naturalWidthCallback(target.naturalWidth, target.naturalHeight);
+		});
+	}
+
 	switch (objectFit) {
 		case "scale-down":
-			{
-				const currentNaturalWidth = target[SYMBOL_NATURAL_WIDTH];
-				const currentNaturalHeight = target[SYMBOL_NATURAL_HEIGHT];
-
-				const naturalWidthCallback = (naturalWidth: number, naturalHeight: number) => {
-					if (naturalWidth > target.width || naturalHeight > target.height) {
-						target.style.backgroundSize = "contain";
-					} else {
-						target.style.backgroundSize = "auto";
-					}
-
-					// It is now safe to update the src
-					if (target.src !== EMPTY_IMAGE_SRC) {
-						srcSetter();
-					}
-				};
-
-				if (currentNaturalWidth != null && currentNaturalHeight != null) {
-					naturalWidthCallback(currentNaturalWidth, currentNaturalHeight);
-				} else {
-					onHasNaturalWidth(target, () => {
-						target[SYMBOL_NATURAL_WIDTH] = target.naturalWidth;
-						target[SYMBOL_NATURAL_HEIGHT] = target.naturalHeight;
-						return naturalWidthCallback(target.naturalWidth, target.naturalHeight);
-					});
-				}
-			}
+			// scale-down is handled directly from the natural width callback
 			break;
 
 		case "none": {

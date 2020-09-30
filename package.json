@@ -25,7 +25,7 @@
 		"watch": "pnpm recursive run watch",
 		"watch:build": "pnpm run watch --filter *build",
 		"watch:polyfill:object-fit": "pnpm run watch --filter *object-fit",
-		"prerelease": "pnpx changeset && pnpx changeset version && git add .",
+		"prerelease": "pnpx changeset && pnpx changeset version && git commit -am \"chore(changeset): add changeset\"",
 		"release": "pnpm publish -r",
 		"update": "pnpm recursive run update && pnpm update && pnpm install"
 	},

@@ -31,7 +31,9 @@
 This is a robust, feature complete polyfill for the [`object-fit`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) and [`object-position`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position) CSS properties.
 It differs from other similar solutions primarily in three areas: feature completeness, modern API support, and the ability to react to changes.
 
-To see the polyfill in action, A [demo can be found here](https://object-fit.netlify.app).
+## Demo
+
+To check out the polyfill in action, A [demo can be found here](https://object-fit.netlify.app).
 
 <!-- SHADOW_SECTION_FEATURES_START -->
 

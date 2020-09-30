@@ -15,10 +15,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/polyfiller-org/polyfiller.git"
+		"url": "https://github.com/polyfiller-org/library.git"
 	},
 	"bugs": {
-		"url": "https://github.com/wessberg/polyfiller-org/polyfiller/issues"
+		"url": "https://github.com/polyfiller-org/library/issues"
 	},
 	"files": [
 		"dist/**/*.*",

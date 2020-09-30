@@ -22,7 +22,7 @@
 
 <!-- SHADOW_SECTION_BADGES_END -->
 
-<div><img alt="Powered by Polyfiller" src="https://raw.githubusercontent.com/polyfiller-org/polyfiller/master/documentation/asset/logo-color-powered-by.png" height="60"   /></div>
+<div><img alt="Powered by Polyfiller" src="https://raw.githubusercontent.com/polyfiller-org/polyfiller/master/documentation/asset/logo-color-powered-by.png" height="50"   /></div>
 
 <!-- SHADOW_SECTION_DESCRIPTION_LONG_START -->
 

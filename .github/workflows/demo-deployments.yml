@@ -25,7 +25,7 @@ jobs:
         run: pnpm install
 
       - name: Build object-fit demo
-        run: pnpm run build:polyfill:object-fit && build:demo:object-fit
+        run: pnpm run build:object-fit-demo:with_dependencies
 
       - name: Deploy object-fit demo
         uses: jsmrcaga/action-netlify-deploy@master

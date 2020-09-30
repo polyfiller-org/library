@@ -1,6 +1,11 @@
 <script lang="ts">
 	import Example from "./example.svelte";
+	import polyfillPkg from "../../package.json";
+	import polyfillIcon from "../../documentation/asset/logo.svg";
 
+	const POLYFILL_VERSION = polyfillPkg.version;
+	const POLYFILL_NAME = polyfillPkg.name;
+	const POLYFILL_URL = polyfillPkg.bugs.url.replace("/issues", "");
 	let objectFit = "cover";
 	let objectPosition = "50% 50%";
 	let width = "300px";
@@ -141,6 +146,22 @@
 		justify-content: center;
 	}
 
+	.polyfill-name-container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+
+		> img {
+			width: size(50);
+			height: size(50)
+		}
+
+		* + * {
+			margin-left: $spacing-s;
+		}
+	}
+
 	@media all and (min-width: 719px) {
 		.media-container + .media-container {
 			margin-left: $spacing-s;
@@ -153,7 +174,14 @@
 	}
 
 </style>
-
+<header id="header">
+	<div class="polyfill-name-container">
+		<img alt="Polyfill logo" src="{polyfillIcon}" />
+		<p>
+			This demo is running <a href="{POLYFILL_URL}" target="_blank">{POLYFILL_NAME} v{POLYFILL_VERSION}</a>
+		</p>
+	</div>
+</header>
 <h1 class="headline">Options</h1>
 <section class="card">
 

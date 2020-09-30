@@ -1,6 +1,8 @@
 import svelte from "rollup-plugin-svelte";
+import json from "@rollup/plugin-json";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
+import image from "@rollup/plugin-image";
 import livereload from "rollup-plugin-livereload";
 import {terser} from "rollup-plugin-terser";
 import sveltePreprocess from "svelte-preprocess";
@@ -48,6 +50,10 @@ export default {
 			},
 			preprocess: sveltePreprocess()
 		}),
+		json({
+			preferConst: true
+		}),
+		image(),
 		resolve({
 			browser: true,
 			dedupe: ["svelte"]

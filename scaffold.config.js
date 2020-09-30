@@ -6,7 +6,7 @@ module.exports = {
 	},
 	readme: {
 		sections: {
-			exclude: ["usage", "features"]
+			exclude: ["usage", "features", "faq"]
 		}
 	},
 };

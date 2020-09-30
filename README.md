@@ -46,40 +46,6 @@ You can install any of these and use them as you please, or you may use Polyfill
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=3plpHThSyXU" target="_blank"><img src="http://img.youtube.com/vi/3plpHThSyXU/0.jpg" alt="Polyfiller presentation at CopenhagenJS in 2019" width="300" border="10" /></a>
 
-<!-- SHADOW_SECTION_TOC_START -->
-
-## Table of Contents
-
-- [Description](#description)
-- [Table of Contents](#table-of-contents)
-- [Contributing](#contributing)
-- [Maintainers](#maintainers)
-- [Supporters](#supporters)
-- [Backers](#backers)
-  - [Patreon](#patreon)
-- [FAQ](#faq)
-- [License](#license)
-
-<!-- SHADOW_SECTION_TOC_END -->
-
-<!-- SHADOW_SECTION_CONTRIBUTING_START -->
-
-## Contributing
-
-Do you want to contribute? Awesome! Please follow [these recommendations](./CONTRIBUTING.md).
-
-<!-- SHADOW_SECTION_CONTRIBUTING_END -->
-
-<!-- SHADOW_SECTION_MAINTAINERS_START -->
-
-## Maintainers
-
-| <a href="mailto:frederikwessberg@hotmail.com"><img alt="Frederik Wessberg" src="https://avatars2.githubusercontent.com/u/20454213?s=460&v=4" height="70"   /></a>                                                                |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Frederik Wessberg](mailto:frederikwessberg@hotmail.com)<br><strong>Twitter</strong>: [@FredWessberg](https://twitter.com/FredWessberg)<br><strong>Github</strong>: [@wessberg](https://github.com/wessberg)<br>_Lead Developer_ |
-
-<!-- SHADOW_SECTION_MAINTAINERS_END -->
-
 ## Supporters
 
 Polyfiller is kindly supported by and relies heavily on [BrowserStack](https://www.browserstack.com) for cross-browser testing to ensure maximum cross-browser compatibility.
@@ -104,11 +70,38 @@ Polyfiller is kindly supported by [JetBrains](https://www.jetbrains.com/?from=Po
 
 <!-- SHADOW_SECTION_BACKERS_END -->
 
-<!-- SHADOW_SECTION_FAQ_START -->
+<!-- SHADOW_SECTION_TOC_START -->
 
-## FAQ
+## Table of Contents
 
-<!-- SHADOW_SECTION_FAQ_END -->
+- [Description](#description)
+- [Table of Contents](#table-of-contents)
+- [Contributing](#contributing)
+- [Maintainers](#maintainers)
+- [Supporters](#supporters)
+- [Backers](#backers)
+  - [Patreon](#patreon)
+- [License](#license)
+
+<!-- SHADOW_SECTION_TOC_END -->
+
+<!-- SHADOW_SECTION_CONTRIBUTING_START -->
+
+## Contributing
+
+Do you want to contribute? Awesome! Please follow [these recommendations](./CONTRIBUTING.md).
+
+<!-- SHADOW_SECTION_CONTRIBUTING_END -->
+
+<!-- SHADOW_SECTION_MAINTAINERS_START -->
+
+## Maintainers
+
+| <a href="mailto:frederikwessberg@hotmail.com"><img alt="Frederik Wessberg" src="https://avatars2.githubusercontent.com/u/20454213?s=460&v=4" height="70"   /></a>                                                                |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Frederik Wessberg](mailto:frederikwessberg@hotmail.com)<br><strong>Twitter</strong>: [@FredWessberg](https://twitter.com/FredWessberg)<br><strong>Github</strong>: [@wessberg](https://github.com/wessberg)<br>_Lead Developer_ |
+
+<!-- SHADOW_SECTION_MAINTAINERS_END -->
 
 <!-- SHADOW_SECTION_LICENSE_START -->
 

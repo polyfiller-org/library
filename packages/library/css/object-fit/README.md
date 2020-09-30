@@ -44,11 +44,11 @@ To check out the polyfill in action, A [demo can be found here](https://object-f
 <!-- SHADOW_SECTION_FEATURES_END -->
 
 - Supports not only images, but also videos, the picture element, as well as the `srcset` attribute.
-- Supports Shadow DOM
+- Supports Shadow DOM.
 - Reacts to changes, and updates calculated positions automatically.
-- Leverages the browser's own scaling algorithms where possible
-- Works seamlessly and automatically
-- Works with the [`postcss-object-fit-images` plugin](https://github.com/ronik-design/postcss-object-fit-images)
+- Leverages the browser's own scaling algorithms where possible.
+- Works seamlessly and automatically.
+- Works with the [`postcss-object-fit-images`](https://github.com/ronik-design/postcss-object-fit-images) plugin.
 
 <!-- SHADOW_SECTION_FEATURE_IMAGE_START -->
 

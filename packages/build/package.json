@@ -1,5 +1,6 @@
 {
 	"name": "@polyfiller/build",
+	"private": true,
 	"version": "0.0.29",
 	"description": "Common build files",
 	"scripts": {

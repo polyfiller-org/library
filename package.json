@@ -20,7 +20,7 @@
 		"build": "pnpm recursive run build",
 		"build:build": "pnpm run build --filter *build",
 		"build:object-fit-demo": "pnpm run build --filter @polyfiller/object-fit-demo",
-		"build:object-fit-demo:with_dependencies": "pnpm run build --filter ...@polyfiller/object-fit-demo",
+		"build:object-fit-demo:with_dependencies": "pnpm run build --filter @polyfiller/object-fit-demo...",
 		"prewatch": "pnpm run prebuild",
 		"watch": "pnpm recursive run watch",
 		"watch:build": "pnpm run watch --filter *build",

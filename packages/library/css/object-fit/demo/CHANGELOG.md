@@ -1,5 +1,11 @@
 # @polyfiller/object-fit-demo
 
+## 0.0.32
+
+### Patch Changes
+
+- improve object-fit change detection
+
 ## 0.0.31
 
 ### Patch Changes

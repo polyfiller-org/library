@@ -1,6 +1,6 @@
 {
 	"name": "@polyfiller/object-fit",
-	"version": "0.0.31",
+	"version": "0.0.32",
 	"description": "A robust polyfill for the 'object-fit' and 'object-position' CSS-properties",
 	"scripts": {
 		"scaffold": "scaffold readme --yes && scaffold license --yes",

@@ -1,5 +1,13 @@
 # @polyfiller/build
 
+## 0.0.32
+
+### Patch Changes
+
+- improve object-fit change detection
+- Updated dependencies [undefined]
+  - @polyfiller/config@0.0.32
+
 ## 0.0.31
 
 ### Patch Changes

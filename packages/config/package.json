@@ -1,6 +1,6 @@
 {
 	"name": "@polyfiller/config",
-	"version": "0.0.31",
+	"version": "0.0.32",
 	"description": "Common configuration files",
 	"scripts": {
 		"scaffold": "scaffold readme --yes && scaffold license --yes",

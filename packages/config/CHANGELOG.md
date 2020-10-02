@@ -1,5 +1,11 @@
 # @polyfiller/config
 
+## 0.0.34
+
+### Patch Changes
+
+- New polyfill structure
+
 ## 0.0.33
 
 ### Patch Changes

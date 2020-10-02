@@ -32,7 +32,7 @@
 		"watch:object-fit-demo": "pnpm run dev --filter @polyfiller/object-fit-demo",
 		"test": "pnpm recursive run test",
 		"test:ecma-262": "pnpm test --filter @polyfiller/ecma-262",
-		"prerelease": "pnpx changeset && pnpx changeset version && git commit -am \"chore(changeset): add changeset\" && git push",
+		"prerelease": "pnpx changeset && pnpx changeset version && git add . && git commit -am \"chore(changeset): add changeset\" && git push",
 		"release": "pnpm publish -r",
 		"update": "pnpm recursive run update && pnpm update && pnpm install"
 	},

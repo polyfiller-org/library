@@ -11,11 +11,10 @@ import {IteratorKind} from "../type/iterator-kind";
  * @param {{}} O
  * @param {IteratorKind} kind
  */
-export function EnumerableOwnPropertyNames<
-	T,
-	Kind extends IteratorKind,
-	ElementType = Kind extends "key" ? keyof T : Kind extends "value" ? T[keyof T] : [keyof T, T[keyof T]]
->(O: T, kind: Kind): List<ElementType> {
+export function EnumerableOwnPropertyNames<T, Kind extends IteratorKind, ElementType = Kind extends "key" ? keyof T : Kind extends "value" ? T[keyof T] : [keyof T, T[keyof T]]>(
+	O: T,
+	kind: Kind
+): List<ElementType> {
 	// Assert: Type(O) is Object.
 	assertType(O, "Object");
 

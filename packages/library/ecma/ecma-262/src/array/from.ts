@@ -27,12 +27,7 @@ import {MATH_2_TO_THE_POWER_OF_53_MINUS_1} from "../constant/math-constant";
  */
 function from<T>(items: Iterable<T> | ArrayLike<T>): T[];
 function from<T, U, ThisArg>(items: Iterable<T> | ArrayLike<T>, mapfn: (v: T, k: number) => U, thisArg?: ThisArg): U[];
-function from<T, U, ThisArg, ActualThis extends T[] | U[]>(
-	this: T[] | U[],
-	items: Iterable<T> | ArrayLike<T>,
-	mapfn?: (v: T, k: number) => U,
-	thisArg?: ThisArg
-): T[] | U[];
+function from<T, U, ThisArg, ActualThis extends T[] | U[]>(this: T[] | U[], items: Iterable<T> | ArrayLike<T>, mapfn?: (v: T, k: number) => U, thisArg?: ThisArg): T[] | U[];
 function from<T, U, ThisArg, ActualThis extends T[] | U[]>(this: T[] | U[], items: Iterable<T> | ArrayLike<T>): T[] | U[] {
 	let mapping: boolean;
 	let T: ThisArg | undefined;

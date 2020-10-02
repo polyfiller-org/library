@@ -52,16 +52,6 @@ export interface InternalConfigurableDescriptor {
 	"[[Set]]"?(v: any): void;
 }
 
-export type InternalDataDescriptor =
-	| InternalValueDataDescriptor
-	| InternalWritableDataDescriptor
-	| (InternalValueDataDescriptor & InternalWritableDataDescriptor);
-export type InternalAccessorDescriptor =
-	| InternalGetAccessorDescriptor
-	| InternalSetAccessorDescriptor
-	| (InternalGetAccessorDescriptor & InternalSetAccessorDescriptor);
-export type InternalPropertyDescriptor =
-	| InternalConfigurableDescriptor
-	| InternalDataDescriptor
-	| InternalAccessorDescriptor
-	| InternalEnumerableDescriptor;
+export type InternalDataDescriptor = InternalValueDataDescriptor | InternalWritableDataDescriptor | (InternalValueDataDescriptor & InternalWritableDataDescriptor);
+export type InternalAccessorDescriptor = InternalGetAccessorDescriptor | InternalSetAccessorDescriptor | (InternalGetAccessorDescriptor & InternalSetAccessorDescriptor);
+export type InternalPropertyDescriptor = InternalConfigurableDescriptor | InternalDataDescriptor | InternalAccessorDescriptor | InternalEnumerableDescriptor;

@@ -116,7 +116,7 @@ export const RegExpCompat = ((): typeof RegExp => {
 		return !!this.exec(string);
 	};
 
-	klass.prototype[Symbol.match] = function(this: RegExpCompat, string: string): RegExpMatchArray | null {
+	klass.prototype[Symbol.match] = function (this: RegExpCompat, string: string): RegExpMatchArray | null {
 		if (this.global) {
 			this.lastIndex = 0;
 			const result: string[] = [];
@@ -136,11 +136,7 @@ export const RegExpCompat = ((): typeof RegExp => {
 		return this.exec(string);
 	};
 
-	klass.prototype[Symbol.replace] = function(
-		this: RegExpCompat,
-		string: string,
-		replacer: string | ((substring: string, ...args: any[]) => string)
-	): string {
+	klass.prototype[Symbol.replace] = function (this: RegExpCompat, string: string, replacer: string | ((substring: string, ...args: any[]) => string)): string {
 		const matches: RegExpMatchArray[] = [];
 		if (this.global) {
 			this.lastIndex = 0;
@@ -243,7 +239,7 @@ export const RegExpCompat = ((): typeof RegExp => {
 		return result;
 	};
 
-	klass.prototype[Symbol.search] = function(this: RegExpCompat, string: string): number {
+	klass.prototype[Symbol.search] = function (this: RegExpCompat, string: string): number {
 		const prevLastIndex = this.lastIndex;
 		this.lastIndex = 0;
 		const m = this.exec(string);
@@ -251,7 +247,7 @@ export const RegExpCompat = ((): typeof RegExp => {
 		return (m && m.index) ?? -1;
 	};
 
-	klass.prototype[Symbol.split] = function(this: RegExpCompat, string: string, limit?: number): string[] {
+	klass.prototype[Symbol.split] = function (this: RegExpCompat, string: string, limit?: number): string[] {
 		const flags = this.sticky ? this.flags : this.flags + "y";
 		const constructor: any = this.constructor;
 		const species = (constructor && constructor[Symbol.species]) ?? klass;

@@ -21,10 +21,7 @@ export function CreateMapIterator<Key, Value>(map: Map<Key, Value>, kind: Iterat
 	const intrinsics = getCurrentIntrinsics();
 
 	// Let iterator be ObjectCreate(%MapIteratorPrototype%, « [[Map]], [[MapNextIndex]], [[MapIterationKind]] »).
-	const iterator = ObjectCreate<IterableIterator<[Key, Value]>>(
-		intrinsics["[[%MapIteratorPrototype%]]"],
-		makeList("[[Map]]", "[[MapNextIndex]]", "[[MapIterationKind]]")
-	);
+	const iterator = ObjectCreate<IterableIterator<[Key, Value]>>(intrinsics["[[%MapIteratorPrototype%]]"], makeList("[[Map]]", "[[MapNextIndex]]", "[[MapIterationKind]]"));
 
 	const internalSlots = internals(iterator) as MapIteratorPrototypeInternals<Key, Value>;
 

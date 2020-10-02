@@ -11,14 +11,7 @@ import {IsNonNegativeInteger} from "./is-non-negative-integer";
 /**
  * https://tc39.es/ecma262/#sec-getsubstitution
  */
-export function GetSubstitution(
-	matched: string,
-	str: string,
-	position: number,
-	captures: List<string>,
-	namedCaptures: unknown,
-	replacement: string
-): string {
+export function GetSubstitution(matched: string, str: string, position: number, captures: List<string>, namedCaptures: unknown, replacement: string): string {
 	// Assert: Type(matched) is String.
 	assertType(matched, "String");
 

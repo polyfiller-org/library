@@ -12,8 +12,7 @@ export function IsConcatSpreadable<T>(O: unknown | Iterable<T>): O is Iterable<T
 	if (Type(O) !== "Object") return false;
 
 	// Let spreadable be ? Get(O, @@isConcatSpreadable).
-	const spreadable =
-		typeof Symbol !== "undefined" && "isConcatSpreadable" in Symbol ? Get(O, Symbol.isConcatSpreadable as keyof typeof O) : undefined;
+	const spreadable = typeof Symbol !== "undefined" && "isConcatSpreadable" in Symbol ? Get(O, Symbol.isConcatSpreadable as keyof typeof O) : undefined;
 
 	// If spreadable is not undefined, return ! ToBoolean(spreadable).
 	if (spreadable !== undefined) {

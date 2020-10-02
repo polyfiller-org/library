@@ -3,8 +3,7 @@ import {SymbolConstructor} from "../../symbol/symbol";
 import {METHOD_DESCRIPTORS} from "../descriptors";
 import {symbolKeyFor} from "../../symbol/key-for";
 
-export function patchSymbolKeyFor (): void {
-
+export function patchSymbolKeyFor(): void {
 	// Symbol.keyFor
 	OrdinaryDefineOwnProperty(SymbolConstructor, "keyFor", {
 		...METHOD_DESCRIPTORS,

@@ -9,10 +9,10 @@ export function IsRealm(argument: unknown): argument is Realm {
 	return (
 		typeof argument === "object" &&
 		argument != null &&
-		("[[Intrinsics]]" in argument &&
-			"[[GlobalObject]]" in argument &&
-			"[[GlobalEnv]]" in argument &&
-			"[[TemplateMap]]" in argument &&
-			"[[HostDefined]]" in argument)
+		"[[Intrinsics]]" in argument &&
+		"[[GlobalObject]]" in argument &&
+		"[[GlobalEnv]]" in argument &&
+		"[[TemplateMap]]" in argument &&
+		"[[HostDefined]]" in argument
 	);
 }

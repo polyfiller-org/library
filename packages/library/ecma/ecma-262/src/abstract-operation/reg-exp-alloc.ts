@@ -8,11 +8,7 @@ import {DefinePropertyOrThrow} from "./define-property-or-throw";
  */
 export function RegExpAlloc(newTarget: unknown): RegExp {
 	// Let obj be ? OrdinaryCreateFromConstructor(newTarget, "%RegExp.prototype%", « [[RegExpMatcher]], [[OriginalSource]], [[OriginalFlags]] »).
-	const obj = OrdinaryCreateFromConstructor(
-		newTarget as Constructor,
-		"%RegExpPrototype%",
-		makeList("[[RegExpMatcher]]", "[[OriginalSource]]", "[[OriginalFlags]]")
-	);
+	const obj = OrdinaryCreateFromConstructor(newTarget as Constructor, "%RegExpPrototype%", makeList("[[RegExpMatcher]]", "[[OriginalSource]]", "[[OriginalFlags]]"));
 
 	// Perform ! DefinePropertyOrThrow(obj, "lastIndex", PropertyDescriptor { [[Writable]]: true, [[Enumerable]]: false, [[Configurable]]: false }).
 	DefinePropertyOrThrow(obj, "lastIndex", {"[[Writable]]": true, "[[Enumerable]]": false, "[[Configurable]]": false});

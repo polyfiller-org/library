@@ -10,11 +10,7 @@ import {internals} from "../lib/internal-slot-map/internals";
  * @param {Desc} Desc
  * @returns {boolean}
  */
-export function OrdinaryDefineOwnProperty<O extends {}, P extends PropertyKey, Desc extends InternalPropertyDescriptor>(
-	O: O,
-	P: P,
-	Desc: Desc
-): boolean {
+export function OrdinaryDefineOwnProperty<O extends {}, P extends PropertyKey, Desc extends InternalPropertyDescriptor>(O: O, P: P, Desc: Desc): boolean {
 	// Let current be ? O.[[GetOwnProperty]](P).
 	let current = internals(O)["[[GetOwnProperty]]"](P);
 	// Let extensible be ? IsExtensible(O).

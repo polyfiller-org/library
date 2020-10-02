@@ -8,8 +8,7 @@ import {IsPropertyKey} from "./is-property-key";
 import {InternalPropertyDescriptor} from "../type/internal-property-descriptor";
 import {internals} from "../lib/internal-slot-map/internals";
 
-const NATIVE_DEFINE_PROPERTY =
-	Object.defineProperty != null && Object.defineProperty.toString().indexOf("[native code]") >= 0 ? Object.defineProperty : undefined;
+const NATIVE_DEFINE_PROPERTY = Object.defineProperty != null && Object.defineProperty.toString().indexOf("[native code]") >= 0 ? Object.defineProperty : undefined;
 const SUPPORTS_ACCESSORS = "__defineGetter__" in Object.prototype;
 const {__lookupGetter__, __lookupSetter__, __defineSetter__, __defineGetter__} = Object.prototype as typeof Object.prototype & {
 	__lookupGetter__: Function;
@@ -149,14 +148,7 @@ export function ValidateAndApplyPropertyDescriptor<O, P extends PropertyKey | un
 	}
 
 	// If every field in Desc is absent, return true.
-	if (
-		!("[[Configurable]]" in Desc) &&
-		!("[[Enumerable]]" in Desc) &&
-		!("[[Writable]]" in Desc) &&
-		!("[[Value]]" in Desc) &&
-		!("[[Get]]" in Desc) &&
-		!("[[Set]]" in Desc)
-	) {
+	if (!("[[Configurable]]" in Desc) && !("[[Enumerable]]" in Desc) && !("[[Writable]]" in Desc) && !("[[Value]]" in Desc) && !("[[Get]]" in Desc) && !("[[Set]]" in Desc)) {
 		return true;
 	}
 

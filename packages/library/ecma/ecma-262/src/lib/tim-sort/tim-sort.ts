@@ -126,15 +126,15 @@ function alphabeticalCompare<T>(a: T | number, b: T | number): number {
 }
 
 function sortCompareWithHoles<T, Y = T>(a: T, b: Y, comparefn?: CompareFunction<T, Y>): number {
-	if ((a as T|string) === HOLE_SYMBOL && (b as Y|string) === HOLE_SYMBOL) {
+	if ((a as T | string) === HOLE_SYMBOL && (b as Y | string) === HOLE_SYMBOL) {
 		return 0;
 	}
 
-	if ((a as T|string) === HOLE_SYMBOL) {
+	if ((a as T | string) === HOLE_SYMBOL) {
 		return 1;
 	}
 
-	if ((b as Y|string) === HOLE_SYMBOL) {
+	if ((b as Y | string) === HOLE_SYMBOL) {
 		return -1;
 	}
 
@@ -403,10 +403,7 @@ class TimSort<T> {
 		while (this.stackSize > 1) {
 			let n = this.stackSize - 2;
 
-			if (
-				(n >= 1 && this.runLength[n - 1] <= this.runLength[n] + this.runLength[n + 1]) ||
-				(n >= 2 && this.runLength[n - 2] <= this.runLength[n] + this.runLength[n - 1])
-			) {
+			if ((n >= 1 && this.runLength[n - 1] <= this.runLength[n] + this.runLength[n + 1]) || (n >= 2 && this.runLength[n - 2] <= this.runLength[n] + this.runLength[n - 1])) {
 				if (this.runLength[n - 1] < this.runLength[n + 1]) {
 					n--;
 				}

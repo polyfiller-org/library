@@ -2,8 +2,7 @@ import {OrdinaryDefineOwnProperty} from "../../../abstract-operation/ordinary-de
 import {symbolPrototypeSymbolToPrimitive} from "../../../symbol/prototype/@@to-primitive";
 import {NATIVE_SYMBOL_TO_PRIMITIVE} from "../../../symbol/native/native";
 
-export function patchSymbolPrototypeSymbolToPrimitive (): void {
-
+export function patchSymbolPrototypeSymbolToPrimitive(): void {
 	// Symbol.prototype.@@toPrimitive
 	OrdinaryDefineOwnProperty(Symbol.prototype, Symbol.toPrimitive, {
 		// This property has the attributes { [[Writable]]: false, [[Enumerable]]: false, [[Configurable]]: true }.

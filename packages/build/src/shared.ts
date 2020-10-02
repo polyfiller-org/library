@@ -42,7 +42,6 @@ export interface SimplifiedRollupOptionsBase {
 	hook?: TypescriptPluginOptions["hook"];
 }
 
-
 export interface SimplifiedRollupOptionsFile extends SimplifiedRollupOptionsBase {
 	input: string;
 	outputs: {
@@ -54,7 +53,7 @@ export interface SimplifiedRollupOptionsFile extends SimplifiedRollupOptionsBase
 	}[];
 }
 
-export interface SimplifiedRollupOptionsDir extends SimplifiedRollupOptionsBase{
+export interface SimplifiedRollupOptionsDir extends SimplifiedRollupOptionsBase {
 	input: Record<string, string>;
 	outputs: {
 		format: ModuleFormat;
@@ -81,12 +80,16 @@ export function generateRollupOptions(
 			entryFileNames?: string;
 			minify: boolean;
 		}[]).map(({format, minify, chunkFileNames, entryFileNames, ...rest}) => ({
-			...("output" in rest ? {
-				file: rest.output
-			} : {}),
-			...("dir" in rest ? {
-				dir: rest.dir
-			} : {}),
+			...("output" in rest
+				? {
+						file: rest.output
+				  }
+				: {}),
+			...("dir" in rest
+				? {
+						dir: rest.dir
+				  }
+				: {}),
 			format,
 			chunkFileNames,
 			entryFileNames,

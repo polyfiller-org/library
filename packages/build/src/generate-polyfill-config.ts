@@ -9,10 +9,9 @@ export function generatePolyfillConfig(options: {context?: string; pkg: Partial<
 	if (pkg.polyfills == null) return [];
 
 	const fileRollupOptions: SimplifiedRollupOptionsFile[] = [];
-	let esmRollupOptions: SimplifiedRollupOptionsDir|undefined;
+	let esmRollupOptions: SimplifiedRollupOptionsDir | undefined;
 
 	for (const {input, output} of Object.values(pkg.polyfills ?? {})) {
-
 		const baseOptions = {
 			context
 		} as const;
@@ -29,20 +28,24 @@ export function generatePolyfillConfig(options: {context?: string; pkg: Partial<
 				fileRollupOptions.push({
 					...bundleBaseOptions,
 					outputs: [
-						...(output.bundle.standard == null ? [] : [
-							{
-								output: output.bundle.standard,
-								format: "iife" as const,
-								minify: false
-							}
-						]),
-						...(output.bundle.minified == null ? [] : [
-							{
-								output: output.bundle.minified,
-								format: "iife" as const,
-								minify: true
-							}
-						])
+						...(output.bundle.standard == null
+							? []
+							: [
+									{
+										output: output.bundle.standard,
+										format: "iife" as const,
+										minify: false
+									}
+							  ]),
+						...(output.bundle.minified == null
+							? []
+							: [
+									{
+										output: output.bundle.minified,
+										format: "iife" as const,
+										minify: true
+									}
+							  ])
 					]
 				});
 			}
@@ -52,12 +55,10 @@ export function generatePolyfillConfig(options: {context?: string; pkg: Partial<
 			const parsedEsmStandardOutput = output.esm.standard == null ? undefined : parse(output.esm.standard);
 			const parsedEsmMinifiedOutput = output.esm.minified == null ? undefined : parse(output.esm.minified);
 
-			const minifiedEsmSuffix = parsedEsmStandardOutput == null || parsedEsmMinifiedOutput == null
-				? ""
-				: parsedEsmMinifiedOutput.name
-					.replace(parsedEsmStandardOutput.name, "")
-					.replace(parsedEsmStandardOutput.ext, "")
-					.replace(parsedEsmMinifiedOutput.ext, "");
+			const minifiedEsmSuffix =
+				parsedEsmStandardOutput == null || parsedEsmMinifiedOutput == null
+					? ""
+					: parsedEsmMinifiedOutput.name.replace(parsedEsmStandardOutput.name, "").replace(parsedEsmStandardOutput.ext, "").replace(parsedEsmMinifiedOutput.ext, "");
 
 			if (esmRollupOptions == null) {
 				esmRollupOptions = {
@@ -65,7 +66,7 @@ export function generatePolyfillConfig(options: {context?: string; pkg: Partial<
 					input: {},
 					flatten: false,
 					tsconfig: (tsconfig: CompilerOptions) => ({...tsconfig, target: ScriptTarget.ES2018, declaration: false}),
-					outputs: [],
+					outputs: []
 				};
 			}
 
@@ -80,13 +81,12 @@ export function generatePolyfillConfig(options: {context?: string; pkg: Partial<
 						format: "esm" as const,
 						minify: false,
 						chunkFileNames: `[name]-chunk${parsedEsmStandardOutput.ext}`,
-						entryFileNames: `[name]${parsedEsmStandardOutput.ext}`,
+						entryFileNames: `[name]${parsedEsmStandardOutput.ext}`
 					});
 				}
 			}
 
 			if (parsedEsmMinifiedOutput != null) {
-
 				const {name, dir} = parsedEsmMinifiedOutput;
 
 				// Only add it to the input if there is no standard variant
@@ -100,15 +100,12 @@ export function generatePolyfillConfig(options: {context?: string; pkg: Partial<
 						format: "esm" as const,
 						minify: true,
 						chunkFileNames: `[name]-chunk${minifiedEsmSuffix}${parsedEsmMinifiedOutput.ext}`,
-						entryFileNames: `[name]${minifiedEsmSuffix}${parsedEsmMinifiedOutput.ext}`,
+						entryFileNames: `[name]${minifiedEsmSuffix}${parsedEsmMinifiedOutput.ext}`
 					});
 				}
 			}
 		}
 	}
 
-	return generateRollupOptions([
-		...fileRollupOptions,
-		...(esmRollupOptions == null ? [] : [esmRollupOptions])
-	], pkg);
+	return generateRollupOptions([...fileRollupOptions, ...(esmRollupOptions == null ? [] : [esmRollupOptions])], pkg);
 }

@@ -97,7 +97,6 @@ export function fixImage(target: ExtendedHTMLImageElement): void {
 	target.style.backgroundOrigin = "content-box";
 
 	const naturalWidthCallback = (naturalWidth: number, naturalHeight: number) => {
-
 		if (objectFit === "scale-down") {
 			if (naturalWidth > target.width || naturalHeight > target.height) {
 				target.style.backgroundSize = "contain";

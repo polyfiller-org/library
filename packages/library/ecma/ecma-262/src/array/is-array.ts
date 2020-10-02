@@ -14,4 +14,4 @@ function isArray<T>(arg: T[] | T): arg is T[] {
 	return IsArray(arg);
 }
 
-export {isArray as arrayIsArray}
+export {isArray as arrayIsArray};

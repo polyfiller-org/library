@@ -13,11 +13,7 @@ import {EMPTY, empty} from "../type/empty";
  * @param {Arguments} args
  * @returns {Completion<empty>}
  */
-export function EnqueueJob<Job extends ArbitraryFunction, Arguments extends Parameters<Job>>(
-	queue: JobQueue,
-	job: Job,
-	args: Arguments
-): Completion<empty> {
+export function EnqueueJob<Job extends ArbitraryFunction, Arguments extends Parameters<Job>>(queue: JobQueue, job: Job, args: Arguments): Completion<empty> {
 	// Assert: Type(queueName) is String and its value is the name of a Job Queue recognized by this implementation.
 	// NOTE: Due to tree-shaking considerations, rather than taking a queue name, the queue is provided directly as an argument
 

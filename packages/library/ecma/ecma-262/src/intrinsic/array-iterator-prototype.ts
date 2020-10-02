@@ -26,7 +26,7 @@ export interface ArrayIteratorPrototype<T = unknown> {
  */
 export function $ArrayIteratorPrototype$(realm: Realm): ArrayIteratorPrototype {
 	const proto = ObjectCreate(realm["[[Intrinsics]]"]["[[%IteratorPrototype%]]"]) as ArrayIteratorPrototype;
-	proto.next = function<T>(this: ArrayIteratorPrototype<T>) {
+	proto.next = function <T>(this: ArrayIteratorPrototype<T>) {
 		let len: number;
 		let result: T | number | [number, T | number];
 
@@ -42,11 +42,7 @@ export function $ArrayIteratorPrototype$(realm: Realm): ArrayIteratorPrototype {
 
 		// If O does not have all of the internal slots of an Array Iterator Instance
 		// (22.1.5.3), throw a TypeError exception.
-		if (
-			!("[[IteratedObject]]" in internalSlots) ||
-			!("[[ArrayIteratorNextIndex]]" in internalSlots) ||
-			!("[[ArrayIterationKind]]" in internalSlots)
-		) {
+		if (!("[[IteratedObject]]" in internalSlots) || !("[[ArrayIteratorNextIndex]]" in internalSlots) || !("[[ArrayIterationKind]]" in internalSlots)) {
 			throw new TypeError(`Method Array Iterator.prototype.next called on incompatible receiver ${errorFormatArgument(O)}`);
 		}
 

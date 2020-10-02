@@ -12,10 +12,7 @@ import {List, makeList} from "../lib/list/list";
  * List that is created.
  * https://tc39.es/ecma262/#sec-createlistfromarraylike
  */
-export function CreateListFromArrayLike<T, Types extends List<EcmascriptLanguageType>>(
-	obj: ArrayLike<T>,
-	elementTypes: Types
-): List<EcmascriptLanguageTypesToTypes<Types>>;
+export function CreateListFromArrayLike<T, Types extends List<EcmascriptLanguageType>>(obj: ArrayLike<T>, elementTypes: Types): List<EcmascriptLanguageTypesToTypes<Types>>;
 export function CreateListFromArrayLike<T>(obj: ArrayLike<T>): List<EcmascriptLanguageTypesToTypes<List<EcmascriptLanguageType>>>;
 export function CreateListFromArrayLike<T, Types extends List<EcmascriptLanguageType>>(
 	obj: ArrayLike<T>,

@@ -403,9 +403,7 @@ export interface List9<T0, T1, T2, T3, T4, T5, T6, T7, T8> {
 
 	has(item: T0 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8): boolean;
 
-	some(
-		cb: (item: T0 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8, index: number, list: List<T0 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8>) => boolean
-	): boolean;
+	some(cb: (item: T0 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8, index: number, list: List<T0 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8>) => boolean): boolean;
 }
 export interface List10<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> {
 	readonly length: number;
@@ -475,9 +473,7 @@ export interface List10<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> {
 
 	has(item: T0 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9): boolean;
 
-	some(
-		cb: (item: T0 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9, index: number, list: List<T0 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9>) => boolean
-	): boolean;
+	some(cb: (item: T0 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9, index: number, list: List<T0 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9>) => boolean): boolean;
 }
 export interface List11<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> {
 	readonly length: number;
@@ -552,13 +548,7 @@ export interface List11<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> {
 
 	has(item: T0 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9 | T10): boolean;
 
-	some(
-		cb: (
-			item: T0 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9 | T10,
-			index: number,
-			list: List<T0 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9 | T10>
-		) => boolean
-	): boolean;
+	some(cb: (item: T0 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9 | T10, index: number, list: List<T0 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9 | T10>) => boolean): boolean;
 }
 export interface List12<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> {
 	readonly length: number;
@@ -639,11 +629,7 @@ export interface List12<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> {
 	has(item: T0 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9 | T10 | T11): boolean;
 
 	some(
-		cb: (
-			item: T0 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9 | T10 | T11,
-			index: number,
-			list: List<T0 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9 | T10 | T11>
-		) => boolean
+		cb: (item: T0 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9 | T10 | T11, index: number, list: List<T0 | T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9 | T10 | T11>) => boolean
 	): boolean;
 }
 export interface List13<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> {
@@ -1145,27 +1131,8 @@ export function makeList<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>(
 	t8: T8,
 	t9: T9
 ): List10<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>;
-export function makeList<T0, T1, T2, T3, T4, T5, T6, T7, T8>(
-	t0: T0,
-	t1: T1,
-	t2: T2,
-	t3: T3,
-	t4: T4,
-	t5: T5,
-	t6: T6,
-	t7: T7,
-	t8: T8
-): List9<T0, T1, T2, T3, T4, T5, T6, T7, T8>;
-export function makeList<T0, T1, T2, T3, T4, T5, T6, T7>(
-	t0: T0,
-	t1: T1,
-	t2: T2,
-	t3: T3,
-	t4: T4,
-	t5: T5,
-	t6: T6,
-	t7: T7
-): List8<T0, T1, T2, T3, T4, T5, T6, T7>;
+export function makeList<T0, T1, T2, T3, T4, T5, T6, T7, T8>(t0: T0, t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8): List9<T0, T1, T2, T3, T4, T5, T6, T7, T8>;
+export function makeList<T0, T1, T2, T3, T4, T5, T6, T7>(t0: T0, t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7): List8<T0, T1, T2, T3, T4, T5, T6, T7>;
 export function makeList<T0, T1, T2, T3, T4, T5, T6>(t0: T0, t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6): List7<T0, T1, T2, T3, T4, T5, T6>;
 export function makeList<T0, T1, T2, T3, T4, T5>(t0: T0, t1: T1, t2: T2, t3: T3, t4: T4, t5: T5): List6<T0, T1, T2, T3, T4, T5>;
 export function makeList<T0, T1, T2, T3, T4>(t0: T0, t1: T1, t2: T2, t3: T3, t4: T4): List5<T0, T1, T2, T3, T4>;

@@ -1,42 +1,12 @@
-import {
-	FUNCTION_INTERNAL_METHODS,
-	FUNCTION_INTERNAL_PROPERTY_DEFAULTS,
-	FunctionInternalProperties,
-	FunctionInternals
-} from "../../internal-slot/function/function-internals";
-import {
-	OBJECT_INTERNAL_METHODS,
-	OBJECT_INTERNAL_PROPERTY_DEFAULTS,
-	ObjectInternalProperties,
-	ObjectInternals
-} from "../../internal-slot/object/object-internals";
-import {
-	STRING_INTERNAL_METHODS,
-	STRING_INTERNAL_PROPERTY_DEFAULTS,
-	StringInternalProperties,
-	StringInternals
-} from "../../internal-slot/string/string-internals";
-import {
-	ARRAY_INTERNAL_METHODS,
-	ARRAY_INTERNAL_PROPERTY_DEFAULTS,
-	ArrayInternalProperties,
-	ArrayInternals
-} from "../../internal-slot/array/array-internals";
+import {FUNCTION_INTERNAL_METHODS, FUNCTION_INTERNAL_PROPERTY_DEFAULTS, FunctionInternalProperties, FunctionInternals} from "../../internal-slot/function/function-internals";
+import {OBJECT_INTERNAL_METHODS, OBJECT_INTERNAL_PROPERTY_DEFAULTS, ObjectInternalProperties, ObjectInternals} from "../../internal-slot/object/object-internals";
+import {STRING_INTERNAL_METHODS, STRING_INTERNAL_PROPERTY_DEFAULTS, StringInternalProperties, StringInternals} from "../../internal-slot/string/string-internals";
+import {ARRAY_INTERNAL_METHODS, ARRAY_INTERNAL_PROPERTY_DEFAULTS, ArrayInternalProperties, ArrayInternals} from "../../internal-slot/array/array-internals";
 import {walkEntries} from "../../util/walk-entries";
 import {IsArray} from "../../abstract-operation/is-array";
 import {Type} from "../../abstract-operation/type";
-import {
-	PROXY_INTERNAL_METHODS,
-	PROXY_INTERNAL_PROPERTY_DEFAULTS,
-	ProxyInternalProperties,
-	ProxyInternals
-} from "../../internal-slot/proxy/proxy-internals";
-import {
-	ARGUMENTS_INTERNAL_METHODS,
-	ARGUMENTS_INTERNAL_PROPERTY_DEFAULTS,
-	ArgumentsInternalProperties,
-	ArgumentsInternals
-} from "../../internal-slot/arguments/arguments-internals";
+import {PROXY_INTERNAL_METHODS, PROXY_INTERNAL_PROPERTY_DEFAULTS, ProxyInternalProperties, ProxyInternals} from "../../internal-slot/proxy/proxy-internals";
+import {ARGUMENTS_INTERNAL_METHODS, ARGUMENTS_INTERNAL_PROPERTY_DEFAULTS, ArgumentsInternalProperties, ArgumentsInternals} from "../../internal-slot/arguments/arguments-internals";
 import {IsArguments} from "../../abstract-operation/is-arguments";
 import {MapLike} from "../map-like/map-like";
 import {IsMap} from "../../abstract-operation/is-map";
@@ -47,12 +17,7 @@ import {TypedArrayInternals} from "../../internal-slot/typed-array/typed-array-i
 import {TypedArray} from "../../type/typed-array";
 import {MapIteratorPrototypeInternals} from "../../internal-slot/map-iterator-prototype/map-iterator-prototype-internals";
 import {MapIteratorPrototype} from "../../intrinsic/map-iterator-prototype";
-import {
-	SYMBOL_INTERNAL_METHODS,
-	SYMBOL_INTERNAL_PROPERTY_DEFAULTS,
-	SymbolInternalProperties,
-	SymbolInternals
-} from "../../internal-slot/symbol/symbol-internals";
+import {SYMBOL_INTERNAL_METHODS, SYMBOL_INTERNAL_PROPERTY_DEFAULTS, SymbolInternalProperties, SymbolInternals} from "../../internal-slot/symbol/symbol-internals";
 import {
 	SYMBOL_OBJECT_INTERNAL_METHODS,
 	SYMBOL_OBJECT_INTERNAL_PROPERTY_DEFAULTS,
@@ -64,12 +29,7 @@ import {StringIteratorPrototypeInternals} from "../../internal-slot/string-itera
 import {SetInternalProperties, SetInternals} from "../../internal-slot/set/set-internals";
 import {SetIteratorPrototypeInternals} from "../../internal-slot/set-iterator-prototype/set-iterator-prototype-internals";
 import {SetIteratorPrototype} from "../../intrinsic/set-iterator-prototype";
-import {
-	REG_EXP_INTERNAL_METHODS,
-	REG_EXP_INTERNAL_PROPERTY_DEFAULTS,
-	RegExpInternalProperties,
-	RegExpInternals
-} from "../../internal-slot/reg-exp/reg-exp-internals";
+import {REG_EXP_INTERNAL_METHODS, REG_EXP_INTERNAL_PROPERTY_DEFAULTS, RegExpInternalProperties, RegExpInternals} from "../../internal-slot/reg-exp/reg-exp-internals";
 import {IsRegExp} from "../../abstract-operation/is-regexp";
 import {
 	ARRAY_BUFFER_INTERNAL_METHODS,
@@ -85,66 +45,22 @@ const internalsMap = new MapLike<{}, {}>();
 
 export type Internals<T> = T & ProxyInternals;
 
-export function setInternals<T extends IArguments>(
-	argument: T,
-	kind: "arguments",
-	propertyValues: Partial<ArgumentsInternalProperties>
-): Internals<ArgumentsInternals>;
-export function setInternals<Value, T extends Set<Value>>(
-	argument: T,
-	kind: "set",
-	propertyValues: Partial<SetInternalProperties<Value>>
-): Internals<SetInternals<Value>>;
+export function setInternals<T extends IArguments>(argument: T, kind: "arguments", propertyValues: Partial<ArgumentsInternalProperties>): Internals<ArgumentsInternals>;
+export function setInternals<Value, T extends Set<Value>>(argument: T, kind: "set", propertyValues: Partial<SetInternalProperties<Value>>): Internals<SetInternals<Value>>;
 export function setInternals<Key, Value, T extends Map<Key, Value>>(
 	argument: T,
 	kind: "map",
 	propertyValues: Partial<MapInternalProperties<Key, Value>>
 ): Internals<MapInternals<Key, Value>>;
-export function setInternals<T extends U[], U>(
-	argument: T,
-	kind: "array",
-	propertyValues: Partial<ArrayInternalProperties>
-): Internals<ArrayInternals>;
-export function setInternals<T extends RegExp>(
-	argument: T,
-	kind: "regexp",
-	propertyValues: Partial<RegExpInternalProperties>
-): Internals<RegExpInternals>;
-export function setInternals<T extends string>(
-	argument: T,
-	kind: "arraybuffer",
-	propertyValues: Partial<ArrayBufferInternalProperties>
-): Internals<ArrayBufferInternals>;
-export function setInternals<T extends string>(
-	argument: T,
-	kind: "string",
-	propertyValues: Partial<StringInternalProperties>
-): Internals<StringInternals>;
-export function setInternals<T extends symbol>(
-	argument: T,
-	kind: "symbol",
-	propertyValues: Partial<SymbolInternalProperties>
-): Internals<SymbolInternals>;
-export function setInternals<T extends Symbol>(
-	argument: T,
-	kind: "symbol-object",
-	propertyValues: Partial<SymbolObjectInternalProperties>
-): Internals<SymbolInternals>;
-export function setInternals<T extends Function>(
-	argument: T,
-	kind: "function",
-	propertyValues: Partial<FunctionInternalProperties>
-): Internals<FunctionInternals>;
-export function setInternals<T extends object>(
-	argument: T,
-	kind: "proxy",
-	propertyValues: Partial<ProxyInternalProperties>
-): Internals<ProxyInternals>;
-export function setInternals<T extends Object>(
-	argument: T,
-	kind: "object",
-	propertyValues: Partial<ObjectInternalProperties>
-): Internals<ObjectInternals>;
+export function setInternals<T extends U[], U>(argument: T, kind: "array", propertyValues: Partial<ArrayInternalProperties>): Internals<ArrayInternals>;
+export function setInternals<T extends RegExp>(argument: T, kind: "regexp", propertyValues: Partial<RegExpInternalProperties>): Internals<RegExpInternals>;
+export function setInternals<T extends string>(argument: T, kind: "arraybuffer", propertyValues: Partial<ArrayBufferInternalProperties>): Internals<ArrayBufferInternals>;
+export function setInternals<T extends string>(argument: T, kind: "string", propertyValues: Partial<StringInternalProperties>): Internals<StringInternals>;
+export function setInternals<T extends symbol>(argument: T, kind: "symbol", propertyValues: Partial<SymbolInternalProperties>): Internals<SymbolInternals>;
+export function setInternals<T extends Symbol>(argument: T, kind: "symbol-object", propertyValues: Partial<SymbolObjectInternalProperties>): Internals<SymbolInternals>;
+export function setInternals<T extends Function>(argument: T, kind: "function", propertyValues: Partial<FunctionInternalProperties>): Internals<FunctionInternals>;
+export function setInternals<T extends object>(argument: T, kind: "proxy", propertyValues: Partial<ProxyInternalProperties>): Internals<ProxyInternals>;
+export function setInternals<T extends Object>(argument: T, kind: "object", propertyValues: Partial<ObjectInternalProperties>): Internals<ObjectInternals>;
 export function setInternals<T>(
 	argument: T,
 	kind: "proxy" | "arguments" | "set" | "map" | "array" | "regexp" | "arraybuffer" | "string" | "symbol" | "symbol-object" | "function" | "object",
@@ -297,9 +213,7 @@ export function setInternals<T>(
 
 export function internals<Value>(argument: Set<Value>): Internals<ProxyInternals & SetInternals<Value>>;
 export function internals<Key, Value>(argument: Map<Key, Value>): Internals<ProxyInternals & MapInternals<Key, Value>>;
-export function internals<Key, Value>(
-	argument: MapIteratorPrototype<Key, Value>
-): Internals<ProxyInternals & MapIteratorPrototypeInternals<Key, Value>>;
+export function internals<Key, Value>(argument: MapIteratorPrototype<Key, Value>): Internals<ProxyInternals & MapIteratorPrototypeInternals<Key, Value>>;
 export function internals<T>(argument: StringIteratorPrototype): Internals<ProxyInternals & StringIteratorPrototypeInternals>;
 export function internals<T>(argument: RegExpStringIteratorPrototype): Internals<ProxyInternals & RegExpStringIteratorPrototypeInternals>;
 export function internals<T>(argument: SetIteratorPrototype<T>): Internals<ProxyInternals & SetIteratorPrototypeInternals<T>>;

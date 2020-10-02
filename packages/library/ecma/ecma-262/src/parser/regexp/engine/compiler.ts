@@ -123,12 +123,7 @@ export class Compiler {
 		}
 		this.advance = advance;
 
-		return children.reduceRight((codes, codes0) => [
-			{op: "fork_cont", next: codes0.length + 1},
-			...codes0,
-			{op: "jump", cont: codes.length},
-			...codes
-		]);
+		return children.reduceRight((codes, codes0) => [{op: "fork_cont", next: codes0.length + 1}, ...codes0, {op: "jump", cont: codes.length}, ...codes]);
 	}
 
 	private compileSequence(node: Sequence): OpCode[] {
@@ -188,12 +183,7 @@ export class Compiler {
 		const codes0 = this.compileNode(node.child);
 		const codes1 = this.insertCapReset(from, this.insertEmptyCheck(codes0));
 
-		return [
-			...codes0,
-			{op: node.nonGreedy ? "fork_next" : "fork_cont", next: codes1.length + 1},
-			...codes1,
-			{op: "jump", cont: -1 - codes1.length - 1}
-		];
+		return [...codes0, {op: node.nonGreedy ? "fork_next" : "fork_cont", next: codes1.length + 1}, ...codes1, {op: "jump", cont: -1 - codes1.length - 1}];
 	}
 
 	private compileOptional(node: Optional): OpCode[] {
@@ -289,16 +279,7 @@ export class Compiler {
 		this.advance = false;
 
 		if (node.negative) {
-			return [
-				{op: "push_pos"},
-				{op: "push_proc"},
-				{op: "fork_cont", next: codes0.length + 2},
-				...codes0,
-				{op: "rewind_proc"},
-				{op: "fail"},
-				{op: "pop"},
-				{op: "restore_pos"}
-			];
+			return [{op: "push_pos"}, {op: "push_proc"}, {op: "fork_cont", next: codes0.length + 2}, ...codes0, {op: "rewind_proc"}, {op: "fail"}, {op: "pop"}, {op: "restore_pos"}];
 		}
 
 		return [{op: "push_pos"}, {op: "push_proc"}, ...codes0, {op: "rewind_proc"}, {op: "restore_pos"}];

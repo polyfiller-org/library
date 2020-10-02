@@ -1,10 +1,5 @@
 import {Realm} from "../../environment/realm/realm";
-import {
-	OBJECT_INTERNAL_METHODS,
-	OBJECT_INTERNAL_PROPERTY_DEFAULTS,
-	ObjectInternalMethods,
-	ObjectInternalProperties
-} from "../object/object-internals";
+import {OBJECT_INTERNAL_METHODS, OBJECT_INTERNAL_PROPERTY_DEFAULTS, ObjectInternalMethods, ObjectInternalProperties} from "../object/object-internals";
 import {Constructor} from "../../type/constructor";
 import {__Construct__} from "./construct";
 import {__Call__} from "./call";

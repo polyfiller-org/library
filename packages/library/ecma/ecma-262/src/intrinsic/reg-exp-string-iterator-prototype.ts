@@ -23,7 +23,7 @@ export interface RegExpStringIteratorPrototype {
 export function $RegExpStringIteratorPrototype$(realm: Realm): RegExpStringIteratorPrototype {
 	const proto = ObjectCreate(realm["[[Intrinsics]]"]["[[%IteratorPrototype%]]"]) as RegExpStringIteratorPrototype;
 
-	proto.next = function(this: RegExpStringIteratorPrototype): IteratorResult<RegExpMatchArray> {
+	proto.next = function (this: RegExpStringIteratorPrototype): IteratorResult<RegExpMatchArray> {
 		// Let O be the this value.
 		const O = this;
 		// If Type(O) is not Object, throw a TypeError exception.

@@ -6,7 +6,7 @@ import {METHOD_DESCRIPTORS} from "../descriptors";
 import {NATIVE_SYMBOL_HAS_INSTANCE} from "../../symbol/native/native";
 import {symbolSymbolHasInstance} from "../../symbol/@@has-instance";
 
-export function patchSymbolConstructor (): void {
+export function patchSymbolConstructor(): void {
 	const globalThisValue = GlobalThisValue();
 
 	// Symbol constructor

@@ -37,7 +37,7 @@ export * from "./get-iterator";
 export * from "./get-method";
 export * from "./get-own-property-keys";
 export * from "./get-prototype-from-constructor";
-export * from "./get-substitution"
+export * from "./get-substitution";
 export * from "./get-v";
 export * from "./has-own-property";
 export * from "./has-property";

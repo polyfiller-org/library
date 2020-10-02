@@ -20,11 +20,11 @@ import {List} from "../lib/list/list";
  * @param {List<string>} [internalSlotsList]
  * @returns {R}
  */
-export function OrdinaryCreateFromConstructor<
-	C extends Constructor,
-	R extends IntrinsicObjectName,
-	Proto extends Intrinsics[typeof intrinsicObjectNameToIntrinsicPropertyKey[R]]
->(constructor: C, intrinsicDefaultProto: R, internalSlotsList?: List<string>): Proto {
+export function OrdinaryCreateFromConstructor<C extends Constructor, R extends IntrinsicObjectName, Proto extends Intrinsics[typeof intrinsicObjectNameToIntrinsicPropertyKey[R]]>(
+	constructor: C,
+	intrinsicDefaultProto: R,
+	internalSlotsList?: List<string>
+): Proto {
 	// Assert: intrinsicDefaultProto is a String value that is this specification's name of an intrinsic object.
 	// The corresponding object must be an intrinsic that is intended to be used as the [[Prototype]] value of an object.
 	assert(INTRINSIC_OBJECT_NAME.indexOf(intrinsicDefaultProto) >= 0);

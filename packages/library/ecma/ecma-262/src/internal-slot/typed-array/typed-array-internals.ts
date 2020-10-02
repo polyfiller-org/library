@@ -1,9 +1,4 @@
-import {
-	OBJECT_INTERNAL_METHODS,
-	OBJECT_INTERNAL_PROPERTY_DEFAULTS,
-	ObjectInternalMethods,
-	ObjectInternalProperties
-} from "../object/object-internals";
+import {OBJECT_INTERNAL_METHODS, OBJECT_INTERNAL_PROPERTY_DEFAULTS, ObjectInternalMethods, ObjectInternalProperties} from "../object/object-internals";
 import {TypedArray} from "../../type/typed-array";
 import {ProxyInternals} from "../proxy/proxy-internals";
 

@@ -19,11 +19,6 @@ export function assertType(x: unknown, type: "Boolean", message?: string, ctor?:
 export function assertType(x: unknown, type: "Number", message?: string, ctor?: ErrorConstructor): asserts x is number;
 export function assertType(x: unknown, type: "Symbol", message?: string, ctor?: ErrorConstructor): asserts x is symbol;
 export function assertType(x: unknown, type: "Object", message?: string, ctor?: ErrorConstructor): asserts x is object;
-export function assertType(
-	x: unknown,
-	type: EcmascriptLanguageType,
-	message?: string,
-	ctor?: ErrorConstructor
-): asserts x is EcmascriptLanguageTypeLiteral {
+export function assertType(x: unknown, type: EcmascriptLanguageType, message?: string, ctor?: ErrorConstructor): asserts x is EcmascriptLanguageTypeLiteral {
 	return assert(Type(x) === type, message, ctor);
 }

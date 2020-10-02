@@ -13,19 +13,12 @@ export type PrimitiveType = undefined | null | string | number | boolean | symbo
  * @param {"default"|"string"|"number"?} hint
  * @returns {boolean}
  */
-export function OrdinaryToPrimitive<O extends {valueOf: Function; toString: Function}>(
-	O: O,
-	hint: "default" | "string" | "number" | undefined
-): PrimitiveType {
+export function OrdinaryToPrimitive<O extends {valueOf: Function; toString: Function}>(O: O, hint: "default" | "string" | "number" | undefined): PrimitiveType {
 	// Assert: Type(O) is Object.
 	assertType(O, "Object", `Argument at position 0 must be an Object`, TypeError);
 
 	// Assert: Type(hint) is String and its value is either "string" or "number".
-	assert(
-		Type(hint) === "String" && (hint === "string" || hint === "number"),
-		`Argument at position 0 must be either the literal value "string" or "number"`,
-		TypeError
-	);
+	assert(Type(hint) === "String" && (hint === "string" || hint === "number"), `Argument at position 0 must be either the literal value "string" or "number"`, TypeError);
 
 	let methodNames: List2<"toString", "valueOf"> | List2<"valueOf", "toString">;
 

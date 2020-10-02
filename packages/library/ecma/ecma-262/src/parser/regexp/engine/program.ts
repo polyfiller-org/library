@@ -150,9 +150,7 @@ export class Program {
 
 	public toString(): string {
 		let s = "";
-		const codes = codesToString(this.codes)
-			.split("\n")
-			.join("\n    ");
+		const codes = codesToString(this.codes).split("\n").join("\n    ");
 		s += "Program {\n";
 		s += `  pattern: ${patternToString(this.pattern)},\n`;
 		s += "  codes:\n";

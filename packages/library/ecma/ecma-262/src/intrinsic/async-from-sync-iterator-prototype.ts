@@ -31,7 +31,7 @@ export function $AsyncFromSyncIteratorPrototype$(realm: Realm): AsyncFromSyncIte
 	const intrinsics = realm["[[Intrinsics]]"];
 	const proto = ObjectCreate(intrinsics["[[%AsyncIteratorPrototype%]]"]) as AsyncFromSyncIteratorPrototype;
 
-	proto.next = function<T>(this: {"[[SyncIteratorRecord]]": IteratorRecord<T>}, value: T) {
+	proto.next = function <T>(this: {"[[SyncIteratorRecord]]": IteratorRecord<T>}, value: T) {
 		// Let O be the this value.
 		const O = this;
 
@@ -49,10 +49,9 @@ export function $AsyncFromSyncIteratorPrototype$(realm: Realm): AsyncFromSyncIte
 		const syncIteratorRecord = O["[[SyncIteratorRecord]]"];
 
 		// Let result be IteratorNext(syncIteratorRecord, value).
-		let result:
-			| Completion<IteratorResult<T> | Promise<IteratorResult<T>>>
-			| IteratorResult<T>
-			| Promise<IteratorResult<T>> = executeWithCompletion(() => IteratorNext(syncIteratorRecord, value));
+		let result: Completion<IteratorResult<T> | Promise<IteratorResult<T>>> | IteratorResult<T> | Promise<IteratorResult<T>> = executeWithCompletion(() =>
+			IteratorNext(syncIteratorRecord, value)
+		);
 
 		// IfAbruptRejectPromise(result, promiseCapability).
 		const abruptRejectPromiseResult = IfAbruptRejectPromise(
@@ -74,7 +73,7 @@ export function $AsyncFromSyncIteratorPrototype$(realm: Realm): AsyncFromSyncIte
 		return AsyncFromSyncIteratorContinuation((result as unknown) as IteratorResult<T>, promiseCapability);
 	};
 
-	proto.throw = function<T>(this: {"[[SyncIteratorRecord]]": IteratorRecord<T>}, value: T) {
+	proto.throw = function <T>(this: {"[[SyncIteratorRecord]]": IteratorRecord<T>}, value: T) {
 		let abruptRejectPromiseResult: ShorthandSequenceReturn<InternalPromise<T> | undefined>;
 
 		// Let O be the this value.
@@ -149,7 +148,7 @@ export function $AsyncFromSyncIteratorPrototype$(realm: Realm): AsyncFromSyncIte
 		return AsyncFromSyncIteratorContinuation(result, promiseCapability);
 	};
 
-	proto.return = function<T>(this: {"[[SyncIteratorRecord]]": IteratorRecord<T>}, value: T) {
+	proto.return = function <T>(this: {"[[SyncIteratorRecord]]": IteratorRecord<T>}, value: T) {
 		let abruptRejectPromiseResult: ShorthandSequenceReturn<InternalPromise<T> | undefined>;
 
 		// Let O be the this value.

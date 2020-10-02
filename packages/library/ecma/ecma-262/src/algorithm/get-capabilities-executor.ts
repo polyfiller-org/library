@@ -9,11 +9,7 @@ import {PromiseCapability} from "../type/promise-capability";
  * @param {ArbitraryFunction} reject
  * @returns {?}
  */
-export function GetCapabilitiesExecutor(
-	this: {"[[Capability]]": PromiseCapability},
-	resolve: ArbitraryFunction,
-	reject: ArbitraryFunction
-): undefined {
+export function GetCapabilitiesExecutor(this: {"[[Capability]]": PromiseCapability}, resolve: ArbitraryFunction, reject: ArbitraryFunction): undefined {
 	// Let F be the active function object.
 	const F = this;
 

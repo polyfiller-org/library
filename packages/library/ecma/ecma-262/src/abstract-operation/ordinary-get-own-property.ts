@@ -32,9 +32,7 @@ const WORKS_ON_DOM_OBJECTS =
 const CAN_USE_NATIVE_GET_OWN_PROPERTY_DESCRIPTOR = WORKS_ON_OBJECTS && WORKS_ON_DOM_OBJECTS;
 
 const nativeGetOwnPropertyDescriptor =
-	Object.getOwnPropertyDescriptor != null && Object.getOwnPropertyDescriptor.toString().indexOf("[native code]") >= 0
-		? Object.getOwnPropertyDescriptor
-		: undefined;
+	Object.getOwnPropertyDescriptor != null && Object.getOwnPropertyDescriptor.toString().indexOf("[native code]") >= 0 ? Object.getOwnPropertyDescriptor : undefined;
 
 const SUPPORTS_ACCESSORS = "__defineGetter__" in Object.prototype;
 const {__lookupGetter__, __lookupSetter__} = Object.prototype as typeof Object.prototype & {
@@ -73,17 +71,13 @@ export function OrdinaryGetOwnProperty<O extends {}>(O: O, P: PropertyKey): Inte
 	if (CAN_USE_NATIVE_GET_OWN_PROPERTY_DESCRIPTOR && nativeGetOwnPropertyDescriptor != null) {
 		X = toInternalPropertyDescriptor(nativeGetOwnPropertyDescriptor(O, P));
 	} else {
-		const existingInternalPropertyDescriptor = internals(O)["__[[PropertyAttributes]]__"][P as string | number] as
-			| InternalPropertyDescriptor
-			| undefined;
+		const existingInternalPropertyDescriptor = internals(O)["__[[PropertyAttributes]]__"][P as string | number] as InternalPropertyDescriptor | undefined;
 		const existingDescriptorOptions: PropertyDescriptor =
 			existingInternalPropertyDescriptor == null
 				? {}
 				: {
 						...("[[Writable]]" in existingInternalPropertyDescriptor ? {writable: existingInternalPropertyDescriptor["[[Writable]]"]} : {}),
-						...("[[Configurable]]" in existingInternalPropertyDescriptor
-							? {configurable: existingInternalPropertyDescriptor["[[Configurable]]"]}
-							: {}),
+						...("[[Configurable]]" in existingInternalPropertyDescriptor ? {configurable: existingInternalPropertyDescriptor["[[Configurable]]"]} : {}),
 						...("[[Enumerable]]" in existingInternalPropertyDescriptor ? {enumerable: existingInternalPropertyDescriptor["[[Enumerable]]"]} : {})
 				  };
 

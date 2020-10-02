@@ -17,10 +17,7 @@ export function CreateStringIterator(string: string): IterableIterator<string> {
 	const intrinsics = getCurrentIntrinsics();
 
 	// Let iterator be ObjectCreate(%StringIteratorPrototype%, « [[IteratedString]], [[StringIteratorNextIndex]] »).
-	const iterator = ObjectCreate<IterableIterator<string>>(
-		intrinsics["[[%StringIteratorPrototype%]]"],
-		makeList("[[IteratedString]]", "[[StringIteratorNextIndex]]")
-	);
+	const iterator = ObjectCreate<IterableIterator<string>>(intrinsics["[[%StringIteratorPrototype%]]"], makeList("[[IteratedString]]", "[[StringIteratorNextIndex]]"));
 
 	const internalSlots = internals(iterator) as StringIteratorPrototypeInternals;
 

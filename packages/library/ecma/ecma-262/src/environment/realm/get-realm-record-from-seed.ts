@@ -11,16 +11,7 @@ import {FunctionInternals} from "../../internal-slot/function/function-internals
  */
 export function getRealmRecordFromSeed(seed: any): Realm {
 	const currentRealm = getCurrentRealmRecord();
-	if (
-		seed == null ||
-		seed === Function ||
-		seed === Object ||
-		seed === Array ||
-		seed === String ||
-		seed === Number ||
-		seed === Boolean ||
-		seed === RegExp
-	) {
+	if (seed == null || seed === Function || seed === Object || seed === Array || seed === String || seed === Number || seed === Boolean || seed === RegExp) {
 		return currentRealm;
 	}
 

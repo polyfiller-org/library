@@ -5,11 +5,9 @@ import {Type} from "./type";
 import {List, makeList} from "../lib/list/list";
 import {IsArguments} from "./is-arguments";
 
-const NATIVE_OBJECT_GET_OWN_PROPERTY_SYMBOLS =
-	Object.getOwnPropertySymbols?.toString().indexOf("[native code]") >= 0 ? Object.getOwnPropertySymbols : undefined;
+const NATIVE_OBJECT_GET_OWN_PROPERTY_SYMBOLS = Object.getOwnPropertySymbols?.toString().indexOf("[native code]") >= 0 ? Object.getOwnPropertySymbols : undefined;
 
-const NATIVE_OBJECT_GET_OWN_PROPERTY_NAMES =
-	Object.getOwnPropertyNames?.toString().indexOf("[native code]") >= 0 ? Object.getOwnPropertyNames : undefined;
+const NATIVE_OBJECT_GET_OWN_PROPERTY_NAMES = Object.getOwnPropertyNames?.toString().indexOf("[native code]") >= 0 ? Object.getOwnPropertyNames : undefined;
 
 /**
  * https://tc39.es/ecma262/#sec-ordinaryownpropertykeys

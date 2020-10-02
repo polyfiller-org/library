@@ -3,8 +3,7 @@ import {SymbolConstructor} from "../../symbol/symbol";
 import {SYMBOL_DESCRIPTORS} from "../descriptors";
 import {symbolUnscopables} from "../../symbol/unscopables";
 
-export function patchSymbolUnscopables (): void {
-
+export function patchSymbolUnscopables(): void {
 	// Symbol.unscopables
 	OrdinaryDefineOwnProperty(SymbolConstructor, "unscopables", {
 		...SYMBOL_DESCRIPTORS,

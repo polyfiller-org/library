@@ -1,9 +1,4 @@
-import {
-	OBJECT_INTERNAL_METHODS,
-	OBJECT_INTERNAL_PROPERTY_DEFAULTS,
-	ObjectInternalMethods,
-	ObjectInternalProperties
-} from "../object/object-internals";
+import {OBJECT_INTERNAL_METHODS, OBJECT_INTERNAL_PROPERTY_DEFAULTS, ObjectInternalMethods, ObjectInternalProperties} from "../object/object-internals";
 import {__StringDefineOwnProperty__} from "./define-own-property";
 import {__StringGetOwnProperty__} from "./get-own-property";
 import {__StringOwnPropertyKeys__} from "./own-property-keys";

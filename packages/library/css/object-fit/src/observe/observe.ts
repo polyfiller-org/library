@@ -88,7 +88,17 @@ export function observe(selector: string, fixer: ((target: ExtendedHTMLImageElem
 						debouncedFixer(target);
 					});
 					computedStyleObserver.observe(target, {
-						propertyNames: ["width", "height", "minWidth", "minHeight", "maxWidth", "maxHeight", OBJECT_FIT_PROPERTY_NAME, OBJECT_POSITION_PROPERTY_NAME, REPURPOSED_CSS_PROPERTY_NAME]
+						propertyNames: [
+							"width",
+							"height",
+							"minWidth",
+							"minHeight",
+							"maxWidth",
+							"maxHeight",
+							OBJECT_FIT_PROPERTY_NAME,
+							OBJECT_POSITION_PROPERTY_NAME,
+							REPURPOSED_CSS_PROPERTY_NAME
+						]
 					});
 
 					target[SYMBOL_COMPUTED_STYLE_OBSERVER] = computedStyleObserver;

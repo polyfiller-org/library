@@ -3,8 +3,7 @@ import {SymbolConstructor} from "../../symbol/symbol";
 import {symbolHasInstance} from "../../symbol/has-instance";
 import {SYMBOL_DESCRIPTORS} from "../descriptors";
 
-export function patchSymbolHasInstance (): void {
-
+export function patchSymbolHasInstance(): void {
 	// Symbol.hasInstance
 	OrdinaryDefineOwnProperty(SymbolConstructor, "hasInstance", {
 		...SYMBOL_DESCRIPTORS,

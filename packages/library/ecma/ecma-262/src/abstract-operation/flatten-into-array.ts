@@ -16,15 +16,7 @@ import {MATH_2_TO_THE_POWER_OF_53_MINUS_1} from "../constant/math-constant";
 /**
  * http://www.ecma-international.org/ecma-262/10.0/index.html#sec-flattenintoarray
  */
-export function FlattenIntoArray<T>(
-	target: T[],
-	source: T[] | T[][],
-	sourceLen: number,
-	start: number,
-	depth: number,
-	mapperFunction?: ArbitraryFunction,
-	thisArg?: any
-): number {
+export function FlattenIntoArray<T>(target: T[], source: T[] | T[][], sourceLen: number, start: number, depth: number, mapperFunction?: ArbitraryFunction, thisArg?: any): number {
 	const mapperFunctionIsPresent = arguments.length >= 6;
 	const thisArgIsPresent = arguments.length >= 7;
 

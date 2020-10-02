@@ -3,8 +3,7 @@ import {SymbolConstructor} from "../../symbol/symbol";
 import {symbolMatchAll} from "../../symbol/match-all";
 import {SYMBOL_DESCRIPTORS} from "../descriptors";
 
-export function patchSymbolMatchAll (): void {
-
+export function patchSymbolMatchAll(): void {
 	// Symbol.matchAll
 	OrdinaryDefineOwnProperty(SymbolConstructor, "matchAll", {
 		...SYMBOL_DESCRIPTORS,

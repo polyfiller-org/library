@@ -1,7 +1,6 @@
 import {internals} from "../lib/internal-slot-map/internals";
 
-const NATIVE_GET_PROTOTYPE_OF =
-	Object.getPrototypeOf != null && Object.getPrototypeOf.toString().indexOf("[native code]") >= 0 ? Object.getPrototypeOf : undefined;
+const NATIVE_GET_PROTOTYPE_OF = Object.getPrototypeOf != null && Object.getPrototypeOf.toString().indexOf("[native code]") >= 0 ? Object.getPrototypeOf : undefined;
 
 /**
  * http://www.ecma-international.org/ecma-262/10.0/index.html#sec-ordinarygetprototypeof
@@ -15,7 +14,7 @@ export function OrdinaryGetPrototypeOf<O extends {}>(O: O): Object | null {
 	if (NATIVE_GET_PROTOTYPE_OF != null) {
 		prototype = NATIVE_GET_PROTOTYPE_OF(O);
 	} else {
-		const proto = ((O as unknown) as {__proto__: (typeof Object.prototype) | null}).__proto__;
+		const proto = ((O as unknown) as {__proto__: typeof Object.prototype | null}).__proto__;
 		if (proto !== undefined) {
 			prototype = proto;
 		} else if (typeof O.constructor === "function" && O instanceof O.constructor) {

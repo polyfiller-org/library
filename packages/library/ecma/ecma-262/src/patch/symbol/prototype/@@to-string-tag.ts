@@ -2,8 +2,8 @@ import {OrdinaryDefineOwnProperty} from "../../../abstract-operation/ordinary-de
 import {NATIVE_SYMBOL_TO_STRING_TAG} from "../../../symbol/native/native";
 import {symbolPrototypeSymbolToStringTag} from "../../../symbol/prototype/@@to-string-tag";
 
-export function patchSymbolPrototypeSymbolToStringTag (): void {
-// Symbol.prototype.@@toStringTag
+export function patchSymbolPrototypeSymbolToStringTag(): void {
+	// Symbol.prototype.@@toStringTag
 	OrdinaryDefineOwnProperty(Symbol.prototype, Symbol.toStringTag, {
 		// This property has the attributes { [[Writable]]: false, [[Enumerable]]: false, [[Configurable]]: true }.
 		"[[Writable]]": false,

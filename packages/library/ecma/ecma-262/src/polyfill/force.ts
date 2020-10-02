@@ -63,7 +63,16 @@ import {objectPrototypeIsPrototypeOf} from "../object/prototype/is-prototype-of"
 import {objectPrototypeToLocaleString} from "../object/prototype/to-locale-string";
 import {functionPrototypeSymbolHasInstance} from "../function/prototype/@@has-instance";
 import {SymbolConstructor} from "../symbol/symbol";
-import {NATIVE_SYMBOL_ITERATOR, NATIVE_SYMBOL_MATCH, NATIVE_SYMBOL_MATCH_ALL, NATIVE_SYMBOL_REPLACE, NATIVE_SYMBOL_SEARCH, NATIVE_SYMBOL_SPECIES, NATIVE_SYMBOL_SPLIT, NATIVE_SYMBOL_TO_STRING_TAG} from "../symbol/native/native";
+import {
+	NATIVE_SYMBOL_ITERATOR,
+	NATIVE_SYMBOL_MATCH,
+	NATIVE_SYMBOL_MATCH_ALL,
+	NATIVE_SYMBOL_REPLACE,
+	NATIVE_SYMBOL_SEARCH,
+	NATIVE_SYMBOL_SPECIES,
+	NATIVE_SYMBOL_SPLIT,
+	NATIVE_SYMBOL_TO_STRING_TAG
+} from "../symbol/native/native";
 import {MapConstructor} from "../map/map";
 import {mapPrototype} from "../map/prototype/prototype";
 import {mapSymbolSpecies} from "../map/@@species";

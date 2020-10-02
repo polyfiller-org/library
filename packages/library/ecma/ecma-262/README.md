@@ -116,7 +116,7 @@ You can get as granular as you want. For example, here's how to polyfill _only_ 
 
 ```typescript
 import "@polyfiller/ecma-262/polyfill/symbol.async-iterator";
-````
+```
 
 However, it is generally a good idea that you only include the polyfill(s) for runtimes that doesn't already support the language features you want to support.
 One way to do so if with dynamic imports:
@@ -150,21 +150,21 @@ To use it as a library, simply import what you want:
 ```typescript
 // Import some Abstract Operations
 import {ToInt32, CreateDataProperty, GetMethod} from "@polyfiller/ecma-262";
-````
+```
 
 You can also use this approach to import implementations of language features for testing or to use as a _ponyfill_:
 
 ```typescript
 import {arrayPrototypeFlat as flat} from "@polyfiller/ecma-262";
 flat.call([[[1]]], Infinity);
-````
+```
 
 Beyond that, you also have access to all [Well-Known Intrinsic Objects](https://tc39.es/ecma262/#sec-well-known-intrinsic-objects), as
 well as the [current Realm](https://tc39.es/ecma262/#realm):
 
 ```typescript
 import {getCurrentRealmRecord, getCurrentIntrinsics} from "@polyfiller/ecma-262";
-````
+```
 
 <!-- SHADOW_SECTION_MAINTAINERS_START -->
 

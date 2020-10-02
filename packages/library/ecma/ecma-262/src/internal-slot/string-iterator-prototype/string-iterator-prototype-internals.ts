@@ -1,9 +1,4 @@
-import {
-	OBJECT_INTERNAL_METHODS,
-	OBJECT_INTERNAL_PROPERTY_DEFAULTS,
-	ObjectInternalMethods,
-	ObjectInternalProperties
-} from "../object/object-internals";
+import {OBJECT_INTERNAL_METHODS, OBJECT_INTERNAL_PROPERTY_DEFAULTS, ObjectInternalMethods, ObjectInternalProperties} from "../object/object-internals";
 import {StringIteratorPrototype} from "../../intrinsic/string-iterator-prototype";
 
 export interface StringIteratorPrototypeInternalMethods extends ObjectInternalMethods {}
@@ -19,8 +14,6 @@ export const STRING_ITERATOR_PROTOTYPE_INTERNAL_METHODS: StringIteratorPrototype
 	...OBJECT_INTERNAL_METHODS
 };
 
-export const STRING_ITERATOR_PROTOTYPE_INTERNAL_PROPERTY_DEFAULTS = (
-	obj: StringIteratorPrototype
-): Partial<StringIteratorPrototypeInternalProperties> => ({
+export const STRING_ITERATOR_PROTOTYPE_INTERNAL_PROPERTY_DEFAULTS = (obj: StringIteratorPrototype): Partial<StringIteratorPrototypeInternalProperties> => ({
 	...OBJECT_INTERNAL_PROPERTY_DEFAULTS(obj)
 });

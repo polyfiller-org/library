@@ -90,17 +90,11 @@ for (let i = 0; i < MAX_ELEMENTS; i++) {
 		trailingStatements.unshift(`export function make${BASE_INTERFACE_NAME}<${allTypeArguments}>(this: {}): ${interfaceName}<${allTypeArguments}> {\n
 			return makeListImplementation.apply(this, (arguments as unknown) as []) as List<T>;
 		}`);
-		trailingStatements.unshift(
-			`export function make${BASE_INTERFACE_NAME}<${allTypeArguments}>(...elements: ${allTypeArguments}[]): ${interfaceName}<${allTypeArguments}>;\n`
-		);
+		trailingStatements.unshift(`export function make${BASE_INTERFACE_NAME}<${allTypeArguments}>(...elements: ${allTypeArguments}[]): ${interfaceName}<${allTypeArguments}>;\n`);
 		trailingStatements.unshift(`export function make${BASE_INTERFACE_NAME}<${allTypeArguments}>(): ${interfaceName}<${allTypeArguments}>;\n`);
-		trailingStatements.unshift(
-			`export function make${BASE_INTERFACE_NAME}<${allTypeArguments}>(${allParameters}): ${interfaceName}<${allTypeArguments}>;\n`
-		);
+		trailingStatements.unshift(`export function make${BASE_INTERFACE_NAME}<${allTypeArguments}>(${allParameters}): ${interfaceName}<${allTypeArguments}>;\n`);
 	} else {
-		trailingStatements.unshift(
-			`export function make${BASE_INTERFACE_NAME}<${allTypeArguments}>(${allParameters}): ${interfaceName}<${allTypeArguments}>;\n`
-		);
+		trailingStatements.unshift(`export function make${BASE_INTERFACE_NAME}<${allTypeArguments}>(${allParameters}): ${interfaceName}<${allTypeArguments}>;\n`);
 	}
 }
 trailingStatements.forEach(statement => (str += statement));

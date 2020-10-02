@@ -8,11 +8,7 @@ import {InternalPropertyDescriptor} from "../type/internal-property-descriptor";
  * @param {InternalPropertyDescriptor?} Current
  * @returns {boolean}
  */
-export function IsCompatiblePropertyDescriptor<Desc extends InternalPropertyDescriptor>(
-	Extensible: boolean,
-	Desc: Desc,
-	Current: InternalPropertyDescriptor | undefined
-): boolean {
+export function IsCompatiblePropertyDescriptor<Desc extends InternalPropertyDescriptor>(Extensible: boolean, Desc: Desc, Current: InternalPropertyDescriptor | undefined): boolean {
 	// Return ValidateAndApplyPropertyDescriptor(undefined, undefined, Extensible, Desc, Current).
 	return ValidateAndApplyPropertyDescriptor(undefined, undefined, Extensible, Desc, Current);
 }

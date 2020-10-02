@@ -16,7 +16,7 @@ export interface SetIteratorPrototype<T> {
 export function $SetIteratorPrototype$(realm: Realm) {
 	// has a [[Prototype]] internal slot whose value is %IteratorPrototype%.
 	const proto = ObjectCreate(realm["[[Intrinsics]]"]["[[%IteratorPrototype%]]"]) as MapIteratorPrototype;
-	proto.next = function<Value>(this: SetIteratorPrototype<Value>) {
+	proto.next = function <Value>(this: SetIteratorPrototype<Value>) {
 		// Let O be the this value.
 		const O = this;
 

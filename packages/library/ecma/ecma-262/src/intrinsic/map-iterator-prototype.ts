@@ -21,7 +21,7 @@ export interface MapIteratorPrototype<Key = unknown, Value = unknown> {
 export function $MapIteratorPrototype$(realm: Realm) {
 	// has a [[Prototype]] internal slot whose value is %IteratorPrototype%.
 	const proto = ObjectCreate(realm["[[Intrinsics]]"]["[[%IteratorPrototype%]]"]) as MapIteratorPrototype;
-	proto.next = function<Key, Value>(this: MapIteratorPrototype<Key, Value>) {
+	proto.next = function <Key, Value>(this: MapIteratorPrototype<Key, Value>) {
 		let result: Key | Value | [Key, Value];
 		// Let O be the this value.
 		const O = this;

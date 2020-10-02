@@ -56,7 +56,7 @@ function revocableNative<T extends object>(target: T, handler: ProxyHandler<T>):
 	const nativeRevoke = result.revoke;
 
 	// Let steps be the algorithm steps defined in Proxy Revocation Functions.
-	const steps = function(this: Function) {
+	const steps = function (this: Function) {
 		nativeRevoke.call(result);
 		ProxyRevocationFunctions.call(this);
 	};

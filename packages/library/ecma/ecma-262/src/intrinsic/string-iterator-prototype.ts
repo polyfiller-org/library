@@ -18,7 +18,7 @@ export interface StringIteratorPrototype {
 export function $StringIteratorPrototype$(realm: Realm): StringIteratorPrototype {
 	const proto = ObjectCreate(realm["[[Intrinsics]]"]["[[%IteratorPrototype%]]"]) as StringIteratorPrototype;
 
-	proto.next = function(this: StringIteratorPrototype): IteratorResult<string> {
+	proto.next = function (this: StringIteratorPrototype): IteratorResult<string> {
 		// Let O be the this value.
 		const O = this;
 		// If Type(O) is not Object, throw a TypeError exception.

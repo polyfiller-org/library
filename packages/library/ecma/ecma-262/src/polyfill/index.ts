@@ -1,1 +1,2 @@
 import "./symbol";
+import "./array";

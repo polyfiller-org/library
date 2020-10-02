@@ -3,6 +3,7 @@ import {GlobalThisValue} from "../../environment/global-this-value";
 const globalThisValue = GlobalThisValue();
 
 export const NATIVE_SYMBOL_TO_STRING_TAG = globalThisValue.Symbol?.toStringTag;
+export const NATIVE_SYMBOL_UNSCOPABLES = globalThisValue.Symbol?.unscopables;
 export const NATIVE_SYMBOL_ITERATOR = globalThisValue.Symbol?.iterator;
 export const NATIVE_SYMBOL_ASYNC_ITERATOR = globalThisValue.Symbol?.asyncIterator;
 export const NATIVE_SYMBOL_TO_PRIMITIVE = globalThisValue.Symbol?.toPrimitive;

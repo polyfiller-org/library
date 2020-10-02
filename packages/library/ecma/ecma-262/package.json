@@ -296,6 +296,348 @@
 					"minified": "./polyfill/symbol.prototype.value-of.min.js"
 				}
 			}
+		},
+		"es.array": {
+			"input": "./src/polyfill/array/index.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.js",
+					"minified": "./polyfill/array.min.js"
+				}
+			}
+		},
+		"es.array.@@species": {
+			"input": "./src/polyfill/array/@@species.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.@@species.js",
+					"minified": "./polyfill/array.@@species.min.js"
+				}
+			}
+		},
+		"es.array.from": {
+			"input": "./src/polyfill/array/from.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.from.js",
+					"minified": "./polyfill/array.from.min.js"
+				}
+			}
+		},
+		"es.array.is-array": {
+			"input": "./src/polyfill/array/is-array.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.is-array.js",
+					"minified": "./polyfill/array.is-array.min.js"
+				}
+			}
+		},
+		"es.array.of": {
+			"input": "./src/polyfill/array/of.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.of.js",
+					"minified": "./polyfill/array.of.min.js"
+				}
+			}
+		},
+		"es.array.prototype.@@iterator": {
+			"input": "./src/polyfill/array/prototype/@@iterator.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.@@iterator.js",
+					"minified": "./polyfill/array.prototype.@@iterator.min.js"
+				}
+			}
+		},
+		"es.array.prototype.@@unscopables": {
+			"input": "./src/polyfill/array/prototype/@@unscopables.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.@@unscopables.js",
+					"minified": "./polyfill/array.prototype.@@unscopables.min.js"
+				}
+			}
+		},
+		"es.array.prototype.concat": {
+			"input": "./src/polyfill/array/prototype/concat.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.concat.js",
+					"minified": "./polyfill/array.prototype.concat.min.js"
+				}
+			}
+		},
+		"es.array.prototype.copy-within": {
+			"input": "./src/polyfill/array/prototype/copy-within.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.copy-within.js",
+					"minified": "./polyfill/array.prototype.copy-within.min.js"
+				}
+			}
+		},
+		"es.array.prototype.entries": {
+			"input": "./src/polyfill/array/prototype/entries.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.entries.js",
+					"minified": "./polyfill/array.prototype.entries.min.js"
+				}
+			}
+		},
+		"es.array.prototype.every": {
+			"input": "./src/polyfill/array/prototype/every.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.every.js",
+					"minified": "./polyfill/array.prototype.every.min.js"
+				}
+			}
+		},
+		"es.array.prototype.fill": {
+			"input": "./src/polyfill/array/prototype/fill.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.fill.js",
+					"minified": "./polyfill/array.prototype.fill.min.js"
+				}
+			}
+		},
+		"es.array.prototype.filter": {
+			"input": "./src/polyfill/array/prototype/filter.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.filter.js",
+					"minified": "./polyfill/array.prototype.filter.min.js"
+				}
+			}
+		},
+		"es.array.prototype.find": {
+			"input": "./src/polyfill/array/prototype/find.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.find.js",
+					"minified": "./polyfill/array.prototype.find.min.js"
+				}
+			}
+		},
+		"es.array.prototype.find-index": {
+			"input": "./src/polyfill/array/prototype/find-index.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.find-index.js",
+					"minified": "./polyfill/array.prototype.find-index.min.js"
+				}
+			}
+		},
+		"es.array.prototype.flat": {
+			"input": "./src/polyfill/array/prototype/flat.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.flat.js",
+					"minified": "./polyfill/array.prototype.flat.min.js"
+				}
+			}
+		},
+		"es.array.prototype.flat-map": {
+			"input": "./src/polyfill/array/prototype/flat-map.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.flat-map.js",
+					"minified": "./polyfill/array.prototype.flat-map.min.js"
+				}
+			}
+		},
+		"es.array.prototype.for-each": {
+			"input": "./src/polyfill/array/prototype/for-each.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.for-each.js",
+					"minified": "./polyfill/array.prototype.for-each.min.js"
+				}
+			}
+		},
+		"es.array.prototype.includes": {
+			"input": "./src/polyfill/array/prototype/includes.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.includes.js",
+					"minified": "./polyfill/array.prototype.includes.min.js"
+				}
+			}
+		},
+		"es.array.prototype.index-of": {
+			"input": "./src/polyfill/array/prototype/index-of.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.index-of.js",
+					"minified": "./polyfill/array.prototype.index-of.min.js"
+				}
+			}
+		},
+		"es.array.prototype.join": {
+			"input": "./src/polyfill/array/prototype/join.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.join.js",
+					"minified": "./polyfill/array.prototype.join.min.js"
+				}
+			}
+		},
+		"es.array.prototype.keys": {
+			"input": "./src/polyfill/array/prototype/keys.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.keys.js",
+					"minified": "./polyfill/array.prototype.keys.min.js"
+				}
+			}
+		},
+		"es.array.prototype.last-index-of": {
+			"input": "./src/polyfill/array/prototype/last-index-of.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.last-index-of.js",
+					"minified": "./polyfill/array.prototype.last-index-of.min.js"
+				}
+			}
+		},
+		"es.array.prototype.map": {
+			"input": "./src/polyfill/array/prototype/map.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.map.js",
+					"minified": "./polyfill/array.prototype.map.min.js"
+				}
+			}
+		},
+		"es.array.prototype.pop": {
+			"input": "./src/polyfill/array/prototype/pop.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.pop.js",
+					"minified": "./polyfill/array.prototype.pop.min.js"
+				}
+			}
+		},
+		"es.array.prototype.push": {
+			"input": "./src/polyfill/array/prototype/push.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.push.js",
+					"minified": "./polyfill/array.prototype.push.min.js"
+				}
+			}
+		},
+		"es.array.prototype.reduce": {
+			"input": "./src/polyfill/array/prototype/reduce.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.reduce.js",
+					"minified": "./polyfill/array.prototype.reduce.min.js"
+				}
+			}
+		},
+		"es.array.prototype.reduce-right": {
+			"input": "./src/polyfill/array/prototype/reduce-right.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.reduce-right.js",
+					"minified": "./polyfill/array.prototype.reduce-right.min.js"
+				}
+			}
+		},
+		"es.array.prototype.reverse": {
+			"input": "./src/polyfill/array/prototype/reverse.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.reverse.js",
+					"minified": "./polyfill/array.prototype.reverse.min.js"
+				}
+			}
+		},
+		"es.array.prototype.shift": {
+			"input": "./src/polyfill/array/prototype/shift.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.shift.js",
+					"minified": "./polyfill/array.prototype.shift.min.js"
+				}
+			}
+		},
+		"es.array.prototype.slice": {
+			"input": "./src/polyfill/array/prototype/slice.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.slice.js",
+					"minified": "./polyfill/array.prototype.slice.min.js"
+				}
+			}
+		},
+		"es.array.prototype.some": {
+			"input": "./src/polyfill/array/prototype/some.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.some.js",
+					"minified": "./polyfill/array.prototype.some.min.js"
+				}
+			}
+		},
+		"es.array.prototype.sort": {
+			"input": "./src/polyfill/array/prototype/sort.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.sort.js",
+					"minified": "./polyfill/array.prototype.sort.min.js"
+				}
+			}
+		},
+		"es.array.prototype.splice": {
+			"input": "./src/polyfill/array/prototype/splice.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.splice.js",
+					"minified": "./polyfill/array.prototype.splice.min.js"
+				}
+			}
+		},
+		"es.array.prototype.to-locale-string": {
+			"input": "./src/polyfill/array/prototype/to-locale-string.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.to-locale-string.js",
+					"minified": "./polyfill/array.prototype.to-locale-string.min.js"
+				}
+			}
+		},
+		"es.array.prototype.to-string": {
+			"input": "./src/polyfill/array/prototype/to-string.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.to-string.js",
+					"minified": "./polyfill/array.prototype.to-string.min.js"
+				}
+			}
+		},
+		"es.array.prototype.unshift": {
+			"input": "./src/polyfill/array/prototype/unshift.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.unshift.js",
+					"minified": "./polyfill/array.prototype.unshift.min.js"
+				}
+			}
+		},
+		"es.array.prototype.values": {
+			"input": "./src/polyfill/array/prototype/values.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/array.prototype.values.js",
+					"minified": "./polyfill/array.prototype.values.min.js"
+				}
+			}
 		}
 	}
 }

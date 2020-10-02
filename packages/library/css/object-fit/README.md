@@ -39,7 +39,7 @@ To check out the polyfill in action, A [demo can be found here](https://object-f
 
 <!-- SHADOW_SECTION_FEATURES_START -->
 
-## Features
+### Features
 
 <!-- SHADOW_SECTION_FEATURES_END -->
 
@@ -59,6 +59,7 @@ To check out the polyfill in action, A [demo can be found here](https://object-f
 ## Table of Contents
 
 - [Description](#description)
+- [Demo](#demo)
   - [Features](#features)
 - [Table of Contents](#table-of-contents)
 - [Install](#install)
@@ -217,3 +218,7 @@ styles for an element is somewhat expensive, and so this is done once every two 
 MIT © [Frederik Wessberg](mailto:frederikwessberg@hotmail.com) ([@FredWessberg](https://twitter.com/FredWessberg)) ([Website](https://github.com/wessberg))
 
 <!-- SHADOW_SECTION_LICENSE_END -->
+
+<!-- SHADOW_SECTION_CONTRIBUTING_START -->
+
+<!-- SHADOW_SECTION_CONTRIBUTING_END -->

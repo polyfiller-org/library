@@ -1,6 +1,6 @@
 <!-- SHADOW_SECTION_LOGO_START -->
 
-<div><img alt="Logo" src="https://raw.githubusercontent.com/polyfiller-org/polyfiller/master/packages/library/ecma/ecma-262/documentation/asset/logo.png" height="150"   /></div>
+<div><img alt="Logo" src="https://raw.githubusercontent.com/polyfiller-org/polyfiller/master/packages/library/ecma/ecma-262/documentation/asset/logo.png" height="90"   /></div>
 
 <!-- SHADOW_SECTION_LOGO_END -->
 
@@ -59,21 +59,19 @@ This is a work in progress. Not every feature is yet fully implemented.
 ## Table of Contents
 
 - [Description](#description)
-- [Demo](#demo)
   - [Features](#features)
+- [Disclaimer](#disclaimer)
 - [Table of Contents](#table-of-contents)
 - [Install](#install)
   - [npm](#npm)
   - [Yarn](#yarn)
   - [pnpm](#pnpm)
-- [Applying the polyfill](#applying-the-polyfill)
+- [Applying the polyfills](#applying-the-polyfills)
 - [Usage](#usage)
-- [Dependencies & Browser support](#dependencies--browser-support)
 - [Maintainers](#maintainers)
 - [Backers](#backers)
   - [Patreon](#patreon)
 - [FAQ](#faq)
-  - [What is the performance and reaction times of this polyfill?](#what-is-the-performance-and-reaction-times-of-this-polyfill)
 - [License](#license)
 
 <!-- SHADOW_SECTION_TOC_END -->
@@ -203,3 +201,7 @@ import {getCurrentRealmRecord, getCurrentIntrinsics} from "@polyfiller/ecma-262"
 MIT © [Frederik Wessberg](mailto:frederikwessberg@hotmail.com) ([@FredWessberg](https://twitter.com/FredWessberg)) ([Website](https://github.com/wessberg))
 
 <!-- SHADOW_SECTION_LICENSE_END -->
+
+<!-- SHADOW_SECTION_CONTRIBUTING_START -->
+
+<!-- SHADOW_SECTION_CONTRIBUTING_END -->

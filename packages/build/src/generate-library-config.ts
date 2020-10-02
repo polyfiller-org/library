@@ -14,7 +14,7 @@ export function generateLibraryConfig(options: {context?: string; input: string;
 	if (pkg.main != null) {
 		rollupOptions.outputs.push({
 			minify: false,
-			output: pkg.main,
+			file: pkg.main,
 			format: "cjs"
 		});
 	}
@@ -22,7 +22,7 @@ export function generateLibraryConfig(options: {context?: string; input: string;
 	if (pkg.module != null) {
 		rollupOptions.outputs.push({
 			minify: false,
-			output: pkg.module,
+			file: pkg.module,
 			format: "esm"
 		});
 	}

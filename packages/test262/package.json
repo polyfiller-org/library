@@ -1,8 +1,11 @@
 {
-	"name": "@polyfiller/build",
+	"name": "@polyfiller/test262",
 	"private": true,
 	"version": "0.0.33",
-	"description": "Common build files",
+	"description": "Simple CLI for running the test262 suite",
+	"bin": {
+		"test262": "bin/test262"
+	},
 	"scripts": {
 		"scaffold": "scaffold readme --yes && scaffold license --yes",
 		"build": "tsc",
@@ -18,9 +21,14 @@
 		"url": "https://github.com/polyfiller-org/library/issues"
 	},
 	"files": [
-		"dist/**"
+		"dist/**/*.*",
+		"bin/*.*"
 	],
-	"keywords": [],
+	"keywords": [
+		"test262",
+		"runner",
+		"CLI"
+	],
 	"contributors": [
 		{
 			"name": "Frederik Wessberg",
@@ -33,15 +41,13 @@
 		}
 	],
 	"license": "MIT",
-	"main": "dist/index.js",
 	"devDependencies": {
 		"@polyfiller/config": "workspace:*"
 	},
 	"dependencies": {
-		"@wessberg/rollup-plugin-ts": "^1.3.5",
-		"@rollup/plugin-node-resolve": "^9.0.0",
-		"rollup-plugin-terser": "^7.0.2",
-		"rollup": "^2.28.2",
-		"typescript": "^4.0.3"
-	}
+		"minimist": "1.2.5",
+		"test262-harness": "7.5.2",
+		"find-up": "5.0.0"
+	},
+	"main": "dist/index.js"
 }

@@ -3,6 +3,7 @@ import {CompilerOptions} from "typescript";
 import ts, {TypescriptPluginOptions} from "@wessberg/rollup-plugin-ts";
 import resolve from "@rollup/plugin-node-resolve";
 import {terser} from "rollup-plugin-terser";
+import builtinModules from "module";
 
 export interface DependencyPackage {
 	dependencies: Record<string, string>;
@@ -37,31 +38,35 @@ export interface PolyfillablePackage extends DependencyPackage {
 
 export interface SimplifiedRollupOptionsBase {
 	flatten: boolean;
-	context: string;
+	context?: string;
 	tsconfig?: (tsconfig: CompilerOptions) => CompilerOptions;
 	hook?: TypescriptPluginOptions["hook"];
 }
 
+export interface SimplifiedRollupOptionsOutputBase {
+	format: ModuleFormat;
+	minify?: boolean;
+	sourcemap?: boolean;
+	chunkFileNames?: string;
+	entryFileNames?: string;
+}
+
+export interface SimplifiedRollupOptionsFileOutput extends SimplifiedRollupOptionsOutputBase {
+	file: string;
+}
+
+export interface SimplifiedRollupOptionsDirOutput extends SimplifiedRollupOptionsOutputBase {
+	dir: string;
+}
+
 export interface SimplifiedRollupOptionsFile extends SimplifiedRollupOptionsBase {
 	input: string;
-	outputs: {
-		format: ModuleFormat;
-		output: string;
-		minify: boolean;
-		chunkFileNames?: string;
-		entryFileNames?: string;
-	}[];
+	outputs: SimplifiedRollupOptionsFileOutput[];
 }
 
 export interface SimplifiedRollupOptionsDir extends SimplifiedRollupOptionsBase {
 	input: Record<string, string>;
-	outputs: {
-		format: ModuleFormat;
-		dir: string;
-		minify: boolean;
-		chunkFileNames?: string;
-		entryFileNames?: string;
-	}[];
+	outputs: SimplifiedRollupOptionsDirOutput[];
 }
 
 export type SimplifiedRollupOptions = SimplifiedRollupOptionsFile | SimplifiedRollupOptionsDir;
@@ -72,17 +77,10 @@ export function generateRollupOptions(
 ): RollupOptions[] {
 	return options.map(({input, flatten, outputs, tsconfig, context, hook}) => ({
 		input,
-		output: (outputs as {
-			format: ModuleFormat;
-			dir?: string;
-			output?: string;
-			chunkFileNames?: string;
-			entryFileNames?: string;
-			minify: boolean;
-		}[]).map(({format, minify, chunkFileNames, entryFileNames, ...rest}) => ({
-			...("output" in rest
+		output: (outputs as (SimplifiedRollupOptionsDirOutput & SimplifiedRollupOptionsFileOutput)[]).map(({format, minify = false, sourcemap = true, chunkFileNames, entryFileNames, ...rest}) => ({
+			...("file" in rest
 				? {
-						file: rest.output
+						file: rest.file
 				  }
 				: {}),
 			...("dir" in rest
@@ -91,9 +89,9 @@ export function generateRollupOptions(
 				  }
 				: {}),
 			format,
+			sourcemap,
 			chunkFileNames,
 			entryFileNames,
-			sourcemap: true,
 			plugins: [...(!minify ? [] : [terser()])]
 		})),
 		context,
@@ -106,6 +104,9 @@ export function generateRollupOptions(
 			}),
 			resolve()
 		],
-		external: [...(flatten ? [] : [...Object.keys(dependencies), ...Object.keys(devDependencies), ...Object.keys(peerDependencies), ...Object.keys(optionalDependencies)])]
+		external: [
+			...builtinModules.builtinModules,
+			...(flatten ? [] : [...Object.keys(dependencies), ...Object.keys(devDependencies), ...Object.keys(peerDependencies), ...Object.keys(optionalDependencies)])
+		]
 	}));
 }

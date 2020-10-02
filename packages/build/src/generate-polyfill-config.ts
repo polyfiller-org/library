@@ -32,7 +32,7 @@ export function generatePolyfillConfig(options: {context?: string; pkg: Partial<
 							? []
 							: [
 									{
-										output: output.bundle.standard,
+										file: output.bundle.standard,
 										format: "iife" as const,
 										minify: false
 									}
@@ -41,7 +41,7 @@ export function generatePolyfillConfig(options: {context?: string; pkg: Partial<
 							? []
 							: [
 									{
-										output: output.bundle.minified,
+										file: output.bundle.minified,
 										format: "iife" as const,
 										minify: true
 									}

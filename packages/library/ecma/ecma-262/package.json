@@ -1,0 +1,274 @@
+{
+	"name": "@polyfiller/ecma-262",
+	"version": "0.0.33",
+	"description": "An implementation of the ECMAScript® Language Specification",
+	"scripts": {
+		"scaffold": "scaffold readme --yes && scaffold license --yes",
+		"clean": "rimraf dist && rimraf polyfill",
+		"lint": "tsc --noEmit && eslint \"src/**/*.ts\" --color",
+		"prebuild": "pnpm run clean",
+		"build": "pnpm run rollup",
+		"prewatch": "pnpm run prebuild",
+		"watch": "pnpm run rollup -- --watch",
+		"rollup": "node --max-old-space-size=8192 node_modules/rollup/dist/bin/rollup -c rollup.config.ts",
+		"prepublishOnly": "npm run lint && pnpm run build",
+		"update": "pnpx npm-check-updates --packageFile package.json -u -x np --dep dev,prod"
+	},
+	"homepage": "https://github.com/polyfiller-org/library",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/polyfiller-org/library.git"
+	},
+	"bugs": {
+		"url": "https://github.com/polyfiller-org/library/issues"
+	},
+	"files": [
+		"dist/**/*.*",
+		"polyfill/**/*.*"
+	],
+	"keywords": [
+		"object-fit",
+		"object-position",
+		"polyfill",
+		"css"
+	],
+	"contributors": [
+		{
+			"name": "Frederik Wessberg",
+			"email": "frederikwessberg@hotmail.com",
+			"url": "https://github.com/wessberg",
+			"imageUrl": "https://avatars2.githubusercontent.com/u/20454213?s=460&v=4",
+			"role": "Lead Developer",
+			"github": "wessberg",
+			"twitter": "FredWessberg"
+		}
+	],
+	"license": "MIT",
+	"devDependencies": {
+		"@babel/runtime": "^7.11.2",
+		"@polyfiller/build": "workspace:*",
+		"@polyfiller/config": "workspace:*",
+		"rollup": "^2.28.2",
+		"typescript": "^4.0.3"
+	},
+	"dependencies": {
+	},
+	"main": "./dist/cjs/index.js",
+	"module": "./dist/esm/index.js",
+	"types": "./dist/esm/index.d.ts",
+	"typings": "./dist/esm/index.d.ts",
+	"es2015": "./dist/esm/index.js",
+	"polyfills": {
+		"es": {
+			"input": "./src/polyfill/index.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/index.js",
+					"minified": "./polyfill/index.min.js"
+				},
+				"bundle": {
+					"standard": "./polyfill/index.bundle.js",
+					"minified": "./polyfill/index.bundle.min.js"
+				}
+			}
+		},
+		"es.symbol": {
+			"input": "./src/polyfill/symbol/index.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.js",
+					"minified": "./polyfill/symbol.min.js"
+				}
+			}
+		},
+		"es.symbol.async-iterator": {
+			"input": "./src/polyfill/symbol/async-iterator.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.async-iterator.js",
+					"minified": "./polyfill/symbol.async-iterator.min.js"
+				}
+			}
+		},
+		"es.symbol.constructor": {
+			"input": "./src/polyfill/symbol/constructor.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.constructor.js",
+					"minified": "./polyfill/symbol.constructor.min.js"
+				}
+			}
+		},
+		"es.symbol.for": {
+			"input": "./src/polyfill/symbol/for.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.for.js",
+					"minified": "./polyfill/symbol.for.min.js"
+				}
+			}
+		},
+		"es.symbol.has-instance": {
+			"input": "./src/polyfill/symbol/has-instance.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.has-instance.js",
+					"minified": "./polyfill/symbol.has-instance.min.js"
+				}
+			}
+		},
+		"es.symbol.is-concat-spreadable": {
+			"input": "./src/polyfill/symbol/is-concat-spreadable.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.is-concat-spreadable.js",
+					"minified": "./polyfill/symbol.is-concat-spreadable.min.js"
+				}
+			}
+		},
+		"es.symbol.iterator": {
+			"input": "./src/polyfill/symbol/iterator.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.iterator.js",
+					"minified": "./polyfill/symbol.iterator.min.js"
+				}
+			}
+		},
+		"es.symbol.key-for": {
+			"input": "./src/polyfill/symbol/key-for.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.key-for.js",
+					"minified": "./polyfill/symbol.key-for.min.js"
+				}
+			}
+		},
+		"es.symbol.match": {
+			"input": "./src/polyfill/symbol/match.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.match.js",
+					"minified": "./polyfill/symbol.match.min.js"
+				}
+			}
+		},
+		"es.symbol.match-all": {
+			"input": "./src/polyfill/symbol/match-all.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.match-all.js",
+					"minified": "./polyfill/symbol.match-all.min.js"
+				}
+			}
+		},
+		"es.symbol.replace": {
+			"input": "./src/polyfill/symbol/replace.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.replace.js",
+					"minified": "./polyfill/symbol.replace.min.js"
+				}
+			}
+		},
+		"es.symbol.search": {
+			"input": "./src/polyfill/symbol/search.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.search.js",
+					"minified": "./polyfill/symbol.search.min.js"
+				}
+			}
+		},
+		"es.symbol.species": {
+			"input": "./src/polyfill/symbol/species.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.species.js",
+					"minified": "./polyfill/symbol.species.min.js"
+				}
+			}
+		},
+		"es.symbol.split": {
+			"input": "./src/polyfill/symbol/split.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.split.js",
+					"minified": "./polyfill/symbol.split.min.js"
+				}
+			}
+		},
+		"es.symbol.to-primitive": {
+			"input": "./src/polyfill/symbol/to-primitive.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.to-primitive.js",
+					"minified": "./polyfill/symbol.to-primitive.min.js"
+				}
+			}
+		},
+		"es.symbol.to-string-tag": {
+			"input": "./src/polyfill/symbol/to-string-tag.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.to-string-tag.js",
+					"minified": "./polyfill/symbol.to-string-tag.min.js"
+				}
+			}
+		},
+		"es.symbol.unscopables": {
+			"input": "./src/polyfill/symbol/unscopables.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.unscopables.js",
+					"minified": "./polyfill/symbol.unscopables.min.js"
+				}
+			}
+		},
+		"es.symbol.prototype.@@to-primitive": {
+			"input": "./src/polyfill/symbol/prototype/@@to-primitive.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.prototype.@@to-primitive.js",
+					"minified": "./polyfill/symbol.prototype.@@to-primitive.min.js"
+				}
+			}
+		},
+		"es.symbol.prototype.@@to-string-tag": {
+			"input": "./src/polyfill/symbol/prototype/@@to-string-tag.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.prototype.@@to-string-tag.js",
+					"minified": "./polyfill/symbol.prototype.@@to-string-tag.min.js"
+				}
+			}
+		},
+		"es.symbol.prototype.description": {
+			"input": "./src/polyfill/symbol/prototype/description.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.prototype.description.js",
+					"minified": "./polyfill/symbol.prototype.description.min.js"
+				}
+			}
+		},
+		"es.symbol.prototype.to-string": {
+			"input": "./src/polyfill/symbol/prototype/to-string.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.prototype.to-string.js",
+					"minified": "./polyfill/symbol.prototype.to-string.min.js"
+				}
+			}
+		},
+		"es.symbol.prototype.value-of": {
+			"input": "./src/polyfill/symbol/prototype/value-of.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.prototype.value-of.js",
+					"minified": "./polyfill/symbol.prototype.value-of.min.js"
+				}
+			}
+		}
+	}
+}

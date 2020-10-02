@@ -24,8 +24,8 @@ export interface PolyfillsFieldEntryValue {
 export interface PolyfillsFieldEntry {
 	input: string;
 	output: Partial<{
-		bundle: Partial<PolyfillsFieldEntryValue>;
 		esm: Partial<PolyfillsFieldEntryValue>;
+		bundle: Partial<PolyfillsFieldEntryValue>;
 	}>;
 }
 
@@ -35,30 +35,64 @@ export interface PolyfillablePackage extends DependencyPackage {
 	polyfills: PolyfillsField;
 }
 
-export interface SimplifiedRollupOptions {
+export interface SimplifiedRollupOptionsBase {
 	flatten: boolean;
-	minify: boolean;
-	input: string;
-	output: string;
-	format: ModuleFormat;
 	context: string;
 	tsconfig?: (tsconfig: CompilerOptions) => CompilerOptions;
 	hook?: TypescriptPluginOptions["hook"];
 }
 
+
+export interface SimplifiedRollupOptionsFile extends SimplifiedRollupOptionsBase {
+	input: string;
+	outputs: {
+		format: ModuleFormat;
+		output: string;
+		minify: boolean;
+		chunkFileNames?: string;
+		entryFileNames?: string;
+	}[];
+}
+
+export interface SimplifiedRollupOptionsDir extends SimplifiedRollupOptionsBase{
+	input: Record<string, string>;
+	outputs: {
+		format: ModuleFormat;
+		dir: string;
+		minify: boolean;
+		chunkFileNames?: string;
+		entryFileNames?: string;
+	}[];
+}
+
+export type SimplifiedRollupOptions = SimplifiedRollupOptionsFile | SimplifiedRollupOptionsDir;
+
 export function generateRollupOptions(
 	options: SimplifiedRollupOptions[],
 	{dependencies = {}, devDependencies = {}, optionalDependencies = {}, peerDependencies = {}}: Partial<DependencyPackage>
 ): RollupOptions[] {
-	return options.map(({input, flatten, format, minify, output, tsconfig, context, hook}) => ({
+	return options.map(({input, flatten, outputs, tsconfig, context, hook}) => ({
 		input,
-		output: [
-			{
-				file: output,
-				format,
-				sourcemap: true
-			}
-		],
+		output: (outputs as {
+			format: ModuleFormat;
+			dir?: string;
+			output?: string;
+			chunkFileNames?: string;
+			entryFileNames?: string;
+			minify: boolean;
+		}[]).map(({format, minify, chunkFileNames, entryFileNames, ...rest}) => ({
+			...("output" in rest ? {
+				file: rest.output
+			} : {}),
+			...("dir" in rest ? {
+				dir: rest.dir
+			} : {}),
+			format,
+			chunkFileNames,
+			entryFileNames,
+			sourcemap: true,
+			plugins: [...(!minify ? [] : [terser()])]
+		})),
 		context,
 		treeshake: true,
 		plugins: [
@@ -67,8 +101,7 @@ export function generateRollupOptions(
 				tsconfig,
 				hook
 			}),
-			resolve(),
-			...(minify ? [terser()] : [])
+			resolve()
 		],
 		external: [...(flatten ? [] : [...Object.keys(dependencies), ...Object.keys(devDependencies), ...Object.keys(peerDependencies), ...Object.keys(optionalDependencies)])]
 	}));

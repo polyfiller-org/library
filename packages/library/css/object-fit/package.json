@@ -4,7 +4,7 @@
 	"description": "A robust polyfill for the 'object-fit' and 'object-position' CSS-properties",
 	"scripts": {
 		"scaffold": "scaffold readme --yes && scaffold license --yes",
-		"clean": "rimraf dist",
+		"clean": "rimraf dist && rimraf polyfill",
 		"lint": "tsc --noEmit && eslint \"src/**/*.ts\" --color",
 		"prebuild": "pnpm run clean",
 		"build": "pnpm run rollup",
@@ -55,24 +55,24 @@
 		"@wessberg/connection-observer": "^1.0.5",
 		"@wessberg/stringutil": "^1.0.19"
 	},
-	"polyfills": {
-		"css.object-fit": {
-			"input": "./src/polyfill/index.ts",
-			"output": {
-				"bundle": {
-					"standard": "./polyfill/index.js",
-					"minified": "./polyfill/index.min.js"
-				},
-				"esm": {
-					"standard": "./polyfill/esm/index.js",
-					"minified": "./polyfill/esm/index.min.js"
-				}
-			}
-		}
-	},
 	"main": "./dist/cjs/index.js",
 	"module": "./dist/esm/index.js",
 	"types": "./dist/esm/index.d.ts",
 	"typings": "./dist/esm/index.d.ts",
-	"es2015": "./dist/esm/index.js"
+	"es2015": "./dist/esm/index.js",
+	"polyfills": {
+		"css-object-fit": {
+			"input": "./src/polyfill/index.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/index.js",
+					"minified": "./polyfill/index.min.js"
+				},
+				"bundle": {
+					"standard": "./polyfill/index.bundle.js",
+					"minified": "./polyfill/index.bundle.min.js"
+				}
+			}
+		}
+	}
 }

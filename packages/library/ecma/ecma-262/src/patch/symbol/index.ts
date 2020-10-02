@@ -1,0 +1,45 @@
+import {patchSymbolConstructor} from "./constructor";
+import {patchSymbolFor} from "./for";
+import {patchSymbolAsyncIterator} from "./async-iterator";
+import {patchSymbolIsConcatSpreadable} from "./is-concat-spreadable";
+import {patchSymbolHasInstance} from "./has-instance";
+import {patchSymbolIterator} from "./iterator";
+import {patchSymbolKeyFor} from "./key-for";
+import {patchSymbolMatch} from "./match";
+import {patchSymbolMatchAll} from "./match-all";
+import {patchSymbolReplace} from "./replace";
+import {patchSymbolSearch} from "./search";
+import {patchSymbolSpecies} from "./species";
+import {patchSymbolSplit} from "./split";
+import {patchSymbolToPrimitive} from "./to-primitive";
+import {patchSymbolToStringTag} from "./to-string-tag";
+import {patchSymbolUnscopables} from "./unscopables";
+import {patchSymbolPrototypeDescription} from "./prototype/description";
+import {patchSymbolPrototypeToString} from "./prototype/to-string";
+import {patchSymbolPrototypeValueOf} from "./prototype/value-of";
+import {patchSymbolPrototypeSymbolToPrimitive} from "./prototype/@@to-primitive";
+import {patchSymbolPrototypeSymbolToStringTag} from "./prototype/@@to-string-tag";
+
+export function patchSymbol(): void {
+	patchSymbolConstructor();
+	patchSymbolAsyncIterator();
+	patchSymbolFor();
+	patchSymbolHasInstance();
+	patchSymbolIsConcatSpreadable();
+	patchSymbolIterator();
+	patchSymbolKeyFor();
+	patchSymbolMatch();
+	patchSymbolMatchAll();
+	patchSymbolReplace();
+	patchSymbolSearch();
+	patchSymbolSpecies();
+	patchSymbolSplit();
+	patchSymbolToPrimitive();
+	patchSymbolToStringTag();
+	patchSymbolUnscopables();
+	patchSymbolPrototypeDescription();
+	patchSymbolPrototypeToString();
+	patchSymbolPrototypeValueOf();
+	patchSymbolPrototypeSymbolToPrimitive();
+	patchSymbolPrototypeSymbolToStringTag();
+}

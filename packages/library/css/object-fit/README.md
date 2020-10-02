@@ -174,10 +174,6 @@ This polyfill is distributed in ES5-compatible syntax, but is using some additio
 
 Generally, I would highly recommend using something like [Polyfill.app](https://github.com/wessberg/Polyfiller) which takes care of this stuff automatically.
 
-<!-- SHADOW_SECTION_CONTRIBUTING_START -->
-
-<!-- SHADOW_SECTION_CONTRIBUTING_END -->
-
 <!-- SHADOW_SECTION_MAINTAINERS_START -->
 
 ## Maintainers

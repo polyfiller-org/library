@@ -4,30 +4,28 @@ import {generateRollupOptions, LibraryPackage, SimplifiedRollupOptions} from "./
 export function generateLibraryConfig(options: {context?: string; input: string; pkg: Partial<LibraryPackage>}): RollupOptions[] {
 	const {pkg, input, context = "window"} = options;
 
-	const rollupOptions: SimplifiedRollupOptions[] = [];
-
-	const baseOptions = {
+	const rollupOptions: SimplifiedRollupOptions = {
 		input,
-		minify: false,
 		flatten: false,
+		outputs: [],
 		context
-	} as const;
+	};
 
 	if (pkg.main != null) {
-		rollupOptions.push({
-			...baseOptions,
+		rollupOptions.outputs.push({
+			minify: false,
 			output: pkg.main,
 			format: "cjs"
 		});
 	}
 
 	if (pkg.module != null) {
-		rollupOptions.push({
-			...baseOptions,
+		rollupOptions.outputs.push({
+			minify: false,
 			output: pkg.module,
 			format: "esm"
 		});
 	}
 
-	return generateRollupOptions(rollupOptions, pkg);
+	return generateRollupOptions([rollupOptions], pkg);
 }

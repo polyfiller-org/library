@@ -16,6 +16,8 @@
 		"dev": "rollup -c -w",
 		"start": "sirv public",
 		"validate": "svelte-check",
+		"check": "tsc --noEmit",
+		"lint": "pnpm run check && eslint \"src/**/*.ts\" --color",
 		"update": "pnpx npm-check-updates --packageFile package.json -u -x np --dep dev,prod"
 	},
 	"devDependencies": {

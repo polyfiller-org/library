@@ -24,6 +24,7 @@
 		"build:object-fit-demo": "pnpm run build --filter @polyfiller/object-fit-demo",
 		"build:object-fit-demo:with_dependencies": "pnpm run build --filter @polyfiller/object-fit-demo...",
 		"prewatch": "pnpm run prebuild",
+		"check": "pnpm recursive run check",
 		"watch": "pnpm recursive run watch",
 		"watch:build": "pnpm run watch --filter @polyfiller/build",
 		"watch:test262": "pnpm run watch --filter @polyfiller/test262",
@@ -32,7 +33,7 @@
 		"watch:object-fit-demo": "pnpm run dev --filter @polyfiller/object-fit-demo",
 		"test": "pnpm recursive run test",
 		"test:ecma-262": "pnpm test --filter @polyfiller/ecma-262",
-		"prerelease": "pnpx changeset && pnpx changeset version && git add . && git commit -am \"chore(changeset): add changeset\" && git push",
+		"prerelease": "pnpm run check && pnpx changeset && pnpx changeset version && git add . && git commit -am \"chore(changeset): add changeset\" && git push",
 		"release": "pnpm publish -r",
 		"update": "pnpm recursive run update && pnpm update && pnpm install"
 	},

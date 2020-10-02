@@ -5,7 +5,8 @@
 	"scripts": {
 		"scaffold": "scaffold readme --yes && scaffold license --yes",
 		"clean": "rimraf dist && rimraf polyfill",
-		"lint": "tsc --noEmit && eslint \"src/**/*.ts\" --color",
+		"check": "tsc --noEmit",
+		"lint": "pnpm run check && eslint \"src/**/*.ts\" --color",
 		"prebuild": "pnpm run clean",
 		"build": "pnpm run rollup",
 		"build:test262": "node --max-old-space-size=8192 node_modules/rollup/dist/bin/rollup -c rollup.test262.config.ts",

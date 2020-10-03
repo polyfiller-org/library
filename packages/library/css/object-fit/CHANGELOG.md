@@ -1,5 +1,11 @@
 # @polyfiller/object-fit
 
+## 0.0.36
+
+### Patch Changes
+
+- fixed lint
+
 ## 0.0.35
 
 ### Patch Changes

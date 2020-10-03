@@ -1,7 +1,7 @@
 {
 	"name": "@polyfiller/object-fit-demo",
 	"private": true,
-	"version": "0.0.35",
+	"version": "0.0.36",
 	"description": "A demo for the 'object-fit' and 'object-position' polyfill",
 	"homepage": "https://object-fit.netlify.app",
 	"repository": {

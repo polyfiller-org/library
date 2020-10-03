@@ -40,7 +40,7 @@ export function __Call__<F extends ArbitraryFunction, ThisArgument>(this: F, thi
 	if (IsAbruptCompletion(result)) {
 		throw result["[[Value]]"];
 	} else if (IsCompletion(result)) {
-		result = (result["[[Value]]"]!) as Completion<void>;
+		result = result["[[Value]]"]! as Completion<void>;
 	}
 
 	// Return NormalCompletion(undefined).

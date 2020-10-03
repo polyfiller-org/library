@@ -251,7 +251,7 @@ export const RegExpCompat = ((): typeof RegExp => {
 	klass.prototype[Symbol.split] = function (this: RegExpCompat, string: string, limit?: number): string[] {
 		const flags = this.sticky ? this.flags : this.flags + "y";
 		const constructor: any = this.constructor;
-		const species = (constructor?.[Symbol.species]) ?? klass;
+		const species = constructor?.[Symbol.species] ?? klass;
 		const splitter: RegExp = new species(this.source, flags);
 		limit = (limit ?? 2 ** 32 - 1) >>> 0;
 

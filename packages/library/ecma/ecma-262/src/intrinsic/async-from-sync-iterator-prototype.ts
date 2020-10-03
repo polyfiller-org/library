@@ -161,7 +161,7 @@ export function $AsyncFromSyncIteratorPrototype$(realm: Realm): AsyncFromSyncIte
 		let promiseCapability = NewPromiseCapability<T>((intrinsics["[[%Promise%]]"] as unknown) as Constructor<T>);
 
 		// Let syncIterator be O.[[SyncIteratorRecord]].[[Iterator]].
-		const syncIterator = (O["[[SyncIteratorRecord]]"])["[[Iterator]]"];
+		const syncIterator = O["[[SyncIteratorRecord]]"]["[[Iterator]]"];
 
 		// Let return be GetMethod(syncIterator, "return").
 		let _return: Completion<ArbitraryFunction> | ArbitraryFunction = executeWithCompletion(() => GetMethod(syncIterator, "return"));

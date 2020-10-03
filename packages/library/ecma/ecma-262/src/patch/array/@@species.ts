@@ -3,7 +3,6 @@ import {arraySymbolSpecies} from "../../array/@@species";
 import {NATIVE_SYMBOL_SPECIES} from "../../symbol/native/native";
 
 export function patchArraySymbolSpecies(): void {
-
 	// Array.@@species
 	OrdinaryDefineOwnProperty(Array, Symbol.species, {
 		"[[Get]]": arraySymbolSpecies(),

@@ -62,8 +62,7 @@ export async function runTest262({glob, prelude, preprocessor, cwd = process.cwd
 	const globs = Array.isArray(glob) ? glob : [glob];
 	for (const globString of globs) {
 		const currentPreludePath = typeof globString === "string" || globString.prelude == null ? preludePath : computePath(globString.prelude);
-		const currentPreprocessorPath =
-			typeof globString === "string" || globString.preprocessor == null ? preprocessorPath : computePath(globString.preprocessor);
+		const currentPreprocessorPath = typeof globString === "string" || globString.preprocessor == null ? preprocessorPath : computePath(globString.preprocessor);
 		const currentGlob = typeof globString === "string" ? globString : globString.glob;
 
 		const args = [

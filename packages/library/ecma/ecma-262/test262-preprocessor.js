@@ -41,9 +41,7 @@ const typeofPlugin = {
 			if (arg.isIdentifier() && !path.scope.hasBinding(arg.node.name, true)) {
 				const unary = types.unaryExpression("typeof", types.cloneNode(node.argument));
 
-				path.replaceWith(
-					types.conditionalExpression(types.binaryExpression("===", unary, types.stringLiteral("undefined")), types.stringLiteral("undefined"), call)
-				);
+				path.replaceWith(types.conditionalExpression(types.binaryExpression("===", unary, types.stringLiteral("undefined")), types.stringLiteral("undefined"), call));
 			} else {
 				path.replaceWith(call);
 			}

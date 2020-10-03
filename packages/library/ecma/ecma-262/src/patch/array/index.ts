@@ -36,7 +36,7 @@ import {patchArrayPrototypeToString} from "./prototype/to-string";
 import {patchArrayPrototypeUnshift} from "./prototype/unshift";
 import {patchArrayPrototypeSymbolUnscopables} from "./prototype/@@unscopables";
 
-export function patchArray (): void {
+export function patchArray(): void {
 	patchArraySymbolSpecies();
 	patchArrayFrom();
 	patchArrayIsArray();

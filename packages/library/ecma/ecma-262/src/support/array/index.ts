@@ -25,7 +25,7 @@ export * from "./prototype/reverse";
 export * from "./prototype/shift";
 export * from "./prototype/slice";
 export * from "./prototype/some";
-export * from "./prototype/sort"
+export * from "./prototype/sort";
 export * from "./prototype/splice";
 export * from "./prototype/to-string";
 export * from "./prototype/to-locale-string";

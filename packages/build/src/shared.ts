@@ -77,23 +77,25 @@ export function generateRollupOptions(
 ): RollupOptions[] {
 	return options.map(({input, flatten, outputs, tsconfig, context, hook}) => ({
 		input,
-		output: (outputs as (SimplifiedRollupOptionsDirOutput & SimplifiedRollupOptionsFileOutput)[]).map(({format, minify = false, sourcemap = true, chunkFileNames, entryFileNames, ...rest}) => ({
-			...("file" in rest
-				? {
-						file: rest.file
-				  }
-				: {}),
-			...("dir" in rest
-				? {
-						dir: rest.dir
-				  }
-				: {}),
-			format,
-			sourcemap,
-			chunkFileNames,
-			entryFileNames,
-			plugins: [...(!minify ? [] : [terser()])]
-		})),
+		output: (outputs as (SimplifiedRollupOptionsDirOutput & SimplifiedRollupOptionsFileOutput)[]).map(
+			({format, minify = false, sourcemap = true, chunkFileNames, entryFileNames, ...rest}) => ({
+				...("file" in rest
+					? {
+							file: rest.file
+					  }
+					: {}),
+				...("dir" in rest
+					? {
+							dir: rest.dir
+					  }
+					: {}),
+				format,
+				sourcemap,
+				chunkFileNames,
+				entryFileNames,
+				plugins: [...(!minify ? [] : [terser()])]
+			})
+		),
 		context,
 		treeshake: true,
 		plugins: [

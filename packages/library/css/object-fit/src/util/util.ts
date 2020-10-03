@@ -1,5 +1,13 @@
 import {isInKebabCase, kebabCase} from "@wessberg/stringutil";
-import {DEFAULT_OBJECT_POSITION, OBJECT_FIT_ATTRIBUTE_NAMES, OBJECT_FIT_PROPERTY_NAME, OBJECT_POSITION_ATTRIBUTE_NAMES, OBJECT_POSITION_PROPERTY_NAME, REPURPOSED_CSS_PROPERTY_NAME, WRAPPABLE_STYLE_PROPERTIES} from "../constant/constant";
+import {
+	DEFAULT_OBJECT_POSITION,
+	OBJECT_FIT_ATTRIBUTE_NAMES,
+	OBJECT_FIT_PROPERTY_NAME,
+	OBJECT_POSITION_ATTRIBUTE_NAMES,
+	OBJECT_POSITION_PROPERTY_NAME,
+	REPURPOSED_CSS_PROPERTY_NAME,
+	WRAPPABLE_STYLE_PROPERTIES
+} from "../constant/constant";
 import {CSSStyleDeclarationKey, CSSStyleDeclarationView, ObjectFit, ObjectPosition, PartialStyles, WrappableStyles} from "../type/type";
 import {ObjectPositionParser, TokenKind} from "../lib/object-position-parser";
 

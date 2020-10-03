@@ -232,7 +232,7 @@ export function internals<T>(
 >;
 export function internals(argument: TypedArray): Internals<ProxyInternals & TypedArrayInternals>;
 export function internals<T>(argument: TypedArray | T[]): Internals<ProxyInternals & (TypedArrayInternals | ArrayInternals)>;
-export function internals<T extends symbol>(argument: T): Internals<SymbolInternals&SymbolObjectInternals>;
+export function internals<T extends symbol>(argument: T): Internals<SymbolInternals & SymbolObjectInternals>;
 export function internals<T extends RegExp>(argument: T): Internals<RegExpInternals>;
 export function internals(argument: ArrayBuffer): Internals<ArrayBufferInternals>;
 export function internals<T extends string>(argument: T): Internals<StringInternals>;

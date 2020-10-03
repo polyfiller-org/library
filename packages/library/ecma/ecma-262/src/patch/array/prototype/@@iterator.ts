@@ -4,7 +4,7 @@ import {NATIVE_SYMBOL_ITERATOR} from "../../../symbol/native/native";
 import {OrdinaryDefineOwnProperty} from "../../../abstract-operation/ordinary-define-own-property";
 
 export function patchArrayPrototypeSymbolIterator(): void {
-// Array.prototype.@@iterator
+	// Array.prototype.@@iterator
 	OrdinaryDefineOwnProperty(Array.prototype, Symbol.iterator, {
 		...METHOD_DESCRIPTORS,
 		"[[Value]]": arrayPrototypeSymbolIterator

@@ -9,7 +9,7 @@ import {CreateDataProperty} from "../abstract-operation/create-data-property";
  * https://tc39.es/ecma262/#sec-object.getownpropertydescriptors
  */
 export const {getOwnPropertyDescriptors: objectGetOwnPropertyDescriptors} = {
-	getOwnPropertyDescriptors<O>(O: O) {
+	getOwnPropertyDescriptors<TO>(O: TO) {
 		// Let obj be ? ToObject(O).
 		const obj = ToObject(O);
 

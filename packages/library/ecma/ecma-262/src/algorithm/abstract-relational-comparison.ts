@@ -14,12 +14,8 @@ import {SameValue} from "../abstract-operation/same-value";
  * that the x parameter corresponds to an expression that occurs to the left of the y parameter's corresponding
  * expression. If LeftFirst is false, the reverse is the case and operations must be performed upon y before x.
  * https://tc39.es/ecma262/#sec-abstract-relational-comparison
- * @param {*} x
- * @param {*} y
- * @param {boolean} [LeftFirst=true]
- * @returns {boolean?}
  */
-export function AbstractRelationalComparison(x: unknown, y: unknown, LeftFirst: boolean = true): boolean | undefined {
+export function AbstractRelationalComparison(x: unknown, y: unknown, LeftFirst = true): boolean | undefined {
 	let px: number | string;
 	let py: number | string;
 
@@ -54,7 +50,7 @@ export function AbstractRelationalComparison(x: unknown, y: unknown, LeftFirst: 
 		// Let k be the smallest nonnegative integer such that the code unit at
 		// index k within px is different from the code unit at index k within py.
 		// (There must be such a k, for neither String is a prefix of the other.)
-		let k: number = 0;
+		let k = 0;
 		for (let i = (_px.length > _py.length ? _px.length : _py.length) - 1; i >= 0; i--) {
 			const pxCodeUnit = _px.charCodeAt(i);
 			const pyCodeUnit = _py.charCodeAt(i);

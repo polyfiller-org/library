@@ -5,8 +5,6 @@ import {internals} from "../lib/internal-slot-map/internals";
 /**
  * The abstract operation IsCallable determines if argument, which must be an ECMAScript language value,
  * is a callable function with a [[Call]] internal method.
- * @param {*} argument
- * @returns {argument is CallableFunction}
  * http://www.ecma-international.org/ecma-262/10.0/index.html#sec-iscallable
  */
 export function IsCallable(argument: unknown): argument is ArbitraryFunction {

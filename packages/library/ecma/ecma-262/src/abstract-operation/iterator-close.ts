@@ -8,9 +8,6 @@ import {Call} from "./call";
 
 /**
  * https://tc39.es/ecma262/#sec-iteratorclose
- * @param {IteratorRecord} iteratorRecord
- * @param {Completion} completion
- * @returns {T}
  */
 export function IteratorClose<T>(iteratorRecord: IteratorRecord<T>, completion: Completion): T[] {
 	// Assert: Type(iteratorRecord.[[Iterator]]) is Object.

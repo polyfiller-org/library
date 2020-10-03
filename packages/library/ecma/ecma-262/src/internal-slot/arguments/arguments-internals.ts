@@ -28,5 +28,5 @@ export const ARGUMENTS_INTERNAL_METHODS: ArgumentsInternalMethods = {
 
 export const ARGUMENTS_INTERNAL_PROPERTY_DEFAULTS = (obj: IArguments): Partial<ArgumentsInternalProperties> => ({
 	...OBJECT_INTERNAL_PROPERTY_DEFAULTS(obj),
-	"[[ParameterMap]]": createObjectWithPrototype(null) as Record<string, unknown>
+	"[[ParameterMap]]": createObjectWithPrototype(null)
 });

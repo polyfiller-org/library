@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {digit, invertDigit, invertSpace, invertUnicodeWord, invertWord, space, unicodeWord, word} from "../char-class/ascii";
 import {CharSet} from "../char-class/char-set";
 import {loadProperty, loadPropertyValue} from "../char-class/unicode";
@@ -32,7 +33,7 @@ import {Program} from "./program";
 
 /** `Compiler` is a compiler for `Pattern` to `Program`. */
 export class Compiler {
-	private pattern: Pattern;
+	private readonly pattern: Pattern;
 
 	private advance = false;
 	private captureParensIndex = 1;
@@ -59,7 +60,7 @@ export class Compiler {
 	}
 
 	/** Run compiler and return compiled `Program`. */
-	public compile(): Program {
+	compile(): Program {
 		const codes0 = this.compileNode(this.pattern.child);
 		const codes1: OpCode[] = [{op: "cap_begin", index: 0}, ...codes0, {op: "cap_end", index: 0}, {op: "match"}];
 		return new Program(this.pattern, codes1);

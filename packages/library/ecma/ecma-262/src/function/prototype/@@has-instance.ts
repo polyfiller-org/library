@@ -5,7 +5,7 @@ import {OrdinaryHasInstance} from "../../abstract-operation/ordinary-has-instanc
 /**
  * The value of the name property of this function is "[Symbol.hasInstance]".
  * https://tc39.es/ecma262/#sec-function.prototype-@@hasinstance
- * @return {ArrayConstructor}
+ * @return
  */
 export const functionPrototypeSymbolHasInstance = () =>
 	(OrdinaryGetOwnProperty(

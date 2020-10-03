@@ -7,11 +7,9 @@ import {createObjectWithPrototype} from "../util/create-object-with-prototype";
  * new ordinary objects. The optional argument internalSlotsList is a List of the names of additional internal slots that
  * must be defined as part of the object. If the list is not provided, a new empty List is used.
  * http://www.ecma-international.org/ecma-262/10.0/index.html#sec-objectcreate
- * @param {object|null} proto
- * @param {List<string>} [internalSlotsList]
  */
 export function ObjectCreate<T>(proto: object | null, internalSlotsList?: List<string>): T {
-	let obj = createObjectWithPrototype(proto) as T;
+	const obj: T = createObjectWithPrototype(proto);
 
 	// If internalSlotsList is not present, set internalSlotsList to a new empty List.
 	if (internalSlotsList === undefined) {
@@ -22,7 +20,7 @@ export function ObjectCreate<T>(proto: object | null, internalSlotsList?: List<s
 	// ObjectCreate may be called during building intrinsics and The %ArrayIteratorPrototype%
 	// intrinsic value haven't been prepared yet.
 	for (let i = 0; i < internalSlotsList.length; i++) {
-		((internals as unknown) as (obj: Object) => Record<string, undefined>)(obj)[internalSlotsList.get(i)] = undefined;
+		((internals as unknown) as (obj: unknown) => Record<string, undefined>)(obj)[internalSlotsList.get(i)] = undefined;
 	}
 
 	// Set obj.[[Prototype]] to proto.
@@ -32,5 +30,5 @@ export function ObjectCreate<T>(proto: object | null, internalSlotsList?: List<s
 	internals(obj)["[[Extensible]]"] = true;
 
 	// Return obj.
-	return obj as T;
+	return obj;
 }

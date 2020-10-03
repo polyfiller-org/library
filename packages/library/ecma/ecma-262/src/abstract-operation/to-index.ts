@@ -6,8 +6,6 @@ import {ToInteger} from "./to-integer";
  * The abstract operation ToIndex returns value argument converted to a numeric value if it is a
  * valid integer index value. This abstract operation functions as follows:
  * https://tc39.github.io/ecma262/#sec-toindex
- * @param {*} value
- * @returns {number}
  */
 export function ToIndex(value: unknown): number {
 	let index: number;

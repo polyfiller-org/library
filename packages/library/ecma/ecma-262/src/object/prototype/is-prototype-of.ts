@@ -7,7 +7,7 @@ import {SameValue} from "../../abstract-operation/same-value";
  * https://tc39.es/ecma262/#sec-object.prototype.isprototypeof
  */
 export const {isPrototypeOf: objectPrototypeIsPrototypeOf} = {
-	isPrototypeOf<T, V>(this: T, V: V): boolean {
+	isPrototypeOf<T, TV>(this: T, V: TV): boolean {
 		// If Type(V) is not Object, return false.
 		if (Type(V) !== "Object") return false;
 
@@ -17,7 +17,7 @@ export const {isPrototypeOf: objectPrototypeIsPrototypeOf} = {
 		// Repeat,
 		while (true) {
 			// Set V to ? V.[[GetPrototypeOf]]().
-			V = internals(V)["[[GetPrototypeOf]]"]() as V;
+			V = internals(V)["[[GetPrototypeOf]]"]() as TV;
 
 			// If V is null, return false.
 			if (V === null) return false;

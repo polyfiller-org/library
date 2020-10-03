@@ -7,7 +7,7 @@ import {DefinePropertyOrThrow} from "../abstract-operation/define-property-or-th
  * https://tc39.es/ecma262/#sec-object.defineproperty
  */
 export const {defineProperty: objectDefineProperty} = {
-	defineProperty<O>(O: O, P: PropertyKey, Attributes: PropertyDescriptor & ThisType<O>): O {
+	defineProperty<TO>(O: TO, P: PropertyKey, Attributes: PropertyDescriptor & ThisType<TO>): TO {
 		// If Type(O) is not Object, throw a TypeError exception.
 		if (Type(O) !== "Object") {
 			throw new TypeError(`Object.defineProperty called on non-object`);

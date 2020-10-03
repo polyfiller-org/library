@@ -5,8 +5,6 @@ import {Get} from "../../abstract-operation/get";
 
 /**
  * https://tc39.es/ecma262/#sec-arguments-exotic-objects-getownproperty-p
- * @param {PropertyKey} P
- * @private
  */
 export function __ArgumentsGetOwnProperty__(this: IArguments, P: PropertyKey) {
 	// Let args be the arguments object.

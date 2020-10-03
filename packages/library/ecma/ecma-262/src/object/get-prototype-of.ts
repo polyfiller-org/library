@@ -5,7 +5,7 @@ import {internals} from "../lib/internal-slot-map/internals";
  * https://tc39.es/ecma262/#sec-object.getprototypeof
  */
 export const {getPrototypeOf: objectGetPrototypeOf} = {
-	getPrototypeOf<O>(O: O) {
+	getPrototypeOf<TO>(O: TO) {
 		// Let obj be ? ToObject(O).
 		const obj = ToObject(O);
 

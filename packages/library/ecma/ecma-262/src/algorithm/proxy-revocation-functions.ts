@@ -6,7 +6,7 @@ import {isProxy} from "../abstract-operation/is-proxy";
  * A Proxy revocation function is an anonymous function that has the ability to invalidate a specific Proxy object.
  * Each Proxy revocation function has a [[RevocableProxy]] internal slot.
  * https://tc39.es/ecma262/#sec-proxy-revocation-functions
- * @returns {boolean}
+ * @returns
  * @constructor
  */
 export function ProxyRevocationFunctions(this: Function) {

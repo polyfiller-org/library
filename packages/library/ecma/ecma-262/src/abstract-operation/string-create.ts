@@ -8,8 +8,6 @@ import {__StringOwnPropertyKeys__} from "../internal-slot/string/own-property-ke
  * The abstract operation StringCreate with arguments value and prototype is used to specify the creation
  * of new String exotic objects.
  * https://tc39.es/ecma262/#sec-stringcreate
- * @param {string} value
- * @param {object} prototype
  */
 export function StringCreate(value: string, prototype: object | null = null): string {
 	// Assert: Type(value) is String.

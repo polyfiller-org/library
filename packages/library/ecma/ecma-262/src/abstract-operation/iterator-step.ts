@@ -8,8 +8,6 @@ import {IteratorComplete} from "./iterator-complete";
  * false indicating that the iterator has reached its end or the IteratorResult object if a next
  * value is available.
  * https://tc39.es/ecma262/#sec-iteratorstep
- * @param {IteratorRecord} iteratorRecord
- * @returns {boolean|IteratorResult<T>|Promise<IteratorResult<T>>}
  */
 export function IteratorStep<T>(iteratorRecord: IteratorRecord<T>): false | IteratorResult<T> | Promise<IteratorResult<T>> {
 	// Let result be ? IteratorNext(iteratorRecord).

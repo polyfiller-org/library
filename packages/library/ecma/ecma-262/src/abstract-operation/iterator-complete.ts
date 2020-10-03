@@ -4,8 +4,6 @@ import {Get} from "./get";
 
 /**
  * https://tc39.es/ecma262/#sec-iteratorcomplete
- * @param {IteratorResult<T>} iterResult
- * @returns {boolean}
  */
 export function IteratorComplete<T>(iterResult: IteratorResult<T>): boolean {
 	// Assert: Type(iterResult) is Object.

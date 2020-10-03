@@ -8,6 +8,7 @@ import {MATH_2_TO_THE_POWER_OF_53_MINUS_1} from "../../constant/math-constant";
  * https://tc39.es/ecma262/#sec-array.prototype.push
  */
 export const {push: arrayPrototypePush} = {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	push<T>(this: T[], _item: T): number {
 		// Let O be ? ToObject(this value).
 		const O = ToObject(this);

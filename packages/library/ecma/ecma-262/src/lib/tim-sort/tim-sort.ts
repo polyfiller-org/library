@@ -1,5 +1,6 @@
 import {ToString} from "../../abstract-operation/to-string";
 import {SortCompare} from "../../abstract-operation/sort-compare";
+import {safeHasOwnProperty} from "../../util/safe-has-own-property";
 
 /**
  * This TimSort implementation is a TypeScript adaption of: https://raw.githubusercontent.com/mziccard/node-timsort/master/src/timsort.js
@@ -32,9 +33,6 @@ const POWERS_OF_TEN = [1, 1e1, 1e2, 1e3, 1e4, 1e5, 1e6, 1e7, 1e8, 1e9];
 
 /**
  * Estimate the logarithm base 10 of a small integer.
- *
- * @param {number} x - The integer to estimate the logarithm of.
- * @return {number} - The estimated logarithm of the integer.
  */
 function log10(x: number): number {
 	if (x < 1e5) {
@@ -62,11 +60,6 @@ function log10(x: number): number {
 
 /**
  * Default alphabetical comparison of items.
- *
- * @param {string|object|number} a - First element to compare.
- * @param {string|object|number} b - Second element to compare.
- * @return {number} - A positive number if a.toString() > b.toString(), a
- * negative number if .toString() < b.toString(), 0 otherwise.
  */
 function alphabeticalCompare<T>(a: T | number, b: T | number): number {
 	const aS = ToString(a);
@@ -115,8 +108,8 @@ function alphabeticalCompare<T>(a: T | number, b: T | number): number {
 		return a < b ? -1 : 1;
 	}
 
-	let aStr = ToString(a);
-	let bStr = ToString(b);
+	const aStr = ToString(a);
+	const bStr = ToString(b);
 
 	if (aStr === bStr) {
 		return 0;
@@ -180,7 +173,7 @@ function reverseRun<T>(array: T[], lo: number, hi: number) {
 	hi--;
 
 	while (lo < hi) {
-		let t = array[lo];
+		const t = array[lo];
 		array[lo++] = array[hi];
 		array[hi--] = t;
 	}
@@ -192,7 +185,7 @@ function binaryInsertionSort<T>(array: T[], lo: number, hi: number, start: numbe
 	}
 
 	for (; start < hi; start++) {
-		let pivot = array[start];
+		const pivot = array[start];
 
 		// Ranges of the array where pivot belongs
 		let left = lo;
@@ -203,7 +196,7 @@ function binaryInsertionSort<T>(array: T[], lo: number, hi: number, start: numbe
 		 *   pivot <  array[i] for i in  in [right, start)
 		 */
 		while (left < right) {
-			let mid = (left + right) >>> 1;
+			const mid = (left + right) >>> 1;
 
 			if (sortCompareWithHoles(pivot, array[mid], compare) < 0) {
 				right = mid;
@@ -281,7 +274,7 @@ function gallopLeft<T>(value: T, array: T[], start: number, length: number, hint
 		}
 
 		// Make offsets relative to start
-		let tmp = lastOffset;
+		const tmp = lastOffset;
 		lastOffset = hint - offset;
 		offset = hint - tmp;
 	}
@@ -294,7 +287,7 @@ function gallopLeft<T>(value: T, array: T[], start: number, length: number, hint
 	 */
 	lastOffset++;
 	while (lastOffset < offset) {
-		let m = lastOffset + ((offset - lastOffset) >>> 1);
+		const m = lastOffset + ((offset - lastOffset) >>> 1);
 
 		if (sortCompareWithHoles(value, array[start + m], compare) > 0) {
 			lastOffset = m + 1;
@@ -327,7 +320,7 @@ function gallopRight<T>(value: T, array: T[], start: number, length: number, hin
 		}
 
 		// Make offsets relative to start
-		let tmp = lastOffset;
+		const tmp = lastOffset;
 		lastOffset = hint - offset;
 		offset = hint - tmp;
 
@@ -356,7 +349,7 @@ function gallopRight<T>(value: T, array: T[], start: number, length: number, hin
 	lastOffset++;
 
 	while (lastOffset < offset) {
-		let m = lastOffset + ((offset - lastOffset) >>> 1);
+		const m = lastOffset + ((offset - lastOffset) >>> 1);
 
 		if (sortCompareWithHoles(value, array[start + m], compare) < 0) {
 			offset = m;
@@ -376,7 +369,7 @@ class TimSort<T> {
 	private readonly stackLength: number = 0;
 	private readonly runStart: number[];
 	private readonly runLength: number[];
-	private stackSize: number = 0;
+	private stackSize = 0;
 
 	constructor(private readonly array: T[], private readonly compare: CompareFunction<T> | undefined) {
 		this.length = array.length;
@@ -393,13 +386,13 @@ class TimSort<T> {
 		this.runLength = new Array(this.stackLength);
 	}
 
-	public pushRun(runStart: number, runLength: number): void {
+	pushRun(runStart: number, runLength: number): void {
 		this.runStart[this.stackSize] = runStart;
 		this.runLength[this.stackSize] = runLength;
 		this.stackSize += 1;
 	}
 
-	public mergeRuns(): void {
+	mergeRuns(): void {
 		while (this.stackSize > 1) {
 			let n = this.stackSize - 2;
 
@@ -414,7 +407,7 @@ class TimSort<T> {
 		}
 	}
 
-	public forceMergeRuns(): void {
+	forceMergeRuns(): void {
 		while (this.stackSize > 1) {
 			let n = this.stackSize - 2;
 
@@ -427,12 +420,12 @@ class TimSort<T> {
 	}
 
 	private mergeAt(i: number): void {
-		let compare = this.compare;
-		let array = this.array;
+		const compare = this.compare;
+		const array = this.array;
 
 		let start1 = this.runStart[i];
 		let length1 = this.runLength[i];
-		let start2 = this.runStart[i + 1];
+		const start2 = this.runStart[i + 1];
 		let length2 = this.runLength[i + 1];
 
 		this.runLength[i] = length1 + length2;
@@ -448,7 +441,7 @@ class TimSort<T> {
 		 * Find where the first element in the second run goes in run1. Previous
 		 * elements in run1 are already in place
 		 */
-		let k = gallopRight(array[start2], array, start1, length1, 0, compare);
+		const k = gallopRight(array[start2], array, start1, length1, 0, compare);
 		start1 += k;
 		length1 -= k;
 
@@ -478,9 +471,9 @@ class TimSort<T> {
 	}
 
 	private mergeLow(start1: number, length1: number, start2: number, length2: number): void {
-		let compare = this.compare;
-		let array = this.array;
-		let tmp = this.tmp;
+		const compare = this.compare;
+		const array = this.array;
+		const tmp = this.tmp;
 		let i = 0;
 
 		for (i = 0; i < length1; i++) {
@@ -622,9 +615,9 @@ class TimSort<T> {
 	}
 
 	private mergeHigh(start1: number, length1: number, start2: number, length2: number): void {
-		let compare = this.compare;
-		let array = this.array;
-		let tmp = this.tmp;
+		const compare = this.compare;
+		const array = this.array;
+		const tmp = this.tmp;
 		let i = 0;
 
 		for (i = 0; i < length2; i++) {
@@ -808,7 +801,7 @@ function replaceHoles<T>(array: T[]): void {
 	}
 }
 
-export function timSort<T>(array: T[], comparefn: CompareFunction<T> = alphabeticalCompare, lo: number = 0, hi: number = array.length): void {
+export function timSort<T>(array: T[], comparefn: CompareFunction<T> = alphabeticalCompare, lo = 0, hi: number = array.length): void {
 	let remaining = hi - lo;
 
 	// The array is already sorted
@@ -820,7 +813,7 @@ export function timSort<T>(array: T[], comparefn: CompareFunction<T> = alphabeti
 
 	// Loop through the array once to spot holes
 	for (let i = 0; i < array.length; i++) {
-		if (!array.hasOwnProperty(ToString(i))) {
+		if (!safeHasOwnProperty(array, ToString(i))) {
 			hasHole = true;
 			array[i] = (HOLE_SYMBOL as unknown) as T;
 		}
@@ -835,9 +828,9 @@ export function timSort<T>(array: T[], comparefn: CompareFunction<T> = alphabeti
 		return;
 	}
 
-	let ts = new TimSort(array, comparefn);
+	const ts = new TimSort(array, comparefn);
 
-	let minRun = minRunLength(remaining);
+	const minRun = minRunLength(remaining);
 
 	do {
 		runLength = makeAscendingRun(array, lo, hi, comparefn);

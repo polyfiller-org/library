@@ -44,8 +44,8 @@ export function observe(selector: string, fixer: ((target: ExtendedHTMLImageElem
 				if (currentMutationObserver == null) {
 					// Hook up a MutationObserver that observes the relevant attributes for changes
 					// that will require reapplying fixes
-					const mutationObserver = new MutationObserver(entries => {
-						for (const entry of entries) {
+					const mutationObserver = new MutationObserver(mutationEntries => {
+						for (const entry of mutationEntries) {
 							if (entry.attributeName == null) continue;
 
 							// If at least one attribute received a new value that it didn't have previously, fix the image again
@@ -83,8 +83,8 @@ export function observe(selector: string, fixer: ((target: ExtendedHTMLImageElem
 
 				if (currentComputedStyleObserver == null) {
 					// Hook up a listener for changes to computed styles as these should trigger recalculation
-					const computedStyleObserver = new ComputedStyleObserver(entries => {
-						if (entries.length < 1) return;
+					const computedStyleObserver = new ComputedStyleObserver(computedStyleEntries => {
+						if (computedStyleEntries.length < 1) return;
 						debouncedFixer(target);
 					});
 					computedStyleObserver.observe(target, {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import {category, property, script, scriptExtensions} from "../data/unicode";
 import {CharSet} from "./char-set";
 import {propertyAliases} from "./unicode-property-aliases-ecmascript";

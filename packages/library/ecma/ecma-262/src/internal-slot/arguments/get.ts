@@ -6,11 +6,8 @@ import {OrdinaryGet} from "../../abstract-operation/ordinary-get";
 
 /**
  * https://tc39.es/ecma262/#sec-arguments-exotic-objects-get-p-receiver
- * @param {PropertyKey} P
- * @param {Receiver} Receiver
- * @private
  */
-export function __ArgumentsGet__<Receiver>(this: IArguments, P: PropertyKey, Receiver: Receiver) {
+export function __ArgumentsGet__<TReceiver>(this: IArguments, P: PropertyKey, Receiver: TReceiver) {
 	// Let args be the arguments object.
 	const args = this;
 

@@ -5,16 +5,13 @@ const NATIVE_IS_ARRAY = Array.isArray?.toString().indexOf("[native code]") >= 0 
 
 /**
  * https://tc39.es/ecma262/#sec-isarray
- * @param {T[]|T} argument
- * @param {boolean} [_skipRevokedProxyCheck=false]
- * @return {T}
  */
 export function IsArray<T>(argument: readonly T[], _skipRevokedProxyCheck?: boolean): argument is readonly T[];
 export function IsArray<T>(argument: T[], _skipRevokedProxyCheck?: boolean): argument is T[];
 export function IsArray<T>(argument: readonly T[] | T[], _skipRevokedProxyCheck?: boolean): argument is readonly T[] | T[];
 export function IsArray<T>(argument: readonly T[] | T[] | T, _skipRevokedProxyCheck?: boolean): argument is readonly T[] | T[];
 export function IsArray<T>(argument: T[] | T, _skipRevokedProxyCheck?: boolean): argument is T[];
-export function IsArray<T>(argument: T[] | T, _skipRevokedProxyCheck: boolean = false): argument is T[] {
+export function IsArray<T>(argument: T[] | T, _skipRevokedProxyCheck = false): argument is T[] {
 	if (NATIVE_IS_ARRAY != null) {
 		return NATIVE_IS_ARRAY(argument);
 	}

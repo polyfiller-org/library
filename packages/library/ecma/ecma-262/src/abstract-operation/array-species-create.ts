@@ -16,8 +16,6 @@ import {makeList} from "../lib/list/list";
  * The abstract operation ArraySpeciesCreate with arguments originalArray and length is used to specify the
  * creation of a new Array object using a constructor function that is derived from originalArray.
  * https://tc39.es/ecma262/#sec-arrayspeciescreate
- * @param {T[]} originalArray
- * @param {number} length
  */
 export function ArraySpeciesCreate<T>(originalArray: T[], length: number): T[] {
 	// Assert: length is an integer Number ≥ 0.

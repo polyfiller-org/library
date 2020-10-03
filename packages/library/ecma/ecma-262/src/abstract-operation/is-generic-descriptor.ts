@@ -4,8 +4,6 @@ import {InternalPropertyDescriptor} from "../type/internal-property-descriptor";
 
 /**
  * http://www.ecma-international.org/ecma-262/10.0/index.html#sec-isgenericdescriptor
- * @param {PropertyDescriptor} Desc
- * @returns {boolean}
  */
 export function IsGenericDescriptor(Desc?: InternalPropertyDescriptor): boolean {
 	// If Desc is undefined, return false.

@@ -4,10 +4,8 @@ const NATIVE_GET_PROTOTYPE_OF = Object.getPrototypeOf != null && Object.getProto
 
 /**
  * http://www.ecma-international.org/ecma-262/10.0/index.html#sec-ordinarygetprototypeof
- * @param {O} O
- * @returns {Object}
  */
-export function OrdinaryGetPrototypeOf<O extends {}>(O: O): Object | null {
+export function OrdinaryGetPrototypeOf<TO extends {}>(O: TO): Object | null {
 	let prototype: Object | null;
 
 	// If Object.getPrototypeOf is supported, use it directly

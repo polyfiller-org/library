@@ -12,9 +12,9 @@ import {makeList} from "../lib/list/list";
 export function CreateAsyncFromSyncIterator<T>(syncIteratorRecord: IteratorRecord<T>): IteratorRecord<T> {
 	const intrinsics = getCurrentIntrinsics();
 	// Let asyncIterator be ! ObjectCreate(%AsyncFromSyncIteratorPrototype%, « [[SyncIteratorRecord]] »).
-	const asyncIterator = ObjectCreate(intrinsics["[[%AsyncFromSyncIteratorPrototype%]]"], makeList("[[SyncIteratorRecord]]")) as AsyncIterator<T> & {
+	const asyncIterator: AsyncIterator<T> & {
 		"[[SyncIteratorRecord]]": IteratorRecord<T>;
-	};
+	} = ObjectCreate(intrinsics["[[%AsyncFromSyncIteratorPrototype%]]"], makeList("[[SyncIteratorRecord]]"));
 
 	// Set asyncIterator.[[SyncIteratorRecord]] to syncIteratorRecord.
 	asyncIterator["[[SyncIteratorRecord]]"] = syncIteratorRecord;

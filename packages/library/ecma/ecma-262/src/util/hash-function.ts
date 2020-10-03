@@ -1,7 +1,5 @@
 /**
  * The Hash function to use with HashTables and HashSets
- * @param {Key} key
- * @returns {number}
  */
 export function hashFunction<Key>(key: Key): number {
 	let hashValue = 0;

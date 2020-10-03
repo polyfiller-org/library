@@ -60,7 +60,7 @@ export const escape = (c: number, inCharClass = false): string => {
 	}
 
 	// Control character uses hex escape.
-	if (c <= 0x1f || (0x7f <= c && c <= 0xff)) {
+	if (c <= 0x1f || (c >= 0x7f && c <= 0xff)) {
 		return `\\x${c.toString(16).padStart(2, "0")}`;
 	}
 

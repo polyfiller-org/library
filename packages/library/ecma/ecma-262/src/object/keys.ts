@@ -6,7 +6,7 @@ import {CreateArrayFromList} from "../abstract-operation/create-array-from-list"
  * https://tc39.es/ecma262/#sec-object.keys
  */
 export const {keys: objectKeys} = {
-	keys<O>(O: O) {
+	keys<TO>(O: TO) {
 		// Let obj be ? ToObject(O).
 		const obj = ToObject(O);
 

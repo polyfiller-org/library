@@ -1,6 +1,6 @@
 /**
  * https://tc39.es/ecma262/#table-18
- * @return {*}
+ * @return
  * @constructor
  */
 export function GlobalThisValue(): typeof globalThis {

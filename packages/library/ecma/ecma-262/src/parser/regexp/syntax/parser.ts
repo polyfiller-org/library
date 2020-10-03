@@ -20,16 +20,16 @@ const isAssertion = (n: Node): boolean => {
 const isSequenceDelimiter = (c: string): boolean => c === "|" || c === ")" || c === "";
 
 /** Check the character is digit. */
-const isDigit = (c: string): boolean => "0" <= c && c <= "9";
+const isDigit = (c: string): boolean => c >= "0" && c <= "9";
 
 /** Check the character is hex digit. */
-const isHexDigit = (c: string): boolean => isDigit(c) || ("a" <= c && c <= "f") || ("A" <= c && c <= "F");
+const isHexDigit = (c: string): boolean => isDigit(c) || (c >= "a" && c <= "f") || (c >= "A" && c <= "F");
 
 /** Check the character has meaning in pattern. */
 const isSyntax = (c: string): boolean => c !== "" && "^$\\.*+?()[]{}|".includes(c);
 
 /** Check the character can use for control escape. */
-const isControl = (c: string): boolean => ("a" <= c && c <= "z") || ("A" <= c && c <= "Z");
+const isControl = (c: string): boolean => (c >= "a" && c <= "z") || (c >= "A" && c <= "Z");
 
 /** Check the character is part of Unicode property name. */
 const isUnicodeProperty = (c: string): boolean => isControl(c) || c === "_";
@@ -38,20 +38,20 @@ const isUnicodeProperty = (c: string): boolean => isControl(c) || c === "_";
 const isUnicodePropertyValue = (c: string): boolean => isUnicodeProperty(c) || isDigit(c);
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const idStart = new CharSet(property.get("ID_Start")!);
+const idStart = new CharSet(property.get("ID_Start"));
 /** Check the character is identifier start character. */
 const isIDStart = (c: string): boolean => c === "$" || c === "_" || idStart.has(c.codePointAt(0) ?? -1);
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const idContinue = new CharSet(property.get("ID_Continue")!);
+const idContinue = new CharSet(property.get("ID_Continue"));
 /** Check the character is identifier part character. */
 const isIDPart = (c: string): boolean => c === "$" || c === "\u200C" || c === "\u200D" || idContinue.has(c.codePointAt(0) ?? -1);
 
 /** Type of repeat quantifier. */
-type RepeatQuantifier = {
+interface RepeatQuantifier {
 	min: number;
 	max: number | null;
-};
+}
 
 /**
  * `Parser` is parser for regular expression pattern.
@@ -64,9 +64,9 @@ type RepeatQuantifier = {
  */
 export class Parser {
 	/** The source pattern string to parse. */
-	private source: string;
+	private readonly source: string;
 	/** The flags string. */
-	private flags: string;
+	private readonly flags: string;
 
 	/* Parsed flags. */
 	private flagSet!: FlagSet;
@@ -76,12 +76,12 @@ export class Parser {
 	 *
 	 * See https://www.ecma-international.org/ecma-262/10.0/index.html#sec-regular-expressions-patterns.
 	 */
-	private additional: boolean;
+	private readonly additional: boolean;
 
 	/** Precalculated number of capture group parens. */
 	private captureParens = 0;
 	/** Precalculated `Map` associate from capture group name to its index. */
-	private names: Map<string, number> = new Map();
+	private readonly names: Map<string, number> = new Map();
 
 	/** Is the `flagSet` has `unicode`? */
 	private get unicode(): boolean {
@@ -100,7 +100,7 @@ export class Parser {
 	}
 
 	/** Run this parser. */
-	public parse(): Pattern {
+	parse(): Pattern {
 		this.flagSet = this.preprocessFlags();
 		this.preprocessCaptures();
 
@@ -754,20 +754,20 @@ export class Parser {
 		if (this.additional && !this.unicode) {
 			const octal = this.pos;
 			const c0 = this.current();
-			if ("0" <= c0 && c0 <= "3") {
+			if (c0 >= "0" && c0 <= "3") {
 				this.pos++;
 				const c1 = this.current();
-				if ("0" <= c1 && c1 <= "7") {
+				if (c1 >= "0" && c1 <= "7") {
 					this.pos++;
 					const c2 = this.current();
-					if ("0" <= c2 && c2 <= "7") {
+					if (c2 >= "0" && c2 <= "7") {
 						this.pos++;
 					}
 				}
-			} else if ("4" <= c0 && c0 <= "7") {
+			} else if (c0 >= "4" && c0 <= "7") {
 				this.pos++;
 				const c1 = this.current();
-				if ("0" <= c1 && c1 <= "7") {
+				if (c1 >= "0" && c1 <= "7") {
 					this.pos++;
 				}
 			}
@@ -839,7 +839,7 @@ export class Parser {
 			}
 			this.pos++; // skip '{'
 			const c = this.parseHexDigits();
-			if (c < 0 || 0x110000 <= c || this.current() !== "}") {
+			if (c < 0 || c >= 0x110000 || this.current() !== "}") {
 				throw new RegExpSyntaxError("invalid Unicode escape");
 			}
 			this.pos++; // skip '}'
@@ -860,10 +860,10 @@ export class Parser {
 			return s;
 		}
 
-		if (lead && "\uD800" <= s && s <= "\uDBFF" && this.current() === "\\") {
+		if (lead && s >= "\uD800" && s <= "\uDBFF" && this.current() === "\\") {
 			const save = this.pos;
 			const t = this.tryParseUnicodeEscape(false);
-			if ("\uDC00" <= t && t <= "\uDFFF") {
+			if (t >= "\uDC00" && t <= "\uDFFF") {
 				return s + t;
 			}
 			this.pos = save;
@@ -904,8 +904,8 @@ export class Parser {
 				}
 				this.pos++; // skip '{'
 
-				const property = this.parseUnicodePropertyName();
-				if (property === "") {
+				const unicodePropertyName = this.parseUnicodePropertyName();
+				if (unicodePropertyName === "") {
 					throw new RegExpSyntaxError("invalid Unicode property name");
 				}
 
@@ -914,7 +914,7 @@ export class Parser {
 					return {
 						type: "EscapeClass",
 						kind: "unicode_property",
-						property,
+						property: unicodePropertyName,
 						invert,
 						range: [begin, this.pos]
 					};
@@ -938,7 +938,7 @@ export class Parser {
 				return {
 					type: "EscapeClass",
 					kind: "unicode_property_value",
-					property,
+					property: unicodePropertyName,
 					value,
 					invert,
 					range: [begin, this.pos]

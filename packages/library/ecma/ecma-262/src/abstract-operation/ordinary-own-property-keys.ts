@@ -4,6 +4,7 @@ import {IsArrayIndex} from "./is-array-index";
 import {Type} from "./type";
 import {List, makeList} from "../lib/list/list";
 import {IsArguments} from "./is-arguments";
+import {safeHasOwnProperty} from "../util/safe-has-own-property";
 
 const NATIVE_OBJECT_GET_OWN_PROPERTY_SYMBOLS = Object.getOwnPropertySymbols?.toString().indexOf("[native code]") >= 0 ? Object.getOwnPropertySymbols : undefined;
 
@@ -11,10 +12,8 @@ const NATIVE_OBJECT_GET_OWN_PROPERTY_NAMES = Object.getOwnPropertyNames?.toStrin
 
 /**
  * https://tc39.es/ecma262/#sec-ordinaryownpropertykeys
- * @param {O} O
- * @returns {List<PropertyKey>}
  */
-export function OrdinaryOwnPropertyKeys<O extends object>(O: O): List<PropertyKey> {
+export function OrdinaryOwnPropertyKeys<TO>(O: TO): List<PropertyKey> {
 	// Let keys be a new empty List.
 	const keys = makeList<PropertyKey>();
 
@@ -31,8 +30,8 @@ export function OrdinaryOwnPropertyKeys<O extends object>(O: O): List<PropertyKe
 	// We will only be able to iterate over enumerable keys
 	else {
 		// For each own property key P of O that is an array index, in ascending numeric index order, do
-		for (let key in O) {
-			if (!Object.prototype.hasOwnProperty.call(O, key)) continue;
+		for (const key in O) {
+			if (!safeHasOwnProperty(O, key)) continue;
 			const keyAsNumber = ToNumber(key);
 
 			if (IsArrayIndex(keyAsNumber)) {
@@ -43,8 +42,8 @@ export function OrdinaryOwnPropertyKeys<O extends object>(O: O): List<PropertyKe
 
 		// For each own property key P of O that is a String but is not an array index,
 		// in ascending chronological order of property creation, do
-		for (let P in O) {
-			if (!Object.prototype.hasOwnProperty.call(O, P)) continue;
+		for (const P in O) {
+			if (!safeHasOwnProperty(O, P)) continue;
 			if (Type(P) !== "String") continue;
 
 			const keyAsNumber = ToNumber(P);

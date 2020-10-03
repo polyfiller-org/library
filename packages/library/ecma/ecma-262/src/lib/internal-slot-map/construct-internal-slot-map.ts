@@ -11,9 +11,6 @@ export function constructInternalSlotMap<Type extends object, InternalSlots>(): 
 	return {
 		/**
 		 * Sets the value for a property in an internal slot for an instance
-		 * @param {Type} instance
-		 * @param {key} property
-		 * @param {InternalSlots[Key]} value
 		 */
 		setInternalSlot<Key extends keyof InternalSlots>(instance: Type, property: Key, value: InternalSlots[Key]): void {
 			let record = map.get(instance);
@@ -28,9 +25,6 @@ export function constructInternalSlotMap<Type extends object, InternalSlots>(): 
 
 		/**
 		 * Gets the value associated with the given property on the internal slots of the given instance
-		 * @param {Type} instance
-		 * @param {Key} property
-		 * @returns{InternalSlots[Key]}
 		 */
 		getInternalSlot<Key extends keyof InternalSlots>(instance: Type, property: Key): InternalSlots[Key] {
 			const record = map.get(instance);
@@ -43,9 +37,6 @@ export function constructInternalSlotMap<Type extends object, InternalSlots>(): 
 
 		/**
 		 * Returns true if the given property on the internal slots of the given instance exists
-		 * @param {Type} instance
-		 * @param {Key} property
-		 * @returns {boolean}
 		 */
 		hasInternalSlot<Key extends keyof InternalSlots>(instance: Type, property: Key): boolean {
 			const record = map.get(instance);

@@ -57,7 +57,7 @@ export function setInternals<T extends RegExp>(argument: T, kind: "regexp", prop
 export function setInternals<T extends string>(argument: T, kind: "arraybuffer", propertyValues: Partial<ArrayBufferInternalProperties>): Internals<ArrayBufferInternals>;
 export function setInternals<T extends string>(argument: T, kind: "string", propertyValues: Partial<StringInternalProperties>): Internals<StringInternals>;
 export function setInternals<T extends symbol>(argument: T, kind: "symbol", propertyValues: Partial<SymbolInternalProperties>): Internals<SymbolInternals>;
-export function setInternals<T extends Symbol>(argument: T, kind: "symbol-object", propertyValues: Partial<SymbolObjectInternalProperties>): Internals<SymbolInternals>;
+export function setInternals<T extends symbol>(argument: T, kind: "symbol-object", propertyValues: Partial<SymbolObjectInternalProperties>): Internals<SymbolInternals>;
 export function setInternals<T extends Function>(argument: T, kind: "function", propertyValues: Partial<FunctionInternalProperties>): Internals<FunctionInternals>;
 export function setInternals<T extends object>(argument: T, kind: "proxy", propertyValues: Partial<ProxyInternalProperties>): Internals<ProxyInternals>;
 export function setInternals<T extends Object>(argument: T, kind: "object", propertyValues: Partial<ObjectInternalProperties>): Internals<ObjectInternals>;
@@ -214,8 +214,8 @@ export function setInternals<T>(
 export function internals<Value>(argument: Set<Value>): Internals<ProxyInternals & SetInternals<Value>>;
 export function internals<Key, Value>(argument: Map<Key, Value>): Internals<ProxyInternals & MapInternals<Key, Value>>;
 export function internals<Key, Value>(argument: MapIteratorPrototype<Key, Value>): Internals<ProxyInternals & MapIteratorPrototypeInternals<Key, Value>>;
-export function internals<T>(argument: StringIteratorPrototype): Internals<ProxyInternals & StringIteratorPrototypeInternals>;
-export function internals<T>(argument: RegExpStringIteratorPrototype): Internals<ProxyInternals & RegExpStringIteratorPrototypeInternals>;
+export function internals(argument: StringIteratorPrototype): Internals<ProxyInternals & StringIteratorPrototypeInternals>;
+export function internals(argument: RegExpStringIteratorPrototype): Internals<ProxyInternals & RegExpStringIteratorPrototypeInternals>;
 export function internals<T>(argument: SetIteratorPrototype<T>): Internals<ProxyInternals & SetIteratorPrototypeInternals<T>>;
 export function internals<T>(argument: ArrayIteratorPrototype<T>): Internals<ProxyInternals & ArrayIteratorPrototypeInternals<T>>;
 export function internals<T>(
@@ -232,12 +232,11 @@ export function internals<T>(
 >;
 export function internals(argument: TypedArray): Internals<ProxyInternals & TypedArrayInternals>;
 export function internals<T>(argument: TypedArray | T[]): Internals<ProxyInternals & (TypedArrayInternals | ArrayInternals)>;
-export function internals<T extends symbol>(argument: T): Internals<SymbolInternals>;
-export function internals<T extends Symbol>(argument: T): Internals<SymbolObjectInternals>;
+export function internals<T extends symbol>(argument: T): Internals<SymbolInternals&SymbolObjectInternals>;
 export function internals<T extends RegExp>(argument: T): Internals<RegExpInternals>;
-export function internals<T extends ArrayBuffer>(argument: ArrayBuffer): Internals<ArrayBufferInternals>;
+export function internals(argument: ArrayBuffer): Internals<ArrayBufferInternals>;
 export function internals<T extends string>(argument: T): Internals<StringInternals>;
-export function internals<T>(argument: string | RegExp): Internals<StringInternals | RegExpInternals>;
+export function internals(argument: string | RegExp): Internals<StringInternals | RegExpInternals>;
 export function internals<T extends Function>(argument: T): Internals<ProxyInternals & FunctionInternals>;
 export function internals<T extends IArguments>(argument: T): Internals<ProxyInternals & ArgumentsInternals>;
 export function internals<T extends U[], U>(argument: T): Internals<ProxyInternals & ArrayInternals>;
@@ -271,7 +270,7 @@ export function internals<T>(
 		>;
 	}
 
-	let kind = (() => {
+	const kind = (() => {
 		if (IsArray(argument, true)) {
 			return "array" as const;
 		} else if (IsArguments(argument)) {

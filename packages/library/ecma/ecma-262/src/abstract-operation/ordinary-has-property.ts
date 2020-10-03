@@ -4,11 +4,8 @@ import {internals} from "../lib/internal-slot-map/internals";
 
 /**
  * http://www.ecma-international.org/ecma-262/10.0/index.html#sec-ordinaryhasproperty
- * @param {O} O
- * @param {PropertyKey} P
- * @returns {boolean}
  */
-export function OrdinaryHasProperty<O extends object>(O: O, P: PropertyKey): boolean {
+export function OrdinaryHasProperty<TO extends object>(O: TO, P: PropertyKey): boolean {
 	// Assert: IsPropertyKey(P) is true.
 	assert(IsPropertyKey(P));
 

@@ -14,9 +14,6 @@ import {Intrinsics} from "../intrinsic/intrinsics";
  * Note that this implementation slightly alters the original in that rather than taking the identifier for the intrinsicDefaultProto,
  * the actual intrinsicDefaultProto is provided for tree-shaking purposes
  * https://tc39.es/ecma262/#sec-getprototypefromconstructor
- * @param {Constructor} constructor
- * @param {R} intrinsicDefaultProto
- * @returns {R}
  */
 export function GetPrototypeFromConstructor<C extends Constructor, R extends IntrinsicObjectName, Proto extends Intrinsics[typeof intrinsicObjectNameToIntrinsicPropertyKey[R]]>(
 	constructor: C,

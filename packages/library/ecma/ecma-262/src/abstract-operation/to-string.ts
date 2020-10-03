@@ -7,8 +7,6 @@ import {HINT_STRING} from "../hint/string";
 /**
  * The abstract operation ToString converts argument to a value of type String
  * https://tc39.github.io/ecma262/#sec-tostring
- * @param {*} argument
- * @return {string}
  */
 export function ToString(argument: number): StringifiedIndex;
 export function ToString(argument: unknown): string;

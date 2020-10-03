@@ -7,8 +7,6 @@ import {MATH_2_TO_THE_POWER_OF_8} from "../constant/math-constant";
  * The abstract operation ToUint8 converts argument to one of 28 integer values
  * in the range 0 through 255, inclusive.
  * https://tc39.es/ecma262/#sec-touint8
- * @param {*} argument
- * @returns {number}
  */
 export function ToUint8(argument: unknown): number {
 	// Let number be ? ToNumber(argument).

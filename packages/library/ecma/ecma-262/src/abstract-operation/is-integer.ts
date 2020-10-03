@@ -4,8 +4,6 @@ import {SameValue} from "./same-value";
 /**
  * The abstract operation IsInteger determines if argument is a finite integer numeric value.
  * https://tc39.es/ecma262/#sec-isinteger
- * @param {T} argument
- * @return {argument is T}
  */
 export function IsInteger<T extends number>(argument: T): argument is T;
 export function IsInteger(argument: unknown): argument is number;

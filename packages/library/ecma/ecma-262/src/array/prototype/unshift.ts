@@ -12,6 +12,7 @@ import {MATH_2_TO_THE_POWER_OF_53_MINUS_1} from "../../constant/math-constant";
  * https://tc39.es/ecma262/#sec-array.prototype.unshift
  */
 export const {unshift: arrayPrototypeUnshift} = {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	unshift<T>(this: T[], _item: T): number {
 		// Let O be ? ToObject(this value).
 		const O = ToObject(this);

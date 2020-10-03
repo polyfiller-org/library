@@ -10,6 +10,7 @@ import {makeList} from "../lib/list/list";
 import {OrdinaryDefineOwnProperty} from "../abstract-operation/ordinary-define-own-property";
 import {getMapIndexes} from "../util/get-map-indexes";
 import {NATIVE_SYMBOL_TO_STRING_TAG} from "../symbol/native/native";
+import {safeHasOwnProperty} from "../util/safe-has-own-property";
 
 export interface MapIteratorPrototype<Key = unknown, Value = unknown> {
 	next(value: [Key, Value]): IteratorResult<Key | Value | [Key, Value]>;
@@ -20,7 +21,7 @@ export interface MapIteratorPrototype<Key = unknown, Value = unknown> {
  */
 export function $MapIteratorPrototype$(realm: Realm) {
 	// has a [[Prototype]] internal slot whose value is %IteratorPrototype%.
-	const proto = ObjectCreate(realm["[[Intrinsics]]"]["[[%IteratorPrototype%]]"]) as MapIteratorPrototype;
+	const proto = ObjectCreate<MapIteratorPrototype>(realm["[[Intrinsics]]"]["[[%IteratorPrototype%]]"]);
 	proto.next = function <Key, Value>(this: MapIteratorPrototype<Key, Value>) {
 		let result: Key | Value | [Key, Value];
 		// Let O be the this value.
@@ -64,7 +65,7 @@ export function $MapIteratorPrototype$(realm: Realm) {
 
 		while (index < keys.length) {
 			// Let e be the Record { [[Key]], [[Value]] } that is the value of entries[index].
-			const key = Object.prototype.hasOwnProperty.call(keys, index) ? keys.get(index) : undefined;
+			const key = safeHasOwnProperty(keys, index) ? keys.get(index) : undefined;
 
 			// Set index to index + 1.
 			index = index + 1;

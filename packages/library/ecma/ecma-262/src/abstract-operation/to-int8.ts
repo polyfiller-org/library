@@ -7,8 +7,6 @@ import {MATH_2_TO_THE_POWER_OF_7, MATH_2_TO_THE_POWER_OF_8} from "../constant/ma
  * The abstract operation ToInt8 converts argument to one of 28 integer values in the
  * range -128 through 127, inclusive.
  * https://tc39.es/ecma262/#sec-toint8
- * @param {*} argument
- * @returns {number}
  */
 export function ToInt8(argument: unknown): number {
 	// Let number be ? ToNumber(argument).

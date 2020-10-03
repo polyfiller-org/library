@@ -9,11 +9,8 @@ const NATIVE_SET_PROTOTYPE_OF = Object.setPrototypeOf?.toString().indexOf("[nati
 
 /**
  * https://tc39.es/ecma262/#sec-ordinarysetprototypeof
- * @param {O} O
- * @param {object|null} V
- * @returns {boolean}
  */
-export function OrdinarySetPrototypeOf<O extends {}>(O: O, V: {} | null): boolean {
+export function OrdinarySetPrototypeOf<TO extends {}>(O: TO, V: {} | null): boolean {
 	// If Object.getPrototypeOf is supported, use it directly
 	if (NATIVE_SET_PROTOTYPE_OF != null) {
 		NATIVE_SET_PROTOTYPE_OF(O, V);

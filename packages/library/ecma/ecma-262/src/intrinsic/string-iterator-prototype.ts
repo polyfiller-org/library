@@ -16,7 +16,7 @@ export interface StringIteratorPrototype {
  * https://tc39.es/ecma262/#sec-%stringiteratorprototype%-object
  */
 export function $StringIteratorPrototype$(realm: Realm): StringIteratorPrototype {
-	const proto = ObjectCreate(realm["[[Intrinsics]]"]["[[%IteratorPrototype%]]"]) as StringIteratorPrototype;
+	const proto = ObjectCreate<StringIteratorPrototype>(realm["[[Intrinsics]]"]["[[%IteratorPrototype%]]"]);
 
 	proto.next = function (this: StringIteratorPrototype): IteratorResult<string> {
 		// Let O be the this value.

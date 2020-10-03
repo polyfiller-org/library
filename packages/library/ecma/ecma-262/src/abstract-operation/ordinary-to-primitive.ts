@@ -9,11 +9,8 @@ export type PrimitiveType = undefined | null | string | number | boolean | symbo
 
 /**
  * https://tc39.es/ecma262/#sec-ordinarytoprimitive
- * @param {*} O
- * @param {"default"|"string"|"number"?} hint
- * @returns {boolean}
  */
-export function OrdinaryToPrimitive<O extends {valueOf: Function; toString: Function}>(O: O, hint: "default" | "string" | "number" | undefined): PrimitiveType {
+export function OrdinaryToPrimitive<TO extends {valueOf: Function; toString: Function}>(O: TO, hint: "default" | "string" | "number" | undefined): PrimitiveType {
 	// Assert: Type(O) is Object.
 	assertType(O, "Object", `Argument at position 0 must be an Object`, TypeError);
 

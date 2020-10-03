@@ -8,8 +8,6 @@ import {IsCallable} from "./is-callable";
 
 /**
  * https://tc39.es/ecma262/#sec-topropertydescriptor
- * @param {PropertyDescriptor} Obj
- * @returns {InternalPropertyDescriptor}
  */
 export function ToPropertyDescriptor(Obj: PropertyDescriptor): InternalPropertyDescriptor {
 	// If Type(Obj) is not Object, throw a TypeError exception.

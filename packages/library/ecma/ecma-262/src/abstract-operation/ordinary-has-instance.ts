@@ -10,11 +10,8 @@ import {ArbitraryFunction} from "../type/arbitrary-function";
  * The abstract operation OrdinaryHasInstance implements the default algorithm for determining if an
  * object O inherits from the instance object inheritance path provided by constructor C.
  * https://tc39.es/ecma262/#sec-ordinaryhasinstance
- * @param {C} C
- * @param {O} O
- * @returns {boolean}
  */
-export function OrdinaryHasInstance<C, O>(C: C, O: O): boolean {
+export function OrdinaryHasInstance<TC, TO>(C: TC, O: TO): boolean {
 	// If IsCallable(C) is false, return false.
 	if (IsCallable(C) === false) return false;
 
@@ -40,7 +37,7 @@ export function OrdinaryHasInstance<C, O>(C: C, O: O): boolean {
 	// Repeat,
 	while (true) {
 		// Set O to ? O.[[GetPrototypeOf]]().
-		O = internals(O)["[[GetPrototypeOf]]"]() as O;
+		O = internals(O)["[[GetPrototypeOf]]"]() as TO;
 
 		// If O is null, return false.
 		if (O === null) return false;

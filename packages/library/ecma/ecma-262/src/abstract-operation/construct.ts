@@ -12,7 +12,7 @@ import {List, makeList} from "../lib/list/list";
  * If newTarget is not present, F is used as its value.
  * https://tc39.es/ecma262/#sec-construct
  */
-export function Construct<F extends Constructor>(F: F, argumentsList?: List, newTarget?: Constructor): InstanceType<F> {
+export function Construct<TF extends Constructor>(F: TF, argumentsList?: List, newTarget?: Constructor): InstanceType<TF> {
 	// If newTarget is not present, set newTarget to F.
 	if (newTarget === undefined) {
 		newTarget = F;
@@ -30,5 +30,5 @@ export function Construct<F extends Constructor>(F: F, argumentsList?: List, new
 	assert(IsConstructor(newTarget), `Argument on position 2 must a Constructor`, TypeError);
 
 	// Return ? F.[[Construct]](argumentsList, newTarget).
-	return internals(F)["[[Construct]]"](argumentsList!, newTarget);
+	return internals(F)["[[Construct]]"](argumentsList, newTarget);
 }

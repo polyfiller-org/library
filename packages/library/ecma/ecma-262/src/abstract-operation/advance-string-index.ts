@@ -11,7 +11,7 @@ export function AdvanceStringIndex(S: string, index: number, unicode: boolean): 
 	assertType(S, "String");
 
 	// Assert: 0 ≤ index ≤ 253 - 1 and ! IsInteger(index) is true.
-	assert(0 <= index && index <= 253 - 1 && IsInteger(index));
+	assert(index >= 0 && index <= 253 - 1 && IsInteger(index));
 
 	// Assert: Type(unicode) is Boolean.
 	assertType(unicode, "Boolean");

@@ -1,7 +1,6 @@
 const NATIVE_OBJECT_CREATE = Object.create?.toString().indexOf("[native code]") >= 0 ? Object.create : undefined;
 
 /**
- * @param {object|null} proto
  */
 export function createObjectWithPrototype<T>(proto: object | null): T {
 	let obj: T;
@@ -13,11 +12,13 @@ export function createObjectWithPrototype<T>(proto: object | null): T {
 	} else if (proto === Object.prototype) {
 		obj = Object() as T;
 	} else {
-		const objCtor = (function () {} as unknown) as new () => T;
+		const objCtor = (function () {
+			// Empty function
+		} as unknown) as new () => T;
 		objCtor.prototype = proto;
 		obj = new objCtor();
 	}
 
 	// Return obj.
-	return obj as T;
+	return obj;
 }

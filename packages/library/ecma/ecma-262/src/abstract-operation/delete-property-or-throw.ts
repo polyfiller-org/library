@@ -8,11 +8,8 @@ import {internals} from "../lib/internal-slot-map/internals";
  * It throws an exception if the property is not configurable. The operation is called with arguments O
  * and P where O is the object and P is the property key.
  * http://www.ecma-international.org/ecma-262/10.0/index.html#sec-deletepropertyorthrow
- * @param {O} O
- * @param {P} P
- * @returns {boolean}
  */
-export function DeletePropertyOrThrow<O extends {}, P extends PropertyKey>(O: O, P: P): boolean {
+export function DeletePropertyOrThrow<TO extends {}, TP extends PropertyKey>(O: TO, P: TP): boolean {
 	// Assert: Type(O) is Object.
 	assertType(O, "Object", `Argument ${errorFormatArgument(O)} on position 0 is not an Object`, TypeError);
 

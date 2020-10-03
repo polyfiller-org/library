@@ -3,8 +3,6 @@ import {internals} from "../lib/internal-slot-map/internals";
 
 /**
  * https://tc39.es/ecma262/#sec-symboldescriptivestring
- * @param {symbol} sym
- * @returns {string}
  */
 export function SymbolDescriptiveString(sym: symbol): string {
 	// Assert: Type(sym) is Symbol.

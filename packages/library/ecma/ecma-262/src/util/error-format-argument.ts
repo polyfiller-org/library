@@ -4,8 +4,6 @@ import {SymbolDescriptiveString} from "../abstract-operation/symbol-descriptive-
 
 /**
  * Gets an error-formatted name of the given argument
- * @param {*} object
- * @return {string}
  */
 export function errorFormatArgument(object: unknown): string {
 	switch (typeof object) {

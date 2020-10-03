@@ -12,9 +12,9 @@ import {internals} from "../lib/internal-slot-map/internals";
  * a new empty List is used as its value.
  * http://www.ecma-international.org/ecma-262/10.0/index.html#sec-call
  */
-export function Call<F extends ArbitraryFunction, V>(F: F, V: V, argumentsList?: List): ReturnType<F>;
-export function Call<F extends Constructor, V>(F: F, V: V, argumentsList?: List): InstanceType<F>;
-export function Call<F extends ArbitraryFunction, V>(F: F, V: V, argumentsList?: List): ReturnType<F> {
+export function Call<TF extends ArbitraryFunction, TV>(F: TF, V: TV, argumentsList?: List): ReturnType<TF>;
+export function Call<TF extends Constructor, TV>(F: TF, V: TV, argumentsList?: List): InstanceType<TF>;
+export function Call<TF extends ArbitraryFunction, TV>(F: TF, V: TV, argumentsList?: List): ReturnType<TF> {
 	// If argumentsList is not present, set argumentsList to a new empty List.
 	if (argumentsList === undefined) {
 		argumentsList = makeList();

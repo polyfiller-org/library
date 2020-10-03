@@ -7,7 +7,7 @@ import {errorFormatArgument} from "../util/error-format-argument";
  * https://tc39.es/ecma262/#sec-object.setprototypeof
  */
 export const {setPrototypeOf: objectSetPrototypeOf} = {
-	setPrototypeOf<O, Proto>(O: O, proto: Proto) {
+	setPrototypeOf<TO, Proto>(O: TO, proto: Proto) {
 		// Set O to ? RequireObjectCoercible(O).
 		O = RequireObjectCoercible(O);
 

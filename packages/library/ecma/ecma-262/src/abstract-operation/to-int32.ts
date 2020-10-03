@@ -7,8 +7,6 @@ import {MATH_2_TO_THE_POWER_OF_31, MATH_2_TO_THE_POWER_OF_32} from "../constant/
  * The abstract operation ToInt32 converts argument to one of 2^32
  * integer values in the range -2^31 through 2^31 - 1, inclusive.
  * https://tc39.es/ecma262/#sec-toint32
- * @param {*} argument
- * @returns {number}
  */
 export function ToInt32(argument: unknown): number {
 	// Let number be ? ToNumber(argument).

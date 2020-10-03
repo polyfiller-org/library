@@ -4,11 +4,12 @@ import {ToString} from "../../abstract-operation/to-string";
 import {IsArrayIndex} from "../../abstract-operation/is-array-index";
 import {ToInteger} from "../../abstract-operation/to-integer";
 import {List, makeList} from "../../lib/list/list";
+import {safeHasOwnProperty} from "../../util/safe-has-own-property";
 
 /**
  * https://tc39.es/ecma262/#sec-string-exotic-objects-ownpropertykeys
  * @private
- * @returns {List<PropertyKey>}
+ * @returns
  */
 export function __StringOwnPropertyKeys__<T extends string>(this: T): List<PropertyKey> {
 	// Let keys be a new empty List.
@@ -32,7 +33,7 @@ export function __StringOwnPropertyKeys__<T extends string>(this: T): List<Prope
 	// For each own property key P of O such that P is an array index and ToInteger(P) ≥ len,
 	// in ascending numeric index order, do
 	for (const P in this) {
-		if (!this.hasOwnProperty(P)) continue;
+		if (!safeHasOwnProperty(this, P)) continue;
 		if (!IsArrayIndex(P)) continue;
 		if (ToInteger(P) < len) continue;
 
@@ -43,7 +44,7 @@ export function __StringOwnPropertyKeys__<T extends string>(this: T): List<Prope
 	// For each own property key P of O such that Type(P) is String and
 	// P is not an array index, in ascending chronological order of property creation, do
 	for (const P in this) {
-		if (!this.hasOwnProperty(P)) continue;
+		if (!safeHasOwnProperty(this, P)) continue;
 		if (Type(P) !== "String") continue;
 		if (IsArrayIndex(P)) continue;
 
@@ -54,7 +55,7 @@ export function __StringOwnPropertyKeys__<T extends string>(this: T): List<Prope
 	// For each own property key P of O such that Type(P) is Symbol,
 	// in ascending chronological order of property creation, do
 	for (const P in this) {
-		if (!this.hasOwnProperty(P)) continue;
+		if (!safeHasOwnProperty(this, P)) continue;
 		if (Type(P as symbol) !== "Symbol") continue;
 
 		// Add P as the last element of keys.

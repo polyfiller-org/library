@@ -4,9 +4,8 @@ import {CreateIterResultObject} from "./create-iter-result-object";
 
 /**
  * https://tc39.es/ecma262/#sec-enumerate-object-properties
- * @param {T} obj
  */
-export function EnumerateObjectProperties<T>(obj: T): Iterator<PropertyKey, any> {
+export function EnumerateObjectProperties<T>(obj: T): Iterator<PropertyKey> {
 	const visited = makeList<PropertyKey>();
 	const ownKeys = internals(obj)["[[OwnPropertyKeys]]"]();
 
@@ -34,7 +33,7 @@ export function EnumerateObjectProperties<T>(obj: T): Iterator<PropertyKey, any>
 			const protoResult = EnumerateObjectProperties(proto);
 			while (true) {
 				const {value, done} = protoResult.next();
-				if (done) break;
+				if (Boolean(done)) break;
 				if (!visited.has(value)) {
 					return CreateIterResultObject(value, false);
 				}

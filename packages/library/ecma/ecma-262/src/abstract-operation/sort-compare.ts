@@ -9,10 +9,7 @@ import {makeList} from "../lib/list/list";
  * The SortCompare abstract operation is called with two arguments x and y.
  * It also has access to the comparefn argument passed to the current invocation of the sort method.
  * https://tc39.es/ecma262/#sec-sortcompare
- * @param {X} x
- * @param {Y} y
- * @param {Function} [comparefn]
- *
+ * 
  */
 export function SortCompare<X, Y>(x: X, y: Y, comparefn?: (a: X, b: Y) => number): number {
 	// If x and y are both undefined, return +0.

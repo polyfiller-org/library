@@ -7,9 +7,6 @@ import {assert, assertType} from "./assert";
  * has an own property with the specified property key. A Boolean value is returned.
  * The operation is called with arguments O and P where O is the object and P is the property key.
  * https://tc39.es/ecma262/#sec-hasownproperty
- * @param {T} O
- * @param {PropertyKey} P
- * @returns {boolean}
  */
 export function HasOwnProperty<T extends {}>(O: T, P: PropertyKey): O is T & {[Key in typeof P]: unknown} {
 	// Assert: Type(O) is Object.

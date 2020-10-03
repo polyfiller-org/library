@@ -1,6 +1,4 @@
-import {List} from "../../lib/list/list";
 import {internals} from "../../lib/internal-slot-map/internals";
-import {MapDataEntry} from "../../internal-slot/map/map-internals";
 import {RequireInternalSlot} from "../../abstract-operation/require-internal-slot";
 
 /**
@@ -17,7 +15,7 @@ export const {clear: mapPrototypeClear} = {
 		const internalSlots = internals(M);
 
 		// Let entries be the List that is M.[[MapData]].
-		const entries = internalSlots["[[MapData]]"] as List<List<MapDataEntry<Key, Value>>>;
+		const entries = internalSlots["[[MapData]]"];
 
 		for (let i = 0; i < entries.length; i++) {
 			entries.get(i).clear();

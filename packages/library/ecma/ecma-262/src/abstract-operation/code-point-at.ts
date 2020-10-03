@@ -14,9 +14,6 @@ export interface CodePointRecord {
  * code points, as described in 6.1.4, and reads from it a single code point starting with the code
  * unit at index position.
  * https://tc39.es/ecma262/#sec-codepointat
- * @param {string} string
- * @param {number} position
- * @returns {CodePointRecord}
  */
 export function CodePointAt(string: string, position: number): CodePointRecord {
 	// Let size be the length of string.

@@ -4,9 +4,6 @@ import {MapDataEntry} from "../internal-slot/map/map-internals";
 
 /**
  * Gets the MapData index position for a key based on the result of its hash function
- * @param {Key} key
- * @param {List<List<MapDataEntry<Key, Value>>>} mapData
- * @returns {number}
  */
 export function getMapDataIndex<Key, Value>(key: Key, mapData: List<List<MapDataEntry<Key, Value>>>): number {
 	const hashValue = hashFunction(key);

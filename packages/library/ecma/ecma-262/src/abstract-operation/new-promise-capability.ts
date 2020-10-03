@@ -16,8 +16,6 @@ import {makeList} from "../lib/list/list";
  * and reject functions are used to initialize a new PromiseCapability Record which is returned as the value
  * of this abstract operation.
  * https://tc39.es/ecma262/#sec-newpromisecapability
- * @param {C} C
- * @return {PromiseCapability}
  */
 export function NewPromiseCapability<T>(C: Constructor<T>): PromiseCapability<T> {
 	// If IsConstructor(C) is false, throw a TypeError exception.

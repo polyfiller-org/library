@@ -11,7 +11,7 @@ import {Get} from "./get";
  * It performs the following steps when called:
  * https://tc39.es/ecma262/#sec-speciesconstructor
  */
-export function SpeciesConstructor<O, Ctor extends Constructor>(O: O, defaultConstructor: Ctor): Ctor | Constructor<unknown> {
+export function SpeciesConstructor<TO, Ctor extends Constructor>(O: TO, defaultConstructor: Ctor): Ctor | Constructor<unknown> {
 	// Assert: Type(O) is Object.
 	assertType(O, "Object");
 

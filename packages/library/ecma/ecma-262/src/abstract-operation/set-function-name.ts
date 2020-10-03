@@ -6,10 +6,6 @@ import {DefinePropertyOrThrow} from "./define-property-or-throw";
 /**
  * The abstract operation SetFunctionName requires a Function argument F, a String or Symbol argument name and optionally a String argument prefix.
  * https://tc39.es/ecma262/#sec-setfunctionname
- * @param {T} F
- * @param {string} name
- * @param {string} [prefix]
- * @returns {boolean}
  */
 export function SetFunctionName<T extends Function>(F: T, name: string | symbol, prefix?: string): boolean {
 	// Assert: F is an extensible object that does not have a name own property.

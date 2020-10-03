@@ -4,8 +4,6 @@ import {SameValue} from "./same-value";
 /**
  * The abstract operation ToInteger converts argument to an integral numeric value. This abstract operation functions as follows:
  * https://tc39.github.io/ecma262/#sec-tointeger
- * @param {*} argument
- * @returns {number}
  */
 export function ToInteger(argument: unknown): number {
 	// Let number be ? ToNumber(argument).

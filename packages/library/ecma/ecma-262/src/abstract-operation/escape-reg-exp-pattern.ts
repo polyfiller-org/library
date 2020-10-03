@@ -1,6 +1,7 @@
 /**
  * https://tc39.es/ecma262/#sec-escaperegexppattern
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function EscapeRegExpPattern(P: string, _F: string): string {
 	// Let S be a String in the form of a Pattern[~U] (Pattern[+U] if F contains "u") equivalent to P
 	// interpreted as UTF-16 encoded Unicode code points (6.1.4), in which certain code points are

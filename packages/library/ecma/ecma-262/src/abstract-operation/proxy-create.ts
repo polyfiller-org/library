@@ -11,9 +11,6 @@ const OLD_PROXY = typeof Proxy === "undefined" ? undefined : Proxy;
  * The abstract operation ProxyCreate with arguments target and handler is used to specify
  * the creation of new Proxy exotic objects.
  * https://tc39.es/ecma262/#sec-proxycreate
- * @param {T} target
- * @param {ProxyHandler<T>} handler
- * @returns {T}
  */
 export function ProxyCreate<T extends object>(target: T, handler: ProxyHandler<T>): T {
 	// If Type(target) is not Object, throw a TypeError exception.

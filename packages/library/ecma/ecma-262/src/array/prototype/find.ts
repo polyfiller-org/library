@@ -12,7 +12,7 @@ import {makeList} from "../../lib/list/list";
  * http://www.ecma-international.org/ecma-262/10.0/index.html#sec-array.prototype.find
  */
 export const {find: arrayPrototypeFind} = {
-	find<T, S extends T>(this: T[], predicate: (this: void, value: T, index: number, obj: T[]) => value is S): S | undefined {
+	find<TT, TS extends TT>(this: TT[], predicate: (this: void, value: TT, index: number, obj: TT[]) => value is TS): TS | undefined {
 		const thisArg = arguments.length < 2 ? undefined : arguments[1];
 		const thisArgPresent = arguments.length >= 2;
 
@@ -46,7 +46,7 @@ export const {find: arrayPrototypeFind} = {
 
 			// If testResult is true, return kValue.
 			if (testResult) {
-				return kValue as S | undefined;
+				return kValue as TS | undefined;
 			}
 
 			// Increase k by 1.

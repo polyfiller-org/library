@@ -25,15 +25,15 @@ import {MATH_2_TO_THE_POWER_OF_53_MINUS_1} from "../constant/math-constant";
 /**
  * https://tc39.es/ecma262/#sec-array.from
  */
-function from<T>(items: Iterable<T> | ArrayLike<T>): T[];
-function from<T, U, ThisArg>(items: Iterable<T> | ArrayLike<T>, mapfn: (v: T, k: number) => U, thisArg?: ThisArg): U[];
-function from<T, U, ThisArg, ActualThis extends T[] | U[]>(this: T[] | U[], items: Iterable<T> | ArrayLike<T>, mapfn?: (v: T, k: number) => U, thisArg?: ThisArg): T[] | U[];
-function from<T, U, ThisArg, ActualThis extends T[] | U[]>(this: T[] | U[], items: Iterable<T> | ArrayLike<T>): T[] | U[] {
+function from<TT>(items: Iterable<TT> | ArrayLike<TT>): TT[];
+function from<TT, TU, ThisArg>(items: Iterable<TT> | ArrayLike<TT>, mapfn: (v: TT, k: number) => TU, thisArg?: ThisArg): TU[];
+function from<TT, TU, ThisArg>(this: TT[] | TU[], items: Iterable<TT> | ArrayLike<TT>, mapfn?: (v: TT, k: number) => TU, thisArg?: ThisArg): TT[] | TU[];
+function from<TT, TU, ThisArg, ActualThis extends TT[] | TU[]>(this: TT[] | TU[], items: Iterable<TT> | ArrayLike<TT>): TT[] | TU[] {
 	let mapping: boolean;
 	let T: ThisArg | undefined;
 	let A: ActualThis;
 	let k: number;
-	let mappedValue: T | U | Completion<T | U>;
+	let mappedValue: TT | TU | Completion<TT | TU>;
 
 	if (new.target != null) {
 		throw new TypeError(`Array.from is not a constructor`);
@@ -116,13 +116,13 @@ function from<T, U, ThisArg, ActualThis extends T[] | U[]>(this: T[] | U[], item
 			}
 
 			// Let nextValue be ? IteratorValue(next).
-			const nextValue = IteratorValue(next as IteratorResult<T>);
+			const nextValue = IteratorValue(next as IteratorResult<TT>);
 
 			// If mapping is true, then
 			if (mapping) {
 				// Let mappedValue be Call(mapfn, T, « nextValue, k »).
 				// NOTE: When mapping is true, mapfn is always defined.
-				mappedValue = executeWithCompletion(() => Call(mapfn!, T, makeList(nextValue, k)));
+				mappedValue = executeWithCompletion(() => Call(mapfn, T, makeList(nextValue, k)));
 				// If mappedValue is an abrupt completion, return ? IteratorClose(iteratorRecord, mappedValue).
 				if (IsAbruptCompletion(mappedValue)) {
 					return IteratorClose(iteratorRecord, mappedValue);
@@ -155,7 +155,7 @@ function from<T, U, ThisArg, ActualThis extends T[] | U[]>(this: T[] | U[], item
 	const arrayLike = ToObject(items);
 
 	// Let len be ? LengthOfArrayLike(arrayLike).
-	const len = LengthOfArrayLike(arrayLike as ArrayLike<T>);
+	const len = LengthOfArrayLike(arrayLike as ArrayLike<TT>);
 
 	// If IsConstructor(C) is true, then
 	if (IsConstructor(C)) {
@@ -184,7 +184,7 @@ function from<T, U, ThisArg, ActualThis extends T[] | U[]>(this: T[] | U[], item
 		if (mapping) {
 			// Let mappedValue be ? Call(mapfn, T, « kValue, k »).
 			// NOTE: When mapping is true, mapfn is always defined.
-			mappedValue = Call(mapfn!, T, makeList(kValue, k));
+			mappedValue = Call(mapfn, T, makeList(kValue, k));
 		}
 
 		// Else, let mappedValue be kValue.

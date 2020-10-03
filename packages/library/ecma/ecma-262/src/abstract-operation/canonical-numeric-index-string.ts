@@ -8,8 +8,6 @@ import {ToString} from "./to-string";
  * if it is a String representation of a Number that would be produced by ToString, or the string "-0".
  * Otherwise, it returns undefined.
  * https://tc39.es/ecma262/#sec-canonicalnumericindexstring
- * @param {PropertyKey} argument
- * @return {number?}
  */
 export function CanonicalNumericIndexString(argument: PropertyKey): number | undefined {
 	// Assert: Type(argument) is String.

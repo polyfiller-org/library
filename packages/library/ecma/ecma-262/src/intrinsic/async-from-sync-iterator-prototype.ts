@@ -29,7 +29,7 @@ export interface AsyncFromSyncIteratorPrototype<T = unknown> {
 
 export function $AsyncFromSyncIteratorPrototype$(realm: Realm): AsyncFromSyncIteratorPrototype {
 	const intrinsics = realm["[[Intrinsics]]"];
-	const proto = ObjectCreate(intrinsics["[[%AsyncIteratorPrototype%]]"]) as AsyncFromSyncIteratorPrototype;
+	const proto = ObjectCreate<AsyncFromSyncIteratorPrototype>(intrinsics["[[%AsyncIteratorPrototype%]]"]);
 
 	proto.next = function <T>(this: {"[[SyncIteratorRecord]]": IteratorRecord<T>}, value: T) {
 		// Let O be the this value.
@@ -161,7 +161,7 @@ export function $AsyncFromSyncIteratorPrototype$(realm: Realm): AsyncFromSyncIte
 		let promiseCapability = NewPromiseCapability<T>((intrinsics["[[%Promise%]]"] as unknown) as Constructor<T>);
 
 		// Let syncIterator be O.[[SyncIteratorRecord]].[[Iterator]].
-		const syncIterator = (O["[[SyncIteratorRecord]]"] as IteratorRecord<T>)["[[Iterator]]"];
+		const syncIterator = (O["[[SyncIteratorRecord]]"])["[[Iterator]]"];
 
 		// Let return be GetMethod(syncIterator, "return").
 		let _return: Completion<ArbitraryFunction> | ArbitraryFunction = executeWithCompletion(() => GetMethod(syncIterator, "return"));

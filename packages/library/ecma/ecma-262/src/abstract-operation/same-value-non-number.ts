@@ -5,9 +5,6 @@ import {Type} from "./type";
  * The internal comparison abstract operation SameValueNonNumber(x, y), where neither x nor y are Number values, produces true or false.
  *
  * https://tc39.github.io/ecma262/#sec-samevaluenonnumber
- * @param {Exclude<*, number>} x
- * @param {Exclude<*, number>} y
- * @return {boolean}
  */
 export function SameValueNonNumber(x: Exclude<unknown, number>, y: Exclude<unknown, number>): boolean {
 	// Assert: Type(x) is not Number.

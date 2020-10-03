@@ -7,8 +7,6 @@ import {MATH_2_TO_THE_POWER_OF_32} from "../constant/math-constant";
  * The abstract operation ToUint32 converts argument to one of 2^32 integer
  * values in the range 0 through 2^32 - 1, inclusive.
  * https://tc39.es/ecma262/#sec-touint32
- * @param {*} argument
- * @returns {number}
  */
 export function ToUint32(argument: unknown): number {
 	// Let number be ? ToNumber(argument).

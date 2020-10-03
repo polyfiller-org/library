@@ -4,7 +4,7 @@ import {ObjectDefineProperties} from "../abstract-operation/object-define-proper
  * https://tc39.es/ecma262/#sec-object.defineproperties
  */
 export const {defineProperties: objectDefineProperties} = {
-	defineProperties<O>(O: O, Properties: PropertyDescriptorMap & ThisType<O>): O {
+	defineProperties<TO>(O: TO, Properties: PropertyDescriptorMap & ThisType<TO>): TO {
 		// Return ? ObjectDefineProperties(O, Properties).
 		return ObjectDefineProperties(O, Properties);
 	}

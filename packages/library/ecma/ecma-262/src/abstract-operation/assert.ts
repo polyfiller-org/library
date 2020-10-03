@@ -6,8 +6,8 @@ type ErrorConstructor = new (...args: any[]) => Error | RangeError | SyntaxError
 /**
  * The given function throws an Error if the condition is falsy
  */
-export function assert(condition: any, message: string = "Assertion Error", ctor: ErrorConstructor = Error): asserts condition {
-	if (!condition) {
+export function assert(condition: any, message = "Assertion Error", ctor: ErrorConstructor = Error): asserts condition {
+	if (!Boolean(condition)) {
 		throw new ctor(message);
 	}
 }

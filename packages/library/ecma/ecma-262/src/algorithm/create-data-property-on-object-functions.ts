@@ -6,9 +6,6 @@ import {CreateDataPropertyOrThrow} from "../abstract-operation/create-data-prope
 /**
  * A CreateDataPropertyOnObject function is an anonymous built-in function.
  * https://tc39.es/ecma262/#sec-create-data-property-on-object-functions
- * @param {Key} key
- * @param {Value} value
- * @returns {boolean}
  */
 export function CreateDataPropertyOnObject<Key, Value>(this: Object, key: Key, value: Value) {
 	// Let O be the this value.

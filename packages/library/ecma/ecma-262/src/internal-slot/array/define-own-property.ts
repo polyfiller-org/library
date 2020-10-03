@@ -10,9 +10,6 @@ import {InternalPropertyDescriptor} from "../../type/internal-property-descripto
 
 /**
  * https://tc39.es/ecma262/#sec-array-exotic-objects-defineownproperty-p-desc
- * @param {PropertyKey} P
- * @param {InternalPropertyDescriptor} Desc
- * @private
  */
 export function __ArrayDefineOwnProperty__<T>(this: T[], P: PropertyKey, Desc: InternalPropertyDescriptor) {
 	// Assert: IsPropertyKey(P) is true.

@@ -7,30 +7,26 @@ import {internals} from "../lib/internal-slot-map/internals";
 
 /**
  * https://tc39.es/ecma262/#sec-ordinaryget
- * @param {O} O
- * @param {P} P
- * @param {Receiver} Receiver
- * @returns {}
  */
-export function OrdinaryGet<O, P extends keyof O, Receiver>(O: O, P: P, Receiver?: Receiver): O[P];
-export function OrdinaryGet<O, P extends PropertyKey, Receiver>(O: O, P: P, Receiver?: Receiver): O[keyof O] | undefined;
-export function OrdinaryGet<O, P extends PropertyKey | keyof O, Receiver>(O: O, P: P, Receiver?: Receiver): O[keyof O] | undefined {
+export function OrdinaryGet<TO, TP extends keyof TO, TReceiver>(O: TO, P: TP, Receiver?: TReceiver): TO[TP];
+export function OrdinaryGet<TO, TP extends PropertyKey, TReceiver>(O: TO, P: TP, Receiver?: TReceiver): TO[keyof TO] | undefined;
+export function OrdinaryGet<TO, TP extends PropertyKey | keyof TO, TReceiver>(O: TO, P: TP, Receiver?: TReceiver): TO[keyof TO] | undefined {
 	// Assert: IsPropertyKey(P) is true.
 	assert(IsPropertyKey(P), `Argument at position 1 must be a PropertyKey`, TypeError);
 	// Let desc be ? O.[[GetOwnProperty]](P).
-	let desc = internals(O)["[[GetOwnProperty]]"](P);
+	const desc = internals(O)["[[GetOwnProperty]]"](P);
 
 	// If desc is undefined, then
 	if (desc === undefined) {
 		// Let parent be ? O.[[GetPrototypeOf]]().
-		let parent = internals(O)["[[GetPrototypeOf]]"]();
+		const parent = internals(O)["[[GetPrototypeOf]]"]();
 		// If parent is null, return undefined.
 		if (parent === null) {
 			return undefined;
 		}
 
 		// Return ? parent.[[Get]](P, Receiver).
-		return internals(parent)["[[Get]]"](P, Receiver) as O[keyof O];
+		return internals(parent)["[[Get]]"](P, Receiver) as TO[keyof TO];
 	}
 
 	// If IsDataDescriptor(desc) is true, return desc.[[Value]].
@@ -42,7 +38,7 @@ export function OrdinaryGet<O, P extends PropertyKey | keyof O, Receiver>(O: O, 
 	assert(IsAccessorDescriptor(desc));
 
 	// Let getter be desc.[[Get]].
-	let getter = desc["[[Get]]"];
+	const getter = desc["[[Get]]"];
 
 	// If getter is undefined, return undefined.
 	if (getter === undefined) {

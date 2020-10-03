@@ -52,6 +52,7 @@ function _createProperty<O extends {}, P extends PropertyKey>(o: O, p: P, desc: 
 				: {})
 		});
 	} else if (IsDataDescriptor(desc)) {
+		// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
 		if (SUPPORTS_ACCESSORS && (__lookupGetter__.call(o, p) || __lookupSetter__.call(o, p))) {
 			const prototype = ((o as unknown) as {__proto__: typeof Object.prototype}).__proto__;
 			((o as unknown) as {__proto__: typeof Object.prototype}).__proto__ = Object.prototype;
@@ -83,18 +84,12 @@ function _createProperty<O extends {}, P extends PropertyKey>(o: O, p: P, desc: 
 
 /**
  * http://www.ecma-international.org/ecma-262/10.0/index.html#sec-validateandapplypropertydescriptor
- * @param {O} O
- * @param {P} P
- * @param {boolean} extensible
- * @param {Desc} Desc
- * @param {PropertyDescriptor?} current
- * @returns {boolean}
  */
-export function ValidateAndApplyPropertyDescriptor<O, P extends PropertyKey | undefined, Desc extends InternalPropertyDescriptor>(
-	O: O,
-	P: P,
+export function ValidateAndApplyPropertyDescriptor<TO, TP extends PropertyKey | undefined, TDesc extends InternalPropertyDescriptor>(
+	O: TO,
+	P: TP,
 	extensible: boolean,
-	Desc: Desc,
+	Desc: TDesc,
 	current: InternalPropertyDescriptor | undefined
 ): boolean {
 	// Assert: If O is not undefined, then IsPropertyKey(P) is true.
@@ -160,6 +155,7 @@ export function ValidateAndApplyPropertyDescriptor<O, P extends PropertyKey | un
 		}
 
 		// If Desc.[[Enumerable]] is present and the [[Enumerable]] fields of current and Desc are the Boolean negation of each other, return false.
+		// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
 		if ("[[Enumerable]]" in Desc && current["[[Enumerable]]"] === !Desc["[[Enumerable]]"]) {
 			return false;
 		}
@@ -218,7 +214,7 @@ export function ValidateAndApplyPropertyDescriptor<O, P extends PropertyKey | un
 									"[[Configurable]]": oDescriptor["[[Configurable]]"],
 									"[[Enumerable]]": oDescriptor["[[Enumerable]]"]
 							  }),
-						"[[Value]]": O[(P as unknown) as keyof O]
+						"[[Value]]": O[(P as unknown) as keyof TO]
 					});
 				} catch {
 					// An error occurred. Return false to indicate that the operation was unsuccessful

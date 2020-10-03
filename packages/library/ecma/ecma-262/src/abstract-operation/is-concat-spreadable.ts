@@ -5,7 +5,6 @@ import {IsArray} from "./is-array";
 
 /**
  * https://tc39.es/ecma262/#sec-isconcatspreadable
- * @param {*} O
  */
 export function IsConcatSpreadable<T>(O: unknown | Iterable<T>): O is Iterable<T> {
 	// If Type(O) is not Object, return false.

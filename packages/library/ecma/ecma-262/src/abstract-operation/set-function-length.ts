@@ -6,9 +6,6 @@ import {DefinePropertyOrThrow} from "./define-property-or-throw";
 /**
  * The abstract operation SetFunctionLength requires a Function argument F and a Number argument length. This operation adds a "length" property to F
  * https://tc39.es/ecma262/#sec-setfunctionlength
- * @param {T} F
- * @param {number} length
- * @returns {boolean}
  */
 export function SetFunctionLength<T extends Function>(F: T, length: number): boolean {
 	// Assert: F is an extensible object that does not have a "length" own property.

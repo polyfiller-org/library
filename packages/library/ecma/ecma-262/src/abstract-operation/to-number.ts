@@ -5,8 +5,6 @@ import {HINT_NUMBER} from "../hint/number";
 /**
  * The abstract operation ToNumber converts argument to a value of type Number
  * https://tc39.es/ecma262/#sec-tonumber
- * @param {*} argument
- * @returns {boolean}
  */
 export function ToNumber(argument: unknown): number {
 	switch (Type(argument)) {

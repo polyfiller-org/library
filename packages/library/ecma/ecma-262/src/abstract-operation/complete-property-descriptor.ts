@@ -6,8 +6,6 @@ import {IsPropertyDescriptor} from "./is-property-descriptor";
 
 /**
  * https://tc39.es/ecma262/#sec-completepropertydescriptor
- * @param {InternalPropertyDescriptor} Desc
- * @returns {InternalPropertyDescriptor}
  */
 export function CompletePropertyDescriptor(Desc: InternalPropertyDescriptor): InternalPropertyDescriptor {
 	// Assert: Desc is a Property Descriptor.

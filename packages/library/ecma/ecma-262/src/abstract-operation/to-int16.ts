@@ -7,8 +7,6 @@ import {MATH_2_TO_THE_POWER_OF_15, MATH_2_TO_THE_POWER_OF_16} from "../constant/
  * The abstract operation ToInt16 converts argument to one of 2^16 integer values in the
  * range -32768 through 32767, inclusive.
  * https://tc39.es/ecma262/#sec-toint16
- * @param {*} argument
- * @returns {number}
  */
 export function ToInt16(argument: unknown): number {
 	// Let number be ? ToNumber(argument).

@@ -35,6 +35,7 @@ export interface Intrinsics {
 	"[[%encodeURIComponent%]]": typeof encodeURIComponent;
 	"[[%Error%]]": typeof Error;
 	"[[%ErrorPrototype%]]": typeof Error.prototype;
+	// eslint-disable-next-line no-eval
 	"[[%eval%]]": typeof eval;
 	"[[%EvalError%]]": typeof EvalError;
 	"[[%EvalErrorPrototype%]]": typeof EvalError.prototype;

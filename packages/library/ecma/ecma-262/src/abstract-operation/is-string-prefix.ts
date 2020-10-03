@@ -3,9 +3,6 @@ import {assertType} from "./assert";
 /**
  * The abstract operation IsStringPrefix determines if String p is a prefix of String q.
  * https://tc39.es/ecma262/#sec-isstringprefix
- * @param {string} p
- * @param {string} q
- * @returns {boolean}
  */
 export function IsStringPrefix(p: string, q: string): boolean {
 	// Assert: Type(p) is String.

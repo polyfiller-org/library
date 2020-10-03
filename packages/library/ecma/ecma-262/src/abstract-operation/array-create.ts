@@ -13,8 +13,6 @@ import {NATIVE_SYMBOL_TO_STRING_TAG} from "../symbol/native/native";
  * The abstract operation ArrayCreate with argument length (either 0 or a positive integer)
  * and optional argument proto is used to specify the creation of new Array exotic objects.
  * http://www.ecma-international.org/ecma-262/10.0/index.html#sec-arraycreate
- * @param {number} length
- * @param {object} proto
  */
 export function ArrayCreate<T>(length: number, proto?: object): T[] {
 	// Assert: length is an integer Number ≥ 0.
@@ -42,7 +40,7 @@ export function ArrayCreate<T>(length: number, proto?: object): T[] {
 		return intrinsics["[[%Array%]]"](length);
 	} else {
 		// Let A be a newly created Array exotic object.
-		let A = ObjectCreate<T[]>(proto);
+		const A = ObjectCreate<T[]>(proto);
 		// Set A's essential internal methods except for [[DefineOwnProperty]] to the default ordinary object definitions specified in 9.1.
 		// Set A.[[DefineOwnProperty]] as specified in 9.4.2.1.
 		internals(A)["[[DefineOwnProperty]]"] = __ArrayDefineOwnProperty__.bind(A);

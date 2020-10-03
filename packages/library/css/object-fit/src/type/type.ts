@@ -36,6 +36,7 @@ export interface ExtendedMediaElementMixin {
 	[SYMBOL_OBJECT_POSITION]?: string;
 	[SYMBOL_WRAPPER]?: HTMLElement;
 	[SYMBOL_OVERRIDDEN_STYLE_PROPERTIES]?: PartialStyles;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	[SYMBOL_EVENT_LISTENER]?: (this: HTMLVideoElement, ev: HTMLMediaElementEventMap[keyof HTMLMediaElementEventMap]) => any;
 	[SYMBOL_RESIZE_EVENT_LISTENER]?: Disconnectable;
 	[SYMBOL_MUTATION_OBSERVER]?: Disconnectable;

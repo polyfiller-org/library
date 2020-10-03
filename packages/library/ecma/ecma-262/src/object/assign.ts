@@ -8,6 +8,7 @@ import {makeList} from "../lib/list/list";
  * https://tc39.es/ecma262/#sec-object.assign
  */
 export const {assign: objectAssign} = {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	assign<T, U>(target: T, _firstSource: U): T & U {
 		// Let to be ? ToObject(target).
 		const to = ToObject(target);
@@ -16,7 +17,7 @@ export const {assign: objectAssign} = {
 		if (arguments.length === 1) return to as T & U;
 
 		// Let sources be the List of argument values starting with the second argument.
-		let sources = makeList<U>();
+		const sources = makeList<U>();
 		for (let i = 1; i < arguments.length; i++) {
 			sources.append(arguments[i]);
 		}

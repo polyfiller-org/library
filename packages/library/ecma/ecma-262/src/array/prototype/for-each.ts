@@ -12,7 +12,7 @@ import {makeList} from "../../lib/list/list";
  * https://tc39.es/ecma262/#sec-array.prototype.foreach
  */
 export const {forEach: arrayPrototypeForEach} = {
-	forEach<T>(this: T[], callbackfn: (value: T, index: number, array: T[]) => void): undefined {
+	forEach<TT>(this: TT[], callbackfn: (value: TT, index: number, array: TT[]) => void): undefined {
 		const thisArg = arguments.length < 2 ? undefined : arguments[1];
 		const thisArgPresent = arguments.length >= 2;
 

@@ -1,6 +1,7 @@
 import {List} from "./list";
 import {createObjectWithPrototype} from "../../util/create-object-with-prototype";
 import {MATH_2_TO_THE_POWER_OF_32_MINUS_1} from "../../constant/math-constant";
+import {safeHasOwnProperty} from "../../util/safe-has-own-property";
 
 const {assertArrayIndex} = {
 	assertArrayIndex(index: number): void {
@@ -72,7 +73,7 @@ const {deleteIndex} = {
 		delete (this as any)[index];
 
 		for (let i = index; i < this.length; i++) {
-			if (Object.prototype.hasOwnProperty.call(this, i + 1)) {
+			if (safeHasOwnProperty(this, i + 1)) {
 				this.set(i, (this as any)[i + 1]);
 			}
 		}

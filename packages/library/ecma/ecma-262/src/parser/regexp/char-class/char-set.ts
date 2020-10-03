@@ -20,14 +20,14 @@ export class CharSet {
 	 * // => [10, 20, 30, 40]
 	 * ```
 	 */
-	public data: number[];
+	data: number[];
 
 	constructor(data: number[] = []) {
 		this.data = data;
 	}
 
 	/** Add a range to this. */
-	public add(begin: number, end: number = begin + 1): void {
+	add(begin: number, end: number = begin + 1): void {
 		const i = this.searchBegin(begin);
 		const j = this.searchEnd(end);
 
@@ -41,7 +41,7 @@ export class CharSet {
 	}
 
 	/** Add another `CharSet` to this. */
-	public addCharSet(set: CharSet): void {
+	addCharSet(set: CharSet): void {
 		for (let i = 0; i < set.data.length; i += 2) {
 			const begin = set.data[i];
 			const end = set.data[i + 1];
@@ -55,7 +55,7 @@ export class CharSet {
 	 * Note that this method is mutable like `Array.prototype.reverse`.
 	 * Please clone before this if immutable is desired.
 	 */
-	public invert(): CharSet {
+	invert(): CharSet {
 		if (this.data.length === 0) {
 			this.data.push(0, MAX_CODE_POINT);
 			return this;
@@ -73,12 +73,12 @@ export class CharSet {
 	}
 
 	/** Clone this set. */
-	public clone(): CharSet {
+	clone(): CharSet {
 		return new CharSet(Array.from(this.data));
 	}
 
 	/** Check is a code point contained in this set. */
-	public has(c: number): boolean {
+	has(c: number): boolean {
 		const i = this.searchEnd(c);
 
 		if (i < 0 || this.data.length <= i * 2) {
@@ -90,7 +90,7 @@ export class CharSet {
 	}
 
 	/** Convert this into `RegExp` char-class pattern string. */
-	public toRegExpPattern(invert = false): string {
+	toRegExpPattern(invert = false): string {
 		let s = "[";
 		if (invert) {
 			s += "^";
@@ -108,7 +108,7 @@ export class CharSet {
 		return s + "]";
 	}
 
-	public toString(): string {
+	toString(): string {
 		return `CharSet${this.toRegExpPattern()}`;
 	}
 

@@ -36,7 +36,7 @@ function revocable<T extends object>(target: T, handler: ProxyHandler<T>): Revoc
 	internals(revoker)["[[RevocableProxy]]"] = p;
 
 	// Let result be ObjectCreate(%Object.prototype%).
-	const result = ObjectCreate(getCurrentIntrinsics()["[[%ObjectPrototype%]]"]) as RevocableProxy<T>;
+	const result = ObjectCreate<RevocableProxy<T>>(getCurrentIntrinsics()["[[%ObjectPrototype%]]"]);
 
 	// Perform CreateDataProperty(result, "proxy", p).
 	CreateDataProperty(result, "proxy", p);

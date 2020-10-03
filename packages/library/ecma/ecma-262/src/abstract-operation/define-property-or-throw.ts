@@ -10,12 +10,8 @@ import {InternalPropertyDescriptor} from "../type/internal-property-descriptor";
  * and desc where O is the object, P is the property key, and desc is the Property Descriptor for the property.
  * for the property.
  * https://tc39.es/ecma262/#sec-definepropertyorthrow
- * @param {O} O
- * @param {P} P
- * @param {InternalPropertyDescriptor} desc
- * @returns {boolean}
  */
-export function DefinePropertyOrThrow<O extends {}, P extends PropertyKey>(O: O, P: P, desc: InternalPropertyDescriptor): boolean {
+export function DefinePropertyOrThrow<TO extends {}, TP extends PropertyKey>(O: TO, P: TP, desc: InternalPropertyDescriptor): boolean {
 	// Assert: Type(O) is Object.
 	assertType(O, "Object");
 

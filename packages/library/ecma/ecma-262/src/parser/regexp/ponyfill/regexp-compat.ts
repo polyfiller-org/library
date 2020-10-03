@@ -10,7 +10,8 @@ import {Parser} from "../syntax/parser";
 import {flagSetToString, nodeToString, Pattern, patternToString} from "../syntax/pattern";
 
 const isRegExp = (argument: unknown): boolean => {
-	if (argument && typeof argument === "object") {
+	if (argument !== undefined && typeof argument === "object") {
+		// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
 		return !!(argument as {[Symbol.match]?: unknown})[Symbol.match];
 	}
 	return false;
@@ -21,7 +22,7 @@ const advance = (s: string, i: number, unicode: boolean): number => {
 		return i + 1;
 	}
 	const c = s.codePointAt(i) ?? 0;
-	if (0x10000 <= c) {
+	if (c >= 0x10000) {
 		return i + 2;
 	}
 	return i + 1;
@@ -210,17 +211,17 @@ export const RegExpCompat = ((): typeof RegExp => {
 							break;
 						}
 						default: {
-							if ("0" <= c && c <= "9") {
+							if (c >= "0" && c <= "9") {
 								const d = replacer[j + 2];
-								const s = "0" <= d && d <= "9" ? c + d : c;
+								const s = d >= "0" && d <= "9" ? c + d : c;
 								let n = Number.parseInt(s, 10);
-								if (0 < n && n < match.length) {
+								if (n > 0 && n < match.length) {
 									result += match[n] ?? "";
 									i = j + 1 + s.length;
 									break;
 								}
 								n = Math.floor(n / 10);
-								if (0 < n && n < match.length) {
+								if (n > 0 && n < match.length) {
 									result += match[n] ?? "";
 									i = j + s.length;
 									break;
@@ -250,7 +251,7 @@ export const RegExpCompat = ((): typeof RegExp => {
 	klass.prototype[Symbol.split] = function (this: RegExpCompat, string: string, limit?: number): string[] {
 		const flags = this.sticky ? this.flags : this.flags + "y";
 		const constructor: any = this.constructor;
-		const species = (constructor && constructor[Symbol.species]) ?? klass;
+		const species = (constructor?.[Symbol.species]) ?? klass;
 		const splitter: RegExp = new species(this.source, flags);
 		limit = (limit ?? 2 ** 32 - 1) >>> 0;
 

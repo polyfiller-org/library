@@ -13,17 +13,17 @@ import {List, makeList} from "../lib/list/list";
  * a new empty List is used as its value.
  * https://tc39.es/ecma262/#sec-invoke
  */
-export function Invoke<V, P extends keyof V, F extends V[P]>(
-	V: V,
-	P: P,
-	argumentsList?: F extends ArbitraryFunction ? List : never
-): F extends ArbitraryFunction ? ReturnType<F> : never {
+export function Invoke<TV, TP extends keyof TV, TF extends TV[TP]>(
+	V: TV,
+	P: TP,
+	argumentsList?: TF extends ArbitraryFunction ? List : never
+): TF extends ArbitraryFunction ? ReturnType<TF> : never {
 	// Assert: IsPropertyKey(P) is true.
 	assert(IsPropertyKey(P), `Argument at position 1 must be a PropertyKey`, TypeError);
 
 	// If argumentsList is not present, set argumentsList to a new empty List.
 	if (argumentsList === undefined) {
-		argumentsList = makeList() as F extends ArbitraryFunction ? List : never;
+		argumentsList = makeList() as TF extends ArbitraryFunction ? List : never;
 	}
 
 	// Let func be ? GetV(V, P).

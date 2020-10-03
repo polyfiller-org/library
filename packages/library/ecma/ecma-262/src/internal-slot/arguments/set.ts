@@ -7,12 +7,8 @@ import {OrdinarySet} from "../../abstract-operation/ordinary-set";
 
 /**
  * https://tc39.es/ecma262/#sec-arguments-exotic-objects-set-p-v-receiver
- * @param {PropertyKey} P
- * @param {V} V
- * @param {Receiver} Receiver
- * @private
  */
-export function __ArgumentsSet__<V, Receiver>(this: IArguments, P: PropertyKey, V: V, Receiver: Receiver) {
+export function __ArgumentsSet__<TV, TReceiver>(this: IArguments, P: PropertyKey, V: TV, Receiver: TReceiver) {
 	let isMapped: boolean;
 	let map: Record<string, unknown> | undefined;
 

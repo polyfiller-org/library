@@ -13,7 +13,7 @@ import {makeList} from "../../lib/list/list";
  * http://www.ecma-international.org/ecma-262/10.0/index.html#sec-array.prototype.every
  */
 export const {every: arrayPrototypeEvery} = {
-	every<T>(this: T[], callbackfn: (value: T, index: number, array: T[]) => unknown): boolean {
+	every<TT>(this: TT[], callbackfn: (value: TT, index: number, array: TT[]) => unknown): boolean {
 		const thisArg = arguments.length < 2 ? undefined : arguments[1];
 		const thisArgPresent = arguments.length >= 2;
 

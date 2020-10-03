@@ -53,6 +53,7 @@ export const OBJECT_INTERNAL_METHODS: ObjectInternalMethods = {
 	"[[Set]]": __Set__
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const OBJECT_INTERNAL_PROPERTY_DEFAULTS = (_obj: {}): Partial<ObjectInternalProperties> => ({
 	"[[Extensible]]": true,
 	"__[[PropertyAttributes]]__": createObjectWithPrototype(null)

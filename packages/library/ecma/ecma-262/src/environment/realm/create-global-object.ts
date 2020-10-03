@@ -8,6 +8,7 @@ export function createGlobalObject(): typeof globalThis {
 		return (obj as unknown) as typeof globalThis;
 	} else {
 		try {
+			// eslint-disable-next-line @typescript-eslint/no-require-imports,@typescript-eslint/no-var-requires
 			return require("vm").runInNewContext("this") as typeof globalThis;
 		} catch {
 			throw new TypeError(`Could not generate a new Global Object`);

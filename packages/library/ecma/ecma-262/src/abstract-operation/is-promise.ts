@@ -6,8 +6,6 @@ import {getCurrentRealmRecord} from "../environment/realm/get-current-realm-reco
 /**
  * The abstract operation IsPromise checks for the promise brand on an object.
  * https://tc39.es/ecma262/#sec-ispromise
- * @param {*} x
- * @return {item is Promise<T>}
  */
 export function IsPromise<T>(x: unknown): x is InternalPromise<T> {
 	// If Type(x) is not Object, return false.

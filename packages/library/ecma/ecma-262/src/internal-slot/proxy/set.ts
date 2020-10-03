@@ -13,7 +13,7 @@ import {makeList} from "../../lib/list/list";
  * https://tc39.es/ecma262/#sec-proxy-object-internal-methods-and-internal-slots-set-p-v-receiver
  * @private
  */
-export function __ProxySet__<T extends {}, Value, Receiver>(this: T, P: PropertyKey, V: Value, Receiver: Receiver) {
+export function __ProxySet__<T extends {}, TValue, TReceiver>(this: T, P: PropertyKey, V: TValue, Receiver: TReceiver) {
 	// Assert: IsPropertyKey(P) is true.
 	assert(IsPropertyKey(P), `Argument at position 0 must be a PropertyKey`, TypeError);
 

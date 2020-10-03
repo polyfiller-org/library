@@ -6,14 +6,11 @@ import {CreateArrayFromList} from "./create-array-from-list";
 
 /**
  * https://tc39.es/ecma262/#sec-frompropertydescriptor
- * @param {O} O
- * @param {"String"|"Symbol"} type
- * @returns {string[]}
  */
-export function GetOwnPropertyKeys<O>(O: O, type: "String"): string[];
-export function GetOwnPropertyKeys<O>(O: O, type: "Symbol"): symbol[];
-export function GetOwnPropertyKeys<O>(O: O, type: "String" | "Symbol"): (string | symbol)[];
-export function GetOwnPropertyKeys<O>(O: O, type: "String" | "Symbol"): (string | symbol)[] {
+export function GetOwnPropertyKeys<TO>(O: TO, type: "String"): string[];
+export function GetOwnPropertyKeys<TO>(O: TO, type: "Symbol"): symbol[];
+export function GetOwnPropertyKeys<TO>(O: TO, type: "String" | "Symbol"): (string | symbol)[];
+export function GetOwnPropertyKeys<TO>(O: TO, type: "String" | "Symbol"): (string | symbol)[] {
 	// Let obj be ? ToObject(O).
 	const obj = ToObject(O);
 

@@ -7,7 +7,7 @@ import {ToPropertyKey} from "../abstract-operation/to-property-key";
  * https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
  */
 export const {getOwnPropertyDescriptor: objectGetOwnPropertyDescriptor} = {
-	getOwnPropertyDescriptor<O, P extends PropertyKey>(O: O, P: P) {
+	getOwnPropertyDescriptor<TO, TP extends PropertyKey>(O: TO, P: TP) {
 		// Let obj be ? ToObject(O).
 		const obj = ToObject(O);
 

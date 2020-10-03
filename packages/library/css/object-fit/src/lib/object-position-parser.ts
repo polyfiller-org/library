@@ -21,11 +21,11 @@ function createSyntaxToken({kind, position, value}: CreateSyntaxTokenOptions): S
 }
 
 export const enum TokenKind {
-	NumberWithUnitToken = "NumberWithUnitToken",
-	WhitespaceToken = "WhitespaceToken",
-	PositionLiteralToken = "PositionLiteralToken",
-	BadCharacterToken = "BadCharacterToken",
-	EndOfFileToken = "EndOfFileToken"
+	NUMBER_WITH_UNIT_TOKEN = "NUMBER_WITH_UNIT_TOKEN",
+	WHITESPACE_TOKEN = "WHITESPACE_TOKEN",
+	POSITION_LITERAL_TOKEN = "POSITION_LITERAL_TOKEN",
+	BAD_CHARACTER_TOKEN = "BAD_CHARACTER_TOKEN",
+	END_OF_FILE_TOKEN = "END_OF_FILE_TOKEN"
 }
 
 interface TextSpan {
@@ -44,12 +44,12 @@ export class ObjectPositionParser {
 	/**
 	 * The current position within the source text
 	 */
-	private position: number = 0;
+	private position = 0;
 
 	/**
 	 * The start position within the source text
 	 */
-	private start: number = 0;
+	private start = 0;
 
 	/**
 	 * The current value within the source text
@@ -66,7 +66,7 @@ export class ObjectPositionParser {
 	/**
 	 * Lexes the input text
 	 */
-	public lex(): SyntaxToken {
+	lex(): SyntaxToken {
 		this.start = this.position;
 		this.kind = undefined;
 		this.value = undefined;
@@ -75,7 +75,7 @@ export class ObjectPositionParser {
 
 		switch (current) {
 			case "\0":
-				this.kind = TokenKind.EndOfFileToken;
+				this.kind = TokenKind.END_OF_FILE_TOKEN;
 				this.value = "";
 				break;
 
@@ -108,7 +108,7 @@ export class ObjectPositionParser {
 		}
 
 		return createSyntaxToken({
-			kind: this.kind ?? TokenKind.BadCharacterToken,
+			kind: this.kind ?? TokenKind.BAD_CHARACTER_TOKEN,
 			value: this.value ?? this.current(),
 			position: this.start
 		});
@@ -124,8 +124,6 @@ export class ObjectPositionParser {
 
 	/**
 	 * Returns true if the given char is a digit
-	 * @param {string} char
-	 * @return {boolean}
 	 */
 	private isDigit(char: string): boolean {
 		return /[0-9.]/.test(char);
@@ -133,8 +131,6 @@ export class ObjectPositionParser {
 
 	/**
 	 * Returns true if the given char represents a letter
-	 * @param {string} char
-	 * @return {boolean}
 	 */
 	private isLetter(char: string): boolean {
 		return char.toLowerCase() !== char.toUpperCase();
@@ -142,8 +138,6 @@ export class ObjectPositionParser {
 
 	/**
 	 * Returns true if the given char represents whitespace
-	 * @param {string} char
-	 * @return {boolean}
 	 */
 	private isWhitespace(char: string): boolean {
 		return /[\s\t\n\r]/.test(char);
@@ -151,8 +145,6 @@ export class ObjectPositionParser {
 
 	/**
 	 * Peeks into the source text from the current position with the given offset
-	 * @param {number} offset
-	 * @return {string}
 	 */
 	private peek(offset: number): string {
 		const index = this.position + offset;
@@ -179,7 +171,7 @@ export class ObjectPositionParser {
 
 		const length = this.position - this.start;
 		this.value = this.text.slice(this.start, this.start + length);
-		this.kind = TokenKind.NumberWithUnitToken;
+		this.kind = TokenKind.NUMBER_WITH_UNIT_TOKEN;
 	}
 
 	/**
@@ -192,7 +184,7 @@ export class ObjectPositionParser {
 
 		const length = this.position - this.start;
 		this.value = this.text.slice(this.start, this.start + length);
-		this.kind = TokenKind.WhitespaceToken;
+		this.kind = TokenKind.WHITESPACE_TOKEN;
 	}
 
 	/**
@@ -216,7 +208,7 @@ export class ObjectPositionParser {
 			case "initial":
 			case "unset":
 			case "revert":
-				this.kind = TokenKind.PositionLiteralToken;
+				this.kind = TokenKind.POSITION_LITERAL_TOKEN;
 				this.value = text;
 				break;
 		}

@@ -7,7 +7,6 @@ import {CreateIterResultObject} from "../abstract-operation/create-iter-result-o
 import {OrdinaryDefineOwnProperty} from "../abstract-operation/ordinary-define-own-property";
 import {NATIVE_SYMBOL_TO_STRING_TAG} from "../symbol/native/native";
 import {assert} from "../abstract-operation/assert";
-import {MapIteratorPrototype} from "./map-iterator-prototype";
 
 export interface SetIteratorPrototype<T> {
 	next(value: T): IteratorResult<T>;
@@ -15,7 +14,7 @@ export interface SetIteratorPrototype<T> {
 
 export function $SetIteratorPrototype$(realm: Realm) {
 	// has a [[Prototype]] internal slot whose value is %IteratorPrototype%.
-	const proto = ObjectCreate(realm["[[Intrinsics]]"]["[[%IteratorPrototype%]]"]) as MapIteratorPrototype;
+	const proto = ObjectCreate<SetIteratorPrototype<unknown>>(realm["[[Intrinsics]]"]["[[%IteratorPrototype%]]"]);
 	proto.next = function <Value>(this: SetIteratorPrototype<Value>) {
 		// Let O be the this value.
 		const O = this;

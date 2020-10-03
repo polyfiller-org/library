@@ -5,9 +5,6 @@ import {isTrailingSurrogate} from "../util/is-trailing-surrogate";
 /**
  * Two code units, lead and trail, that form a UTF-16 surrogate pair are converted to a code point
  * https://tc39.es/ecma262/#sec-utf16decode
- * @param {number} lead
- * @param {number} trail
- * @returns {number}
  */
 export function UTF16Decode(lead: number, trail: number): number {
 	// Assert: lead is a leading surrogate and trail is a trailing surrogate.

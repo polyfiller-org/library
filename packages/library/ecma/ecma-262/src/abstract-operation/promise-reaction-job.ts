@@ -14,8 +14,6 @@ import {makeList} from "../lib/list/list";
  * to the incoming value, and uses the handler's return value to resolve or reject the derived promise
  * associated with that handler.
  * https://tc39.es/ecma262/#sec-promisereactionjob
- * @param {PromiseReaction<T>} reaction
- * @param {T} argument
  */
 export function PromiseReactionJob<T>(reaction: PromiseReaction<T>, argument: T): Completion {
 	// Assert: reaction is a PromiseReaction Record.

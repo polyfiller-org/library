@@ -11,7 +11,7 @@ export interface IteratorPrototype {
  * http://www.ecma-international.org/ecma-262/10.0/index.html#sec-%iteratorprototype%-object
  */
 export function $IteratorPrototype$(realm: Realm): IteratorPrototype {
-	const proto = ObjectCreate(realm["[[Intrinsics]]"]["[[%ObjectPrototype%]]"]) as IteratorPrototype;
+	const proto = ObjectCreate<IteratorPrototype>(realm["[[Intrinsics]]"]["[[%ObjectPrototype%]]"]);
 
 	// http://www.ecma-international.org/ecma-262/10.0/index.html#sec-%iteratorprototype%-@@iterator
 	OrdinaryDefineOwnProperty(proto, Symbol.iterator, {
@@ -29,7 +29,7 @@ export function $IteratorPrototype$(realm: Realm): IteratorPrototype {
 	if (NATIVE_SYMBOL_ITERATOR != null && NATIVE_SYMBOL_ITERATOR !== Symbol.iterator) {
 		OrdinaryDefineOwnProperty(proto, NATIVE_SYMBOL_ITERATOR, {
 			"[[Value]]": {
-				[NATIVE_SYMBOL_ITERATOR!]() {
+				[NATIVE_SYMBOL_ITERATOR]() {
 					return this;
 				}
 			}[(NATIVE_SYMBOL_ITERATOR as unknown) as string],

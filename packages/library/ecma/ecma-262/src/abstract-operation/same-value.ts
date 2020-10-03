@@ -5,9 +5,6 @@ import {Type} from "./type";
  * The internal comparison abstract operation SameValue(x, y), where x and y are ECMAScript language values, produces true or false.
  *
  * https://tc39.github.io/ecma262/#sec-samevalue
- * @param {*} x
- * @param {*} y
- * @return {boolean}
  */
 export function SameValue(x: unknown, y: unknown): boolean {
 	// If Type(x) is different from Type(y), return false.

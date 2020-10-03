@@ -14,7 +14,7 @@ import {makeList} from "../../lib/list/list";
  * https://tc39.es/ecma262/#sec-array.prototype.map
  */
 export const {map: arrayPrototypeMap} = {
-	map<T, U, This = undefined>(this: T[], callbackfn: (this: This, value: T, index: number, array: T[]) => U): U[] {
+	map<TT, TU, This = undefined>(this: TT[], callbackfn: (this: This, value: TT, index: number, array: TT[]) => TU): TU[] {
 		const thisArg = arguments.length < 2 ? undefined : arguments[1];
 		const thisArgPresent = arguments.length >= 2;
 
@@ -33,7 +33,7 @@ export const {map: arrayPrototypeMap} = {
 		const T = thisArgPresent ? thisArg : undefined;
 
 		// Let A be ? ArraySpeciesCreate(O, len).
-		const A = (ArraySpeciesCreate(O, len) as unknown) as U[];
+		const A = (ArraySpeciesCreate(O, len) as unknown) as TU[];
 
 		// Let k be 0.
 		let k = 0;

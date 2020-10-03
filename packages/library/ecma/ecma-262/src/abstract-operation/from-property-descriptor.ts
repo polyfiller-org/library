@@ -9,8 +9,6 @@ import {makeList} from "../lib/list/list";
 
 /**
  * https://tc39.es/ecma262/#sec-frompropertydescriptor
- * @param {InternalPropertyDescriptor} Desc
- * @returns {PropertyDescriptor}
  */
 export function FromPropertyDescriptor(Desc: InternalPropertyDescriptor): PropertyDescriptor;
 export function FromPropertyDescriptor(Desc: undefined): undefined;

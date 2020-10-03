@@ -4,6 +4,7 @@ import {foldMap as unicodeFoldMap, inverseFoldMap as unicodeInverseFoldMap} from
 /** Return case-folded code point for ignore-case comparison. */
 export const canonicalize = (c: number, unicode: boolean): number => {
 	if (unicode) {
+		// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
 		return unicodeFoldMap.get(c) || c;
 	}
 

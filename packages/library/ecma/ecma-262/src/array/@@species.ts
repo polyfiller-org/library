@@ -4,7 +4,7 @@ import {InternalGetAccessorDescriptor} from "../type/internal-property-descripto
 /**
  * The value of the name property of this function is "get [Symbol.species]".
  * https://tc39.es/ecma262/#sec-get-array-@@species
- * @return {ArrayConstructor}
+ * @return
  */
 export const arraySymbolSpecies = () =>
 	(OrdinaryGetOwnProperty(

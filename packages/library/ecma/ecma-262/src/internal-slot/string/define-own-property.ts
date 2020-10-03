@@ -8,9 +8,6 @@ import {internals} from "../../lib/internal-slot-map/internals";
 
 /**
  * https://tc39.es/ecma262/#sec-string-exotic-objects-defineownproperty-p-desc
- * @param {PropertyKey} P
- * @param {PropertyDescriptor} Desc
- * @private
  */
 export function __StringDefineOwnProperty__<T extends string>(this: T, P: PropertyKey, Desc: InternalPropertyDescriptor) {
 	// Assert: IsPropertyKey(P) is true.

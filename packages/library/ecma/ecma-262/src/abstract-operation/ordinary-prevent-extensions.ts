@@ -4,10 +4,8 @@ const NATIVE_OBJECT_PREVENT_EXTENSIONS = Object.preventExtensions?.toString().in
 
 /**
  * https://tc39.es/ecma262/#sec-ordinarypreventextensions
- * @param {O} O
- * @returns {boolean}
  */
-export function OrdinaryPreventExtensions<O extends object>(O: O): boolean {
+export function OrdinaryPreventExtensions<TO extends object>(O: TO): boolean {
 	if (NATIVE_OBJECT_PREVENT_EXTENSIONS != null) {
 		NATIVE_OBJECT_PREVENT_EXTENSIONS(O);
 	}

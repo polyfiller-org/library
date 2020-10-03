@@ -1,7 +1,7 @@
 /** `Match` is result data of regular expression pattern matching. */
 export class Match {
 	/** An input string of this matching. */
-	public readonly input: string;
+	readonly input: string;
 
 	private readonly caps: number[];
 	private readonly names: Map<string, number>;
@@ -13,12 +13,12 @@ export class Match {
 	}
 
 	/** Return the initial index of this matching. */
-	public get index(): number {
+	get index(): number {
 		return this.caps[0];
 	}
 
 	/** Return the last index of this matching. */
-	public get lastIndex(): number {
+	get lastIndex(): number {
 		return this.caps[1];
 	}
 
@@ -27,12 +27,12 @@ export class Match {
 	 *
 	 * This number contains capture `0` (whole matching) also.
 	 */
-	public get length(): number {
+	get length(): number {
 		return this.caps.length / 2;
 	}
 
 	/** Get the capture `k`. */
-	public get(k: number | string): string | undefined {
+	get(k: number | string): string | undefined {
 		const [i, j] = this.resolve(k);
 		if (i < 0 || j < 0) {
 			return undefined;
@@ -42,13 +42,13 @@ export class Match {
 	}
 
 	/** Get the begin index of the capture `k`. */
-	public begin(k: number | string): number | undefined {
+	begin(k: number | string): number | undefined {
 		const i = this.resolve(k)[0];
 		return i < 0 ? undefined : i;
 	}
 
 	/** Get the end index of the capture `k`. */
-	public end(k: number | string): number | undefined {
+	end(k: number | string): number | undefined {
 		const j = this.resolve(k)[1];
 		return j < 0 ? undefined : j;
 	}
@@ -66,7 +66,7 @@ export class Match {
 	}
 
 	/** Convert this into `RegExp`'s result array. */
-	public toArray(): RegExpExecArray {
+	toArray(): RegExpExecArray {
 		// In TypeScript definition, `RegExpExecArray` extends `string[]`.
 		// However the **real** `RegExpExecArray` can contain `undefined`.
 		// So this method uses type casting to set properties.
@@ -95,7 +95,7 @@ export class Match {
 		return array as RegExpExecArray;
 	}
 
-	public toString(): string {
+	toString(): string {
 		const array = this.toArray();
 		const show = (x: string | undefined): string => (x === undefined ? "undefined" : JSON.stringify(x));
 		return `Match[${array.map(show).join(", ")}]`;

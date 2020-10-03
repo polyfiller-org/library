@@ -9,12 +9,8 @@ import {CreateDataProperty} from "./create-data-property";
  * is called with arguments O, P, and V where O is the object, P is the property key, and V is the value
  * for the property.
  * https://tc39.es/ecma262/#sec-createdatapropertyorthrow
- * @param {O} O
- * @param {P} P
- * @param {V} V
- * @returns {boolean}
  */
-export function CreateDataPropertyOrThrow<O extends {}, P extends PropertyKey, V>(O: O, P: P, V: V): O is O & {[Key in P]: V} {
+export function CreateDataPropertyOrThrow<TO extends {}, TP extends PropertyKey, TV>(O: TO, P: TP, V: TV): O is TO & {[Key in TP]: TV} {
 	// Assert: Type(O) is Object.
 	assertType(O, "Object", `Argument ${errorFormatArgument(O)} on position 0 is not an Object`, TypeError);
 

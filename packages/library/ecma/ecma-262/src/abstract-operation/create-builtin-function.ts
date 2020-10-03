@@ -10,11 +10,6 @@ import {List} from "../lib/list/list";
  * The abstract operation CreateBuiltinFunction takes arguments steps, internalSlotsList, realm, and prototype.
  * The argument internalSlotsList is a List of the names of additional internal slots that must be defined as part
  * of the object.
- * @param {T} steps
- * @param {Record<PropertyKey, *>} internalSlotsList
- * @param {*} [realm]
- * @param {*} [prototype]
- * @returns {ArbitraryFunction}
  * https://tc39.es/ecma262/#sec-createbuiltinfunction
  */
 export function CreateBuiltinFunction<T extends ArbitraryFunction, Prototype extends {} | null = {}>(

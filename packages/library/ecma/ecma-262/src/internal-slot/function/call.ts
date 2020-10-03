@@ -11,10 +11,6 @@ import {CreateArrayFromList} from "../../abstract-operation/create-array-from-li
 
 /**
  * https://tc39.es/ecma262/#sec-ecmascript-function-objects-call-thisargument-argumentslist
- * @param {ThisArgument} thisArgument
- * @param {Parameters<F>} argumentsList
- * @returns {ReturnType<F>}
- * @private
  */
 
 export function __Call__<F extends ArbitraryFunction, ThisArgument>(this: F, thisArgument: ThisArgument, argumentsList: List): ReturnType<F> {
@@ -44,7 +40,7 @@ export function __Call__<F extends ArbitraryFunction, ThisArgument>(this: F, thi
 	if (IsAbruptCompletion(result)) {
 		throw result["[[Value]]"];
 	} else if (IsCompletion(result)) {
-		result = (result["[[Value]]"]! as unknown) as Completion<void>;
+		result = (result["[[Value]]"]!) as Completion<void>;
 	}
 
 	// Return NormalCompletion(undefined).

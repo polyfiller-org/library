@@ -12,10 +12,6 @@ import {CreateArrayFromList} from "../../abstract-operation/create-array-from-li
 
 /**
  * https://tc39.es/ecma262/#sec-ecmascript-function-objects-construct-argumentslist-newtarget
- * @param {List<ConstructorParameters<F>>} argumentsList
- * @param {Constructor} newTarget
- * @returns {InstanceType<F>}
- * @private
  */
 export function __Construct__<F extends Constructor>(this: F, argumentsList: List, newTarget: Constructor): InstanceType<F> {
 	let thisArgument: {} | undefined;
@@ -68,7 +64,7 @@ export function __Construct__<F extends Constructor>(this: F, argumentsList: Lis
 		if (IsAbruptCompletion(result)) {
 			throw result["[[Value]]"];
 		} else if (IsCompletion(result)) {
-			result = (result["[[Value]]"]! as unknown) as Completion<void>;
+			result = (result["[[Value]]"]!) as Completion<void>;
 		}
 	}
 	// Return ? envRec.GetThisBinding().

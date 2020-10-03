@@ -9,9 +9,6 @@ import {makeList} from "../lib/list/list";
  * The abstract operation ToPrimitive converts its input argument to a non-Object type.
  * If an object is capable of converting to more than one primitive type, it may use the optional hint PreferredType to favour that type.
  * http://www.ecma-international.org/ecma-262/10.0/index.html#sec-toprimitive
- * @param {*} input
- * @param {*} [preferredType]
- * @returns {boolean}
  */
 export function ToPrimitive<T extends PrimitiveType, PreferredType>(input: T, preferredType?: PreferredType): T;
 export function ToPrimitive<T>(input: T, preferredType: undefined): undefined;
@@ -38,11 +35,11 @@ export function ToPrimitive<T>(input: T, preferredType?: PrimitiveType): Primiti
 		}
 
 		// Let exoticToPrim be ? GetMethod(input, @@toPrimitive).
-		let exoticToPrim = (GetMethod(input, Symbol.toPrimitive as never) as unknown) as (hint: unknown) => PrimitiveType;
+		const exoticToPrim = (GetMethod(input, Symbol.toPrimitive as never) as unknown) as (hint: unknown) => PrimitiveType;
 		// If exoticToPrim is not undefined, then
 		if (exoticToPrim !== undefined) {
 			// Let result be ? Call(exoticToPrim, input, « hint »).
-			let result = Call(exoticToPrim, input, makeList(hint));
+			const result = Call(exoticToPrim, input, makeList(hint));
 			// If Type(result) is not Object, return result.
 			if (Type(result) !== "Object") {
 				return result;

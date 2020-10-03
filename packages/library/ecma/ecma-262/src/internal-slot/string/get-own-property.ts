@@ -5,8 +5,6 @@ import {StringGetOwnProperty} from "../../abstract-operation/string-get-own-prop
 
 /**
  * https://tc39.es/ecma262/#sec-string-exotic-objects-getownproperty-p
- * @param {PropertyKey} P
- * @private
  */
 export function __StringGetOwnProperty__<T extends string>(this: T, P: PropertyKey) {
 	// Assert: IsPropertyKey(P) is true.

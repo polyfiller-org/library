@@ -12,7 +12,7 @@ import {makeList} from "../../lib/list/list";
  * https://tc39.es/ecma262/#sec-proxy-object-internal-methods-and-internal-slots-get-p-receiver
  * @private
  */
-export function __ProxyGet__<T extends {}, Receiver>(this: T, P: PropertyKey, Receiver: Receiver) {
+export function __ProxyGet__<T extends {}, TReceiver>(this: T, P: PropertyKey, Receiver: TReceiver) {
 	// Assert: IsPropertyKey(P) is true.
 	assert(IsPropertyKey(P), `Argument at position 0 must be a PropertyKey`, TypeError);
 

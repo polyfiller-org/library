@@ -8,8 +8,6 @@ import {IteratorKind} from "../type/iterator-kind";
 
 /**
  * https://tc39.es/ecma262/#sec-enumerableownpropertynames
- * @param {{}} O
- * @param {IteratorKind} kind
  */
 export function EnumerableOwnPropertyNames<T, Kind extends IteratorKind, ElementType = Kind extends "key" ? keyof T : Kind extends "value" ? T[keyof T] : [keyof T, T[keyof T]]>(
 	O: T,

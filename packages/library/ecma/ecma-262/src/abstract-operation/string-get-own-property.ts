@@ -10,9 +10,6 @@ import {InternalPropertyDescriptor} from "../type/internal-property-descriptor";
  * The abstract operation StringCreate with arguments value and prototype is used to specify the creation
  * of new String exotic objects.
  * https://tc39.es/ecma262/#sec-stringgetownproperty
- * @param {string} S
- * @param {PropertyKey} P
- * @returns {InternalPropertyDescriptor?}
  */
 export function StringGetOwnProperty(S: string, P: PropertyKey): InternalPropertyDescriptor | undefined {
 	// Assert: S is an Object that has a [[StringData]] internal slot.

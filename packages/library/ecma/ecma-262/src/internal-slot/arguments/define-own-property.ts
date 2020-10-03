@@ -10,9 +10,6 @@ import {assert} from "../../abstract-operation/assert";
 
 /**
  * https://tc39.es/ecma262/#sec-arguments-exotic-objects-defineownproperty-p-desc
- * @param {PropertyKey} P
- * @param {InternalPropertyDescriptor} Desc
- * @private
  */
 export function __ArgumentsDefineOwnProperty__(this: IArguments, P: PropertyKey, Desc: InternalPropertyDescriptor) {
 	// Let args be the arguments object.

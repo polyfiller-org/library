@@ -18,7 +18,7 @@ import {ProxyInternals} from "../internal-slot/proxy/proxy-internals";
 
 /**
  * https://tc39.es/ecma262/#sec-asyncfromsynciteratorcontinuation
- * @returns {Promise<T>?}
+ * @returns
  */
 export function AsyncFromSyncIteratorContinuation<T>(result: IteratorResult<T>, promiseCapability: PromiseCapability<T>): Promise<T> | undefined {
 	const intrinsics = getCurrentIntrinsics();
@@ -63,6 +63,7 @@ export function AsyncFromSyncIteratorContinuation<T>(result: IteratorResult<T>, 
 	}
 
 	// Let valueWrapper be PromiseResolve(%Promise%, value).
+	// eslint-disable-next-line @typescript-eslint/promise-function-async
 	let valueWrapper: Completion<InternalPromise<T>> | InternalPromise<T> = (executeWithCompletion(() =>
 		PromiseResolve(intrinsics["[[%Promise%]]"], value)
 	) as unknown) as Completion<InternalPromise<T>>;

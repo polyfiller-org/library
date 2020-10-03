@@ -20,7 +20,7 @@ export function MakeBasicObject<T = object>(internalSlotsList: List<string>): T 
 	// Assert: If the caller will not be overriding both obj's [[GetPrototypeOf]] and [[SetPrototypeOf]] essential internal methods, then internalSlotsList contains [[Prototype]].
 	// Assert: If the caller will not be overriding all of obj's [[SetPrototypeOf]], [[IsExtensible]], and [[PreventExtensions]] essential internal methods, then internalSlotsList contains [[Extensible]].
 	// If internalSlotsList contains [[Extensible]], then set obj.[[Extensible]] to true.
-	const obj = createObjectWithPrototype(Object.prototype) as T;
+	const obj = createObjectWithPrototype<T>(Object.prototype);
 	const internalSlots = internals(obj);
 	for (let i = 0; i < internalSlotsList.length; i++) {
 		const internalSlot = internalSlotsList.get(i);

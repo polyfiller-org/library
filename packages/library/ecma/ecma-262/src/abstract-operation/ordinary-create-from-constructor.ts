@@ -15,10 +15,6 @@ import {List} from "../lib/list/list";
  * Note that this implementation slightly alters the original in that rather than taking the identifier for the intrinsicDefaultProto,
  * the actual intrinsicDefaultProto is provided for tree-shaking purposes
  * https://tc39.es/ecma262/#sec-ordinarycreatefromconstructor
- * @param {Constructor} constructor
- * @param {R} intrinsicDefaultProto
- * @param {List<string>} [internalSlotsList]
- * @returns {R}
  */
 export function OrdinaryCreateFromConstructor<C extends Constructor, R extends IntrinsicObjectName, Proto extends Intrinsics[typeof intrinsicObjectNameToIntrinsicPropertyKey[R]]>(
 	constructor: C,

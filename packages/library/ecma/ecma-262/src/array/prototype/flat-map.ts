@@ -9,7 +9,7 @@ import {errorFormatArgument} from "../../util/error-format-argument";
  * https://tc39.es/ecma262/#sec-array.prototype.flatmap
  */
 export const {flatMap: arrayPrototypeFlatMap} = {
-	flatMap<T, This = undefined>(this: T[][], mapperFunction: (this: This, value: T, index: number, array: T[]) => T | ReadonlyArray<T>): T[] {
+	flatMap<TT, This = undefined>(this: TT[][], mapperFunction: (this: This, value: TT, index: number, array: TT[]) => TT | readonly TT[]): TT[] {
 		const thisArg = arguments.length < 2 ? undefined : arguments[1];
 		const thisArgPresent = arguments.length >= 2;
 
@@ -34,6 +34,6 @@ export const {flatMap: arrayPrototypeFlatMap} = {
 		FlattenIntoArray(A, O, sourceLen, 0, 1, mapperFunction, T);
 
 		// Return A.
-		return (A as unknown) as T[];
+		return (A as unknown) as TT[];
 	}
 };

@@ -5,9 +5,6 @@ import {PromiseCapability} from "../type/promise-capability";
 /**
  * A GetCapabilitiesExecutor function is an anonymous built-in function that has a [[Capability]] internal slot.
  * https://tc39.es/ecma262/#sec-getcapabilitiesexecutor-functions
- * @param {ArbitraryFunction} resolve
- * @param {ArbitraryFunction} reject
- * @returns {?}
  */
 export function GetCapabilitiesExecutor(this: {"[[Capability]]": PromiseCapability}, resolve: ArbitraryFunction, reject: ArbitraryFunction): undefined {
 	// Let F be the active function object.

@@ -8,10 +8,6 @@ import {EMPTY, empty} from "../type/empty";
 
 /**
  * https://tc39.es/ecma262/#sec-enqueuejob
- * @param {JobQueue} queue
- * @param {Job} job
- * @param {Arguments} args
- * @returns {Completion<empty>}
  */
 export function EnqueueJob<Job extends ArbitraryFunction, Arguments extends Parameters<Job>>(queue: JobQueue, job: Job, args: Arguments): Completion<empty> {
 	// Assert: Type(queueName) is String and its value is the name of a Job Queue recognized by this implementation.

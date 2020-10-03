@@ -4,8 +4,6 @@ import {OrdinaryDelete} from "../../abstract-operation/ordinary-delete";
 
 /**
  * https://tc39.es/ecma262/#sec-arguments-exotic-objects-delete-p
- * @param {PropertyKey} P
- * @private
  */
 export function __ArgumentsDelete__(this: IArguments, P: PropertyKey) {
 	// Let args be the arguments object.

@@ -1,13 +1,5 @@
 import {isInKebabCase, kebabCase} from "@wessberg/stringutil";
-import {
-	DEFAULT_OBJECT_POSITION,
-	OBJECT_FIT_ATTRIBUTE_NAMES,
-	OBJECT_FIT_PROPERTY_NAME,
-	OBJECT_POSITION_ATTRIBUTE_NAMES,
-	OBJECT_POSITION_PROPERTY_NAME,
-	REPURPOSED_CSS_PROPERTY_NAME,
-	WRAPPABLE_STYLE_PROPERTIES
-} from "../constant/constant";
+import {DEFAULT_OBJECT_POSITION, OBJECT_FIT_ATTRIBUTE_NAMES, OBJECT_FIT_PROPERTY_NAME, OBJECT_POSITION_ATTRIBUTE_NAMES, OBJECT_POSITION_PROPERTY_NAME, REPURPOSED_CSS_PROPERTY_NAME, WRAPPABLE_STYLE_PROPERTIES} from "../constant/constant";
 import {CSSStyleDeclarationKey, CSSStyleDeclarationView, ObjectFit, ObjectPosition, PartialStyles, WrappableStyles} from "../type/type";
 import {ObjectPositionParser, TokenKind} from "../lib/object-position-parser";
 
@@ -19,7 +11,7 @@ const DEBOUNCED_CALLBACKS: Map<unknown, number> = new Map();
 /**
  * Debounces the execution of the given callback for the given amount of ms
  */
-export function debounce<T extends Function>(callback: T, ms: number = 16, id?: unknown): number {
+export function debounce<T extends CallableFunction>(callback: T, ms = 16, id?: unknown): number {
 	const key = id != null ? id : callback;
 	const existingTimeoutId = DEBOUNCED_CALLBACKS.get(key);
 
@@ -120,8 +112,8 @@ export function getStyleProperties<T extends {[Key in keyof CSSStyleDeclarationV
 ): {[Key in keyof T]: string | null | undefined} {
 	const record = {} as {[Key in keyof T]: string | null | undefined};
 	for (const key in keys) {
-		if (!keys.hasOwnProperty(key)) continue;
-		if (!keys[key]) continue;
+		if (!Object.prototype.hasOwnProperty.call(keys, key)) continue;
+		if (!Boolean(keys[key])) continue;
 
 		record[key] = getPropertyValue({target, propertyName: key as CSSStyleDeclarationKey, computedStyle});
 	}
@@ -131,7 +123,7 @@ export function getStyleProperties<T extends {[Key in keyof CSSStyleDeclarationV
 
 export function setStyleProperties<T extends PartialStyles>(target: HTMLElement, properties: T): T {
 	for (const key in properties) {
-		if (!properties.hasOwnProperty(key)) continue;
+		if (!Object.prototype.hasOwnProperty.call(properties, key)) continue;
 		const value = properties[key];
 
 		// Only set the value if it changed
@@ -177,9 +169,9 @@ export function parseObjectPosition(text: string): ObjectPosition {
 		}
 
 		// If we reached the end, or if there is at least one bad character in the input, break parsing immediately
-		if (token.kind === TokenKind.EndOfFileToken || token.kind === TokenKind.BadCharacterToken) {
+		if (token.kind === TokenKind.END_OF_FILE_TOKEN || token.kind === TokenKind.BAD_CHARACTER_TOKEN) {
 			break;
-		} else if (token.kind === TokenKind.PositionLiteralToken) {
+		} else if (token.kind === TokenKind.POSITION_LITERAL_TOKEN) {
 			switch (token.value) {
 				case "left":
 				case "top":
@@ -197,7 +189,7 @@ export function parseObjectPosition(text: string): ObjectPosition {
 					// If the object position is any other kind of value, fall back to the default position
 					return DEFAULT_OBJECT_POSITION;
 			}
-		} else if (token.kind === TokenKind.NumberWithUnitToken) {
+		} else if (token.kind === TokenKind.NUMBER_WITH_UNIT_TOKEN) {
 			result[axis] = token.value;
 		}
 	}
@@ -215,9 +207,11 @@ export function getWrappableStyles(styles: PartialStyles): {wrappable: Wrappable
 
 	for (const key in styles) {
 		const castKey = key as CSSStyleDeclarationKey;
-		if (WRAPPABLE_STYLE_PROPERTIES.hasOwnProperty(key)) {
+		if (Object.prototype.hasOwnProperty.call(WRAPPABLE_STYLE_PROPERTIES, key)) {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			(wrappable as any)[castKey] = styles[castKey];
 		} else {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			(other as any)[castKey] = styles[castKey];
 		}
 	}
@@ -227,13 +221,13 @@ export function getWrappableStyles(styles: PartialStyles): {wrappable: Wrappable
 export function setNonOverriddenWrappableStyles<T extends WrappableStyles, U extends WrappableStyles>(on: HTMLElement, styles: T, overrides: U): Partial<T> {
 	const filteredStyles = {} as T;
 	for (const key in styles) {
-		if (!styles.hasOwnProperty(key)) continue;
+		if (!Object.prototype.hasOwnProperty.call(styles, key)) continue;
 
 		const castKey = key as keyof typeof WRAPPABLE_STYLE_PROPERTIES;
 		const value = styles[castKey];
 
 		// If the new value is identical to the wrapped value, don't set it
-		if (overrides.hasOwnProperty(key) && value === overrides[castKey]) continue;
+		if (Object.prototype.hasOwnProperty.call(overrides, key) && value === overrides[castKey]) continue;
 
 		// Skip the value if it didn't change
 		if (on.style[castKey] === value) continue;
@@ -248,11 +242,13 @@ export function setNonOverriddenWrappableStyles<T extends WrappableStyles, U ext
 export function assignFreshInlineStyles<T>(obj: T, target: HTMLElement, properties: CSSStyleDeclarationKey[] | PartialStyles): void {
 	if (Array.isArray(properties)) {
 		for (const key of properties) {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			(obj as any)[key] = target.style[key];
 		}
 	} else {
 		for (const key in properties) {
-			if (!properties.hasOwnProperty(key)) continue;
+			if (!Object.prototype.hasOwnProperty.call(properties, key)) continue;
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			(obj as any)[key] = target.style[key];
 		}
 	}

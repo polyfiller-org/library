@@ -47,12 +47,9 @@ const DEFAULT_DESCRIPTOR_OPTIONS: PropertyDescriptor = {
 };
 
 /**
- * @param {O} O
- * @param {PropertyKey} P
- * @returns {InternalPropertyDescriptor?}
  * http://www.ecma-international.org/ecma-262/10.0/index.html#sec-ordinarygetownproperty
  */
-export function OrdinaryGetOwnProperty<O extends {}>(O: O, P: PropertyKey): InternalPropertyDescriptor | undefined {
+export function OrdinaryGetOwnProperty<TO extends {}>(O: TO, P: PropertyKey): InternalPropertyDescriptor | undefined {
 	// Assert: IsPropertyKey(P) is true.
 	assert(IsPropertyKey(P), `Given argument ${errorFormatArgument(P)} must be a PropertyKey`, TypeError);
 
@@ -71,7 +68,7 @@ export function OrdinaryGetOwnProperty<O extends {}>(O: O, P: PropertyKey): Inte
 	if (CAN_USE_NATIVE_GET_OWN_PROPERTY_DESCRIPTOR && nativeGetOwnPropertyDescriptor != null) {
 		X = toInternalPropertyDescriptor(nativeGetOwnPropertyDescriptor(O, P));
 	} else {
-		const existingInternalPropertyDescriptor = internals(O)["__[[PropertyAttributes]]__"][P as string | number] as InternalPropertyDescriptor | undefined;
+		const existingInternalPropertyDescriptor = internals(O)["__[[PropertyAttributes]]__"][P as string | number];
 		const existingDescriptorOptions: PropertyDescriptor =
 			existingInternalPropertyDescriptor == null
 				? {}
@@ -106,7 +103,7 @@ export function OrdinaryGetOwnProperty<O extends {}>(O: O, P: PropertyKey): Inte
 			X = toInternalPropertyDescriptor({
 				...DEFAULT_DESCRIPTOR_OPTIONS,
 				...existingDescriptorOptions,
-				value: O[P as keyof O]
+				value: O[P as keyof TO]
 			});
 		}
 	}
@@ -126,17 +123,17 @@ export function OrdinaryGetOwnProperty<O extends {}>(O: O, P: PropertyKey): Inte
 		assert(IsAccessorDescriptor(X), `X must be an Accessor Property`);
 
 		// Set D.[[Get]] to the value of X's [[Get]] attribute.
-		D["[[Get]]"] = X!["[[Get]]"];
+		D["[[Get]]"] = X["[[Get]]"];
 
 		// Set D.[[Set]] to the value of X's [[Set]] attribute.
-		D["[[Set]]"] = X!["[[Set]]"];
+		D["[[Set]]"] = X["[[Set]]"];
 	}
 
 	// Set D.[[Enumerable]] to the value of X's [[Enumerable]] attribute.
-	D["[[Enumerable]]"] = X!["[[Enumerable]]"];
+	D["[[Enumerable]]"] = X["[[Enumerable]]"];
 
 	// Set D.[[Configurable]] to the value of X's [[Configurable]] attribute.
-	D["[[Configurable]]"] = X!["[[Configurable]]"];
+	D["[[Configurable]]"] = X["[[Configurable]]"];
 
 	internals(O)["__[[PropertyAttributes]]__"][P as string | number] = D;
 

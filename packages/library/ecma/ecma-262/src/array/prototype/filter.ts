@@ -15,7 +15,7 @@ import {makeList} from "../../lib/list/list";
  * http://www.ecma-international.org/ecma-262/10.0/index.html#sec-array.prototype.filter
  */
 export const {filter: arrayPrototypeFilter} = {
-	filter<T, S extends T>(this: T[], callbackfn: (value: T, index: number, array: T[]) => value is S): S[] {
+	filter<TT, TS extends TT>(this: TT[], callbackfn: (value: TT, index: number, array: TT[]) => value is TS): TS[] {
 		const thisArg = arguments.length < 2 ? undefined : arguments[1];
 		const thisArgPresent = arguments.length >= 2;
 
@@ -34,7 +34,7 @@ export const {filter: arrayPrototypeFilter} = {
 		const T = thisArgPresent ? thisArg : undefined;
 
 		// Let A be ? ArraySpeciesCreate(O, 0).
-		const A = ArraySpeciesCreate(O, 0) as S[];
+		const A = ArraySpeciesCreate(O, 0) as TS[];
 
 		// Let k be 0.
 		let k = 0;

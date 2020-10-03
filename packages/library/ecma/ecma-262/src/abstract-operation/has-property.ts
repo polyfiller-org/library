@@ -9,9 +9,6 @@ import {assert, assertType} from "./assert";
  * P is the property key.
  *
  * https://tc39.github.io/ecma262/#sec-hasproperty
- * @param {T} O
- * @param {PropertyKey} P
- * @returns {boolean}
  */
 export function HasProperty<T extends {}>(O: T, P: PropertyKey): O is T & {[Key in typeof P]: unknown} {
 	// Assert: Type(O) is Object.

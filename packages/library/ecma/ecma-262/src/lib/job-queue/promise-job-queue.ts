@@ -3,14 +3,12 @@ import {JobQueue} from "./job-queue";
 import {PendingJob} from "../../type/pending-job";
 import {makeList} from "../list/list";
 
-const promiseImplementation = <Job extends ArbitraryFunction>() => {
-	return (microtask: Job) => {
+const promiseImplementation = <Job extends ArbitraryFunction>() => (microtask: Job) => {
 		Promise.resolve().then(microtask);
 	};
-};
 
 /**
- * @return {!Function}
+ * @return
  */
 const mutationObserverImplementation = <Job extends ArbitraryFunction>() => {
 	let i = 0;

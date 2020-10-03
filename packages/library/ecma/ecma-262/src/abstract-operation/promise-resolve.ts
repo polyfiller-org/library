@@ -12,11 +12,9 @@ import {makeList} from "../lib/list/list";
  * The abstract operation PromiseResolve, given a constructor and a value,
  * returns a new promise resolved with that value.
  * https://tc39.es/ecma262/#sec-promise-resolve
- * @param {C} C
- * @param {T} x
- * @returns {InternalPromise<T>}
  */
-export function PromiseResolve<C extends Constructor, T>(C: C, x: T): InternalPromise<T> {
+// eslint-disable-next-line @typescript-eslint/promise-function-async
+export function PromiseResolve<TC extends Constructor, TT>(C: TC, x: TT): InternalPromise<TT> {
 	// Assert: Type(C) is Object.
 	assertType(C, "Object", `Argument on position 0 must be an Object`, TypeError);
 
@@ -27,7 +25,7 @@ export function PromiseResolve<C extends Constructor, T>(C: C, x: T): InternalPr
 
 		// If SameValue(xConstructor, C) is true, return x.
 		if (SameValue(xConstructor, C)) {
-			return x as InternalPromise<T>;
+			return x as InternalPromise<TT>;
 		}
 	}
 
@@ -38,5 +36,5 @@ export function PromiseResolve<C extends Constructor, T>(C: C, x: T): InternalPr
 	Call(promiseCapability["[[Resolve]]"]!, undefined, makeList(x));
 
 	// Return promiseCapability.[[Promise]].
-	return promiseCapability["[[Promise]]"] as InternalPromise<T>;
+	return promiseCapability["[[Promise]]"] as InternalPromise<TT>;
 }

@@ -3,8 +3,6 @@ import {Get} from "./get";
 
 /**
  * https://tc39.es/ecma262/#sec-iteratorvalue
- * @param {IteratorResult<T>} iterResult
- * @returns {T}
  */
 export function IteratorValue<T>(iterResult: IteratorResult<T>): T {
 	// Assert: Type(iterResult) is Object.

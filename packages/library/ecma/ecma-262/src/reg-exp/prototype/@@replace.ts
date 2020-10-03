@@ -173,8 +173,8 @@ export const regExpPrototypeSymbolReplace = () =>
 						const replacerArgs = makeList<string | number | Record<string, string>>(matched);
 
 						// Append in list order the elements of captures to the end of the List replacerArgs.
-						for (let i = 0; i < captures.length; i++) {
-							replacerArgs.append(captures.get(i));
+						for (let j = 0; j < captures.length; j++) {
+							replacerArgs.append(captures.get(j));
 						}
 
 						// Append position and S to replacerArgs.

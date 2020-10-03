@@ -5,8 +5,6 @@ import {SameValue} from "./same-value";
  * The abstract operation ToUint8Clamp converts argument to one of 28 integer values
  * in the range 0 through 255, inclusive.
  * https://tc39.es/ecma262/#sec-touint8
- * @param {*} argument
- * @returns {number}
  */
 export function ToUint8Clamp(argument: unknown): number {
 	// Let number be ? ToNumber(argument).

@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-classes-per-file
 import {unicodeWord, word} from "../char-class/ascii";
 import {Pattern, patternToString} from "../syntax/pattern";
 import {canonicalize, uncanonicalize} from "./canonicalize";
@@ -21,9 +22,9 @@ const prevIndex = (s: string, i: number, unicode: boolean): number => {
 		return c;
 	}
 
-	if (0xdc00 <= c && c <= 0xdfff) {
+	if (c >= 0xdc00 && c <= 0xdfff) {
 		const d = index(s, i - 2, unicode);
-		if (0x10000 <= d && d <= 0x10ffff) {
+		if (d >= 0x10000 && d <= 0x10ffff) {
 			return d;
 		}
 	}
@@ -63,10 +64,10 @@ const calculateMaxStackSize = (codes: OpCode[]): number => {
 /** `Proc` is execution state of VM. */
 class Proc {
 	/** A current position of `input` string. */
-	public pos: number;
+	pos: number;
 
 	/** A program counter. */
-	public pc: number;
+	pc: number;
 
 	/**
 	 * A stack for matching.
@@ -77,13 +78,13 @@ class Proc {
 	 * Note that this stack is allocated to available size before execution.
 	 * So, the real stack size is managed by `stackSize` property.
 	 */
-	public stack: number[];
+	stack: number[];
 
 	/** A current stack size. */
-	public stackSize: number;
+	stackSize: number;
 
 	/** A capture indexes. */
-	public caps: number[];
+	caps: number[];
 
 	constructor(pos: number, pc: number, stack: number[], stackSize: number, caps: number[]) {
 		this.pos = pos;
@@ -94,7 +95,7 @@ class Proc {
 	}
 
 	/** Clone this. */
-	public clone(): Proc {
+	clone(): Proc {
 		return new Proc(this.pos, this.pc, Array.from(this.stack), this.stackSize, Array.from(this.caps));
 	}
 }
@@ -106,13 +107,13 @@ class Proc {
  */
 export class Program {
 	/** A regular expression pattern. */
-	public pattern: Pattern;
+	pattern: Pattern;
 
 	/** An array of op-codes compiled `pattern`. */
-	public codes: OpCode[];
+	codes: OpCode[];
 
 	/** Pre-calculated maximum stack size. */
-	private maxStackSize: number;
+	private readonly maxStackSize: number;
 
 	private get ignoreCase(): boolean {
 		return this.pattern.flagSet.ignoreCase;
@@ -148,7 +149,7 @@ export class Program {
 		this.maxStackSize = calculateMaxStackSize(codes);
 	}
 
-	public toString(): string {
+	toString(): string {
 		let s = "";
 		const codes = codesToString(this.codes).split("\n").join("\n    ");
 		s += "Program {\n";
@@ -159,7 +160,7 @@ export class Program {
 		return s;
 	}
 
-	public exec(input: string, pos = 0): Match | null {
+	exec(input: string, pos = 0): Match | null {
 		while (pos <= input.length) {
 			const procs: Proc[] = [];
 			procs.push(this.createProc(pos));
@@ -250,8 +251,8 @@ export class Program {
 						break;
 
 					case "empty_check": {
-						const pos = proc.stack[--proc.stackSize];
-						if (pos === proc.pos) {
+						const currentPos = proc.stack[--proc.stackSize];
+						if (currentPos === proc.pos) {
 							backtrack = true;
 						}
 						break;

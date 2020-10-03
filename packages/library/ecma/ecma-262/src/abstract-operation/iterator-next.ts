@@ -6,9 +6,6 @@ import {makeList} from "../lib/list/list";
 
 /**
  * https://tc39.es/ecma262/#sec-iteratornext
- * @param {IteratorRecord<T>} iteratorRecord
- * @param {T} [value]
- * @returns {IteratorResult<T>|Promise<IteratorResult<T>>}
  */
 export function IteratorNext<T>(iteratorRecord: IteratorRecord<T>, value?: T): IteratorResult<T> | Promise<IteratorResult<T>> {
 	let result: IteratorResult<T> | Promise<IteratorResult<T>>;

@@ -25,7 +25,7 @@ export interface ArrayIteratorPrototype<T = unknown> {
  * http://www.ecma-international.org/ecma-262/10.0/index.html#sec-%arrayiteratorprototype%-object
  */
 export function $ArrayIteratorPrototype$(realm: Realm): ArrayIteratorPrototype {
-	const proto = ObjectCreate(realm["[[Intrinsics]]"]["[[%IteratorPrototype%]]"]) as ArrayIteratorPrototype;
+	const proto = ObjectCreate<ArrayIteratorPrototype>(realm["[[Intrinsics]]"]["[[%IteratorPrototype%]]"]);
 	proto.next = function <T>(this: ArrayIteratorPrototype<T>) {
 		let len: number;
 		let result: T | number | [number, T | number];

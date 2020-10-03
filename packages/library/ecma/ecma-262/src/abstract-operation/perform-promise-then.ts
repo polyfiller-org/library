@@ -17,11 +17,6 @@ import {PromiseJobQueue} from "../lib/job-queue/promise-job-queue";
  * the result is stored by updating resultCapability's promise. (If it is not passed,
  * then PerformPromiseThen is being called by a specification-internal operation where the result does not matter.)
  * https://tc39.es/ecma262/#sec-performpromisethen
- * @param {InternalPromise<T>} promise
- * @param {ArbitraryFunction?} onFulfilled
- * @param {ArbitraryFunction?} onRejected
- * @param {PromiseCapability<T>} [resultCapability]
- * @returns {InternalPromise}
  */
 export function PerformPromiseThen<T>(
 	promise: InternalPromise<T>,

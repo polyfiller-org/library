@@ -12,7 +12,7 @@ import {makeList} from "../../lib/list/list";
  * http://www.ecma-international.org/ecma-262/10.0/index.html#sec-array.prototype.findindex
  */
 export const {findIndex: arrayPrototypeFindIndex} = {
-	findIndex<T>(this: T[], predicate: (value: T, index: number, obj: T[]) => unknown): number {
+	findIndex<TT>(this: TT[], predicate: (value: TT, index: number, obj: TT[]) => unknown): number {
 		const thisArg = arguments.length < 2 ? undefined : arguments[1];
 		const thisArgPresent = arguments.length >= 2;
 

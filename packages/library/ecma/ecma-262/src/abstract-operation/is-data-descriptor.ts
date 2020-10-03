@@ -2,8 +2,6 @@ import {InternalDataDescriptor, InternalPropertyDescriptor} from "../type/intern
 
 /**
  * http://www.ecma-international.org/ecma-262/10.0/index.html#sec-isdatadescriptor
- * @param {InternalPropertyDescriptor} Desc
- * @returns {Desc is InternalDataDescriptor}
  */
 export function IsDataDescriptor(Desc?: InternalPropertyDescriptor): Desc is InternalDataDescriptor {
 	// If Desc is undefined, return false.

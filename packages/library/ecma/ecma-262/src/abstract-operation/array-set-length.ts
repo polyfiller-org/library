@@ -9,9 +9,6 @@ import {internals} from "../lib/internal-slot-map/internals";
 
 /**
  * https://tc39.es/ecma262/#sec-arraysetlength
- * @param {T[]} A
- * @param {PropertyDescriptor} Desc
- * @returns {boolean}
  */
 export function ArraySetLength<T>(A: T[], Desc: InternalPropertyDescriptor): boolean {
 	// If Desc.[[Value]] is absent, then

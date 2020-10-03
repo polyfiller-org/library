@@ -11,7 +11,6 @@ export * from "./hash-function";
 export * from "./initialize-map";
 export * from "./is-leading-surrogate";
 export * from "./is-revoked-proxy";
-export * from "./is-strict";
 export * from "./is-trailing-surrogate";
 export * from "./key-is-empty";
 export * from "./modulo";

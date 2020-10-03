@@ -6,8 +6,6 @@ import {getCurrentIntrinsics} from "../environment/realm/get-current-intrinsics"
  * The abstract operation IsConstructor determines if argument, which must be an ECMAScript language value,
  * is a function object with a [[Construct]] internal method.
  * https://tc39.es/ecma262/#sec-isconstructor
- * @param {*} argument
- * @returns {argument is Constructor}
  */
 export function IsConstructor<T>(argument: Constructor<T>): argument is Constructor<T>;
 export function IsConstructor(argument: unknown): argument is Constructor;
@@ -32,6 +30,7 @@ export function IsConstructor<T>(argument: unknown | Constructor<T>): argument i
 
 	try {
 		if (proxyConstructor != null) {
+			// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
 			return !!new new proxyConstructor(argument as Constructor<T>, handler)();
 		} else {
 			new (argument as Constructor<T>)();

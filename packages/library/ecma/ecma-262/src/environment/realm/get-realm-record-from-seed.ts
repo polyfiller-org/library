@@ -6,8 +6,6 @@ import {FunctionInternals} from "../../internal-slot/function/function-internals
 
 /**
  * Attempts to resolve the realm from the given seed
- * @param {Function|null?} seed
- * @return {Function | undefined}
  */
 export function getRealmRecordFromSeed(seed: any): Realm {
 	const currentRealm = getCurrentRealmRecord();

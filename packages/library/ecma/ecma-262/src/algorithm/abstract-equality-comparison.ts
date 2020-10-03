@@ -6,9 +6,6 @@ import {StrictEqualityComparison} from "./strict-equality-comparison";
 /**
  * The comparison x == y, where x and y are values, produces true or false.
  * https://tc39.es/ecma262/#sec-abstract-equality-comparison
- * @param {*} x
- * @param {*} y
- * @returns {boolean}
  */
 export function AbstractEqualityComparison(x: unknown, y: unknown): boolean {
 	const typeX = Type(x);

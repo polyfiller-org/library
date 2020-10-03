@@ -9,16 +9,11 @@ import {errorFormatArgument} from "../util/error-format-argument";
  * The operation is called with arguments O, P, V, and Throw where O is the object, P is the property key,
  * V is the new value for the property and Throw is a Boolean flag.
  * https://tc39.es/ecma262/#sec-set-o-p-v-throw
- * @param {O} O
- * @param {P} P
- * @param {V} V
- * @param {boolean} Throw
- * @returns {O is O&{ [Key in P]: V }}
  */
-export function Set<O extends V[], P extends StringifiedIndex, V>(O: O, P: P, V: V, Throw: boolean): O is O & {[Key in P]: V};
-export function Set<O, P extends keyof O, V extends O[P]>(O: O, P: P, V: V, Throw: boolean): O is O & {[Key in P]: V};
-export function Set<O, P extends PropertyKey, V>(O: O, P: P, V: V, Throw: boolean): O is O;
-export function Set<O, P extends PropertyKey | keyof O, V>(O: O, P: P, V: V, Throw: boolean): O is O {
+export function Set<TO extends TV[], TP extends StringifiedIndex, TV>(O: TO, P: TP, V: TV, Throw: boolean): O is TO & {[Key in TP]: TV};
+export function Set<TO, TP extends keyof TO, TV extends TO[TP]>(O: TO, P: TP, V: TV, Throw: boolean): O is TO & {[Key in TP]: TV};
+export function Set<TO, TP extends PropertyKey, TV>(O: TO, P: TP, V: TV, Throw: boolean): O is TO;
+export function Set<TO, TP extends PropertyKey | keyof TO, TV>(O: TO, P: TP, V: TV, Throw: boolean): O is TO {
 	// Assert: Type(O) is Object.
 	assertType(O, "Object", `Given argument ${errorFormatArgument(O)} must be of type Object`, TypeError);
 

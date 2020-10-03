@@ -8,7 +8,7 @@ import {makeList} from "../../lib/list/list";
  */
 export const arrayPrototypeSymbolUnscopables = (() => {
 	// Let unscopableList be ObjectCreate(null).
-	const unscopableList = ObjectCreate(null) as typeof Array.prototype;
+	const unscopableList = ObjectCreate<object>(null);
 	const results = makeList<boolean>();
 
 	// Perform CreateDataProperty(unscopableList, "copyWithin", true).

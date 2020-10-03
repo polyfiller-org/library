@@ -21,7 +21,7 @@ export interface RegExpStringIteratorPrototype {
  * https://tc39.es/ecma262/#sec-%regexpstringiteratorprototype%-object
  */
 export function $RegExpStringIteratorPrototype$(realm: Realm): RegExpStringIteratorPrototype {
-	const proto = ObjectCreate(realm["[[Intrinsics]]"]["[[%IteratorPrototype%]]"]) as RegExpStringIteratorPrototype;
+	const proto = ObjectCreate<RegExpStringIteratorPrototype>(realm["[[Intrinsics]]"]["[[%IteratorPrototype%]]"]);
 
 	proto.next = function (this: RegExpStringIteratorPrototype): IteratorResult<RegExpMatchArray> {
 		// Let O be the this value.

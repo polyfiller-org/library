@@ -1,10 +1,6 @@
 import {Type} from "./type";
 import {PromiseCapability} from "../type/promise-capability";
 
-/**
- * @param {*} x
- * @return {item is PromiseCapability}
- */
 export function IsPromiseCapability(x: unknown): x is PromiseCapability {
 	// If Type(x) is not Object, return false.
 	if (Type(x) !== "Object") return false;

@@ -1,10 +1,6 @@
 import {Type} from "./type";
 import {CompletionAbrupt} from "../type/completion";
 
-/**
- * @param {*} x
- * @return {item is AbruptCompletion}
- */
 export function IsAbruptCompletion(x: unknown): x is CompletionAbrupt {
 	// If Type(x) is not Object, return false.
 	if (Type(x) !== "Object") return false;

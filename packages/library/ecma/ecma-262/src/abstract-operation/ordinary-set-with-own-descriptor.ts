@@ -8,23 +8,18 @@ import {Call} from "./call";
 import {InternalPropertyDescriptor} from "../type/internal-property-descriptor";
 import {internals} from "../lib/internal-slot-map/internals";
 import {makeList} from "../lib/list/list";
+import {safeHasOwnProperty} from "../util/safe-has-own-property";
 
 /**
  * https://tc39.es/ecma262/#sec-ordinarysetwithowndescriptor
- * @param {O} O
- * @param {P} P
- * @param {V} V
- * @param {Receiver} Receiver
- * @param {InternalPropertyDescriptor?} ownDesc
- * @returns {O is O&{ [Key in P]: V }}
  */
-export function OrdinarySetWithOwnDescriptor<O, P extends keyof O, V extends O[P], Receiver>(
-	O: O,
-	P: P,
-	V: V,
-	Receiver: Receiver,
+export function OrdinarySetWithOwnDescriptor<TO, TP extends keyof TO, TV extends TO[TP], TReceiver>(
+	O: TO,
+	P: TP,
+	V: TV,
+	Receiver: TReceiver,
 	ownDesc: InternalPropertyDescriptor | undefined
-): O is O & {[Key in P]: V} {
+): O is TO & {[Key in TP]: TV} {
 	// Assert: IsPropertyKey(P) is true.
 	assert(IsPropertyKey(P), `Argument at position 1 must be a PropertyKey`, TypeError);
 
@@ -81,8 +76,7 @@ export function OrdinarySetWithOwnDescriptor<O, P extends keyof O, V extends O[P
 		// Else,
 		else {
 			// Assert: Receiver does not currently have a property P.
-			// Note: Object.prototype.hasOwnProperty is part of ES3, so we can use it here!
-			assert(!Object.prototype.hasOwnProperty.call(Receiver, P));
+			assert(!safeHasOwnProperty(Receiver, P));
 
 			// Return ? CreateDataProperty(Receiver, P, V).
 			return CreateDataProperty(Receiver, P, V);

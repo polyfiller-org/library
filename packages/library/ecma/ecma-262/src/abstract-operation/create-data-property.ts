@@ -8,12 +8,8 @@ import {internals} from "../lib/internal-slot-map/internals";
  * The operation is called with arguments O, P, and V where O is the object, P is the property key,
  * and V is the value for the property.
  * https://tc39.github.io/ecma262/#sec-createdataproperty
- * @param {O} O
- * @param {P} P
- * @param {V} V
- * @returns {boolean}
  */
-export function CreateDataProperty<O extends {}, P extends PropertyKey, V>(O: O, P: P, V: V): O is O & {[Key in P]: V} {
+export function CreateDataProperty<TO extends {}, TP extends PropertyKey, TV>(O: TO, P: TP, V: TV): O is TO & {[Key in TP]: TV} {
 	// Assert: Type(O) is Object.
 	assertType(O, "Object", `Argument at position 0 provided to ${CreateDataProperty.name} must be an Object`, TypeError);
 

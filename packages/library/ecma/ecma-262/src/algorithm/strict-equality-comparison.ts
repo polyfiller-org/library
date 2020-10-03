@@ -5,9 +5,6 @@ import {SameValueNonNumber} from "../abstract-operation/same-value-non-number";
 /**
  * The comparison x === y, where x and y are values, produces true or false.
  * https://tc39.es/ecma262/#sec-strict-equality-comparison
- * @param {*} x
- * @param {*} y
- * @returns {boolean}
  */
 export function StrictEqualityComparison(x: unknown, y: unknown): boolean {
 	// If Type(x) is different from Type(y), return false.

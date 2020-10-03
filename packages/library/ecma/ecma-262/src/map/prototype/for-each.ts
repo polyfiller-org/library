@@ -5,6 +5,7 @@ import {internals} from "../../lib/internal-slot-map/internals";
 import {Call} from "../../abstract-operation/call";
 import {makeList} from "../../lib/list/list";
 import {getMapIndexes} from "../../util/get-map-indexes";
+import {safeHasOwnProperty} from "../../util/safe-has-own-property";
 
 /**
  * https://tc39.es/ecma262/#sec-map.prototype.foreach
@@ -35,7 +36,7 @@ export const {forEach: mapPrototypeForEach} = {
 		const keys = internalSlots["[[MapKeys]]"];
 
 		for (let i = 0; i < keys.length; i++) {
-			if (Object.prototype.hasOwnProperty.call(keys, i)) {
+			if (safeHasOwnProperty(keys, i)) {
 				const key = keys.get(i);
 				if (key !== undefined) {
 					const {mapDataIndex, entryIndex} = getMapIndexes(key["[[Key]]"], entries);

@@ -1,5 +1,11 @@
 # @polyfiller/config
 
+## 0.0.37
+
+### Patch Changes
+
+- more work on ecma-262
+
 ## 0.0.36
 
 ### Patch Changes

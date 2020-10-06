@@ -1,7 +1,7 @@
 {
 	"name": "@polyfiller/test262",
 	"private": true,
-	"version": "0.0.36",
+	"version": "0.0.37",
 	"description": "Simple CLI for running the test262 suite",
 	"bin": {
 		"test262": "bin/test262"

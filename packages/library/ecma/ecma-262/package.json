@@ -1,6 +1,6 @@
 {
 	"name": "@polyfiller/ecma-262",
-	"version": "0.0.38",
+	"version": "0.0.39",
 	"description": "An implementation of the ECMAScript® Language Specification",
 	"scripts": {
 		"scaffold": "scaffold readme --yes && scaffold license --yes",

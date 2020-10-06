@@ -1,5 +1,11 @@
 # @polyfiller/test262
 
+## 0.0.39
+
+### Patch Changes
+
+- improve chunk naming
+
 ## 0.0.38
 
 ### Patch Changes

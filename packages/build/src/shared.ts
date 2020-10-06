@@ -1,4 +1,4 @@
-import {ModuleFormat, RollupOptions} from "rollup";
+import {ModuleFormat, OutputOptions, RollupOptions} from "rollup";
 import {CompilerOptions} from "typescript";
 import ts, {TypescriptPluginOptions} from "@wessberg/rollup-plugin-ts";
 import resolve from "@rollup/plugin-node-resolve";
@@ -48,7 +48,7 @@ export interface SimplifiedRollupOptionsOutputBase {
 	format: ModuleFormat;
 	minify?: boolean;
 	sourcemap?: boolean;
-	chunkFileNames?: string;
+	chunkFileNames?: OutputOptions["chunkFileNames"];
 	entryFileNames?: string;
 }
 

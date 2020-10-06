@@ -1,7 +1,19 @@
-import {RollupOptions} from "rollup";
+import {PreRenderedChunk, RollupOptions} from "rollup";
 import {CompilerOptions, ScriptTarget} from "typescript";
 import {generateRollupOptions, PolyfillablePackage, SimplifiedRollupOptionsDir, SimplifiedRollupOptionsFile} from "./shared";
 import {parse} from "path";
+import {createHash} from "crypto";
+
+const getGenerateChunkFileNameCallback = (ext: string, suffix = "", hashMaxLength = 12) => (chunkInfo: PreRenderedChunk): string => {
+	const moduleNames = Object.keys(chunkInfo.modules).join(",");
+	let hash = createHash("sha1")
+		.update(moduleNames)
+		.digest("hex");
+	if (hash.length > hashMaxLength) {
+		hash = hash.slice(0, hashMaxLength);
+	}
+	return `chunk/${chunkInfo.name}-${hash}${suffix}${ext}`;
+}
 
 export function generatePolyfillConfig(options: {context?: string; pkg: Partial<PolyfillablePackage>}): RollupOptions[] {
 	const {pkg, context = "window"} = options;
@@ -81,7 +93,7 @@ export function generatePolyfillConfig(options: {context?: string; pkg: Partial<
 						dir,
 						format: "esm" as const,
 						minify: false,
-						chunkFileNames: `chunk/[name]-chunk${parsedEsmStandardOutput.ext}`,
+						chunkFileNames: getGenerateChunkFileNameCallback(parsedEsmStandardOutput.ext),
 						entryFileNames: `[name]${parsedEsmStandardOutput.ext}`
 					});
 				}
@@ -94,13 +106,14 @@ export function generatePolyfillConfig(options: {context?: string; pkg: Partial<
 				if (parsedEsmStandardOutput == null) {
 					esmRollupOptions.input[name] = input;
 				}
+
 				const minifiedOutput = esmRollupOptions.outputs.find(({minify}) => minify);
 				if (minifiedOutput == null) {
 					esmRollupOptions.outputs.push({
 						dir,
 						format: "esm" as const,
 						minify: true,
-						chunkFileNames: `chunk/[name]-[hash]${minifiedEsmSuffix}${parsedEsmMinifiedOutput.ext}`,
+						chunkFileNames: getGenerateChunkFileNameCallback(parsedEsmMinifiedOutput.ext, minifiedEsmSuffix),
 						entryFileNames: `[name]${minifiedEsmSuffix}${parsedEsmMinifiedOutput.ext}`
 					});
 				}

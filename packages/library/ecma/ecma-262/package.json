@@ -50,18 +50,17 @@
 	],
 	"license": "MIT",
 	"devDependencies": {
-		"@polyfiller/build": "workspace:*",
-		"@polyfiller/config": "workspace:*",
-		"@polyfiller/test262": "workspace:*",
-		"@babel/runtime": "^7.11.2",
 		"@babel/core": "^7.11.6",
 		"@babel/parser": "^7.11.5",
 		"@babel/plugin-transform-typeof-symbol": "^7.10.4",
+		"@babel/runtime": "^7.11.2",
+		"@polyfiller/build": "workspace:*",
+		"@polyfiller/config": "workspace:*",
+		"@polyfiller/test262": "workspace:*",
 		"rimraf": "^3.0.2",
 		"rollup": "^2.28.2",
 		"typescript": "^4.0.3"
 	},
-	"dependencies": {},
 	"main": "./dist/cjs/index.js",
 	"module": "./dist/esm/index.js",
 	"types": "./dist/esm/index.d.ts",
@@ -97,204 +96,6 @@
 				"bundle": {
 					"standard": "./polyfill/index.bundle.js",
 					"minified": "./polyfill/index.bundle.min.js"
-				}
-			}
-		},
-		"es.symbol": {
-			"input": "./src/polyfill/symbol/index.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.js",
-					"minified": "./polyfill/symbol.min.js"
-				}
-			}
-		},
-		"es.symbol.async-iterator": {
-			"input": "./src/polyfill/symbol/async-iterator.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.async-iterator.js",
-					"minified": "./polyfill/symbol.async-iterator.min.js"
-				}
-			}
-		},
-		"es.symbol.constructor": {
-			"input": "./src/polyfill/symbol/constructor.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.constructor.js",
-					"minified": "./polyfill/symbol.constructor.min.js"
-				}
-			}
-		},
-		"es.symbol.for": {
-			"input": "./src/polyfill/symbol/for.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.for.js",
-					"minified": "./polyfill/symbol.for.min.js"
-				}
-			}
-		},
-		"es.symbol.has-instance": {
-			"input": "./src/polyfill/symbol/has-instance.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.has-instance.js",
-					"minified": "./polyfill/symbol.has-instance.min.js"
-				}
-			}
-		},
-		"es.symbol.is-concat-spreadable": {
-			"input": "./src/polyfill/symbol/is-concat-spreadable.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.is-concat-spreadable.js",
-					"minified": "./polyfill/symbol.is-concat-spreadable.min.js"
-				}
-			}
-		},
-		"es.symbol.iterator": {
-			"input": "./src/polyfill/symbol/iterator.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.iterator.js",
-					"minified": "./polyfill/symbol.iterator.min.js"
-				}
-			}
-		},
-		"es.symbol.key-for": {
-			"input": "./src/polyfill/symbol/key-for.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.key-for.js",
-					"minified": "./polyfill/symbol.key-for.min.js"
-				}
-			}
-		},
-		"es.symbol.match": {
-			"input": "./src/polyfill/symbol/match.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.match.js",
-					"minified": "./polyfill/symbol.match.min.js"
-				}
-			}
-		},
-		"es.symbol.match-all": {
-			"input": "./src/polyfill/symbol/match-all.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.match-all.js",
-					"minified": "./polyfill/symbol.match-all.min.js"
-				}
-			}
-		},
-		"es.symbol.replace": {
-			"input": "./src/polyfill/symbol/replace.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.replace.js",
-					"minified": "./polyfill/symbol.replace.min.js"
-				}
-			}
-		},
-		"es.symbol.search": {
-			"input": "./src/polyfill/symbol/search.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.search.js",
-					"minified": "./polyfill/symbol.search.min.js"
-				}
-			}
-		},
-		"es.symbol.species": {
-			"input": "./src/polyfill/symbol/species.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.species.js",
-					"minified": "./polyfill/symbol.species.min.js"
-				}
-			}
-		},
-		"es.symbol.split": {
-			"input": "./src/polyfill/symbol/split.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.split.js",
-					"minified": "./polyfill/symbol.split.min.js"
-				}
-			}
-		},
-		"es.symbol.to-primitive": {
-			"input": "./src/polyfill/symbol/to-primitive.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.to-primitive.js",
-					"minified": "./polyfill/symbol.to-primitive.min.js"
-				}
-			}
-		},
-		"es.symbol.to-string-tag": {
-			"input": "./src/polyfill/symbol/to-string-tag.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.to-string-tag.js",
-					"minified": "./polyfill/symbol.to-string-tag.min.js"
-				}
-			}
-		},
-		"es.symbol.unscopables": {
-			"input": "./src/polyfill/symbol/unscopables.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.unscopables.js",
-					"minified": "./polyfill/symbol.unscopables.min.js"
-				}
-			}
-		},
-		"es.symbol.prototype.@@to-primitive": {
-			"input": "./src/polyfill/symbol/prototype/@@to-primitive.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.prototype.@@to-primitive.js",
-					"minified": "./polyfill/symbol.prototype.@@to-primitive.min.js"
-				}
-			}
-		},
-		"es.symbol.prototype.@@to-string-tag": {
-			"input": "./src/polyfill/symbol/prototype/@@to-string-tag.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.prototype.@@to-string-tag.js",
-					"minified": "./polyfill/symbol.prototype.@@to-string-tag.min.js"
-				}
-			}
-		},
-		"es.symbol.prototype.description": {
-			"input": "./src/polyfill/symbol/prototype/description.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.prototype.description.js",
-					"minified": "./polyfill/symbol.prototype.description.min.js"
-				}
-			}
-		},
-		"es.symbol.prototype.to-string": {
-			"input": "./src/polyfill/symbol/prototype/to-string.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.prototype.to-string.js",
-					"minified": "./polyfill/symbol.prototype.to-string.min.js"
-				}
-			}
-		},
-		"es.symbol.prototype.value-of": {
-			"input": "./src/polyfill/symbol/prototype/value-of.ts",
-			"output": {
-				"esm": {
-					"standard": "./polyfill/symbol.prototype.value-of.js",
-					"minified": "./polyfill/symbol.prototype.value-of.min.js"
 				}
 			}
 		},
@@ -637,6 +438,924 @@
 				"esm": {
 					"standard": "./polyfill/array.prototype.values.js",
 					"minified": "./polyfill/array.prototype.values.min.js"
+				}
+			}
+		},
+		"es.function": {
+			"input": "./src/polyfill/function/index.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/function.js",
+					"minified": "./polyfill/function.min.js"
+				}
+			}
+		},
+		"es.function.prototype.@@has-instance": {
+			"input": "./src/polyfill/function/prototype/@@has-instance.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/function.prototype.@@has-instance.js",
+					"minified": "./polyfill/function.prototype.@@has-instance.min.js"
+				}
+			}
+		},
+		"es.map": {
+			"input": "./src/polyfill/map/index.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/map.js",
+					"minified": "./polyfill/map.min.js"
+				}
+			}
+		},
+		"es.map.constructor": {
+			"input": "./src/polyfill/map/constructor.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/map.constructor.js",
+					"minified": "./polyfill/map.constructor.min.js"
+				}
+			}
+		},
+		"es.map.@@species": {
+			"input": "./src/polyfill/map/@@species.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/map.@@species.js",
+					"minified": "./polyfill/map.@@species.min.js"
+				}
+			}
+		},
+		"es.map.prototype.@@iterator": {
+			"input": "./src/polyfill/map/prototype/@@iterator.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/map.prototype.@@iterator.js",
+					"minified": "./polyfill/map.prototype.@@iterator.min.js"
+				}
+			}
+		},
+		"es.map.prototype.@@to-string-tag": {
+			"input": "./src/polyfill/map/prototype/@@to-string-tag.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/map.prototype.@@to-string-tag.js",
+					"minified": "./polyfill/map.prototype.@@to-string-tag.min.js"
+				}
+			}
+		},
+		"es.map.prototype.clear": {
+			"input": "./src/polyfill/map/prototype/clear.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/map.prototype.clear.js",
+					"minified": "./polyfill/map.prototype.clear.min.js"
+				}
+			}
+		},
+		"es.map.prototype.delete": {
+			"input": "./src/polyfill/map/prototype/delete.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/map.prototype.delete.js",
+					"minified": "./polyfill/map.prototype.delete.min.js"
+				}
+			}
+		},
+		"es.map.prototype.entries": {
+			"input": "./src/polyfill/map/prototype/entries.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/map.prototype.entries.js",
+					"minified": "./polyfill/map.prototype.entries.min.js"
+				}
+			}
+		},
+		"es.map.prototype.for-each": {
+			"input": "./src/polyfill/map/prototype/for-each.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/map.prototype.for-each.js",
+					"minified": "./polyfill/map.prototype.for-each.min.js"
+				}
+			}
+		},
+		"es.map.prototype.get": {
+			"input": "./src/polyfill/map/prototype/get.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/map.prototype.get.js",
+					"minified": "./polyfill/map.prototype.get.min.js"
+				}
+			}
+		},
+		"es.map.prototype.has": {
+			"input": "./src/polyfill/map/prototype/has.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/map.prototype.has.js",
+					"minified": "./polyfill/map.prototype.has.min.js"
+				}
+			}
+		},
+		"es.map.prototype.keys": {
+			"input": "./src/polyfill/map/prototype/keys.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/map.prototype.keys.js",
+					"minified": "./polyfill/map.prototype.keys.min.js"
+				}
+			}
+		},
+		"es.map.prototype.set": {
+			"input": "./src/polyfill/map/prototype/set.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/map.prototype.set.js",
+					"minified": "./polyfill/map.prototype.set.min.js"
+				}
+			}
+		},
+		"es.map.prototype.size": {
+			"input": "./src/polyfill/map/prototype/size.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/map.prototype.size.js",
+					"minified": "./polyfill/map.prototype.size.min.js"
+				}
+			}
+		},
+		"es.map.prototype.values": {
+			"input": "./src/polyfill/map/prototype/values.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/map.prototype.values.js",
+					"minified": "./polyfill/map.prototype.values.min.js"
+				}
+			}
+		},
+		"es.object": {
+			"input": "./src/polyfill/object/index.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.js",
+					"minified": "./polyfill/object.min.js"
+				}
+			}
+		},
+		"es.object.assign": {
+			"input": "./src/polyfill/object/assign.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.assign.js",
+					"minified": "./polyfill/object.assign.min.js"
+				}
+			}
+		},
+		"es.object.create": {
+			"input": "./src/polyfill/object/create.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.create.js",
+					"minified": "./polyfill/object.create.min.js"
+				}
+			}
+		},
+		"es.object.define-properties": {
+			"input": "./src/polyfill/object/define-properties.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.define-properties.js",
+					"minified": "./polyfill/object.define-properties.min.js"
+				}
+			}
+		},
+		"es.object.define-property": {
+			"input": "./src/polyfill/object/define-property.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.define-property.js",
+					"minified": "./polyfill/object.define-property.min.js"
+				}
+			}
+		},
+		"es.object.entries": {
+			"input": "./src/polyfill/object/entries.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.entries.js",
+					"minified": "./polyfill/object.entries.min.js"
+				}
+			}
+		},
+		"es.object.freeze": {
+			"input": "./src/polyfill/object/freeze.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.freeze.js",
+					"minified": "./polyfill/object.freeze.min.js"
+				}
+			}
+		},
+		"es.object.from-entries": {
+			"input": "./src/polyfill/object/from-entries.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.from-entries.js",
+					"minified": "./polyfill/object.from-entries.min.js"
+				}
+			}
+		},
+		"es.object.get-own-property-descriptor": {
+			"input": "./src/polyfill/object/get-own-property-descriptor.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.get-own-property-descriptor.js",
+					"minified": "./polyfill/object.get-own-property-descriptor.min.js"
+				}
+			}
+		},
+		"es.object.get-own-property-descriptors": {
+			"input": "./src/polyfill/object/get-own-property-descriptors.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.get-own-property-descriptors.js",
+					"minified": "./polyfill/object.get-own-property-descriptors.min.js"
+				}
+			}
+		},
+		"es.object.get-own-property-names": {
+			"input": "./src/polyfill/object/get-own-property-names.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.get-own-property-names.js",
+					"minified": "./polyfill/object.get-own-property-names.min.js"
+				}
+			}
+		},
+		"es.object.get-own-property-symbols": {
+			"input": "./src/polyfill/object/get-own-property-symbols.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.get-own-property-symbols.js",
+					"minified": "./polyfill/object.get-own-property-symbols.min.js"
+				}
+			}
+		},
+		"es.object.get-prototype-of": {
+			"input": "./src/polyfill/object/get-prototype-of.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.get-prototype-of.js",
+					"minified": "./polyfill/object.get-prototype-of.min.js"
+				}
+			}
+		},
+		"es.object.is": {
+			"input": "./src/polyfill/object/is.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.is.js",
+					"minified": "./polyfill/object.is.min.js"
+				}
+			}
+		},
+		"es.object.is-extensible": {
+			"input": "./src/polyfill/object/is-extensible.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.is-extensible.js",
+					"minified": "./polyfill/object.is-extensible.min.js"
+				}
+			}
+		},
+		"es.object.is-frozen": {
+			"input": "./src/polyfill/object/is-frozen.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.is-frozen.js",
+					"minified": "./polyfill/object.is-frozen.min.js"
+				}
+			}
+		},
+		"es.object.is-sealed": {
+			"input": "./src/polyfill/object/is-sealed.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.is-sealed.js",
+					"minified": "./polyfill/object.is-sealed.min.js"
+				}
+			}
+		},
+		"es.object.keys": {
+			"input": "./src/polyfill/object/keys.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.keys.js",
+					"minified": "./polyfill/object.keys.min.js"
+				}
+			}
+		},
+		"es.object.prevent-extensions": {
+			"input": "./src/polyfill/object/prevent-extensions.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.prevent-extensions.js",
+					"minified": "./polyfill/object.prevent-extensions.min.js"
+				}
+			}
+		},
+		"es.object.seal": {
+			"input": "./src/polyfill/object/seal.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.seal.js",
+					"minified": "./polyfill/object.seal.min.js"
+				}
+			}
+		},
+		"es.object.set-prototype-of": {
+			"input": "./src/polyfill/object/set-prototype-of.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.set-prototype-of.js",
+					"minified": "./polyfill/object.set-prototype-of.min.js"
+				}
+			}
+		},
+		"es.object.values": {
+			"input": "./src/polyfill/object/values.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.values.js",
+					"minified": "./polyfill/object.values.min.js"
+				}
+			}
+		},
+		"es.object.prototype.is-prototype-of": {
+			"input": "./src/polyfill/object/prototype/is-prototype-of.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.prototype.is-prototype-of.js",
+					"minified": "./polyfill/object.prototype.is-prototype-of.min.js"
+				}
+			}
+		},
+		"es.object.prototype.property-is-enumerable": {
+			"input": "./src/polyfill/object/prototype/property-is-enumerable.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.prototype.property-is-enumerable.js",
+					"minified": "./polyfill/object.prototype.property-is-enumerable.min.js"
+				}
+			}
+		},
+		"es.object.prototype.to-locale-string": {
+			"input": "./src/polyfill/object/prototype/to-locale-string.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/object.prototype.to-locale-string.js",
+					"minified": "./polyfill/object.prototype.to-locale-string.min.js"
+				}
+			}
+		},
+		"es.proxy": {
+			"input": "./src/polyfill/proxy/index.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/proxy.js",
+					"minified": "./polyfill/proxy.min.js"
+				}
+			}
+		},
+		"es.proxy.constructor": {
+			"input": "./src/polyfill/proxy/constructor.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/proxy.constructor.js",
+					"minified": "./polyfill/proxy.constructor.min.js"
+				}
+			}
+		},
+		"es.proxy.revocable": {
+			"input": "./src/polyfill/proxy/revocable.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/proxy.revocable.js",
+					"minified": "./polyfill/proxy.revocable.min.js"
+				}
+			}
+		},
+		"es.reg-exp": {
+			"input": "./src/polyfill/reg-exp/index.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/reg-exp.js",
+					"minified": "./polyfill/reg-exp.min.js"
+				}
+			}
+		},
+		"es.reg-exp.constructor": {
+			"input": "./src/polyfill/reg-exp/constructor.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/reg-exp.constructor.js",
+					"minified": "./polyfill/reg-exp.constructor.min.js"
+				}
+			}
+		},
+		"es.reg-exp.@@species": {
+			"input": "./src/polyfill/reg-exp/@@species.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/reg-exp.@@species.js",
+					"minified": "./polyfill/reg-exp.@@species.min.js"
+				}
+			}
+		},
+		"es.reg-exp.prototype.@@match": {
+			"input": "./src/polyfill/reg-exp/prototype/@@match.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/reg-exp.prototype.@@match.js",
+					"minified": "./polyfill/reg-exp.prototype.@@match.min.js"
+				}
+			}
+		},
+		"es.reg-exp.prototype.@@match-all": {
+			"input": "./src/polyfill/reg-exp/prototype/@@match-all.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/reg-exp.prototype.@@match-all.js",
+					"minified": "./polyfill/reg-exp.prototype.@@match-all.min.js"
+				}
+			}
+		},
+		"es.reg-exp.prototype.@@replace": {
+			"input": "./src/polyfill/reg-exp/prototype/@@replace.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/reg-exp.prototype.@@replace.js",
+					"minified": "./polyfill/reg-exp.prototype.@@replace.min.js"
+				}
+			}
+		},
+		"es.reg-exp.prototype.@@search": {
+			"input": "./src/polyfill/reg-exp/prototype/@@search.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/reg-exp.prototype.@@search.js",
+					"minified": "./polyfill/reg-exp.prototype.@@search.min.js"
+				}
+			}
+		},
+		"es.reg-exp.prototype.@@split": {
+			"input": "./src/polyfill/reg-exp/prototype/@@split.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/reg-exp.prototype.@@split.js",
+					"minified": "./polyfill/reg-exp.prototype.@@split.min.js"
+				}
+			}
+		},
+		"es.reg-exp.prototype.dot-all": {
+			"input": "./src/polyfill/reg-exp/prototype/dot-all.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/reg-exp.prototype.dot-all.js",
+					"minified": "./polyfill/reg-exp.prototype.dot-all.min.js"
+				}
+			}
+		},
+		"es.reg-exp.prototype.exec": {
+			"input": "./src/polyfill/reg-exp/prototype/exec.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/reg-exp.prototype.exec.js",
+					"minified": "./polyfill/reg-exp.prototype.exec.min.js"
+				}
+			}
+		},
+		"es.reg-exp.prototype.flags": {
+			"input": "./src/polyfill/reg-exp/prototype/flags.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/reg-exp.prototype.flags.js",
+					"minified": "./polyfill/reg-exp.prototype.flags.min.js"
+				}
+			}
+		},
+		"es.reg-exp.prototype.global": {
+			"input": "./src/polyfill/reg-exp/prototype/global.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/reg-exp.prototype.global.js",
+					"minified": "./polyfill/reg-exp.prototype.global.min.js"
+				}
+			}
+		},
+		"es.reg-exp.prototype.ignore-case": {
+			"input": "./src/polyfill/reg-exp/prototype/ignore-case.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/reg-exp.prototype.ignore-case.js",
+					"minified": "./polyfill/reg-exp.prototype.ignore-case.min.js"
+				}
+			}
+		},
+		"es.reg-exp.prototype.multiline": {
+			"input": "./src/polyfill/reg-exp/prototype/multiline.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/reg-exp.prototype.multiline.js",
+					"minified": "./polyfill/reg-exp.prototype.multiline.min.js"
+				}
+			}
+		},
+		"es.reg-exp.prototype.source": {
+			"input": "./src/polyfill/reg-exp/prototype/source.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/reg-exp.prototype.source.js",
+					"minified": "./polyfill/reg-exp.prototype.source.min.js"
+				}
+			}
+		},
+		"es.reg-exp.prototype.sticky": {
+			"input": "./src/polyfill/reg-exp/prototype/sticky.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/reg-exp.prototype.sticky.js",
+					"minified": "./polyfill/reg-exp.prototype.sticky.min.js"
+				}
+			}
+		},
+		"es.reg-exp.prototype.test": {
+			"input": "./src/polyfill/reg-exp/prototype/test.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/reg-exp.prototype.test.js",
+					"minified": "./polyfill/reg-exp.prototype.test.min.js"
+				}
+			}
+		},
+		"es.reg-exp.prototype.to-string": {
+			"input": "./src/polyfill/reg-exp/prototype/to-string.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/reg-exp.prototype.to-string.js",
+					"minified": "./polyfill/reg-exp.prototype.to-string.min.js"
+				}
+			}
+		},
+		"es.reg-exp.prototype.unicode": {
+			"input": "./src/polyfill/reg-exp/prototype/unicode.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/reg-exp.prototype.unicode.js",
+					"minified": "./polyfill/reg-exp.prototype.unicode.min.js"
+				}
+			}
+		},
+		"es.set": {
+			"input": "./src/polyfill/set/index.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/set.js",
+					"minified": "./polyfill/set.min.js"
+				}
+			}
+		},
+		"es.set.constructor": {
+			"input": "./src/polyfill/set/constructor.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/set.constructor.js",
+					"minified": "./polyfill/set.constructor.min.js"
+				}
+			}
+		},
+		"es.set.@@species": {
+			"input": "./src/polyfill/set/@@species.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/set.@@species.js",
+					"minified": "./polyfill/set.@@species.min.js"
+				}
+			}
+		},
+		"es.set.prototype.@@iterator": {
+			"input": "./src/polyfill/set/prototype/@@iterator.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/set.prototype.@@iterator.js",
+					"minified": "./polyfill/set.prototype.@@iterator.min.js"
+				}
+			}
+		},
+		"es.set.prototype.@@to-string-tag": {
+			"input": "./src/polyfill/set/prototype/@@to-string-tag.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/set.prototype.@@to-string-tag.js",
+					"minified": "./polyfill/set.prototype.@@to-string-tag.min.js"
+				}
+			}
+		},
+		"es.set.prototype.add": {
+			"input": "./src/polyfill/set/prototype/add.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/set.prototype.add.js",
+					"minified": "./polyfill/set.prototype.add.min.js"
+				}
+			}
+		},
+		"es.set.prototype.clear": {
+			"input": "./src/polyfill/set/prototype/clear.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/set.prototype.clear.js",
+					"minified": "./polyfill/set.prototype.clear.min.js"
+				}
+			}
+		},
+		"es.set.prototype.delete": {
+			"input": "./src/polyfill/set/prototype/delete.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/set.prototype.delete.js",
+					"minified": "./polyfill/set.prototype.delete.min.js"
+				}
+			}
+		},
+		"es.set.prototype.entries": {
+			"input": "./src/polyfill/set/prototype/entries.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/set.prototype.entries.js",
+					"minified": "./polyfill/set.prototype.entries.min.js"
+				}
+			}
+		},
+		"es.set.prototype.for-each": {
+			"input": "./src/polyfill/set/prototype/for-each.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/set.prototype.for-each.js",
+					"minified": "./polyfill/set.prototype.for-each.min.js"
+				}
+			}
+		},
+		"es.set.prototype.has": {
+			"input": "./src/polyfill/set/prototype/has.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/set.prototype.has.js",
+					"minified": "./polyfill/set.prototype.has.min.js"
+				}
+			}
+		},
+		"es.set.prototype.keys": {
+			"input": "./src/polyfill/set/prototype/keys.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/set.prototype.keys.js",
+					"minified": "./polyfill/set.prototype.keys.min.js"
+				}
+			}
+		},
+		"es.set.prototype.size": {
+			"input": "./src/polyfill/set/prototype/size.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/set.prototype.sze.js",
+					"minified": "./polyfill/set.prototype.size.min.js"
+				}
+			}
+		},
+		"es.set.prototype.values": {
+			"input": "./src/polyfill/set/prototype/values.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/set.prototype.values.js",
+					"minified": "./polyfill/set.prototype.values.min.js"
+				}
+			}
+		},
+		"es.string": {
+			"input": "./src/polyfill/string/index.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/string.js",
+					"minified": "./polyfill/string.min.js"
+				}
+			}
+		},
+		"es.string.prototype.@@iterator": {
+			"input": "./src/polyfill/string/prototype/@@iterator.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/string.prototype.@@iterator.js",
+					"minified": "./polyfill/string.prototype.@@iterator.min.js"
+				}
+			}
+		},
+		"es.symbol": {
+			"input": "./src/polyfill/symbol/index.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.js",
+					"minified": "./polyfill/symbol.min.js"
+				}
+			}
+		},
+		"es.symbol.async-iterator": {
+			"input": "./src/polyfill/symbol/async-iterator.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.async-iterator.js",
+					"minified": "./polyfill/symbol.async-iterator.min.js"
+				}
+			}
+		},
+		"es.symbol.constructor": {
+			"input": "./src/polyfill/symbol/constructor.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.constructor.js",
+					"minified": "./polyfill/symbol.constructor.min.js"
+				}
+			}
+		},
+		"es.symbol.for": {
+			"input": "./src/polyfill/symbol/for.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.for.js",
+					"minified": "./polyfill/symbol.for.min.js"
+				}
+			}
+		},
+		"es.symbol.has-instance": {
+			"input": "./src/polyfill/symbol/has-instance.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.has-instance.js",
+					"minified": "./polyfill/symbol.has-instance.min.js"
+				}
+			}
+		},
+		"es.symbol.is-concat-spreadable": {
+			"input": "./src/polyfill/symbol/is-concat-spreadable.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.is-concat-spreadable.js",
+					"minified": "./polyfill/symbol.is-concat-spreadable.min.js"
+				}
+			}
+		},
+		"es.symbol.iterator": {
+			"input": "./src/polyfill/symbol/iterator.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.iterator.js",
+					"minified": "./polyfill/symbol.iterator.min.js"
+				}
+			}
+		},
+		"es.symbol.key-for": {
+			"input": "./src/polyfill/symbol/key-for.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.key-for.js",
+					"minified": "./polyfill/symbol.key-for.min.js"
+				}
+			}
+		},
+		"es.symbol.match": {
+			"input": "./src/polyfill/symbol/match.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.match.js",
+					"minified": "./polyfill/symbol.match.min.js"
+				}
+			}
+		},
+		"es.symbol.match-all": {
+			"input": "./src/polyfill/symbol/match-all.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.match-all.js",
+					"minified": "./polyfill/symbol.match-all.min.js"
+				}
+			}
+		},
+		"es.symbol.replace": {
+			"input": "./src/polyfill/symbol/replace.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.replace.js",
+					"minified": "./polyfill/symbol.replace.min.js"
+				}
+			}
+		},
+		"es.symbol.search": {
+			"input": "./src/polyfill/symbol/search.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.search.js",
+					"minified": "./polyfill/symbol.search.min.js"
+				}
+			}
+		},
+		"es.symbol.species": {
+			"input": "./src/polyfill/symbol/species.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.species.js",
+					"minified": "./polyfill/symbol.species.min.js"
+				}
+			}
+		},
+		"es.symbol.split": {
+			"input": "./src/polyfill/symbol/split.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.split.js",
+					"minified": "./polyfill/symbol.split.min.js"
+				}
+			}
+		},
+		"es.symbol.to-primitive": {
+			"input": "./src/polyfill/symbol/to-primitive.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.to-primitive.js",
+					"minified": "./polyfill/symbol.to-primitive.min.js"
+				}
+			}
+		},
+		"es.symbol.to-string-tag": {
+			"input": "./src/polyfill/symbol/to-string-tag.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.to-string-tag.js",
+					"minified": "./polyfill/symbol.to-string-tag.min.js"
+				}
+			}
+		},
+		"es.symbol.unscopables": {
+			"input": "./src/polyfill/symbol/unscopables.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.unscopables.js",
+					"minified": "./polyfill/symbol.unscopables.min.js"
+				}
+			}
+		},
+		"es.symbol.prototype.@@to-primitive": {
+			"input": "./src/polyfill/symbol/prototype/@@to-primitive.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.prototype.@@to-primitive.js",
+					"minified": "./polyfill/symbol.prototype.@@to-primitive.min.js"
+				}
+			}
+		},
+		"es.symbol.prototype.@@to-string-tag": {
+			"input": "./src/polyfill/symbol/prototype/@@to-string-tag.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.prototype.@@to-string-tag.js",
+					"minified": "./polyfill/symbol.prototype.@@to-string-tag.min.js"
+				}
+			}
+		},
+		"es.symbol.prototype.description": {
+			"input": "./src/polyfill/symbol/prototype/description.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.prototype.description.js",
+					"minified": "./polyfill/symbol.prototype.description.min.js"
+				}
+			}
+		},
+		"es.symbol.prototype.to-string": {
+			"input": "./src/polyfill/symbol/prototype/to-string.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.prototype.to-string.js",
+					"minified": "./polyfill/symbol.prototype.to-string.min.js"
+				}
+			}
+		},
+		"es.symbol.prototype.value-of": {
+			"input": "./src/polyfill/symbol/prototype/value-of.ts",
+			"output": {
+				"esm": {
+					"standard": "./polyfill/symbol.prototype.value-of.js",
+					"minified": "./polyfill/symbol.prototype.value-of.min.js"
 				}
 			}
 		}

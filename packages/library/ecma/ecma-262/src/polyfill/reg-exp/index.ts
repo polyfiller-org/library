@@ -1,0 +1,17 @@
+import "./constructor";
+import "./@@species";
+import "./prototype/@@match";
+import "./prototype/@@match-all";
+import "./prototype/@@replace";
+import "./prototype/@@search";
+import "./prototype/@@split";
+import "./prototype/dot-all";
+import "./prototype/flags";
+import "./prototype/global";
+import "./prototype/ignore-case";
+import "./prototype/multiline";
+import "./prototype/sticky";
+import "./prototype/unicode";
+import "./prototype/source";
+import "./prototype/exec";
+import "./prototype/to-string";

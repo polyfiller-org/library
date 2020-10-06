@@ -74,13 +74,13 @@ export function generatePolyfillConfig(options: {context?: string; pkg: Partial<
 				const {name, dir} = parsedEsmStandardOutput;
 
 				esmRollupOptions.input[name] = input;
-				const standardOutput = esmRollupOptions.outputs.find(({minify}) => !minify);
+				const standardOutput = esmRollupOptions.outputs.find(({minify}) => minify == null || !minify);
 				if (standardOutput == null) {
 					esmRollupOptions.outputs.push({
 						dir,
 						format: "esm" as const,
 						minify: false,
-						chunkFileNames: `[name]-chunk${parsedEsmStandardOutput.ext}`,
+						chunkFileNames: `chunk/[name]-chunk${parsedEsmStandardOutput.ext}`,
 						entryFileNames: `[name]${parsedEsmStandardOutput.ext}`
 					});
 				}
@@ -99,7 +99,7 @@ export function generatePolyfillConfig(options: {context?: string; pkg: Partial<
 						dir,
 						format: "esm" as const,
 						minify: true,
-						chunkFileNames: `[name]-chunk${minifiedEsmSuffix}${parsedEsmMinifiedOutput.ext}`,
+						chunkFileNames: `chunk/[name]-chunk${minifiedEsmSuffix}${parsedEsmMinifiedOutput.ext}`,
 						entryFileNames: `[name]${minifiedEsmSuffix}${parsedEsmMinifiedOutput.ext}`
 					});
 				}

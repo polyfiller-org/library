@@ -7,17 +7,16 @@ import {NATIVE_SYMBOL_HAS_INSTANCE} from "../../symbol/native/native";
 import {symbolSymbolHasInstance} from "../../symbol/@@has-instance";
 
 export function patchSymbolConstructor(): void {
-	const globalThisValue = GlobalThisValue();
 
 	// Symbol constructor
-	OrdinaryDefineOwnProperty(globalThisValue, "Symbol", {
+	OrdinaryDefineOwnProperty(GlobalThisValue(), "Symbol", {
 		...METHOD_DESCRIPTORS,
 		"[[Value]]": SymbolConstructor
 	});
 
 	// Symbol.prototype
 	// https://tc39.es/ecma262/#sec-symbol.prototype
-	OrdinaryDefineOwnProperty(SymbolConstructor, "prototype", {
+	OrdinaryDefineOwnProperty(Symbol, "prototype", {
 		// This property has the attributes { [[Writable]]: false, [[Enumerable]]: false, [[Configurable]]: false }.
 		"[[Writable]]": false,
 		"[[Enumerable]]": false,

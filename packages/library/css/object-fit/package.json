@@ -12,7 +12,7 @@
 		"prewatch": "pnpm run prebuild",
 		"watch": "pnpm run rollup -- --watch",
 		"rollup": "rollup -c rollup.config.ts",
-		"prepublishOnly": "npm run lint && pnpm run build",
+		"prepublishOnly": "pnpm run build",
 		"update": "pnpx npm-check-updates --packageFile package.json -u -x np --dep dev,prod"
 	},
 	"homepage": "https://github.com/polyfiller-org/library",

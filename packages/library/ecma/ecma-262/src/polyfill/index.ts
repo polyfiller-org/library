@@ -1,2 +1,10 @@
 import "./symbol";
 import "./array";
+import "./function";
+import "./proxy";
+import "./object";
+import "./map";
+import "./promise";
+import "./reg-exp";
+import "./set";
+import "./string";

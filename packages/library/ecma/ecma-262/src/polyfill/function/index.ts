@@ -1,0 +1,1 @@
+import "./prototype/@@has-instance";

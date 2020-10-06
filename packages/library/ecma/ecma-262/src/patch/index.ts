@@ -1,7 +1,10 @@
-import {patchSymbol} from "./symbol";
-import {patchArray} from "./array";
-
-export function patch(): void {
-	patchSymbol();
-	patchArray();
-}
+export * from "./symbol";
+export * from "./array";
+export * from "./function";
+export * from "./proxy";
+export * from "./object";
+export * from "./map";
+export * from "./promise";
+export * from "./reg-exp";
+export * from "./set";
+export * from "./string";

@@ -16,7 +16,7 @@
 		"test": "pnpx test262",
 		"posttest": "rimraf test262-polyfill.js",
 		"rollup": "node --max-old-space-size=8192 node_modules/rollup/dist/bin/rollup -c rollup.config.ts",
-		"prepublishOnly": "npm run lint && pnpm run build",
+		"prepublishOnly": "pnpm run build",
 		"update": "pnpx npm-check-updates --packageFile package.json -u -x np --dep dev,prod"
 	},
 	"homepage": "https://github.com/polyfiller-org/library",

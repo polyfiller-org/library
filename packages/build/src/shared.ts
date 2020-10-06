@@ -39,6 +39,7 @@ export interface PolyfillablePackage extends DependencyPackage {
 export interface SimplifiedRollupOptionsBase {
 	flatten: boolean;
 	context?: string;
+	preserveEntrySignatures?: RollupOptions["preserveEntrySignatures"];
 	tsconfig?: (tsconfig: CompilerOptions) => CompilerOptions;
 	hook?: TypescriptPluginOptions["hook"];
 }
@@ -75,7 +76,7 @@ export function generateRollupOptions(
 	options: SimplifiedRollupOptions[],
 	{dependencies = {}, devDependencies = {}, optionalDependencies = {}, peerDependencies = {}}: Partial<DependencyPackage>
 ): RollupOptions[] {
-	return options.map(({input, flatten, outputs, tsconfig, context, hook}) => ({
+	return options.map(({input, preserveEntrySignatures, flatten, outputs, tsconfig, context, hook}) => ({
 		input,
 		output: (outputs as (SimplifiedRollupOptionsDirOutput & SimplifiedRollupOptionsFileOutput)[]).map(
 			({format, minify = false, sourcemap = true, chunkFileNames, entryFileNames, ...rest}) => ({
@@ -97,6 +98,7 @@ export function generateRollupOptions(
 			})
 		),
 		context,
+		preserveEntrySignatures,
 		treeshake: true,
 		plugins: [
 			ts({

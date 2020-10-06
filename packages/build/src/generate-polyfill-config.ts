@@ -13,7 +13,8 @@ export function generatePolyfillConfig(options: {context?: string; pkg: Partial<
 
 	for (const {input, output} of Object.values(pkg.polyfills ?? {})) {
 		const baseOptions = {
-			context
+			context,
+			preserveEntrySignatures: "strict"
 		} as const;
 
 		if (output.bundle != null) {
@@ -99,7 +100,7 @@ export function generatePolyfillConfig(options: {context?: string; pkg: Partial<
 						dir,
 						format: "esm" as const,
 						minify: true,
-						chunkFileNames: `chunk/[name]-chunk${minifiedEsmSuffix}${parsedEsmMinifiedOutput.ext}`,
+						chunkFileNames: `chunk/[name]-[hash]${minifiedEsmSuffix}${parsedEsmMinifiedOutput.ext}`,
 						entryFileNames: `[name]${minifiedEsmSuffix}${parsedEsmMinifiedOutput.ext}`
 					});
 				}

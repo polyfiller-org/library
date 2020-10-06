@@ -1,5 +1,11 @@
 # @polyfiller/ecma-262
 
+## 0.0.38
+
+### Patch Changes
+
+- better chunk naming
+
 ## 0.0.37
 
 ### Patch Changes

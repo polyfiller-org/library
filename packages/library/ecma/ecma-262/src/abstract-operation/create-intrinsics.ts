@@ -66,8 +66,8 @@ import {$ObjProto_toString$} from "../intrinsic/obj-proto-to-string";
 import {$ObjProto_valueOf$} from "../intrinsic/obj-proto-value-of";
 import {$parseFloat$} from "../intrinsic/parse-float";
 import {$parseInt$} from "../intrinsic/parse-int";
-import {$Promise$} from "../intrinsic/promise-prototype";
-import {$PromisePrototype$} from "../intrinsic/promise";
+import {$Promise$} from "../intrinsic/promise";
+import {$PromisePrototype$} from "../intrinsic/promise-prototype";
 import {$PromiseProto_then$} from "../intrinsic/promise-proto-then";
 import {$Promise_all$} from "../intrinsic/promise-all";
 import {$Promise_reject$} from "../intrinsic/promise-reject";
@@ -111,10 +111,22 @@ import {$WeakMap$} from "../intrinsic/weak-map";
 import {$WeakSet$} from "../intrinsic/weak-set";
 import {$WeakSetPrototype$} from "../intrinsic/weak-set-prototype";
 import {$RegExpStringIteratorPrototype$} from "../intrinsic/reg-exp-string-iterator-prototype";
+import {safeHasOwnProperty} from "../util/safe-has-own-property";
 
-export function CreateIntrinsics(realmRec: Realm): Intrinsics {
+export function ExtendIntrinsics<TIntrinsics extends Intrinsics = Intrinsics>(intrinsics: Intrinsics, extensions: Partial<TIntrinsics>): TIntrinsics {
+
+	for (const key in extensions) {
+		if (!safeHasOwnProperty(extensions, key)) continue;
+		(intrinsics as TIntrinsics)[key] = extensions[key]!;
+	}
+
+	// Return intrinsics.
+	return intrinsics as TIntrinsics;
+}
+
+export function CreateIntrinsics<TIntrinsics extends Intrinsics = Intrinsics>(realmRec: Realm<TIntrinsics>, extensions?: Partial<TIntrinsics>): TIntrinsics {
 	// Let intrinsics be a new Record.
-	const intrinsics = {} as Intrinsics;
+	const intrinsics = {} as TIntrinsics;
 
 	// Set realmRec.[[Intrinsics]] to intrinsics.
 	realmRec["[[Intrinsics]]"] = intrinsics;
@@ -249,6 +261,10 @@ export function CreateIntrinsics(realmRec: Realm): Intrinsics {
 	intrinsics["[[%WeakMapPrototype%]]"] = $WeakMapPrototype$(realmRec);
 	intrinsics["[[%WeakSet%]]"] = $WeakSet$(realmRec);
 	intrinsics["[[%WeakSetPrototype%]]"] = $WeakSetPrototype$(realmRec);
+
+	if (extensions != null) {
+		ExtendIntrinsics(intrinsics, extensions);
+	}
 
 	// Return intrinsics.
 	return intrinsics;

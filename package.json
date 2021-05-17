@@ -23,6 +23,7 @@
 		"build:object-fit": "pnpm run build --filter @polyfiller/object-fit",
 		"build:object-fit-demo": "pnpm run build --filter @polyfiller/object-fit-demo",
 		"build:object-fit-demo:with_dependencies": "pnpm run build --filter @polyfiller/object-fit-demo...",
+		"build:form-data": "pnpm run build --filter @polyfiller/form-data",
 		"prewatch": "pnpm run prebuild",
 		"check": "pnpm recursive run check",
 		"watch": "pnpm recursive run watch",
@@ -35,7 +36,8 @@
 		"test:ecma-262": "pnpm test --filter @polyfiller/ecma-262",
 		"prerelease": "pnpx changeset && pnpx changeset version && git add . && git commit -am \"chore(changeset): add changeset\" && git push && pnpm run lint",
 		"release": "pnpm publish -r",
-		"update": "pnpm recursive run update && pnpm update && pnpm install"
+		"update:root": "pnpx npm-check-updates --packageFile package.json -u -x np --dep dev,prod",
+		"update": "pnpm run update:root && pnpm recursive run update && pnpm update && pnpm install"
 	},
 	"files": [
 		"dist/**/*.*"
@@ -60,20 +62,20 @@
 	"license": "MIT",
 	"devDependencies": {
 		"@changesets/cli": "^2.10.3",
-		"@typescript-eslint/eslint-plugin": "^4.3.0",
-		"@typescript-eslint/parser": "^4.3.0",
-		"@wessberg/scaffold": "^1.0.32",
-		"eslint": "^7.10.0",
-		"eslint-config-prettier": "^6.12.0",
-		"eslint-plugin-import": "^2.22.1",
-		"eslint-plugin-jsdoc": "^30.6.3",
-		"husky": "^4.3.0",
-		"pnpm": "^5.8.0",
-		"prettier": "^2.1.2",
-		"pretty-quick": "^3.0.2",
+		"@typescript-eslint/eslint-plugin": "^4.23.0",
+		"@typescript-eslint/parser": "^4.23.0",
+		"@wessberg/scaffold": "^1.0.36",
+		"eslint": "^7.26.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-import": "^2.23.2",
+		"eslint-plugin-jsdoc": "^34.6.3",
+		"husky": "^6.0.0",
+		"pnpm": "^6.3.0",
+		"prettier": "^2.3.0",
+		"pretty-quick": "^3.1.0",
 		"rimraf": "^3.0.2",
-		"tslib": "^2.0.1",
-		"typescript": "^4.0.3"
+		"tslib": "^2.2.0",
+		"typescript": "^4.2.4"
 	},
 	"husky": {
 		"hooks": {

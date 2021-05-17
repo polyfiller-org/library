@@ -36,6 +36,7 @@ You can install any of these and use them as you please, or you may use Polyfill
 | ------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | [`@polyfiller/ecma-262`](./packages/library/ecma/ecma-262)    | A full modularized implementation of the ECMAScript® Language Specification |
 | [`@polyfiller/object-fit`](./packages/library/css/object-fit) | Adds support for the `object-fit` and `object-position` CSS-properties      |
+| [`@polyfiller/form-data`](./packages/library/dom/form-data)   | Adds support for or patches holes in the `FormData` interface               |
 |                                                               |                                                                             |
 
 <!-- SHADOW_SECTION_FEATURE_IMAGE_START -->

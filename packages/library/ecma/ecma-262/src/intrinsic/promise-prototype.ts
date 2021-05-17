@@ -1,5 +1,6 @@
 import {Realm} from "../environment/realm/realm";
 
-export function $Promise$(realm: Realm) {
-	return realm["[[GlobalObject]]"].Promise;
+// eslint-disable-next-line @typescript-eslint/promise-function-async
+export function $PromisePrototype$(realm: Realm) {
+	return realm["[[GlobalObject]]"].Promise.prototype;
 }

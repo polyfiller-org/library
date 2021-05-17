@@ -1,7 +1,7 @@
 {
-	"name": "@polyfiller/object-fit",
+	"name": "@polyfiller/form-data",
 	"version": "0.0.39",
-	"description": "A robust polyfill for the 'object-fit' and 'object-position' CSS-properties",
+	"description": "A robust polyfill for the 'FormData' interface",
 	"scripts": {
 		"scaffold": "scaffold readme --yes && scaffold license --yes",
 		"clean": "rimraf dist && rimraf polyfill",
@@ -28,10 +28,12 @@
 		"polyfill/**/*.*"
 	],
 	"keywords": [
-		"object-fit",
-		"object-position",
-		"polyfill",
-		"css"
+		"FormData",
+		"form-data",
+		"dom",
+		"interface",
+		"Web API",
+		"polyfill"
 	],
 	"contributors": [
 		{
@@ -53,8 +55,6 @@
 		"typescript": "^4.2.4"
 	},
 	"dependencies": {
-		"@wessberg/connection-observer": "^1.0.5",
-		"@wessberg/stringutil": "^1.0.19"
 	},
 	"main": "./dist/cjs/index.js",
 	"module": "./dist/esm/index.js",
@@ -62,7 +62,7 @@
 	"typings": "./dist/esm/index.d.ts",
 	"es2015": "./dist/esm/index.js",
 	"polyfills": {
-		"css-object-fit": {
+		"dom-form-data": {
 			"input": "./src/polyfill/index.ts",
 			"output": {
 				"esm": {

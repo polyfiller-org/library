@@ -1,4 +1,5 @@
 export * from "./abstract-operation";
+export * from "./intrinsic";
 export * from "./algorithm";
 export * from "./array";
 export * from "./environment";
@@ -15,3 +16,4 @@ export * from "./symbol";
 export * from "./type";
 export * from "./util";
 export * from "./support";
+export * from "./patch";

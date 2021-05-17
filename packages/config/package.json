@@ -34,7 +34,7 @@
 	],
 	"license": "MIT",
 	"dependencies": {
-		"@wessberg/ts-config": "^1.0.19"
+		"@wessberg/ts-config": "^1.0.22"
 	},
 	"tsconfig": "tsconfig.json"
 }

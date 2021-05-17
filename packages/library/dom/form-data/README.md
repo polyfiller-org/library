@@ -1,17 +1,19 @@
 <!-- SHADOW_SECTION_LOGO_START -->
 
+<div><img alt="Logo" src="https://raw.githubusercontent.com/polyfiller-org/polyfiller/master/packages/library/dom/form-data/documentation/asset/logo.png" height="250"   /></div>
+
 <!-- SHADOW_SECTION_LOGO_END -->
 
 <!-- SHADOW_SECTION_DESCRIPTION_SHORT_START -->
 
-> Common configuration files
+> A robust polyfill for the 'FormData' interface
 
 <!-- SHADOW_SECTION_DESCRIPTION_SHORT_END -->
 
 <!-- SHADOW_SECTION_BADGES_START -->
 
-<a href="https://npmcharts.com/compare/%40polyfiller%2Fconfig?minimal=true"><img alt="Downloads per month" src="https://img.shields.io/npm/dm/%40polyfiller%2Fconfig.svg"    /></a>
-<a href="https://www.npmjs.com/package/%40polyfiller%2Fconfig"><img alt="NPM version" src="https://badge.fury.io/js/%40polyfiller%2Fconfig.svg"    /></a>
+<a href="https://npmcharts.com/compare/%40polyfiller%2Fform-data?minimal=true"><img alt="Downloads per month" src="https://img.shields.io/npm/dm/%40polyfiller%2Fform-data.svg"    /></a>
+<a href="https://www.npmjs.com/package/%40polyfiller%2Fform-data"><img alt="NPM version" src="https://badge.fury.io/js/%40polyfiller%2Fform-data.svg"    /></a>
 <a href="https://david-dm.org/polyfiller-org/library"><img alt="Dependencies" src="https://img.shields.io/david/polyfiller-org%2Flibrary.svg"    /></a>
 <a href="https://github.com/polyfiller-org/library/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/polyfiller-org%2Flibrary.svg"    /></a>
 <a href="https://github.com/prettier/prettier"><img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg"    /></a>
@@ -20,17 +22,27 @@
 
 <!-- SHADOW_SECTION_BADGES_END -->
 
+<div><img alt="Powered by Polyfiller" src="https://raw.githubusercontent.com/polyfiller-org/polyfiller/master/documentation/asset/logo-color-powered-by.png" height="50"   /></div>
+
 <!-- SHADOW_SECTION_DESCRIPTION_LONG_START -->
 
 ## Description
 
 <!-- SHADOW_SECTION_DESCRIPTION_LONG_END -->
 
+This is a robust, feature complete polyfill for the [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) Web API that is accessible in Window or Worker contexts.
+It differs from existing implementations in that by default, it won't replace the existing `FormData` constructor in browsers that support a subset of the API, such as IE 10 and IE 11.
+This avoids having to patch other APIs such as `fetch` or `XmlHttpRequest` and makes it a seamless drop-in replacement.
+ 
 <!-- SHADOW_SECTION_FEATURES_START -->
 
 ### Features
 
 <!-- SHADOW_SECTION_FEATURES_END -->
+
+- A seamless drop-in replacement.
+- Only patches whatever holes are missing if FormData is already supported.
+- Doesn't patch any other APIs.
 
 <!-- SHADOW_SECTION_FEATURE_IMAGE_START -->
 
@@ -56,17 +68,21 @@
 ## Table of Contents
 
 - [Description](#description)
+- [Demo](#demo)
   - [Features](#features)
 - [Table of Contents](#table-of-contents)
 - [Install](#install)
   - [npm](#npm)
   - [Yarn](#yarn)
   - [pnpm](#pnpm)
+- [Applying the polyfill](#applying-the-polyfill)
 - [Usage](#usage)
+- [Dependencies & Browser support](#dependencies--browser-support)
 - [Maintainers](#maintainers)
 - [Backers](#backers)
   - [Patreon](#patreon)
 - [FAQ](#faq)
+  - [What is the performance and reaction times of this polyfill?](#what-is-the-performance-and-reaction-times-of-this-polyfill)
 - [License](#license)
 
 <!-- SHADOW_SECTION_TOC_END -->
@@ -78,22 +94,43 @@
 ### npm
 
 ```
-$ npm install @polyfiller/config
+$ npm install @polyfiller/form-data
 ```
 
 ### Yarn
 
 ```
-$ yarn add @polyfiller/config
+$ yarn add @polyfiller/form-data
 ```
 
 ### pnpm
 
 ```
-$ pnpm add @polyfiller/config
+$ pnpm add @polyfiller/form-data
 ```
 
 <!-- SHADOW_SECTION_INSTALL_END -->
+
+## Applying the polyfill
+
+The polyfill will check if the browser already supports `FormData` and will _only_ be applied if the runtime doesn't already support it.
+
+To include it, add this somewhere in either a Window or Worker context:
+
+```typescript
+import "@polyfiller/form-data/polyfill";
+```
+
+However, it is generally a good idea that you only include the polyfill for runtimes that don't already support `FormData`.
+One way to do so is with an async import:
+
+```typescript
+if (typeof FormData === "undefined") {
+	await import("@polyfiller/form-data/polyfill");
+}
+```
+
+Alternatively, you can use [Polyfill.app](https://github.com/wessberg/Polyfiller) which uses this polyfill and takes care of only loading the polyfill if needed as well as adding the language features that the polyfill depends on (See [dependencies](#dependencies--browser-support)).
 
 <!-- SHADOW_SECTION_USAGE_START -->
 
@@ -101,9 +138,14 @@ $ pnpm add @polyfiller/config
 
 <!-- SHADOW_SECTION_USAGE_END -->
 
-<!-- SHADOW_SECTION_CONTRIBUTING_START -->
+This polyfill is a drop-in replacement, so you shouldn't have to update your code by any means.
 
-<!-- SHADOW_SECTION_CONTRIBUTING_END -->
+## Dependencies & Browser support
+
+This polyfill is distributed in ES5-compatible syntax, and will add features such as `Symbol.toStringTag` and `Symbol.iterator` depending on the availability
+in the runtime. There are no hard dependencies below ES5.
+
+Generally, I would highly recommend using something like [Polyfill.app](https://github.com/wessberg/Polyfiller) which takes care of this stuff automatically.
 
 <!-- SHADOW_SECTION_MAINTAINERS_START -->
 
@@ -121,6 +163,12 @@ $ pnpm add @polyfiller/config
 
 <!-- SHADOW_SECTION_FAQ_END -->
 
+### Are there any known quirks?
+
+If you load this polyfill In IE <=9 where there is no `FormData` constructor, and you add one or more `File` objects
+as FormData, you will have to add some special handling for passing them as body to the request options when using `XmlHttpRequest` or a polyfilled
+version of the `fetch` Api, as these do not natively support `FormData` in these browsers.
+
 <!-- SHADOW_SECTION_LICENSE_START -->
 
 ## License
@@ -128,3 +176,7 @@ $ pnpm add @polyfiller/config
 MIT © [Frederik Wessberg](mailto:frederikwessberg@hotmail.com) ([@FredWessberg](https://twitter.com/FredWessberg)) ([Website](https://github.com/wessberg))
 
 <!-- SHADOW_SECTION_LICENSE_END -->
+
+<!-- SHADOW_SECTION_CONTRIBUTING_START -->
+
+<!-- SHADOW_SECTION_CONTRIBUTING_END -->

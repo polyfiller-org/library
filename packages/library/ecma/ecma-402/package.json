@@ -1,0 +1,87 @@
+{
+	"name": "@polyfiller/ecma-402",
+	"version": "0.0.39",
+	"description": "An implementation of the ECMAScript® Internationalization API Specification written in TypeScript",
+	"scripts": {
+		"scaffold": "scaffold readme --yes && scaffold license --yes",
+		"clean": "rimraf dist && rimraf polyfill",
+		"check": "tsc --noEmit",
+		"lint": "pnpm run check && eslint \"src/**/*.ts\" --color",
+		"prebuild": "pnpm run clean",
+		"build": "pnpm run rollup",
+		"build:test262": "node --max-old-space-size=8192 node_modules/rollup/dist/bin/rollup -c rollup.test262.config.ts",
+		"prewatch": "pnpm run prebuild",
+		"watch": "pnpm run rollup -- --watch",
+		"pretest": "if [[ -z \"${SKIP_BUILD}\" ]] || test \"$SKIP_BUILD\" = \"false\"; then pnpm run build:test262; fi",
+		"test": "pnpx test262",
+		"posttest": "rimraf test262-polyfill.js",
+		"rollup": "node --max-old-space-size=8192 node_modules/rollup/dist/bin/rollup -c rollup.config.ts",
+		"prepublishOnly": "pnpm run build",
+		"update": "pnpx npm-check-updates --packageFile package.json -u -x np --dep dev,prod"
+	},
+	"homepage": "https://github.com/polyfiller-org/library",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/polyfiller-org/library.git"
+	},
+	"bugs": {
+		"url": "https://github.com/polyfiller-org/library/issues"
+	},
+	"files": [
+		"dist/**/*.*",
+		"polyfill/**/*.*"
+	],
+	"keywords": [
+		"ecma",
+		"402",
+		"i18n",
+		"internationalization",
+		"ECMAScript",
+		"polyfill",
+		"Intl",
+		"Locale",
+		"Collator",
+		"NumberFormat",
+		"DateTimeFormat",
+		"RelativeTimeFormat",
+		"PluralRules"
+	],
+	"contributors": [
+		{
+			"name": "Frederik Wessberg",
+			"email": "frederikwessberg@hotmail.com",
+			"url": "https://github.com/wessberg",
+			"imageUrl": "https://avatars2.githubusercontent.com/u/20454213?s=460&v=4",
+			"role": "Lead Developer",
+			"github": "wessberg",
+			"twitter": "FredWessberg"
+		}
+	],
+	"license": "MIT",
+	"devDependencies": {
+		"@babel/runtime": "^7.11.2",
+		"@polyfiller/build": "workspace:*",
+		"@polyfiller/config": "workspace:*",
+		"@polyfiller/test262": "workspace:*",
+		"rimraf": "^3.0.2",
+		"rollup": "^2.28.2",
+		"typescript": "^4.2.4"
+	},
+	"dependencies": {
+		"@polyfiller/ecma-262": "workspace:*"
+	},
+	"main": "./dist/cjs/index.js",
+	"module": "./dist/esm/index.js",
+	"types": "./dist/esm/index.d.ts",
+	"typings": "./dist/esm/index.d.ts",
+	"es2015": "./dist/esm/index.js",
+	"test262": {
+		"prelude": "./test262-polyfill.js",
+		"glob": [
+			"intl402/Array/**/*.*"
+		]
+	},
+	"polyfills": {
+
+	}
+}

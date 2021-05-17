@@ -1,0 +1,9 @@
+{
+	"extends": "./node_modules/@polyfiller/config/.eslintrc.json",
+	"rules": {
+		"prefer-rest-params": "off",
+		"@typescript-eslint/naming-convention": "off",
+		"@typescript-eslint/no-explicit-any": "off",
+		"@typescript-eslint/ban-types": "off"
+	}
+}

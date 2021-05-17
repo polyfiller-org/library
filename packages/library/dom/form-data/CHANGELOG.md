@@ -1,5 +1,11 @@
 # @polyfiller/object-fit
 
+## 0.0.40
+
+### Patch Changes
+
+- add polyfill for the FormData Web API
+
 ## 0.0.39
 
 ### Patch Changes

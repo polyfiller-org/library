@@ -47,7 +47,7 @@ export function NewPromiseCapability<T>(C: Constructor<T>): PromiseCapability<T>
 	executor["[[Capability]]"] = promiseCapability;
 
 	// Let promise be ? Construct(C, « executor »).
-	const promise = (Construct(C, makeList(executor)) as unknown) as InternalPromise<T>;
+	const promise = Construct(C, makeList(executor)) as unknown as InternalPromise<T>;
 
 	// If IsCallable(promiseCapability.[[Resolve]]) is false, throw a TypeError exception.
 	if (!IsCallable(promiseCapability["[[Resolve]]"])) {

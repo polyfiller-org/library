@@ -8,13 +8,15 @@ import {SymbolDescriptiveString} from "../../abstract-operation/symbol-descripti
  * https://tc39.es/ecma262/#sec-symbol.prototype-@@toprimitive
  */
 export const symbolPrototypeSymbolToPrimitive = () =>
-	(OrdinaryGetOwnProperty(
-		{
-			"[Symbol.toPrimitive]"(this: symbol, hint?: "default" | "number" | "string") {
-				// Return ? thisSymbolValue(this value).
-				if (hint == null) return thisSymbolValue(this);
-				return SymbolDescriptiveString(thisSymbolValue(this));
-			}
-		},
-		"[Symbol.toPrimitive]"
-	) as InternalGetAccessorDescriptor)["[[Value]]"];
+	(
+		OrdinaryGetOwnProperty(
+			{
+				"[Symbol.toPrimitive]"(this: symbol, hint?: "default" | "number" | "string") {
+					// Return ? thisSymbolValue(this value).
+					if (hint == null) return thisSymbolValue(this);
+					return SymbolDescriptiveString(thisSymbolValue(this));
+				}
+			},
+			"[Symbol.toPrimitive]"
+		) as InternalGetAccessorDescriptor
+	)["[[Value]]"];

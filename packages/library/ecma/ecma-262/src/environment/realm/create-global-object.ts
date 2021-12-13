@@ -5,7 +5,7 @@ export function createGlobalObject(): typeof globalThis {
 		document.body.appendChild(iframe);
 		const obj = iframe.contentWindow!;
 		document.body.removeChild(iframe);
-		return (obj as unknown) as typeof globalThis;
+		return obj as unknown as typeof globalThis;
 	} else {
 		try {
 			// eslint-disable-next-line @typescript-eslint/no-require-imports,@typescript-eslint/no-var-requires

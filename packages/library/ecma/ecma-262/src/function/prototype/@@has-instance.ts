@@ -8,15 +8,17 @@ import {OrdinaryHasInstance} from "../../abstract-operation/ordinary-has-instanc
  * @return
  */
 export const functionPrototypeSymbolHasInstance = () =>
-	(OrdinaryGetOwnProperty(
-		{
-			"[Symbol.hasInstance]"(V: unknown): boolean {
-				// Let F be the this value.
-				const F = this;
+	(
+		OrdinaryGetOwnProperty(
+			{
+				"[Symbol.hasInstance]"(V: unknown): boolean {
+					// Let F be the this value.
+					const F = this;
 
-				// Return ? OrdinaryHasInstance(F, V).
-				return OrdinaryHasInstance(F, V);
-			}
-		},
-		"[Symbol.hasInstance]"
-	) as InternalGetAccessorDescriptor)["[[Value]]"];
+					// Return ? OrdinaryHasInstance(F, V).
+					return OrdinaryHasInstance(F, V);
+				}
+			},
+			"[Symbol.hasInstance]"
+		) as InternalGetAccessorDescriptor
+	)["[[Value]]"];

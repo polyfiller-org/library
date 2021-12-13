@@ -1,12 +1,10 @@
 {
 	"extends": "@polyfiller/config",
-
-	"include": ["src/**/*"],
-	"exclude": ["node_modules/*", "__sapper__/*", "public/*"],
 	"compilerOptions": {
+		"module": "esnext",
 		"importsNotUsedAsValues": "error",
 		"isolatedModules": true,
-		"types": ["svelte"],
 		"forceConsistentCasingInFileNames": true
-	}
+	},
+	"include": ["src/**/*.*", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"]
 }

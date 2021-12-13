@@ -26,7 +26,7 @@ export function OrdinaryHasInstance<TC, TO>(C: TC, O: TO): boolean {
 	// Let BC be C.[[BoundTargetFunction]].
 	// Return ? InstanceofOperator(O, BC).
 	if (P === undefined) {
-		return O instanceof ((C as unknown) as ArbitraryFunction);
+		return O instanceof (C as unknown as ArbitraryFunction);
 	}
 
 	// If Type(P) is not Object, throw a TypeError exception.

@@ -3,7 +3,7 @@
 	"version": "0.0.39",
 	"description": "Common configuration files",
 	"scripts": {
-		"scaffold": "scaffold readme --yes && scaffold license --yes",
+		"sandhog": "sandhog readme --yes && sandhog license --yes",
 		"update": "pnpx npm-check-updates --packageFile package.json -u -x np --dep dev,prod"
 	},
 	"homepage": "https://github.com/polyfiller-org/library",
@@ -16,7 +16,7 @@
 	},
 	"files": [
 		"prettier.config.js",
-		"scaffold.config.js",
+		"sandhog.config.js",
 		"tsconfig.json",
 		".eslintrc.json"
 	],
@@ -34,7 +34,7 @@
 	],
 	"license": "MIT",
 	"dependencies": {
-		"@wessberg/ts-config": "^1.0.22"
+		"@wessberg/ts-config": "^2.0.0"
 	},
 	"tsconfig": "tsconfig.json"
 }

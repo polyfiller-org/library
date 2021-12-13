@@ -1,5 +1,6 @@
 import {spawnSync} from "child_process";
-import {resolve, isAbsolute, join} from "path";
+import {resolve, isAbsolute, join, dirname} from "path";
+import {promises} from "fs";
 import {cpus} from "os";
 import {sync} from "find-up";
 
@@ -28,7 +29,6 @@ export interface Test262HarnessResult {
 
 /**
  * Runs test262 based on the given options
- * @param {RunTest262Options} options
  */
 export async function runTest262({glob, prelude, preprocessor, cwd = process.cwd()}: Partial<RunTest262Options>): Promise<void> {
 	// Try to locate a package.json file
@@ -55,7 +55,15 @@ export async function runTest262({glob, prelude, preprocessor, cwd = process.cwd
 	const computePath = (path: string) => (isAbsolute(path) ? path : join(cwd, path));
 	const preludePath = prelude == null ? undefined : computePath(prelude);
 	const test262TestDir = sync("test262/test", {type: "directory"});
+
+	if (test262TestDir == null) {
+		throw new ReferenceError(`Could not resolve test262 git submodule.`);
+	}
+
 	const preprocessorPath = preprocessor == null ? undefined : isAbsolute(preprocessor) ? preprocessor : join(cwd, preprocessor);
+	const test262HarnessPkg = require.resolve("test262-harness/package.json");
+	const test262HarnessPkgContent = JSON.parse(await promises.readFile(test262HarnessPkg, "utf-8"));
+	const test262HarnessBin = join(dirname(test262HarnessPkg), test262HarnessPkgContent.bin["test262-harness"]);
 
 	if (glob == null) return;
 
@@ -66,6 +74,7 @@ export async function runTest262({glob, prelude, preprocessor, cwd = process.cwd
 		const currentGlob = typeof globString === "string" ? globString : globString.glob;
 
 		const args = [
+			test262HarnessBin,
 			"--reporter-keys",
 			"file,attrs,result",
 			"-t",
@@ -79,14 +88,15 @@ export async function runTest262({glob, prelude, preprocessor, cwd = process.cwd
 			`${test262TestDir}/${currentGlob}`
 		];
 		console.log(`Running "test262-harness ${args.join(" ")}"`);
-		const result = spawnSync("test262-harness", args, {
+
+		const result = spawnSync(`node`, args, {
 			env: process.env,
 			encoding: "utf-8"
 		});
-		if (result.status || result.stderr || result.error) {
+		if (Boolean(result.status) || result.stderr || result.error) {
 			console.error(result.stderr);
 			console.error(result.error);
-			process.exit(result.status || 1);
+			process.exit((result.status ?? 0) || 1);
 		}
 
 		const json = JSON.parse(result.stdout) as Test262HarnessResult[];

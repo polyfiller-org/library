@@ -3,9 +3,11 @@ import {JobQueue} from "./job-queue";
 import {PendingJob} from "../../type/pending-job";
 import {makeList} from "../list/list";
 
-const promiseImplementation = <Job extends ArbitraryFunction>() => (microtask: Job) => {
-	Promise.resolve().then(microtask);
-};
+const promiseImplementation =
+	<Job extends ArbitraryFunction>() =>
+	(microtask: Job) => {
+		Promise.resolve().then(microtask);
+	};
 
 /**
  * @return

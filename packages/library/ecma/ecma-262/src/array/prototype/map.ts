@@ -33,7 +33,7 @@ export const {map: arrayPrototypeMap} = {
 		const T = thisArgPresent ? thisArg : undefined;
 
 		// Let A be ? ArraySpeciesCreate(O, len).
-		const A = (ArraySpeciesCreate(O, len) as unknown) as TU[];
+		const A = ArraySpeciesCreate(O, len) as unknown as TU[];
 
 		// Let k be 0.
 		let k = 0;

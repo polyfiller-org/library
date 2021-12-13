@@ -33,7 +33,7 @@
 This is a robust, feature complete polyfill for the [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) Web API that is accessible in Window or Worker contexts.
 It differs from existing implementations in that by default, it won't replace the existing `FormData` constructor in browsers that support a subset of the API, such as IE 10 and IE 11.
 This avoids having to patch other APIs such as `fetch` or `XmlHttpRequest` and makes it a seamless drop-in replacement.
- 
+
 <!-- SHADOW_SECTION_FEATURES_START -->
 
 ### Features
@@ -47,7 +47,6 @@ This avoids having to patch other APIs such as `fetch` or `XmlHttpRequest` and m
 <!-- SHADOW_SECTION_FEATURE_IMAGE_START -->
 
 <!-- SHADOW_SECTION_FEATURE_IMAGE_END -->
-
 
 <!-- SHADOW_SECTION_BACKERS_START -->
 

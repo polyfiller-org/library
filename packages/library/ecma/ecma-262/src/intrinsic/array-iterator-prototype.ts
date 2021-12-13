@@ -38,7 +38,7 @@ export function $ArrayIteratorPrototype$(realm: Realm): ArrayIteratorPrototype {
 			throw new TypeError(`Method Array Iterator.prototype.next called on incompatible receiver ${errorFormatArgument(O)}`);
 		}
 
-		const internalSlots = (internals(O) as unknown) as Internals<ProxyInternals & ArrayIteratorPrototypeInternals<T>>;
+		const internalSlots = internals(O) as unknown as Internals<ProxyInternals & ArrayIteratorPrototypeInternals<T>>;
 
 		// If O does not have all of the internal slots of an Array Iterator Instance
 		// (22.1.5.3), throw a TypeError exception.

@@ -6,12 +6,14 @@ import {InternalGetAccessorDescriptor} from "../type/internal-property-descripto
  * https://tc39.es/ecma262/#sec-get-set-@@species
  */
 export const setSymbolSpecies = () =>
-	(OrdinaryGetOwnProperty(
-		{
-			get "[Symbol.species]"() {
-				// Return the this value.
-				return this;
-			}
-		},
-		"[Symbol.species]"
-	) as InternalGetAccessorDescriptor)["[[Get]]"];
+	(
+		OrdinaryGetOwnProperty(
+			{
+				get "[Symbol.species]"() {
+					// Return the this value.
+					return this;
+				}
+			},
+			"[Symbol.species]"
+		) as InternalGetAccessorDescriptor
+	)["[[Get]]"];

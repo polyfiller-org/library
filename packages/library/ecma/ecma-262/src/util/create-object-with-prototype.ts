@@ -12,9 +12,9 @@ export function createObjectWithPrototype<T>(proto: object | null): T {
 	} else if (proto === Object.prototype) {
 		obj = Object() as T;
 	} else {
-		const objCtor = (function () {
+		const objCtor = function () {
 			// Empty function
-		} as unknown) as new () => T;
+		} as unknown as new () => T;
 		objCtor.prototype = proto;
 		obj = new objCtor();
 	}

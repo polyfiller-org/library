@@ -1,5 +1,6 @@
 import {List, makeList} from "../lib/list/list";
 import {Compiler, Parser, Pattern, Program} from "../parser/regexp";
+import {ensureError} from "@polyfiller/shared";
 
 export interface ParseNode {
 	pattern: Pattern;
@@ -18,7 +19,7 @@ export function ParsePattern(patternText: string, u: boolean): ParseNode | List<
 			// Parse patternText using the grammars in 21.2.1. The goal symbol for the parse is Pattern[+U, +N].
 			pattern = new Parser(patternText, "u").parse();
 		} catch (ex) {
-			pattern = new SyntaxError(ex.message);
+			pattern = new SyntaxError(ensureError(ex).message);
 		}
 	}
 
@@ -28,7 +29,7 @@ export function ParsePattern(patternText: string, u: boolean): ParseNode | List<
 			// Parse patternText using the grammars in 21.2.1. The goal symbol for the parse is Pattern[~U, ~N]. If the result of parsing contains a GroupName, reparse with the goal symbol Pattern[~U, +N] and use this result instead.
 			pattern = new Parser(patternText).parse();
 		} catch (ex) {
-			pattern = new SyntaxError(ex.message);
+			pattern = new SyntaxError(ensureError(ex).message);
 		}
 	}
 

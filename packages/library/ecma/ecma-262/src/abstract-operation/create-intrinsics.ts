@@ -114,7 +114,6 @@ import {$RegExpStringIteratorPrototype$} from "../intrinsic/reg-exp-string-itera
 import {safeHasOwnProperty} from "../util/safe-has-own-property";
 
 export function ExtendIntrinsics<TIntrinsics extends Intrinsics = Intrinsics>(intrinsics: Intrinsics, extensions: Partial<TIntrinsics>): TIntrinsics {
-
 	for (const key in extensions) {
 		if (!safeHasOwnProperty(extensions, key)) continue;
 		(intrinsics as TIntrinsics)[key] = extensions[key]!;

@@ -7,7 +7,6 @@ import {NATIVE_SYMBOL_HAS_INSTANCE} from "../../symbol/native/native";
 import {symbolSymbolHasInstance} from "../../symbol/@@has-instance";
 
 export function patchSymbolConstructor(): void {
-
 	// Symbol constructor
 	OrdinaryDefineOwnProperty(GlobalThisValue(), "Symbol", {
 		...METHOD_DESCRIPTORS,

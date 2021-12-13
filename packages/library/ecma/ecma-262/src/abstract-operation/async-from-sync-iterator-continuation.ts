@@ -64,9 +64,9 @@ export function AsyncFromSyncIteratorContinuation<T>(result: IteratorResult<T>, 
 
 	// Let valueWrapper be PromiseResolve(%Promise%, value).
 	// eslint-disable-next-line @typescript-eslint/promise-function-async
-	let valueWrapper: Completion<InternalPromise<T>> | InternalPromise<T> = (executeWithCompletion(() =>
-		PromiseResolve(intrinsics["[[%Promise%]]"], value)
-	) as unknown) as Completion<InternalPromise<T>>;
+	let valueWrapper: Completion<InternalPromise<T>> | InternalPromise<T> = executeWithCompletion(() => PromiseResolve(intrinsics["[[%Promise%]]"], value)) as unknown as Completion<
+		InternalPromise<T>
+	>;
 
 	// IfAbruptRejectPromise(valueWrapper, promiseCapability).
 	abruptRejectPromiseResult = IfAbruptRejectPromise(
@@ -95,7 +95,7 @@ export function AsyncFromSyncIteratorContinuation<T>(result: IteratorResult<T>, 
 	internalSlots["[[Done]]"] = done;
 
 	// Perform ! PerformPromiseThen(valueWrapper, onFulfilled, undefined, promiseCapability).
-	PerformPromiseThen((valueWrapper as unknown) as InternalPromise<T>, onFulfilled, undefined, promiseCapability);
+	PerformPromiseThen(valueWrapper as unknown as InternalPromise<T>, onFulfilled, undefined, promiseCapability);
 
 	// Return promiseCapability.[[Promise]].
 	return promiseCapability["[[Promise]]"];

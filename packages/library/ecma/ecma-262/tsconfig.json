@@ -1,3 +1,11 @@
 {
-	"extends": "@polyfiller/config"
+	"extends": "@polyfiller/config",
+	"compilerOptions": {
+		"paths": {
+			"@polyfiller/build": ["../../../build/src/index.ts"],
+			"@polyfiller/build/*": ["../../../build/src/index.ts"],
+			"@polyfiller/shared": ["../../../shared/src/index.ts"],
+			"@polyfiller/shared/*": ["../../../shared/src/index.ts"]
+		}
+	}
 }

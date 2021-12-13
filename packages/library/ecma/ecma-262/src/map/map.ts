@@ -21,7 +21,7 @@ export const {Map: MapConstructor} = {
 
 		// Let map be ? OrdinaryCreateFromConstructor(NewTarget, "%Map.prototype%", « [[MapData]] »).
 		const map = OrdinaryCreateFromConstructor(
-			(NewTarget as unknown) as Constructor,
+			NewTarget as unknown as Constructor,
 			"%MapPrototype%",
 			makeList("[[MapData]]", "[[MapKeys]]", "[[MapLoadFactor]]", "[[MapSize]]", "[[MapCollisions]]")
 		);

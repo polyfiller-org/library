@@ -2,5 +2,10 @@
 	"extends": "@polyfiller/config",
 	"compilerOptions": {
 		"outDir": "dist"
+	},
+	"ts-node": {
+		"compilerOptions": {
+			"module": "CommonJS"
+		}
 	}
 }

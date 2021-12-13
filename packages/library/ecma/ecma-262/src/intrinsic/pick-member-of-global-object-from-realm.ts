@@ -15,8 +15,8 @@ export function pickMemberOfGlobalObjectFromRealm<
 	}
 
 	return subMemberName == null
-		? ((realm["[[GlobalObject]]"] as unknown) as Record<MemberName, T>)[memberName]
+		? (realm["[[GlobalObject]]"] as unknown as Record<MemberName, T>)[memberName]
 		: subSubMemberName == null
-		? (((realm["[[GlobalObject]]"] as unknown) as Record<MemberName, Record<SubMemberName, T>>)[memberName][subMemberName] as T)
-		: (((realm["[[GlobalObject]]"] as unknown) as Record<MemberName, Record<SubMemberName, Record<SubSubMemberName, T>>>)[memberName][subMemberName][subSubMemberName] as T);
+		? ((realm["[[GlobalObject]]"] as unknown as Record<MemberName, Record<SubMemberName, T>>)[memberName][subMemberName] as T)
+		: ((realm["[[GlobalObject]]"] as unknown as Record<MemberName, Record<SubMemberName, Record<SubSubMemberName, T>>>)[memberName][subMemberName][subSubMemberName] as T);
 }

@@ -5,7 +5,6 @@ import {MapConstructor} from "../../map/map";
 import {mapPrototype} from "../../map/prototype/prototype";
 
 export function patchMapConstructor(): void {
-
 	// Map constructor
 	OrdinaryDefineOwnProperty(GlobalThisValue(), "Map", {
 		...METHOD_DESCRIPTORS,

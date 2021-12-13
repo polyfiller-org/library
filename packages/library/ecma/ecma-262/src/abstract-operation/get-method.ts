@@ -27,5 +27,5 @@ export function GetMethod<TV, TP extends keyof TV, TR extends TV[TP]>(V: TV, P: 
 	}
 
 	// Return func.
-	return (func as unknown) as TR;
+	return func as unknown as TR;
 }

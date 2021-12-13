@@ -32,7 +32,7 @@ export function CreateBuiltinFunction<T extends ArbitraryFunction, Prototype ext
 
 	// If prototype is not present, set prototype to realm.[[Intrinsics]].[[%FunctionPrototype%]].
 	if (prototype === undefined) {
-		prototype = (realm["[[Intrinsics]]"]["[[%FunctionPrototype%]]"] as unknown) as Prototype;
+		prototype = realm["[[Intrinsics]]"]["[[%FunctionPrototype%]]"] as unknown as Prototype;
 	}
 
 	// Let func be a new built-in function object that when called performs
@@ -42,7 +42,7 @@ export function CreateBuiltinFunction<T extends ArbitraryFunction, Prototype ext
 	const func = realm["[[Intrinsics]]"]["[[%Function%]]"]("steps", "return function () {return steps.apply(this, arguments);}")(steps) as Function;
 
 	for (let i = 0; i < internalSlotsList.length; i++) {
-		((internals as unknown) as (obj: Object) => Record<string, undefined>)(func)[internalSlotsList.get(i)] = undefined;
+		(internals as unknown as (obj: Object) => Record<string, undefined>)(func)[internalSlotsList.get(i)] = undefined;
 	}
 
 	// Set func.[[Realm]] to realm.
@@ -58,5 +58,5 @@ export function CreateBuiltinFunction<T extends ArbitraryFunction, Prototype ext
 	internals(func)["[[ScriptOrModule]]"] = null;
 
 	// Return func.
-	return (func as unknown) as T & Prototype;
+	return func as unknown as T & Prototype;
 }

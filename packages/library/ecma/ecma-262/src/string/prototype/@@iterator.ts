@@ -12,18 +12,20 @@ import {CreateStringIterator} from "../../abstract-operation/create-string-itera
  */
 
 export const stringPrototypeSymbolIterator = () =>
-	(OrdinaryGetOwnProperty(
-		{
-			"[Symbol.iterator]"() {
-				// Let O be ? RequireObjectCoercible(this value).
-				const O = RequireObjectCoercible(this);
+	(
+		OrdinaryGetOwnProperty(
+			{
+				"[Symbol.iterator]"() {
+					// Let O be ? RequireObjectCoercible(this value).
+					const O = RequireObjectCoercible(this);
 
-				// Let S be ? ToString(O).
-				const S = ToString(O);
+					// Let S be ? ToString(O).
+					const S = ToString(O);
 
-				// Return CreateStringIterator(S).
-				return CreateStringIterator(S);
-			}
-		},
-		"[Symbol.iterator]"
-	) as InternalGetAccessorDescriptor)["[[Value]]"];
+					// Return CreateStringIterator(S).
+					return CreateStringIterator(S);
+				}
+			},
+			"[Symbol.iterator]"
+		) as InternalGetAccessorDescriptor
+	)["[[Value]]"];

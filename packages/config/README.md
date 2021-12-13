@@ -36,7 +36,6 @@
 
 <!-- SHADOW_SECTION_FEATURE_IMAGE_END -->
 
-
 <!-- SHADOW_SECTION_BACKERS_START -->
 
 ## Backers

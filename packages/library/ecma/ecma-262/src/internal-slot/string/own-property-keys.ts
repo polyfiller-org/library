@@ -8,8 +8,6 @@ import {safeHasOwnProperty} from "../../util/safe-has-own-property";
 
 /**
  * https://tc39.es/ecma262/#sec-string-exotic-objects-ownpropertykeys
- * @private
- * @returns
  */
 export function __StringOwnPropertyKeys__<T extends string>(this: T): List<PropertyKey> {
 	// Let keys be a new empty List.
@@ -56,7 +54,7 @@ export function __StringOwnPropertyKeys__<T extends string>(this: T): List<Prope
 	// in ascending chronological order of property creation, do
 	for (const P in this) {
 		if (!safeHasOwnProperty(this, P)) continue;
-		if (Type(P as symbol) !== "Symbol") continue;
+		if (Type(P as unknown as symbol) !== "Symbol") continue;
 
 		// Add P as the last element of keys.
 		keys.append(P);

@@ -7,9 +7,9 @@
 		"test262": "bin/test262"
 	},
 	"scripts": {
-		"scaffold": "scaffold readme --yes && scaffold license --yes",
-		"build": "tsc",
-		"watch": "tsc --watch",
+		"sandhog": "sandhog readme --yes && sandhog license --yes",
+		"check": "tsc --noEmit",
+		"lint": "pnpm run check && eslint \"src/**/*.ts\" --color",
 		"update": "pnpx npm-check-updates --packageFile package.json -u -x np --dep dev,prod"
 	},
 	"homepage": "https://github.com/polyfiller-org/library",
@@ -20,10 +20,6 @@
 	"bugs": {
 		"url": "https://github.com/polyfiller-org/library/issues"
 	},
-	"files": [
-		"dist/**/*.*",
-		"bin/*.*"
-	],
 	"keywords": [
 		"test262",
 		"runner",
@@ -45,9 +41,11 @@
 		"@polyfiller/config": "workspace:*"
 	},
 	"dependencies": {
-		"minimist": "1.2.5",
-		"test262-harness": "7.5.2",
-		"find-up": "5.0.0"
+		"@types/node": "^16.11.12",
+		"minimist": "^1.2.5",
+		"test262-harness": "^9.0.0",
+		"find-up": "5.0.0",
+		"ts-node": "^10.4.0"
 	},
-	"main": "dist/index.js"
+	"main": "src/index.ts"
 }

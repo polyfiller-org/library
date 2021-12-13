@@ -12,7 +12,7 @@ export function OrdinaryGetPrototypeOf<TO extends {}>(O: TO): Object | null {
 	if (NATIVE_GET_PROTOTYPE_OF != null) {
 		prototype = NATIVE_GET_PROTOTYPE_OF(O);
 	} else {
-		const proto = ((O as unknown) as {__proto__: typeof Object.prototype | null}).__proto__;
+		const proto = (O as unknown as {__proto__: typeof Object.prototype | null}).__proto__;
 		if (proto !== undefined) {
 			prototype = proto;
 		} else if (typeof O.constructor === "function" && O instanceof O.constructor) {

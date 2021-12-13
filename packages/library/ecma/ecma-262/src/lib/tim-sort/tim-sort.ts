@@ -785,7 +785,7 @@ class TimSort<T> {
 function replaceHoles<T>(array: T[]): void {
 	let firstHoleIndex: number | undefined;
 	for (let i = array.length - 1; i >= 0; i--) {
-		if (((array[i] as unknown) as string) === HOLE_SYMBOL) {
+		if ((array[i] as unknown as string) === HOLE_SYMBOL) {
 			firstHoleIndex = i;
 		} else {
 			break;
@@ -815,7 +815,7 @@ export function timSort<T>(array: T[], comparefn: CompareFunction<T> = alphabeti
 	for (let i = 0; i < array.length; i++) {
 		if (!safeHasOwnProperty(array, ToString(i))) {
 			hasHole = true;
-			array[i] = (HOLE_SYMBOL as unknown) as T;
+			array[i] = HOLE_SYMBOL as unknown as T;
 		}
 	}
 

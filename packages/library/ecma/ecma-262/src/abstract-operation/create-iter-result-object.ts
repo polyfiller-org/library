@@ -21,5 +21,5 @@ export function CreateIterResultObject<T extends {}>(value: T | undefined, done:
 	CreateDataProperty(obj, "done", done);
 
 	// Return obj.
-	return (obj as unknown) as IteratorResult<T>;
+	return obj as unknown as IteratorResult<T>;
 }

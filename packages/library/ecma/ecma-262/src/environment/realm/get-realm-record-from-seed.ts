@@ -31,7 +31,7 @@ export function getRealmRecordFromSeed(seed: any): Realm {
 	const globalObject = (functionCtor as FunctionConstructor)("return this")() as typeof globalThis;
 	// Set the realm record on the seed
 	const realm = getRealmFromGlobalThis(globalObject);
-	const seedInternals = (internals(seed) as unknown) as FunctionInternals;
+	const seedInternals = internals(seed) as unknown as FunctionInternals;
 	seedInternals["[[Realm]]"] = realm;
 
 	return realm;

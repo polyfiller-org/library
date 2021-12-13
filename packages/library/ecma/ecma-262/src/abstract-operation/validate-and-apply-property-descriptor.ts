@@ -54,16 +54,16 @@ function _createProperty<O extends {}, P extends PropertyKey>(o: O, p: P, desc: 
 	} else if (IsDataDescriptor(desc)) {
 		// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
 		if (SUPPORTS_ACCESSORS && (__lookupGetter__.call(o, p) || __lookupSetter__.call(o, p))) {
-			const prototype = ((o as unknown) as {__proto__: typeof Object.prototype}).__proto__;
-			((o as unknown) as {__proto__: typeof Object.prototype}).__proto__ = Object.prototype;
+			const prototype = (o as unknown as {__proto__: typeof Object.prototype}).__proto__;
+			(o as unknown as {__proto__: typeof Object.prototype}).__proto__ = Object.prototype;
 
-			delete o[(p as unknown) as keyof O];
-			o[(p as unknown) as keyof O] = desc["[[Value]]"];
+			delete o[p as unknown as keyof O];
+			o[p as unknown as keyof O] = desc["[[Value]]"];
 
-			((o as unknown) as {__proto__: typeof prototype}).__proto__ = prototype;
+			(o as unknown as {__proto__: typeof prototype}).__proto__ = prototype;
 			/* eslint-enable no-proto */
 		} else {
-			o[(p as unknown) as keyof O] = desc["[[Value]]"];
+			o[p as unknown as keyof O] = desc["[[Value]]"];
 		}
 	} else if (IsAccessorDescriptor(desc)) {
 		if (!SUPPORTS_ACCESSORS) {
@@ -214,7 +214,7 @@ export function ValidateAndApplyPropertyDescriptor<TO, TP extends PropertyKey | 
 									"[[Configurable]]": oDescriptor["[[Configurable]]"],
 									"[[Enumerable]]": oDescriptor["[[Enumerable]]"]
 							  }),
-						"[[Value]]": O[(P as unknown) as keyof TO]
+						"[[Value]]": O[P as unknown as keyof TO]
 					});
 				} catch {
 					// An error occurred. Return false to indicate that the operation was unsuccessful

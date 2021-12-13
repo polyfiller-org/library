@@ -37,8 +37,8 @@ export function AbstractRelationalComparison(x: unknown, y: unknown, LeftFirst =
 
 	// If Type(px) is String and Type(py) is String, then
 	if (Type(px as string | number) === "String" && Type(py as string | number) === "String") {
-		const _px = (px as string | number) as string;
-		const _py = (py as string | number) as string;
+		const _px = px as string | number as string;
+		const _py = py as string | number as string;
 		// If IsStringPrefix(py, px) is true, return false.
 		if (IsStringPrefix(_py, _px)) {
 			return false;

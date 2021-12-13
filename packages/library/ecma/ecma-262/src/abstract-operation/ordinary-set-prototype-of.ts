@@ -60,7 +60,7 @@ export function OrdinarySetPrototypeOf<TO extends {}>(O: TO, V: {} | null): bool
 	internals(O)["[[Prototype]]"] = V;
 
 	if (SUPPORTS_PROTO) {
-		((O as unknown) as {__proto__: typeof V}).__proto__ = V;
+		(O as unknown as {__proto__: typeof V}).__proto__ = V;
 	}
 
 	// Return true.

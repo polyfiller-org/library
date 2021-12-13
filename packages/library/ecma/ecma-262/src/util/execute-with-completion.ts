@@ -7,6 +7,6 @@ export function executeWithCompletion<Func extends ArbitraryFunction>(func: Func
 	try {
 		return NormalCompletion(func());
 	} catch (ex) {
-		return ThrowCompletion(ex);
+		return ThrowCompletion(ex as ReturnType<Func>);
 	}
 }

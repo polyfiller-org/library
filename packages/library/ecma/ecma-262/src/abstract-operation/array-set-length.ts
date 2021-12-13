@@ -93,7 +93,7 @@ export function ArraySetLength<T>(A: T[], Desc: InternalPropertyDescriptor): boo
 		oldLen = oldLen - 1;
 
 		// Let deleteSucceeded be ! A.[[Delete]](! ToString(oldLen)).
-		const deleteSucceeded = (internals(A)["[[Delete]]"](ToString(oldLen)) as unknown) as number;
+		const deleteSucceeded = internals(A)["[[Delete]]"](ToString(oldLen)) as unknown as number;
 		// If deleteSucceeded is false, then
 		if (!deleteSucceeded) {
 			// Set newLenDesc.[[Value]] to oldLen + 1.

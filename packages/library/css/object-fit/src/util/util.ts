@@ -27,10 +27,10 @@ export function debounce<T extends CallableFunction>(callback: T, ms = 16, id?: 
 		clearTimeout(existingTimeoutId);
 	}
 
-	const timeout = (setTimeout(() => {
+	const timeout = setTimeout(() => {
 		callback();
 		DEBOUNCED_CALLBACKS.delete(key);
-	}, ms) as unknown) as number;
+	}, ms) as unknown as number;
 
 	DEBOUNCED_CALLBACKS.set(key, timeout);
 	return timeout;
@@ -292,7 +292,7 @@ export const nextMicrotask = (func: () => void): void => {
 export function findUp<T extends Node = Node>(from: Node, match: (node: Node) => boolean): T | undefined {
 	let parentNode = from.parentNode;
 	while (parentNode != null) {
-		if (match(parentNode)) return (parentNode as unknown) as T;
+		if (match(parentNode)) return parentNode as unknown as T;
 		parentNode = parentNode.parentNode;
 	}
 	return undefined;

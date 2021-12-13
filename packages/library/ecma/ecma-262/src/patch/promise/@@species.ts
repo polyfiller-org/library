@@ -4,7 +4,6 @@ import {NATIVE_SYMBOL_SPECIES} from "../../symbol/native/native";
 import {promiseSymbolSpecies} from "../../promise/@@species";
 
 export function patchPromiseSymbolSpecies(): void {
-
 	// Promise.@@species
 	OrdinaryDefineOwnProperty(Promise, Symbol.species, {
 		"[[Enumerable]]": false,

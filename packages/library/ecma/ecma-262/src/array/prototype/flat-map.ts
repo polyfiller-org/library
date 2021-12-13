@@ -34,6 +34,6 @@ export const {flatMap: arrayPrototypeFlatMap} = {
 		FlattenIntoArray(A, O, sourceLen, 0, 1, mapperFunction, T);
 
 		// Return A.
-		return (A as unknown) as TT[];
+		return A as unknown as TT[];
 	}
 };

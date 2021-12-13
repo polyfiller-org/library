@@ -2,7 +2,9 @@
 'use strict';
 
 process.title = 'test262';
-const {runTest262} = require("../dist/index.js");
+require("ts-node/register");
+
+const {runTest262} = require("../src/index.ts");
 const minimist = require("minimist");
 const args = minimist(process.argv.slice(2));
 

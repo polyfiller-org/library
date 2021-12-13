@@ -32,7 +32,7 @@ export function $IteratorPrototype$(realm: Realm): IteratorPrototype {
 				[NATIVE_SYMBOL_ITERATOR]() {
 					return this;
 				}
-			}[(NATIVE_SYMBOL_ITERATOR as unknown) as string],
+			}[NATIVE_SYMBOL_ITERATOR as unknown as string],
 			"[[Writable]]": false,
 			"[[Enumerable]]": false,
 			"[[Configurable]]": true

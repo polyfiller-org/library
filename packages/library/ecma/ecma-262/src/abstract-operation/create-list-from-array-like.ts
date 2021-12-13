@@ -12,15 +12,15 @@ import {List, makeList} from "../lib/list/list";
  * List that is created.
  * https://tc39.es/ecma262/#sec-createlistfromarraylike
  */
-export function CreateListFromArrayLike<T, Types extends List<EcmascriptLanguageType>>(obj: ArrayLike<T>, elementTypes: Types): List<EcmascriptLanguageTypesToTypes<Types>>;
-export function CreateListFromArrayLike<T>(obj: ArrayLike<T>): List<EcmascriptLanguageTypesToTypes<List<EcmascriptLanguageType>>>;
-export function CreateListFromArrayLike<T, Types extends List<EcmascriptLanguageType>>(
+export function CreateListFromArrayLike<T, Types extends EcmascriptLanguageType>(obj: ArrayLike<T>, elementTypes: List<Types>): List<EcmascriptLanguageTypesToTypes<Types>>;
+export function CreateListFromArrayLike<T>(obj: ArrayLike<T>): List<EcmascriptLanguageTypesToTypes<EcmascriptLanguageType>>;
+export function CreateListFromArrayLike<T, Types extends EcmascriptLanguageType>(
 	obj: ArrayLike<T>,
 	elementTypes?: Types
-): List<EcmascriptLanguageTypesToTypes<List<EcmascriptLanguageType>>> {
+): List<EcmascriptLanguageTypesToTypes<EcmascriptLanguageType>> {
 	// If elementTypes is not present, set elementTypes to « Undefined, Null, Boolean, String, Symbol, Number, Object ».
 	if (elementTypes === undefined) {
-		elementTypes = (makeList("Undefined", "Null", "Boolean", "String", "Symbol", "Number", "Object") as unknown) as Types;
+		elementTypes = makeList("Undefined", "Null", "Boolean", "String", "Symbol", "Number", "Object") as unknown as Types;
 	}
 
 	// If Type(obj) is not Object, throw a TypeError exception.
@@ -59,5 +59,5 @@ export function CreateListFromArrayLike<T, Types extends List<EcmascriptLanguage
 	}
 
 	// Return list.
-	return (list as unknown) as List<EcmascriptLanguageTypesToTypes<List<EcmascriptLanguageType>>>;
+	return list as unknown as List<EcmascriptLanguageTypesToTypes<EcmascriptLanguageType>>;
 }

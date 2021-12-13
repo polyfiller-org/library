@@ -28,7 +28,7 @@ export const {Set: SetConstructor} = {
 		}
 
 		// Let set be ? OrdinaryCreateFromConstructor(NewTarget, "%Set.prototype%", « [[SetData]] »).
-		const set = OrdinaryCreateFromConstructor((NewTarget as unknown) as Constructor, "%SetPrototype%", makeList("[[SetData]]"));
+		const set = OrdinaryCreateFromConstructor(NewTarget as unknown as Constructor, "%SetPrototype%", makeList("[[SetData]]"));
 
 		// Set set.[[SetData]] to a new empty List.
 		// Note: We're using Map as the underlying data structure for implementing sets

@@ -4,16 +4,16 @@ import {generateRollupOptions, PolyfillablePackage, SimplifiedRollupOptionsDir, 
 import {parse} from "path";
 import {createHash} from "crypto";
 
-const getGenerateChunkFileNameCallback = (ext: string, suffix = "", hashMaxLength = 12) => (chunkInfo: PreRenderedChunk): string => {
-	const moduleNames = Object.keys(chunkInfo.modules).join(",");
-	let hash = createHash("sha1")
-		.update(moduleNames)
-		.digest("hex");
-	if (hash.length > hashMaxLength) {
-		hash = hash.slice(0, hashMaxLength);
-	}
-	return `chunk/${chunkInfo.name}-${hash}${suffix}${ext}`;
-}
+const getGenerateChunkFileNameCallback =
+	(ext: string, suffix = "", hashMaxLength = 12) =>
+	(chunkInfo: PreRenderedChunk): string => {
+		const moduleNames = Object.keys(chunkInfo.modules).join(",");
+		let hash = createHash("sha1").update(moduleNames).digest("hex");
+		if (hash.length > hashMaxLength) {
+			hash = hash.slice(0, hashMaxLength);
+		}
+		return `chunk/${chunkInfo.name}-${hash}${suffix}${ext}`;
+	};
 
 export function generatePolyfillConfig(options: {context?: string; pkg: Partial<PolyfillablePackage>}): RollupOptions[] {
 	const {pkg, context = "window"} = options;
@@ -48,7 +48,7 @@ export function generatePolyfillConfig(options: {context?: string; pkg: Partial<
 										file: output.bundle.standard,
 										format: "iife" as const,
 										minify: false
-									}
+									} as const
 							  ]),
 						...(output.bundle.minified == null
 							? []
@@ -57,7 +57,7 @@ export function generatePolyfillConfig(options: {context?: string; pkg: Partial<
 										file: output.bundle.minified,
 										format: "iife" as const,
 										minify: true
-									}
+									} as const
 							  ])
 					]
 				});

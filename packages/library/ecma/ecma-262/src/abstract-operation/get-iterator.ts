@@ -34,7 +34,7 @@ export function GetIterator<T>(
 		// If hint is async, then
 		if (hint === "async") {
 			// Set method to ? GetMethod(obj, @@asyncIterator).
-			method = (GetMethod(obj, Symbol.asyncIterator as keyof typeof obj) as unknown) as ArbitraryFunction | undefined;
+			method = GetMethod(obj, Symbol.asyncIterator as keyof typeof obj) as unknown as ArbitraryFunction | undefined;
 
 			// If method is undefined, then
 			if (method === undefined) {
@@ -51,7 +51,7 @@ export function GetIterator<T>(
 
 		// Otherwise, set method to ? GetMethod(obj, @@iterator).
 		else {
-			method = (GetMethod(obj, Symbol.iterator as keyof typeof obj) as unknown) as ArbitraryFunction;
+			method = GetMethod(obj, Symbol.iterator as keyof typeof obj) as unknown as ArbitraryFunction;
 		}
 	}
 

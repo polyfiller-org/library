@@ -17,7 +17,7 @@ export function OrdinaryDelete<TO, TP extends PropertyKey>(O: TO, P: TP): boolea
 	// If desc.[[Configurable]] is true, then
 	if (desc["[[Configurable]]"] === true) {
 		// Remove the own property with name P from O.
-		delete O[(P as unknown) as keyof TO];
+		delete O[P as unknown as keyof TO];
 
 		// Return true.
 		return true;

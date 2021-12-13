@@ -1,0 +1,6 @@
+{
+	"extends": "@polyfiller/config",
+	"compilerOptions": {
+		"outDir": "dist"
+	}
+}

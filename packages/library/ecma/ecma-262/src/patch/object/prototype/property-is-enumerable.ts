@@ -8,5 +8,4 @@ export function patchObjectPrototypePropertyIsEnumerable(): void {
 		...METHOD_DESCRIPTORS,
 		"[[Value]]": objectPrototypePropertyIsEnumerable
 	});
-
 }

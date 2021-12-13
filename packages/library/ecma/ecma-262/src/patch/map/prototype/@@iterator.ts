@@ -4,7 +4,6 @@ import {OrdinaryDefineOwnProperty} from "../../../abstract-operation/ordinary-de
 import {mapPrototypeSymbolIterator} from "../../../map/prototype/@@iterator";
 
 export function patchMapPrototypeSymbolIterator(): void {
-
 	// Map.prototype.@@iterator
 	OrdinaryDefineOwnProperty(Map.prototype, Symbol.iterator, {
 		...METHOD_DESCRIPTORS,

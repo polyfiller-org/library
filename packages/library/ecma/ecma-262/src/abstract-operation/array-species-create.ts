@@ -35,7 +35,7 @@ export function ArraySpeciesCreate<T>(originalArray: T[], length: number): T[] {
 	}
 
 	// Let C be ? Get(originalArray, "constructor").
-	let C = (Get(originalArray, "constructor" as keyof typeof originalArray) as unknown) as Constructor | undefined | null;
+	let C = Get(originalArray, "constructor" as keyof typeof originalArray) as unknown as Constructor | undefined | null;
 
 	// If IsConstructor(C) is true, then
 	if (IsConstructor(C)) {

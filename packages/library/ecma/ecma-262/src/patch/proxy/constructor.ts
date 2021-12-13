@@ -4,8 +4,7 @@ import {ProxyConstructor} from "../../proxy/proxy";
 import {GlobalThisValue} from "../../environment/global-this-value";
 
 export function patchProxyConstructor(): void {
-
-// Proxy constructor
+	// Proxy constructor
 	OrdinaryDefineOwnProperty(GlobalThisValue(), "Proxy", {
 		...METHOD_DESCRIPTORS,
 		"[[Value]]": ProxyConstructor

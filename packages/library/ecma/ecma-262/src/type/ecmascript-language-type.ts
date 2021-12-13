@@ -1,6 +1,3 @@
-import {ElementOf} from "./element-of";
-import {List} from "../lib/list/list";
-
 export type EcmascriptLanguageType = "Undefined" | "Null" | "String" | "Boolean" | "Number" | "Symbol" | "Object";
 export type EcmascriptLanguageTypeLiteral = undefined | null | string | boolean | number | symbol | object | unknown;
 
@@ -14,8 +11,4 @@ export interface EcmaScriptLanguageTypeToType {
 	Object: object;
 }
 
-export type EcmascriptLanguageTypesToTypes<
-	Types extends EcmascriptLanguageType[] | List<EcmascriptLanguageType> | readonly EcmascriptLanguageType[] | Set<EcmascriptLanguageType>
-> = {
-	[Key in ElementOf<Types>]: EcmaScriptLanguageTypeToType[Key];
-}[ElementOf<Types>];
+export type EcmascriptLanguageTypesToTypes<Type extends EcmascriptLanguageType> = EcmaScriptLanguageTypeToType[Type];

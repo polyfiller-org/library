@@ -43,7 +43,7 @@ export function $AsyncFromSyncIteratorPrototype$(realm: Realm): AsyncFromSyncIte
 		);
 
 		// Let promiseCapability be ! NewPromiseCapability(%Promise%).
-		let promiseCapability = NewPromiseCapability<T>((intrinsics["[[%Promise%]]"] as unknown) as Constructor<T>);
+		let promiseCapability = NewPromiseCapability<T>(intrinsics["[[%Promise%]]"] as unknown as Constructor<T>);
 
 		// Let syncIteratorRecord be O.[[SyncIteratorRecord]].
 		const syncIteratorRecord = O["[[SyncIteratorRecord]]"];
@@ -70,7 +70,7 @@ export function $AsyncFromSyncIteratorPrototype$(realm: Realm): AsyncFromSyncIte
 		}
 
 		// Return ! AsyncFromSyncIteratorContinuation(result, promiseCapability).
-		return AsyncFromSyncIteratorContinuation((result as unknown) as IteratorResult<T>, promiseCapability);
+		return AsyncFromSyncIteratorContinuation(result as unknown as IteratorResult<T>, promiseCapability);
 	};
 
 	proto.throw = function <T>(this: {"[[SyncIteratorRecord]]": IteratorRecord<T>}, value: T) {
@@ -83,7 +83,7 @@ export function $AsyncFromSyncIteratorPrototype$(realm: Realm): AsyncFromSyncIte
 		assert(Type(O) === "Object" && "[[SyncIteratorRecord]]" in O);
 
 		// Let promiseCapability be ! NewPromiseCapability(%Promise%).
-		let promiseCapability = NewPromiseCapability<T>((intrinsics["[[%Promise%]]"] as unknown) as Constructor<T>);
+		let promiseCapability = NewPromiseCapability<T>(intrinsics["[[%Promise%]]"] as unknown as Constructor<T>);
 
 		// Let syncIterator be O.[[SyncIteratorRecord]].[[Iterator]].
 		const syncIterator = O["[[SyncIteratorRecord]]"]["[[Iterator]]"];
@@ -117,7 +117,7 @@ export function $AsyncFromSyncIteratorPrototype$(realm: Realm): AsyncFromSyncIte
 		}
 
 		// Let result be Call(throw, syncIterator, « value »).
-		let result = Call((_throw as unknown) as ArbitraryFunction, syncIterator, makeList(value));
+		let result = Call(_throw as unknown as ArbitraryFunction, syncIterator, makeList(value));
 
 		// IfAbruptRejectPromise(result, promiseCapability).
 		abruptRejectPromiseResult = IfAbruptRejectPromise(
@@ -158,7 +158,7 @@ export function $AsyncFromSyncIteratorPrototype$(realm: Realm): AsyncFromSyncIte
 		assert(Type(O) === "Object" && "[[SyncIteratorRecord]]" in O);
 
 		// Let promiseCapability be ! NewPromiseCapability(%Promise%).
-		let promiseCapability = NewPromiseCapability<T>((intrinsics["[[%Promise%]]"] as unknown) as Constructor<T>);
+		let promiseCapability = NewPromiseCapability<T>(intrinsics["[[%Promise%]]"] as unknown as Constructor<T>);
 
 		// Let syncIterator be O.[[SyncIteratorRecord]].[[Iterator]].
 		const syncIterator = O["[[SyncIteratorRecord]]"]["[[Iterator]]"];
@@ -223,7 +223,7 @@ export function $AsyncFromSyncIteratorPrototype$(realm: Realm): AsyncFromSyncIte
 		}
 
 		// Return ! AsyncFromSyncIteratorContinuation(result, promiseCapability).
-		return AsyncFromSyncIteratorContinuation((result as unknown) as IteratorResult<T>, promiseCapability);
+		return AsyncFromSyncIteratorContinuation(result as unknown as IteratorResult<T>, promiseCapability);
 	};
 
 	// http://www.ecma-international.org/ecma-262/10.0/index.html#sec-%asyncfromsynciteratorprototype%-@@tostringtag

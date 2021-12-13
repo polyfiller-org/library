@@ -10,42 +10,44 @@ import {containsCharCode} from "../../algorithm/string";
 /**
  * https://tc39.es/ecma262/#sec-get-regexp.prototype.unicode
  */
-export const regExpPrototypeUnicode = (OrdinaryGetOwnProperty(
-	{
-		get unicode(): boolean | undefined {
-			// Let R be the this value.
-			const R = (this as unknown) as RegExp;
+export const regExpPrototypeUnicode = (
+	OrdinaryGetOwnProperty(
+		{
+			get unicode(): boolean | undefined {
+				// Let R be the this value.
+				const R = this as unknown as RegExp;
 
-			// If Type(R) is not Object, throw a TypeError exception.
-			if (Type(R) !== "Object") {
-				throw new TypeError(`RegExp.prototype.unicode called on incompatible receiver ${errorFormatArgument(R)}`);
-			}
-
-			const internalSlots = internals(R);
-			const intrinsics = getCurrentIntrinsics();
-
-			// If R does not have an [[OriginalFlags]] internal slot, then
-			if (!("[[OriginalFlags]]" in internalSlots)) {
-				// If SameValue(R, %RegExp.prototype%) is true, return undefined.
-				if (SameValue(R, intrinsics["[[%RegExpPrototype%]]"]) === true) {
-					return undefined;
-				} else {
-					// Otherwise, throw a TypeError exception.
-					throw new TypeError();
+				// If Type(R) is not Object, throw a TypeError exception.
+				if (Type(R) !== "Object") {
+					throw new TypeError(`RegExp.prototype.unicode called on incompatible receiver ${errorFormatArgument(R)}`);
 				}
+
+				const internalSlots = internals(R);
+				const intrinsics = getCurrentIntrinsics();
+
+				// If R does not have an [[OriginalFlags]] internal slot, then
+				if (!("[[OriginalFlags]]" in internalSlots)) {
+					// If SameValue(R, %RegExp.prototype%) is true, return undefined.
+					if (SameValue(R, intrinsics["[[%RegExpPrototype%]]"]) === true) {
+						return undefined;
+					} else {
+						// Otherwise, throw a TypeError exception.
+						throw new TypeError();
+					}
+				}
+
+				// Let flags be R.[[OriginalFlags]].
+				const flags = internalSlots["[[OriginalFlags]]"];
+
+				// If flags contains the code unit 0x0075 (LATIN SMALL LETTER U), return true.
+				if (containsCharCode(flags, 0x0075)) {
+					return true;
+				}
+
+				// Return false.
+				return false;
 			}
-
-			// Let flags be R.[[OriginalFlags]].
-			const flags = internalSlots["[[OriginalFlags]]"];
-
-			// If flags contains the code unit 0x0075 (LATIN SMALL LETTER U), return true.
-			if (containsCharCode(flags, 0x0075)) {
-				return true;
-			}
-
-			// Return false.
-			return false;
-		}
-	},
-	"unicode"
-) as InternalGetAccessorDescriptor)["[[Get]]"];
+		},
+		"unicode"
+	) as InternalGetAccessorDescriptor
+)["[[Get]]"];

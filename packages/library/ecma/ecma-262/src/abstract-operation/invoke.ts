@@ -27,7 +27,7 @@ export function Invoke<TV, TP extends keyof TV, TF extends TV[TP]>(
 	}
 
 	// Let func be ? GetV(V, P).
-	const func = (GetV(V, P) as unknown) as ArbitraryFunction;
+	const func = GetV(V, P) as unknown as ArbitraryFunction;
 
 	// Return ? Call(func, V, argumentsList).
 	return Call(func, V, argumentsList);

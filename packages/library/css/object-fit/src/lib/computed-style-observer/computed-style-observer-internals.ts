@@ -5,7 +5,7 @@ import {IComputedStyleObserver} from "./i-computed-style-observer";
 import {ComputedStyleObserverInit} from "./computed-style-observer-init";
 import {getPropertyValue, nextMicrotask} from "../../util/util";
 import {CSSStyleDeclarationView, Disconnectable} from "../../type/type";
-import {ElementOf} from "@wessberg/scaffold/dist/license-name-2ed222d8";
+import {ElementOf} from "helpertypes";
 
 export const COMPUTED_STYLE_OBSERVER_INTERNALS_MAP: Map<IComputedStyleObserver, ComputedStyleObserverInternals> = new Map();
 

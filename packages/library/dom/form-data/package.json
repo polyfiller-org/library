@@ -3,15 +3,12 @@
 	"version": "0.0.40",
 	"description": "A robust polyfill for the 'FormData' interface",
 	"scripts": {
-		"scaffold": "scaffold readme --yes && scaffold license --yes",
+		"sandhog": "sandhog readme --yes && sandhog license --yes",
 		"clean": "rimraf dist && rimraf polyfill",
 		"check": "tsc --noEmit",
 		"lint": "pnpm run check && eslint \"src/**/*.ts\" --color",
-		"prebuild": "pnpm run clean",
-		"build": "pnpm run rollup",
-		"prewatch": "pnpm run prebuild",
-		"watch": "pnpm run rollup -- --watch",
-		"rollup": "rollup -c rollup.config.ts",
+		"build": "pnpm run clean && pnpm run rollup -- -c rollup.config.ts",
+		"rollup": "ts-node node_modules/rollup/dist/bin/rollup",
 		"prepublishOnly": "pnpm run build",
 		"update": "pnpx npm-check-updates --packageFile package.json -u -x np --dep dev,prod"
 	},
@@ -48,11 +45,12 @@
 	],
 	"license": "MIT",
 	"devDependencies": {
-		"@babel/runtime": "^7.11.2",
+		"@babel/runtime": "^7.16.3",
 		"@polyfiller/build": "0.0.39",
 		"@polyfiller/config": "0.0.39",
-		"rollup": "^2.28.2",
-		"typescript": "^4.2.4"
+		"rollup": "^2.61.1",
+		"typescript": "^4.5.3",
+		"ts-node": "^10.4.0"
 	},
 	"main": "./dist/cjs/index.js",
 	"module": "./dist/esm/index.js",

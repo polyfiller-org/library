@@ -11,43 +11,45 @@ import {EscapeRegExpPattern} from "../../abstract-operation/escape-reg-exp-patte
 /**
  * https://tc39.es/ecma262/#sec-get-regexp.prototype.source
  */
-export const regExpPrototypeSource = (OrdinaryGetOwnProperty(
-	{
-		get source(): string {
-			// Let R be the this value.
-			const R = (this as unknown) as RegExp;
+export const regExpPrototypeSource = (
+	OrdinaryGetOwnProperty(
+		{
+			get source(): string {
+				// Let R be the this value.
+				const R = this as unknown as RegExp;
 
-			// If Type(R) is not Object, throw a TypeError exception.
-			if (Type(R) !== "Object") {
-				throw new TypeError(`RegExp.prototype.source called on incompatible receiver ${errorFormatArgument(R)}`);
-			}
-
-			const internalSlots = internals(R);
-			const intrinsics = getCurrentIntrinsics();
-
-			// If R does not have an [[OriginalSource]] internal slot, then
-			if (!("[[OriginalFlags]]" in internalSlots)) {
-				// If SameValue(R, %RegExp.prototype%) is true, return "(?:)".
-				if (SameValue(R, intrinsics["[[%RegExpPrototype%]]"]) === true) {
-					return "(?:)";
-				} else {
-					// Otherwise, throw a TypeError exception.
-					throw new TypeError();
+				// If Type(R) is not Object, throw a TypeError exception.
+				if (Type(R) !== "Object") {
+					throw new TypeError(`RegExp.prototype.source called on incompatible receiver ${errorFormatArgument(R)}`);
 				}
+
+				const internalSlots = internals(R);
+				const intrinsics = getCurrentIntrinsics();
+
+				// If R does not have an [[OriginalSource]] internal slot, then
+				if (!("[[OriginalFlags]]" in internalSlots)) {
+					// If SameValue(R, %RegExp.prototype%) is true, return "(?:)".
+					if (SameValue(R, intrinsics["[[%RegExpPrototype%]]"]) === true) {
+						return "(?:)";
+					} else {
+						// Otherwise, throw a TypeError exception.
+						throw new TypeError();
+					}
+				}
+
+				// Assert: R has an [[OriginalFlags]] internal slot.
+				assert("[[OriginalFlags]]" in internalSlots);
+
+				// Let src be R.[[OriginalSource]].
+				const src = internalSlots["[[OriginalSource]]"];
+
+				// Let flags be R.[[OriginalFlags]].
+				const flags = internalSlots["[[OriginalFlags]]"];
+
+				// Return EscapeRegExpPattern(src, flags).
+				return EscapeRegExpPattern(src, flags);
 			}
-
-			// Assert: R has an [[OriginalFlags]] internal slot.
-			assert("[[OriginalFlags]]" in internalSlots);
-
-			// Let src be R.[[OriginalSource]].
-			const src = internalSlots["[[OriginalSource]]"];
-
-			// Let flags be R.[[OriginalFlags]].
-			const flags = internalSlots["[[OriginalFlags]]"];
-
-			// Return EscapeRegExpPattern(src, flags).
-			return EscapeRegExpPattern(src, flags);
-		}
-	},
-	"source"
-) as InternalGetAccessorDescriptor)["[[Get]]"];
+		},
+		"source"
+	) as InternalGetAccessorDescriptor
+)["[[Get]]"];

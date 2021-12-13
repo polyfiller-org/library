@@ -28,7 +28,7 @@ export const {flat: arrayPrototypeFlat} = {
 		}
 
 		// Let A be ? ArraySpeciesCreate(O, 0).
-		const A = (ArraySpeciesCreate(O, 0) as unknown) as T[];
+		const A = ArraySpeciesCreate(O, 0) as unknown as T[];
 
 		// Perform ? FlattenIntoArray(A, O, sourceLen, 0, depthNum).
 		FlattenIntoArray(A, O, sourceLen, 0, depthNum);

@@ -35,7 +35,7 @@ export function ToPrimitive<T>(input: T, preferredType?: PrimitiveType): Primiti
 		}
 
 		// Let exoticToPrim be ? GetMethod(input, @@toPrimitive).
-		const exoticToPrim = (GetMethod(input, Symbol.toPrimitive as never) as unknown) as (hint: unknown) => PrimitiveType;
+		const exoticToPrim = GetMethod(input, Symbol.toPrimitive as never) as unknown as (hint: unknown) => PrimitiveType;
 		// If exoticToPrim is not undefined, then
 		if (exoticToPrim !== undefined) {
 			// Let result be ? Call(exoticToPrim, input, « hint »).
@@ -59,5 +59,5 @@ export function ToPrimitive<T>(input: T, preferredType?: PrimitiveType): Primiti
 	}
 
 	// Return input.
-	return (input as unknown) as PrimitiveType;
+	return input as unknown as PrimitiveType;
 }

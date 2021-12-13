@@ -1,4 +1,4 @@
-export function constructDomException (message?: string, name?: string) : DOMException|TypeError {
+export function constructDomException(message?: string, name?: string): DOMException | TypeError {
 	try {
 		return new DOMException(message, name);
 	} catch {

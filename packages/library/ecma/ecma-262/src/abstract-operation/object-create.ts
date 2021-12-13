@@ -20,7 +20,7 @@ export function ObjectCreate<T>(proto: object | null, internalSlotsList?: List<s
 	// ObjectCreate may be called during building intrinsics and The %ArrayIteratorPrototype%
 	// intrinsic value haven't been prepared yet.
 	for (let i = 0; i < internalSlotsList.length; i++) {
-		((internals as unknown) as (obj: unknown) => Record<string, undefined>)(obj)[internalSlotsList.get(i)] = undefined;
+		(internals as unknown as (obj: unknown) => Record<string, undefined>)(obj)[internalSlotsList.get(i)] = undefined;
 	}
 
 	// Set obj.[[Prototype]] to proto.

@@ -1,4 +1,10 @@
 {
 	"include": ["src/**/*.*"],
-	"extends": "@polyfiller/config"
+	"extends": "@polyfiller/config",
+	"compilerOptions": {
+		"paths": {
+			"@polyfiller/build": ["../../../build/src/index.ts"],
+			"@polyfiller/build/*": ["../../../build/src/index.ts"]
+		}
+	}
 }

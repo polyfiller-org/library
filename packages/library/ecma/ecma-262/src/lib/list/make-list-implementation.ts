@@ -13,7 +13,7 @@ const {assertArrayIndex} = {
 
 const {setLength} = {
 	setLength<T>(list: List<T>, length: number): void {
-		((list as unknown) as {length: number}).length = length;
+		(list as unknown as {length: number}).length = length;
 	}
 };
 
@@ -107,7 +107,7 @@ const {some} = {
 		const length = this.length;
 		for (let i = 0; i < length; i++) {
 			const cur = (this as any)[i];
-			if (cb(cur, i, (this as unknown) as List<T>)) {
+			if (cb(cur, i, this as unknown as List<T>)) {
 				return true;
 			}
 		}

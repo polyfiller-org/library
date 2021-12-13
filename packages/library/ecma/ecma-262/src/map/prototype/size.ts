@@ -6,17 +6,19 @@ import {RequireInternalSlot} from "../../abstract-operation/require-internal-slo
 /**
  * https://tc39.es/ecma262/#sec-get-map.prototype.size
  */
-export const mapPrototypeSize = (OrdinaryGetOwnProperty(
-	{
-		get size(): number {
-			// Let M be the this value.
-			const M = this as Map<unknown, unknown>;
+export const mapPrototypeSize = (
+	OrdinaryGetOwnProperty(
+		{
+			get size(): number {
+				// Let M be the this value.
+				const M = this as Map<unknown, unknown>;
 
-			// Perform ? RequireInternalSlot(M, [[MapData]]).
-			RequireInternalSlot(M, "[[MapData]]");
+				// Perform ? RequireInternalSlot(M, [[MapData]]).
+				RequireInternalSlot(M, "[[MapData]]");
 
-			return internals(M)["[[MapSize]]"];
-		}
-	},
-	"size"
-) as InternalGetAccessorDescriptor)["[[Get]]"];
+				return internals(M)["[[MapSize]]"];
+			}
+		},
+		"size"
+	) as InternalGetAccessorDescriptor
+)["[[Get]]"];

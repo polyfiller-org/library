@@ -7,12 +7,14 @@ import {InternalGetAccessorDescriptor} from "../type/internal-property-descripto
  * @return
  */
 export const arraySymbolSpecies = () =>
-	(OrdinaryGetOwnProperty(
-		{
-			get "[Symbol.species]"() {
-				// Return the this value.
-				return this;
-			}
-		},
-		"[Symbol.species]"
-	) as InternalGetAccessorDescriptor)["[[Get]]"];
+	(
+		OrdinaryGetOwnProperty(
+			{
+				get "[Symbol.species]"() {
+					// Return the this value.
+					return this;
+				}
+			},
+			"[Symbol.species]"
+		) as InternalGetAccessorDescriptor
+	)["[[Get]]"];

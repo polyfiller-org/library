@@ -1,4 +1,4 @@
-import {ElementOf} from "../type/element-of";
+import {ElementOf} from "helpertypes";
 
 export const INTRINSIC_OBJECT_NAME = [
 	"%ObjectPrototype%",

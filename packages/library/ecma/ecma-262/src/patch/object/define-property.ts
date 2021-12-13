@@ -8,5 +8,4 @@ export function patchObjectDefineProperty(): void {
 		...METHOD_DESCRIPTORS,
 		"[[Value]]": objectDefineProperty
 	});
-
 }

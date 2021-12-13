@@ -47,7 +47,7 @@ export const {concat: arrayPrototypeConcat} = {
 				// Let k be 0.
 				let k = 0;
 				// Let len be ? LengthOfArrayLike(E).
-				const len = LengthOfArrayLike(E as ConcatArray<T>);
+				const len = LengthOfArrayLike(E as unknown as ConcatArray<T>);
 
 				// If n + len > 253 - 1, throw a TypeError exception.
 				if (n + len > MATH_2_TO_THE_POWER_OF_53_MINUS_1) {
@@ -60,12 +60,12 @@ export const {concat: arrayPrototypeConcat} = {
 					const P = ToString(k);
 
 					// Let exists be ? HasProperty(E, P).
-					const exists = HasProperty(E as ConcatArray<T>, P);
+					const exists = HasProperty(E as unknown as ConcatArray<T>, P);
 
 					// If exists is true, then
 					if (exists) {
 						// Let subElement be ? Get(E, P).
-						const subElement = Get(E as ConcatArray<T>, P as keyof ConcatArray<T>);
+						const subElement = Get(E as unknown as ConcatArray<T>, P as keyof ConcatArray<T>) as T;
 
 						// Perform ? CreateDataPropertyOrThrow(A, ! ToString(n), subElement).
 						CreateDataPropertyOrThrow(A, ToString(n), subElement);

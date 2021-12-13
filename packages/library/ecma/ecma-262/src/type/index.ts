@@ -2,7 +2,6 @@ export * from "./arbitrary-function";
 export * from "./completion";
 export * from "./constructor";
 export * from "./ecmascript-language-type";
-export * from "./element-of";
 export * from "./empty";
 export * from "./failure";
 export * from "./internal-promise";

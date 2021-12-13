@@ -7,8 +7,7 @@ if (!UNSUPPORTED_ENVIRONMENT) {
 			// Fill holes in the FormData support
 			patch(false);
 		}
-	}
-	else {
+	} else {
 		// Completely replace FormData
 		patch(true);
 	}

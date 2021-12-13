@@ -1,6 +1,6 @@
 import {ModuleFormat, OutputOptions, RollupOptions} from "rollup";
 import {CompilerOptions} from "typescript";
-import ts, {TypescriptPluginOptions} from "@wessberg/rollup-plugin-ts";
+import ts, {TypescriptPluginOptions} from "rollup-plugin-ts";
 import resolve from "@rollup/plugin-node-resolve";
 import {terser} from "rollup-plugin-terser";
 import builtinModules from "module";
@@ -76,6 +76,9 @@ export function generateRollupOptions(
 	options: SimplifiedRollupOptions[],
 	{dependencies = {}, devDependencies = {}, optionalDependencies = {}, peerDependencies = {}}: Partial<DependencyPackage>
 ): RollupOptions[] {
+	const allDependencies = [...Object.keys(dependencies), ...Object.keys(devDependencies), ...Object.keys(peerDependencies), ...Object.keys(optionalDependencies)];
+	const filteredAllDependencies = allDependencies.filter(dep => !dep.startsWith("@polyfiller/"));
+
 	return options.map(({input, preserveEntrySignatures, flatten, outputs, tsconfig, context, hook}) => ({
 		input,
 		output: (outputs as (SimplifiedRollupOptionsDirOutput & SimplifiedRollupOptionsFileOutput)[]).map(
@@ -94,6 +97,11 @@ export function generateRollupOptions(
 				sourcemap,
 				chunkFileNames,
 				entryFileNames,
+				generatedCode: format === "iife" ? "es5" : "es2015",
+				hoistTransitiveImports: false,
+				compact: minify,
+				minifyInternalExports: minify,
+				preferConst: format !== "iife",
 				plugins: [...(!minify ? [] : [terser()])]
 			})
 		),
@@ -108,9 +116,6 @@ export function generateRollupOptions(
 			}),
 			resolve()
 		],
-		external: [
-			...builtinModules.builtinModules,
-			...(flatten ? [] : [...Object.keys(dependencies), ...Object.keys(devDependencies), ...Object.keys(peerDependencies), ...Object.keys(optionalDependencies)])
-		]
+		external: [...builtinModules.builtinModules, ...(flatten ? [] : filteredAllDependencies)]
 	}));
 }

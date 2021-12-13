@@ -35,7 +35,7 @@ export function EnumerableOwnPropertyNames<T, Kind extends IteratorKind, Element
 			if (desc !== undefined && desc["[[Enumerable]]"] === true) {
 				// If kind is "key", append key to properties.
 				if (kind === "key") {
-					properties.append((key as unknown) as ElementType);
+					properties.append(key as unknown as ElementType);
 				}
 
 				// Else,
@@ -45,7 +45,7 @@ export function EnumerableOwnPropertyNames<T, Kind extends IteratorKind, Element
 
 					// If kind is "value", append value to properties.
 					if (kind === "value") {
-						properties.append((value as unknown) as ElementType);
+						properties.append(value as unknown as ElementType);
 					}
 
 					// Else,
@@ -57,7 +57,7 @@ export function EnumerableOwnPropertyNames<T, Kind extends IteratorKind, Element
 						const entry = CreateArrayFromList(makeList(key, value));
 
 						// Append entry to properties.
-						properties.append((entry as unknown) as ElementType);
+						properties.append(entry as unknown as ElementType);
 					}
 				}
 			}

@@ -54,7 +54,6 @@ To check out the polyfill in action, A [demo can be found here](https://object-f
 
 <!-- SHADOW_SECTION_FEATURE_IMAGE_END -->
 
-
 <!-- SHADOW_SECTION_BACKERS_START -->
 
 ## Backers

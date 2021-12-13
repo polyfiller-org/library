@@ -6,9 +6,9 @@ import {MapLike} from "../../lib/map-like/map-like";
 
 const realms = new MapLike<typeof globalThis, Realm>();
 const realmsWithExtendedIntrinsics = makeList<Realm>();
-let extendedIntrinsics: ((realm: Realm) => Record<string, unknown>)|undefined;
+let extendedIntrinsics: ((realm: Realm) => Record<string, unknown>) | undefined;
 
-export function extendIntrinsics<T extends Record<string, unknown>> (intrinsics: (realm: Realm) => T): void {
+export function extendIntrinsics<T extends Record<string, unknown>>(intrinsics: (realm: Realm) => T): void {
 	extendedIntrinsics = intrinsics;
 }
 

@@ -1,0 +1,39 @@
+{
+	"name": "@polyfiller/shared",
+	"private": true,
+	"version": "0.0.39",
+	"description": "Common logic",
+	"scripts": {
+		"sandhog": "sandhog readme --yes && sandhog license --yes",
+		"check": "tsc --noEmit",
+		"lint": "pnpm run check && eslint \"src/**/*.ts\" --color",
+		"update": "pnpx npm-check-updates --packageFile package.json -u -x np --dep dev,prod"
+	},
+	"homepage": "https://github.com/polyfiller-org/library",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/polyfiller-org/library.git"
+	},
+	"bugs": {
+		"url": "https://github.com/polyfiller-org/library/issues"
+	},
+	"keywords": [],
+	"contributors": [
+		{
+			"name": "Frederik Wessberg",
+			"email": "frederikwessberg@hotmail.com",
+			"url": "https://github.com/wessberg",
+			"imageUrl": "https://avatars2.githubusercontent.com/u/20454213?s=460&v=4",
+			"role": "Lead Developer",
+			"github": "wessberg",
+			"twitter": "FredWessberg"
+		}
+	],
+	"license": "MIT",
+	"main": "src/index.ts",
+	"devDependencies": {
+		"@polyfiller/config": "workspace:*",
+		"@babel/runtime": "^7.16.3",
+		"typescript": "^4.5.3"
+	}
+}

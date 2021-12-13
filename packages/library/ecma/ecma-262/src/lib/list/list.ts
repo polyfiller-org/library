@@ -1143,5 +1143,5 @@ export function makeList<T>(t: T): List<T>;
 export function makeList<T>(): List<T>;
 export function makeList<T>(...elements: T[]): List<T>;
 export function makeList<T>(this: {}): List<T> {
-	return makeListImplementation.apply(this, (arguments as unknown) as []) as List<T>;
+	return makeListImplementation.apply(this, arguments as unknown as []) as List<T>;
 }

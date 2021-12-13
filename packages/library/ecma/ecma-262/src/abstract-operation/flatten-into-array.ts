@@ -79,10 +79,10 @@ export function FlattenIntoArray<T>(target: T[], source: T[] | T[][], sourceLen:
 			// If shouldFlatten is true, then
 			if (shouldFlatten) {
 				// Let elementLen be ? ToLength(? Get(element, "length")).
-				const elementLen = ToLength(Get((element as unknown) as T[], "length"));
+				const elementLen = ToLength(Get(element as unknown as T[], "length"));
 
 				// Set targetIndex to ? FlattenIntoArray(target, element, elementLen, targetIndex, depth - 1).
-				targetIndex = FlattenIntoArray(target, (element as unknown) as T[], elementLen, targetIndex, depth - 1);
+				targetIndex = FlattenIntoArray(target, element as unknown as T[], elementLen, targetIndex, depth - 1);
 			}
 
 			// Else,

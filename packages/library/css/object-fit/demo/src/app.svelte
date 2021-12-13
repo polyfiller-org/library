@@ -104,7 +104,7 @@
 		display: inline-block;
 	}
 
-	.video, .img, .picture, .unsupported-overlay {
+	.video, .img, .picture {
 		border: size(1) dashed color(gray);
 		max-width: 100%;
 	}
@@ -133,14 +133,6 @@
 		align-items: center;
 		flex-direction: column;
 		margin: auto;
-	}
-
-	.unsupported-overlay {
-		opacity: .6;
-		color: color(black);
-		display: flex;
-		align-items: center;
-		justify-content: center;
 	}
 
 	.polyfill-name-container {

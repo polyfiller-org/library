@@ -9,11 +9,11 @@ export function GlobalThisValue(): typeof globalThis {
 	}
 
 	if (typeof self !== "undefined") {
-		return (self as unknown) as typeof globalThis;
+		return self as unknown as typeof globalThis;
 	} else if (typeof window !== "undefined") {
-		return (window as unknown) as typeof globalThis;
+		return window as unknown as typeof globalThis;
 	} else if (typeof global !== "undefined") {
-		return (global as unknown) as typeof globalThis;
+		return global as unknown as typeof globalThis;
 	} else {
 		return Function("return this")();
 	}

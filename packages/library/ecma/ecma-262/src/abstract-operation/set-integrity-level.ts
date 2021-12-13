@@ -1,5 +1,4 @@
 import {makeList} from "../lib/list/list";
-import {ElementOf} from "../type/element-of";
 import {assert, assertType} from "./assert";
 import {internals} from "../lib/internal-slot-map/internals";
 import {DefinePropertyOrThrow} from "./define-property-or-throw";
@@ -8,7 +7,7 @@ import {InternalPropertyDescriptor} from "../type/internal-property-descriptor";
 
 export const INTEGRITY_LEVEL = makeList("frozen" as const, "sealed" as const);
 
-export type IntegrityLevel = ElementOf<typeof INTEGRITY_LEVEL>;
+export type IntegrityLevel = "frozen" | "sealed";
 
 /**
  * The abstract operation SetIntegrityLevel is used to fix the set of own properties of an object.

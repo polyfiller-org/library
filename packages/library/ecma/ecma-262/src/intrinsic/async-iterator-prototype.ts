@@ -28,7 +28,7 @@ export function $AsyncIteratorPrototype$(realm: Realm) {
 				[NATIVE_SYMBOL_ASYNC_ITERATOR]() {
 					return this;
 				}
-			}[(NATIVE_SYMBOL_ASYNC_ITERATOR as unknown) as string],
+			}[NATIVE_SYMBOL_ASYNC_ITERATOR as unknown as string],
 			"[[Writable]]": false,
 			"[[Enumerable]]": false,
 			"[[Configurable]]": true
